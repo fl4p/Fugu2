@@ -1,0 +1,12 @@
+
+*.zip
+
+fp-info-cache
+
+*.lck
+
+*.kicad_prl
+
+*.kicad_sch-bak
+
+bom/ibom.html
