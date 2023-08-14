@@ -7120,7 +7120,7 @@
     (stroke (width 0.15) (type solid)) (fill solid) (layer "B.Mask") (tstamp c00eec48-f9d9-419d-be85-c6f5fcdf26e3))
   (gr_rect (start 71.3105 56.515) (end 120.9675 136.525)
     (stroke (width 0.15) (type default)) (fill none) (layer "Edge.Cuts") (tstamp 86c530e3-b39b-4dfa-8c43-ed646b42f219))
-  (gr_text "TODO\nTerminal pin holes bigger!\nbflow footprint /pins\nbflow thermal vias / vias\nmounting holes" (at 67.945 150.495) (layer "F.Cu") (tstamp dce18cb6-1e9d-422d-8435-08bbc63ea894)
+  (gr_text "TODO\nTerminal pin holes bigger!\nbflow footprint /pins\nbflow thermal vias / vias\nmounting holes" (at 63.754 153.035) (layer "F.Cu") (tstamp dce18cb6-1e9d-422d-8435-08bbc63ea894)
     (effects (font (size 1.5 1.5) (thickness 0.3) bold) (justify left bottom))
   )
 
