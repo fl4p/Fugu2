@@ -55,7 +55,9 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "starved_thermal|109474000|57833000|f4d42df7-c766-447f-a22e-8814020be1f3|66beda64-ba2d-4b68-bf25-4417efb0b471|F.Cu"
+      ],
       "meta": {
         "version": 2
       },
@@ -175,6 +177,7 @@
         0.0,
         0.2,
         0.3,
+        0.4,
         0.5,
         0.75,
         1.0,
@@ -191,6 +194,10 @@
         {
           "diameter": 0.5,
           "drill": 0.3
+        },
+        {
+          "diameter": 1.7,
+          "drill": 1.0
         }
       ],
       "zones_allow_external_fillets": false
