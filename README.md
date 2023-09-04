@@ -69,6 +69,13 @@ TI: Fundamentals of MOSFET and IGBT Gate Driver Circuits https://www.ti.com/lit/
 
 https://www.micrometals.com/design-and-applications/material-selection-application/
 
+## Coil designs
+* T184 sendust (u_i=125, A_L=281)
+* N=17
+* 5xAWG15 (d=1.45mm) or 3x (d=1.9mm)
+* 130cm wire length for 17 turns on T184 (17 * 65mm)
+
+Strands Formular: d_b = (d_a**2 * n_a/n_b)**.5 # d_b = diameter, n_b = num strands 
 
 
 # Gate Drivers
@@ -89,3 +96,15 @@ Higher gate drive current -> faster switching -> less switching losses/heat, but
 * Place Schottky diode in parallel to LS switch
 * Use a second HS switch in parallel (with separate gate drive resistor)
 * Use short & wide PCB traces, maybe 4-layer PCB.
+#
+
+
+# Current Sensor
+Reject Noise
+* 50hz inverter
+* 39 kHz pwm
+* 380Hz Power supply
+
+
+# IR2184 and TK6R8A08QM
+I want the charger to be efficient, small and without a fan. No fan and high efficiency is both reducing loss. Si Mosfets waste most of the energy during switching. The faster the switching, the less energy is wasted. Need high gate drive current, because the gate is like a capacitor. For simplicity and safety, want a driver with dead-time, Infineon strongest driver from the IR series is IR21x4, almost 2 A current. Considering power level of 800W. Choose a fast MOSFET with low Qg and Qrr.
