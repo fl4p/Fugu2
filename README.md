@@ -48,6 +48,9 @@ TI: Fundamentals of MOSFET and IGBT Gate Driver Circuits https://www.ti.com/lit/
 # Coils
 - Choose inductivity L (link TODO)
 - Choose core geometry (toroids have low stray inductance) and size (depends on power needs). Choose core materials. Sendust aka KoolMu is a good choice. It is an alloy powder, composite of metal and plastic, distributed air gap.
+  - toroid sizes that make sense: T130, T184, T225/T226
+  - sendust has high saturation current, so T130 works. however, wire diameter is limited because it just doesn't fit through
+  - smaller cores have smaller A_l value, so need more turns => more copper loss
 - Choose wire gauge and strands (consider DC loss and skin effect)
 - Compute num windings with A_L value and target L
 - Designers: [micrometals](https://www.micrometals.com/design-and-applications/design-tools/inductor-designer/)
@@ -56,6 +59,9 @@ TI: Fundamentals of MOSFET and IGBT Gate Driver Circuits https://www.ti.com/lit/
 - Higher initial permeability increases A_L, reduces num windings, moves loss from wire to core
 
 - Sendust Toroid 60u - 125u
+
+
+
 - T184 (OD=1.84in/46.7mm) 125u A_l=281 https://www.semic-shop.de/ljf-t184-s-125a-bk-de/
 - 17-20 turns of 5xAWG15 (1.45mm)
 - T225 / T226 (OD=2.25in/57.15mm)
@@ -108,3 +114,12 @@ Reject Noise
 
 # IR2184 and TK6R8A08QM
 I want the charger to be efficient, small and without a fan. No fan and high efficiency is both reducing loss. Si Mosfets waste most of the energy during switching. The faster the switching, the less energy is wasted. Need high gate drive current, because the gate is like a capacitor. For simplicity and safety, want a driver with dead-time, Infineon strongest driver from the IR series is IR21x4, almost 2 A current. Considering power level of 800W. Choose a fast MOSFET with low Qg and Qrr.
+
+
+# Snubber
+* C0G caps are more temperature stable than X7R.
+* Resistor should handle 2W power
+
+
+* Load output
+
