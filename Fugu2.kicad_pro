@@ -56,7 +56,8 @@
         }
       ],
       "drc_exclusions": [
-        "starved_thermal|109474000|57833000|f4d42df7-c766-447f-a22e-8814020be1f3|66beda64-ba2d-4b68-bf25-4417efb0b471|F.Cu"
+        "courtyards_overlap|76025001|134582746|cda39ca8-d5d1-42de-9b60-deb081659987|faa4f44b-48f0-44cd-8862-92b8e86e3f12",
+        "starved_thermal|109474000|57833000|f4d42df7-c766-447f-a22e-8814020be1f3|7d4644d0-c822-4a94-b67a-ddf8560c5d7b|F.Cu"
       ],
       "meta": {
         "version": 2
@@ -565,6 +566,10 @@
     [
       "e6692049-eaa1-423b-b1ac-05fb6d0f1fc2",
       ""
+    ],
+    [
+      "8bdaa788-2fc2-4872-9b0d-b14952df8b59",
+      "PowerSupply"
     ]
   ],
   "text_variables": {}
