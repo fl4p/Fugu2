@@ -1,3 +1,5 @@
+View this project on [CADLAB.io](https://cadlab.io/project/28046). 
+
 # TODO
 * use 2 current sense resistors in parallel
 * fugu reverse battery protection
