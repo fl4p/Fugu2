@@ -1,0 +1,5 @@
+# i2c
+
+Pin order of known connectors
+* UEXT
+* LCD with i2c GND VCC SDA SCL
