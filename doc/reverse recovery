@@ -1,0 +1,17 @@
+reverse recovery of sync fet's (buck LS) body diode can cause server EMI and power loss.
+
+During reverse recovery the mosfet is like a capacitor. In a half-bridge, imagine the HS switch
+being a resistor and the LS a capacitor that is inversingly charged. current will flow until this capacitor
+is fully discharged (Vds=0) and then the body diode interrupts. this can cause significant loss, because of the voltage
+drop at HS is equal to the input voltage.
+
+The current peaks at I_RM, which can be quite high. It takes the low resistance path across both switches.
+Parasitic inductances in this path will cause ringing of the switching node voltage.
+
+https://www.onsemi.com/download/application-notes/pdf/an-9010.pdf#page=15
+
+Recovering
+https://sci-hub.se/10.1007/978-3-642-15739-4_12
+
+
+Schottky diode can reduce rr?
