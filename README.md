@@ -1,6 +1,8 @@
 View this project on [CADLAB.io](https://cadlab.io/project/28046). 
 
 # TODO
+* esp32 pads wider connecting tracks
+* aluminium case dimensions
 * use 2 current sense resistors in parallel
 * fugu reverse battery protection
 * The metal cover ESP32-S3-WROOM can be a condensation trap in humid environments. Especially when power saving at night and the chip cools down. 

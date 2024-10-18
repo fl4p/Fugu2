@@ -1,0 +1,19 @@
+
+# 1. HS Turns on
+- LS reverse recovery (C_rr discharges)
+- LS self turn on
+
+# 2. HS Turns off
+- Vsw falls from Vi to -1V (LS body diode Vsd)
+- LS Coss discharged, mosfet releases energy (-3.3913µJ)
+- LS body diode power ups (C_rr charges)
+- Vsw is now 1V below ground
+
+# 3. LS Turns on
+- Vsw goes from -1V to near GND
+- C_rr discharged
+- Current spike in LS drain and HS drain
+
+# 4. LS Turns off
+- Vsw GND -> -1V
+- C_rr charged

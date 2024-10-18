@@ -86,6 +86,8 @@ Qrr depends on di/dit https://www.st.com/resource/en/application_note/dm00380483
 ringing wave form https://www.ti.com/lit/an/slpa010/slpa010.pdf#page=2
 Causes Voltage peak V_sw and EMI.
 
+Using a cascode to reduce reverse recovery https://ieeexplore.ieee.org/document/10147632
+
 https://www.onsemi.com/download/application-notes/pdf/an-9010.pdf#page=15
 
 https://www.electronicdesign.com/technologies/power/article/21800964/mosfet-design-basics-you-need-to-know-part-2
@@ -232,3 +234,14 @@ Adds Qrr loss. (FOMrr)
 Placing a second LS of the same model in parallel will reduce conduction loss to a half but doubles the reverse
 recovery loss (in the HS switch).
 
+
+
+# Advancded Optimizations
+* Cascode against reverse recovery https://ieeexplore.ieee.org/document/10147632 https://www.researchgate.net/figure/Reverse-recovery-current-of-cascodes-standalone-MOSFETs_fig12_346515590
+  * https://www.qorvo.com/products/d/da008868
+* TO220 reduce parasitic inductance https://research-information.bris.ac.uk/ws/portalfiles/portal/164064092/Harry_Dymond_Investigation_of_a_parasitic_inductance_reduction_technique_for_through_hole_packaged_pwer_devices.pdf
+
+
+
+IRFS4228PBF datasheet with D & S inductances:
+4.5nH/7.5nH. notice that these might not simply add up
