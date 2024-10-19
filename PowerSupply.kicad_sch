@@ -3458,7 +3458,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1004361d-8750-4763-a9c4-17f34237c21d")
-		(property "Reference" "F1"
+		(property "Reference" "F2"
 			(at 55.88 49.53 90)
 			(effects
 				(font
@@ -3528,7 +3528,7 @@
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "F1")
+					(reference "F2")
 					(unit 1)
 				)
 			)
@@ -3608,7 +3608,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2d2bec41-b006-4a2d-a923-1f4bc5a8531a")
-		(property "Reference" "D14"
+		(property "Reference" "D3"
 			(at 157.48 107.95 0)
 			(effects
 				(font
@@ -3660,7 +3660,7 @@
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "D14")
+					(reference "D3")
 					(unit 1)
 				)
 			)
@@ -3741,7 +3741,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3cee7209-2cbb-40ee-9839-97023a4d080a")
-		(property "Reference" "D12"
+		(property "Reference" "D5"
 			(at 156.21 123.19 0)
 			(effects
 				(font
@@ -3793,7 +3793,7 @@
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "D12")
+					(reference "D5")
 					(unit 1)
 				)
 			)
@@ -3809,7 +3809,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3d10b6e6-c9d7-49ab-929b-4f91e6d258f0")
-		(property "Reference" "D4"
+		(property "Reference" "D11"
 			(at 45.72 53.34 0)
 			(effects
 				(font
@@ -3897,7 +3897,7 @@
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "D4")
+					(reference "D11")
 					(unit 1)
 				)
 			)
@@ -3977,7 +3977,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3f3ec64d-b92e-4d8f-8456-3a7fa53df2d5")
-		(property "Reference" "D6"
+		(property "Reference" "D13"
 			(at 60.96 62.23 90)
 			(effects
 				(font
@@ -4049,7 +4049,7 @@
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "D6")
+					(reference "D13")
 					(unit 1)
 				)
 			)
@@ -4260,7 +4260,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "68ee258a-293a-4343-b746-bcd43ab1b403")
-		(property "Reference" "D11"
+		(property "Reference" "D4"
 			(at 149.86 114.3 0)
 			(effects
 				(font
@@ -4312,7 +4312,7 @@
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "D11")
+					(reference "D4")
 					(unit 1)
 				)
 			)
@@ -4393,7 +4393,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6b6c4a00-dbe0-4f0c-9f74-fa0047fdfa03")
-		(property "Reference" "DZ2"
+		(property "Reference" "DZ1"
 			(at 158.75 67.31 90)
 			(effects
 				(font
@@ -4468,7 +4468,7 @@
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "DZ2")
+					(reference "DZ1")
 					(unit 1)
 				)
 			)
@@ -4679,7 +4679,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9640f3de-b13c-4c35-ae6f-2d3a55e77714")
-		(property "Reference" "D5"
+		(property "Reference" "D12"
 			(at 45.72 59.69 0)
 			(effects
 				(font
@@ -4767,7 +4767,7 @@
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "D5")
+					(reference "D12")
 					(unit 1)
 				)
 			)
@@ -4782,7 +4782,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "97018912-f5e5-41e5-8027-e1702ff086a4")
-		(property "Reference" "J11"
+		(property "Reference" "J2"
 			(at 173.99 118.11 90)
 			(effects
 				(font
@@ -4840,7 +4840,7 @@
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "J11")
+					(reference "J2")
 					(unit 1)
 				)
 			)
@@ -4987,7 +4987,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bee94199-85a5-4ca5-9374-5a5cdc6dc162")
-		(property "Reference" "C5"
+		(property "Reference" "C13"
 			(at 73.66 58.42 0)
 			(effects
 				(font
@@ -5059,7 +5059,7 @@
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "C5")
+					(reference "C13")
 					(unit 1)
 				)
 			)
@@ -5075,7 +5075,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d182f1fd-6a49-42b6-b719-3df2e32bfa75")
-		(property "Reference" "J2"
+		(property "Reference" "J8"
 			(at 96.52 68.58 0)
 			(effects
 				(font
@@ -5150,7 +5150,7 @@
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "J2")
+					(reference "J8")
 					(unit 1)
 				)
 			)
@@ -5166,7 +5166,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "dd33799d-3501-44c3-8b09-64750fcd8b10")
-		(property "Reference" "J1"
+		(property "Reference" "J7"
 			(at 96.52 55.88 0)
 			(effects
 				(font
@@ -5241,7 +5241,7 @@
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "J1")
+					(reference "J7")
 					(unit 1)
 				)
 			)
@@ -5445,7 +5445,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "edd496f3-526a-4220-af97-12b1fe1f5092")
-		(property "Reference" "D10"
+		(property "Reference" "D7"
 			(at 45.72 43.18 0)
 			(effects
 				(font
@@ -5533,7 +5533,7 @@
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "D10")
+					(reference "D7")
 					(unit 1)
 				)
 			)
