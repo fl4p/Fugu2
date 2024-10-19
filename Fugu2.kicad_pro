@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.2
+          "min_clearance": 0.15
         }
       },
       "diff_pair_dimensions": [
@@ -672,6 +672,10 @@
     [
       "e6692049-eaa1-423b-b1ac-05fb6d0f1fc2",
       "Root"
+    ],
+    [
+      "f5331cca-fbfe-4ef6-ab6a-b63b09e582ac",
+      "GateDrive"
     ],
     [
       "8bdaa788-2fc2-4872-9b0d-b14952df8b59",
