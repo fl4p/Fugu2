@@ -1,4 +1,10 @@
-View this project on [CADLAB.io](https://cadlab.io/project/28046). 
+View this project on [CADLAB.io](https://cadlab.io/project/28046).
+
+<img src="doc/img/fugu-metal.webp"/>
+
+![fugu metal](doc/img/fugu2.webp)
+![fugu metal](doc/img/fugu-metal.webp)
+
 
 # TODO
 * esp32 pads wider connecting tracks
@@ -258,7 +264,11 @@ with low Qg and Qrr.
 * USB 4 pin connector (2.54mm) flashing, jtag, mass storage, usb host
     * USB type-c connector (DNP)
 * UEXT (SPI and I2C) for displays, additional sensors, can etc
-* 
+
+
+# Sensors
+-  P3T1755DPZ
+- MC74A5-33SNTR
 
 
 # TODO

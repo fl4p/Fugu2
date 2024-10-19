@@ -21,3 +21,9 @@ voltage signal traces
 current signal traces
 - vulnerable to C coupling
 - 
+
+
+Layout Guidelines
+- "To avoid large negative transients on the switch node VSSA (HS) pin, the parasitic inductances between the
+source of the top transistor and the source of the bottom transistor must be minimized." (UCC21330x)
+- 

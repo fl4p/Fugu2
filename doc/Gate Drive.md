@@ -7,6 +7,9 @@
 
 ## Gate drive resistor
 
+https://electronics.stackexchange.com/questions/60427/calculating-the-pulldown-resistance-for-a-given-mosfets-gate#_=_
+
+
 # PCB
 
 - 10 nH/cm

@@ -19,3 +19,7 @@ check the [ESP32-S3 datasheet](https://www.espressif.com/sites/default/files/doc
   * GPIO >= 21 for outputs
 * ADC1 channels are useful (ADC2 conflicts with WiFi)
 * SPI native pins?
+
+
+Rust Dev Board Kicad https://github.com/esp-rs/esp-rust-board/tree/master/hardware/esp-rust-board
+Power Supply https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf#cd-pwr-supply
