@@ -5,6 +5,121 @@
 	(uuid "d426b5fd-9eda-45f6-9dd4-eb0f9c2d7619")
 	(paper "A4")
 	(lib_symbols
+		(symbol "Connector:TestPoint_Probe"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.762) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TP"
+				(at 1.651 5.842 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TestPoint_Probe"
+				(at 1.651 4.064 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "test point (alternative probe-style design)"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TestPoint_Probe_0_1"
+				(polyline
+					(pts
+						(xy 1.27 0.762) (xy 0 0) (xy 0.762 1.27) (xy 1.27 0.762)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.397 0.635) (xy 0.635 1.397) (xy 2.413 3.175) (xy 3.175 2.413) (xy 1.397 0.635)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "TestPoint_Probe_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 0)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "D_Small_1"
 			(pin_numbers hide)
 			(pin_names
@@ -2842,6 +2957,16 @@
 	)
 	(wire
 		(pts
+			(xy 147.32 135.89) (xy 154.94 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0a80d080-82f0-44d2-8071-d9165b63d8e4")
+	)
+	(wire
+		(pts
 			(xy 85.09 62.23) (xy 85.09 66.04)
 		)
 		(stroke
@@ -2869,6 +2994,16 @@
 			(type default)
 		)
 		(uuid "1921deb9-f64d-4414-ae85-4d12a167fdf8")
+	)
+	(wire
+		(pts
+			(xy 147.32 132.08) (xy 151.13 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1cc18cfe-8b69-4fda-8d28-7ae175a799a7")
 	)
 	(wire
 		(pts
@@ -2989,6 +3124,16 @@
 			(type default)
 		)
 		(uuid "307a019c-2023-490e-a6f8-7072071e734a")
+	)
+	(wire
+		(pts
+			(xy 176.53 114.3) (xy 182.88 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "33727b67-d3b1-4bd5-badb-5c90ccf97b10")
 	)
 	(wire
 		(pts
@@ -3522,6 +3667,16 @@
 	)
 	(wire
 		(pts
+			(xy 176.53 119.38) (xy 182.88 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d55fe879-da2c-49c4-be24-e278c6666080")
+	)
+	(wire
+		(pts
 			(xy 113.03 60.96) (xy 123.19 60.96)
 		)
 		(stroke
@@ -3559,6 +3714,16 @@
 			(type default)
 		)
 		(uuid "e4faf85f-ee19-44f2-8877-bc2878faa714")
+	)
+	(wire
+		(pts
+			(xy 176.53 110.49) (xy 182.88 110.49)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eba68ae9-849f-4de8-b86f-19e57b235f70")
 	)
 	(wire
 		(pts
@@ -3825,6 +3990,50 @@
 		)
 	)
 	(global_label "HO"
+		(shape output)
+		(at 176.53 110.49 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "37be3eff-2530-4959-a1bc-85377d0bc3ff")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 170.8838 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "BflowG"
+		(shape input)
+		(at 147.32 132.08 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3b77ff4a-77ae-4914-8b73-31d88427782f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 137.9244 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "HO"
 		(shape input)
 		(at 87.63 55.88 0)
 		(fields_autoplaced yes)
@@ -4022,6 +4231,72 @@
 			)
 		)
 	)
+	(global_label "BflowS"
+		(shape input)
+		(at 147.32 135.89 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c79671cf-0c56-4357-b68b-5b4fb6e12494")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 137.9849 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "BuckGND"
+		(shape input)
+		(at 176.53 119.38 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c8937edd-b726-40ba-b35c-03d095026d4b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 165.1386 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "LO"
+		(shape output)
+		(at 176.53 114.3 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d7f20bd0-00cc-469f-a210-a60973e3242d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 171.1862 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "INL"
 		(shape input)
 		(at 113.03 58.42 180)
@@ -4085,6 +4360,73 @@
 				)
 				(justify right)
 				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint_Probe")
+		(at 182.88 114.3 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "001eb2c3-f87d-41f8-99ad-45c9938af7ca")
+		(property "Reference" "TPLO1"
+			(at 186.69 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TP_PWM_LO"
+			(at 186.69 113.9825 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 187.96 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 187.96 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 182.88 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d08400f8-9214-42bd-8700-437ca4565f6f")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
+					(reference "TPLO1")
+					(unit 1)
+				)
 			)
 		)
 	)
@@ -4409,6 +4751,206 @@
 			(project ""
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
 					(reference "U4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint_Probe")
+		(at 154.94 135.89 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1902b41f-6def-466e-924f-42d9f3c2e466")
+		(property "Reference" "bfs1"
+			(at 149.606 134.366 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TP_PWM_HO"
+			(at 158.75 135.5725 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 160.02 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 160.02 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 154.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f034b41b-3315-484b-a527-1dcb0afc8969")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
+					(reference "bfs1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint_Probe")
+		(at 151.13 132.08 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "19f5b04d-0e65-435a-a4ac-aaf6431dcf04")
+		(property "Reference" "bfg1"
+			(at 152.146 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "~"
+			(at 154.94 131.7625 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 156.21 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 156.21 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 151.13 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ecdc4041-d953-4200-8e80-ae3642b84248")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
+					(reference "bfg1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint_Probe")
+		(at 182.88 119.38 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "217b4fe8-8dc4-4cfb-80e2-122d42249958")
+		(property "Reference" "PWRGND1"
+			(at 186.69 116.5225 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 186.69 119.0625 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm"
+			(at 187.96 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 187.96 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 182.88 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b3cd1330-e037-4f94-8823-9c7f8714acb2")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
+					(reference "PWRGND1")
 					(unit 1)
 				)
 			)
@@ -4852,7 +5394,7 @@
 		(at 73.66 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board no)
 		(dnp yes)
 		(uuid "60e71f4c-c8a7-4a20-8aff-be0b50c73a04")
@@ -5367,6 +5909,73 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint_Probe")
+		(at 182.88 110.49 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8e66fd54-887e-4ca9-8660-b64cbd4ed030")
+		(property "Reference" "TPHO1"
+			(at 186.69 107.6325 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TP_PWM_HO"
+			(at 186.69 110.1725 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 187.96 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 187.96 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 182.88 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "250e6294-acf9-4942-b6d3-760aba53335e")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
+					(reference "TPHO1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 87.63 124.46 0)
 		(unit 1)
@@ -5458,8 +6067,8 @@
 		(at 62.23 67.31 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
+		(in_bom no)
+		(on_board no)
 		(dnp yes)
 		(uuid "9a9b568a-27f3-4aec-b31c-fe11fae4fd73")
 		(property "Reference" "R5"
