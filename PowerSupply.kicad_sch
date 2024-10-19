@@ -2957,6 +2957,16 @@
 	)
 	(wire
 		(pts
+			(xy 100.33 134.62) (xy 100.33 138.43)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8d9961f2-22ba-4005-84c7-2c092c41c2de")
+	)
+	(wire
+		(pts
 			(xy 87.63 134.62) (xy 87.63 138.43)
 		)
 		(stroke
@@ -3107,6 +3117,16 @@
 	)
 	(wire
 		(pts
+			(xy 86.36 87.63) (xy 90.17 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d460b657-fa73-4b85-a594-3f2f684ade8d")
+	)
+	(wire
+		(pts
 			(xy 81.28 134.62) (xy 82.55 134.62)
 		)
 		(stroke
@@ -3134,6 +3154,16 @@
 			(type default)
 		)
 		(uuid "def19960-95bb-4905-b632-d3b3423b4c91")
+	)
+	(wire
+		(pts
+			(xy 90.17 87.63) (xy 90.17 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df2ddbf2-6e8f-47bb-8414-853066e3566b")
 	)
 	(wire
 		(pts
@@ -3356,6 +3386,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "BuckGND"
+		(shape input)
+		(at 86.36 87.63 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "80830e02-e485-4640-ba85-583b79d320b9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 74.9686 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -5251,7 +5303,7 @@
 		(lib_id "Connector:USB_C_Plug_USB2.0")
 		(at 85.09 119.38 270)
 		(unit 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom no)
 		(on_board no)
 		(dnp yes)
@@ -5534,6 +5586,71 @@
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
 					(reference "D7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 90.17 88.9 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ff41ecaf-79d7-4d42-a51d-697c6751d389")
+		(property "Reference" "#FLG04"
+			(at 90.17 90.805 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 90.17 92.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 90.17 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 90.17 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 90.17 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4527ecac-49e1-42a0-b94c-f471ca8b1b11")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
+					(reference "#FLG04")
 					(unit 1)
 				)
 			)

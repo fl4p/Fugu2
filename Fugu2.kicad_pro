@@ -58,7 +58,15 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "courtyards_overlap|30770001|36400001|8d8ddc31-d519-42c0-a055-749a53102154|a9fa6dda-6f2c-4d46-b19d-e645a9e8f6bc",
+        "courtyards_overlap|30967999|36047146|748d21ba-9b2d-444f-b631-41fbba960bd3|a9fa6dda-6f2c-4d46-b19d-e645a9e8f6bc",
+        "courtyards_overlap|40979869|46002811|42e461b3-01a3-4779-a9b5-7fd5fd5742d5|e31263c8-cd6a-489d-b3d4-81db499aa19f",
+        "courtyards_overlap|65851643|60780927|799bcd8e-8db6-4860-b49b-3ed158cd19d7|a57d74bd-0cd7-4538-a425-f5eaaad83f85",
+        "courtyards_overlap|68264999|99394001|67a36396-a9a4-43bd-9622-c94243d85ab4|b79b41f6-ea15-4f3b-83e7-e86e36fcb9e5",
+        "courtyards_overlap|68734184|57128001|2ffdfeac-5abb-4730-b1cf-a85e771903c0|799bcd8e-8db6-4860-b49b-3ed158cd19d7",
+        "starved_thermal|56082863|36083000|65fcb45e-9146-4148-988d-83ebdeb6cd47|1b373cb4-d438-4f13-9773-5e9031c18ddb|F.Cu"
+      ],
       "meta": {
         "version": 2
       },
@@ -549,7 +557,7 @@
     "last_paths": {
       "gencad": "",
       "idf": "",
-      "netlist": "",
+      "netlist": "../../../../../Applications/KiCad/",
       "plot": "",
       "pos_files": "",
       "specctra_dsn": "",
