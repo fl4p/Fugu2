@@ -47,6 +47,12 @@ sort by ascending price
 |          |                |              |     |       |           |         |
 | ti       | UCC21330BQDRQ1 | SOIC-16      | 4/6 | prog  |           | 1.43 €  |
 
+2EDB8259Y
+2EDR8259X
+
+2EDB8259E
+
+
 UCC21330BQDRQ1 is a pick:
 
 - cheap
