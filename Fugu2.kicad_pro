@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.762,
-          "height": 1.524,
-          "width": 1.524
+          "drill": 0.0,
+          "height": 0.9,
+          "width": 0.9
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -58,15 +58,7 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [
-        "courtyards_overlap|30770001|36400001|8d8ddc31-d519-42c0-a055-749a53102154|a9fa6dda-6f2c-4d46-b19d-e645a9e8f6bc",
-        "courtyards_overlap|30967999|36047146|748d21ba-9b2d-444f-b631-41fbba960bd3|a9fa6dda-6f2c-4d46-b19d-e645a9e8f6bc",
-        "courtyards_overlap|40979869|46002811|42e461b3-01a3-4779-a9b5-7fd5fd5742d5|e31263c8-cd6a-489d-b3d4-81db499aa19f",
-        "courtyards_overlap|65851643|60780927|799bcd8e-8db6-4860-b49b-3ed158cd19d7|a57d74bd-0cd7-4538-a425-f5eaaad83f85",
-        "courtyards_overlap|68264999|99394001|67a36396-a9a4-43bd-9622-c94243d85ab4|b79b41f6-ea15-4f3b-83e7-e86e36fcb9e5",
-        "courtyards_overlap|68734184|57128001|2ffdfeac-5abb-4730-b1cf-a85e771903c0|799bcd8e-8db6-4860-b49b-3ed158cd19d7",
-        "starved_thermal|56082863|36083000|65fcb45e-9146-4148-988d-83ebdeb6cd47|1b373cb4-d438-4f13-9773-5e9031c18ddb|F.Cu"
-      ],
+      "drc_exclusions": [],
       "meta": {
         "version": 2
       },
@@ -582,7 +574,7 @@
     },
     "bom_presets": [],
     "bom_settings": {
-      "exclude_dnp": false,
+      "exclude_dnp": true,
       "fields_ordered": [
         {
           "group_by": false,
@@ -619,13 +611,73 @@
           "label": "DNP",
           "name": "${DNP}",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Desc",
+          "name": "Desc",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Field5",
+          "name": "Field5",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "MPN",
+          "name": "MPN",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Device",
+          "name": "Sim.Device",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Sim.Pins",
+          "name": "Sim.Pins",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer",
+          "name": "Manufacturer",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Digikey",
+          "name": "Digikey",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "LCSC",
+          "name": "LCSC",
+          "show": true
         }
       ],
       "filter_string": "",
       "group_symbols": true,
-      "name": "Grouped By Value",
+      "name": "",
       "sort_asc": true,
-      "sort_field": "Reference"
+      "sort_field": "MPN"
     },
     "connection_grid_size": 50.0,
     "drawing": {
@@ -682,12 +734,16 @@
       "Root"
     ],
     [
+      "8bdaa788-2fc2-4872-9b0d-b14952df8b59",
+      "PowerSupply"
+    ],
+    [
       "f5331cca-fbfe-4ef6-ab6a-b63b09e582ac",
       "GateDrive"
     ],
     [
-      "8bdaa788-2fc2-4872-9b0d-b14952df8b59",
-      "PowerSupply"
+      "2d287cf3-2750-462b-9179-706ea8653260",
+      "uC"
     ]
   ],
   "text_variables": {}

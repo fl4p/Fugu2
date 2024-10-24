@@ -3891,13 +3891,14 @@
 		)
 		(uuid "fc8f760f-2f38-428e-aa49-5270f2baf464")
 	)
-	(text "tDT_ns(RDT_kΩ) ≈ 8.6 × RDT_kΩ + 13 \nR = 100 -> 112ns"
+	(text "tDT_ns(RDT_kΩ) ≈ 8.6 * RDT_kΩ + 13 \nRDT		tDT\n10k		99ns\n20k		185ns\n50k		443ns \n100k	870ns\n"
 		(exclude_from_sim no)
-		(at 116.84 76.454 0)
+		(at 104.14 81.534 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
+			(justify left)
 		)
 		(uuid "04b05176-e203-49da-ab53-795dc36c8bba")
 	)
@@ -4494,6 +4495,33 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "DNP"
+			(at 182.88 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 182.88 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
+			(at 182.88 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d08400f8-9214-42bd-8700-437ca4565f6f")
 		)
@@ -4623,7 +4651,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "47k"
+		(property "MPN" "200k"
 			(at 91.44 113.03 0)
 			(effects
 				(font
@@ -4632,7 +4660,25 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "Bflow drive"
+			(at 91.44 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 91.44 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 91.44 113.03 0)
 			(effects
 				(font
@@ -4775,6 +4821,33 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "UCC21330BQDRQ1"
+			(at 135.89 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 135.89 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" "UCC21330BQDRQ1"
+			(at 135.89 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "d21a3938-0d76-40dc-bf0f-c6861d5ba2cc")
 		)
@@ -4850,7 +4923,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_PWM_HO"
+		(property "Value" "~"
 			(at 158.75 135.5725 0)
 			(effects
 				(font
@@ -4879,6 +4952,33 @@
 			)
 		)
 		(property "Description" ""
+			(at 154.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 154.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
+			(at 154.94 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "DNP"
 			(at 154.94 135.89 0)
 			(effects
 				(font
@@ -4953,6 +5053,33 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" ""
+			(at 151.13 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
+			(at 151.13 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "DNP"
+			(at 151.13 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "ecdc4041-d953-4200-8e80-ae3642b84248")
 		)
@@ -5012,6 +5139,33 @@
 			)
 		)
 		(property "Description" ""
+			(at 182.88 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 182.88 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
+			(at 182.88 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "DNP"
 			(at 182.88 119.38 0)
 			(effects
 				(font
@@ -5102,6 +5256,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" ""
+			(at 67.31 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
+			(at 67.31 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "60a3c97e-4eea-486b-b48c-b0f56c34aec5")
 		)
@@ -5183,7 +5355,25 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "Bflow drive"
+			(at 73.66 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 73.66 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 73.66 132.08 0)
 			(effects
 				(font
@@ -5253,7 +5443,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "low ESR"
 			(at 156.21 66.04 0)
 			(effects
 				(font
@@ -5262,7 +5452,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "100nF"
+		(property "MPN" "100nF, X7R, 25V"
 			(at 156.21 66.04 0)
 			(effects
 				(font
@@ -5271,7 +5461,25 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "GateDriveBypass"
+			(at 156.21 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 156.21 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 156.21 66.04 0)
 			(effects
 				(font
@@ -5347,7 +5555,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "3,3k"
+		(property "MPN" "10k"
 			(at 68.58 125.73 0)
 			(effects
 				(font
@@ -5357,6 +5565,24 @@
 			)
 		)
 		(property "Desc" ""
+			(at 68.58 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 68.58 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 68.58 125.73 0)
 			(effects
 				(font
@@ -5498,7 +5724,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "3,3k"
+		(property "MPN" "47k"
 			(at 76.2 124.46 0)
 			(effects
 				(font
@@ -5507,7 +5733,25 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "Bflow drive"
+			(at 76.2 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 76.2 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 76.2 124.46 0)
 			(effects
 				(font
@@ -5596,6 +5840,24 @@
 			)
 		)
 		(property "Desc" ""
+			(at 73.66 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 73.66 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 73.66 60.96 0)
 			(effects
 				(font
@@ -5787,7 +6049,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10u, 16V"
+		(property "Value" "10uF, 16V"
 			(at 156.972 61.468 0)
 			(effects
 				(font
@@ -5823,7 +6085,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "10u, 16V"
+		(property "MPN" "10uF, 16V"
 			(at 161.29 66.04 0)
 			(effects
 				(font
@@ -5833,6 +6095,24 @@
 			)
 		)
 		(property "Desc" "bootstrap"
+			(at 161.29 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 161.29 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 161.29 66.04 0)
 			(effects
 				(font
@@ -5918,7 +6198,7 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" "bflow gate"
+		(property "Desc" "Bflow drive"
 			(at 83.82 105.41 0)
 			(effects
 				(font
@@ -5937,6 +6217,24 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
+			(at 83.82 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 83.82 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 83.82 105.41 0)
 			(effects
 				(font
@@ -6023,7 +6321,25 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "Bflow drive"
+			(at 97.79 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 97.79 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 97.79 124.46 0)
 			(effects
 				(font
@@ -6068,7 +6384,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_PWM_HO"
+		(property "Value" "~"
 			(at 186.69 110.1725 0)
 			(effects
 				(font
@@ -6097,6 +6413,33 @@
 			)
 		)
 		(property "Description" ""
+			(at 182.88 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 182.88 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
+			(at 182.88 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "DNP"
 			(at 182.88 110.49 0)
 			(effects
 				(font
@@ -6135,7 +6478,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10nF"
+		(property "Value" "10nF, 50V"
 			(at 90.17 130.81 90)
 			(effects
 				(font
@@ -6171,7 +6514,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "100nF"
+		(property "MPN" "10nF, 50V"
 			(at 87.63 124.46 0)
 			(effects
 				(font
@@ -6180,7 +6523,25 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "Bflow drive"
+			(at 87.63 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 87.63 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 87.63 124.46 0)
 			(effects
 				(font
@@ -6276,6 +6637,24 @@
 				(hide yes)
 			)
 		)
+		(property "Manufacturer" ""
+			(at 62.23 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
+			(at 62.23 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "65b7ef0e-e998-4766-98ad-4aa6e0b318e1")
 		)
@@ -6344,7 +6723,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "200k"
+		(property "MPN" "1M"
 			(at 104.14 124.46 0)
 			(effects
 				(font
@@ -6353,7 +6732,25 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "Bflow drive"
+			(at 104.14 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 104.14 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 104.14 124.46 0)
 			(effects
 				(font
@@ -6431,7 +6828,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "10k"
+		(property "MPN" "20"
 			(at 175.26 59.69 0)
 			(effects
 				(font
@@ -6441,6 +6838,24 @@
 			)
 		)
 		(property "Desc" ""
+			(at 175.26 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 175.26 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 175.26 59.69 0)
 			(effects
 				(font
@@ -6548,7 +6963,7 @@
 				)
 			)
 		)
-		(property "Value" "1N4148"
+		(property "Value" "SS310"
 			(at 170.434 62.23 0)
 			(effects
 				(font
@@ -6583,7 +6998,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "1N4148"
+		(property "MPN" "SS310"
 			(at 168.91 59.69 0)
 			(effects
 				(font
@@ -6611,6 +7026,24 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
+			(at 168.91 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 168.91 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 168.91 59.69 0)
 			(effects
 				(font
@@ -6717,7 +7150,7 @@
 				)
 			)
 		)
-		(property "Value" "100nF, X7R, 25V"
+		(property "Value" "100nF, 25V"
 			(at 117.094 47.498 0)
 			(effects
 				(font
@@ -6752,7 +7185,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "100nF"
+		(property "MPN" "100nF, 25V"
 			(at 121.92 53.34 0)
 			(effects
 				(font
@@ -6761,7 +7194,25 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "bypass"
+			(at 121.92 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 121.92 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 121.92 53.34 0)
 			(effects
 				(font
@@ -6828,7 +7279,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "low ESR"
 			(at 152.4 49.53 0)
 			(effects
 				(font
@@ -6837,7 +7288,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "100nF"
+		(property "MPN" "100nF, X7R, 25V"
 			(at 152.4 49.53 0)
 			(effects
 				(font
@@ -6846,7 +7297,25 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "GateDriveBypass"
+			(at 152.4 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 152.4 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 152.4 49.53 0)
 			(effects
 				(font
@@ -6888,7 +7357,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "100"
+		(property "Value" "20k"
 			(at 117.094 67.31 0)
 			(effects
 				(font
@@ -6915,7 +7384,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "tDT_ns(RDT_kΩ) ≈ 8.6 * RDT_kΩ + 13"
 			(at 118.11 68.58 0)
 			(effects
 				(font
@@ -6924,7 +7393,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "10k"
+		(property "MPN" "20k"
 			(at 118.11 68.58 0)
 			(effects
 				(font
@@ -6933,7 +7402,25 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "DeadTime"
+			(at 118.11 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 118.11 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 118.11 68.58 0)
 			(effects
 				(font
@@ -7019,7 +7506,7 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" "boostrap"
+		(property "Desc" "bootstrap"
 			(at 83.82 50.8 0)
 			(effects
 				(font
@@ -7038,6 +7525,24 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
+			(at 83.82 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 83.82 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
 			(at 83.82 50.8 0)
 			(effects
 				(font
