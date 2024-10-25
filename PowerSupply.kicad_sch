@@ -2896,7 +2896,6 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "1004361d-8750-4763-a9c4-17f34237c21d")
 		(property "Reference" "F2"
 			(at 55.88 49.53 90)
@@ -2907,7 +2906,7 @@
 			)
 		)
 		(property "Value" "375mA fast, 50A"
-			(at 55.88 52.07 90)
+			(at 56.642 51.562 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3077,7 +3076,7 @@
 			)
 		)
 		(property "Value" "SS310"
-			(at 48.26 50.8 0)
+			(at 46.99 50.546 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3666,7 +3665,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "SM2T3V3A"
 			(at 160.02 72.39 0)
 			(effects
 				(font
@@ -3684,7 +3683,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" "ST"
 			(at 160.02 72.39 0)
 			(effects
 				(font
@@ -4054,7 +4053,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47u, 100V"
+		(property "Value" "47uF, 100V"
 			(at 72.39 64.77 0)
 			(effects
 				(font
@@ -4090,7 +4089,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "47uF, 100V"
 			(at 72.39 60.96 0)
 			(effects
 				(font
@@ -4126,6 +4125,15 @@
 				(hide yes)
 			)
 		)
+		(property "LCSC" "ERS1KM470F12OT"
+			(at 72.39 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "9f2331aa-51a6-4452-a18d-dfb132eea858")
 		)
@@ -4148,7 +4156,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "d182f1fd-6a49-42b6-b719-3df2e32bfa75")
 		(property "Reference" "J8"
@@ -4257,7 +4265,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "dd33799d-3501-44c3-8b09-64750fcd8b10")
 		(property "Reference" "J7"
@@ -4593,7 +4601,7 @@
 			)
 		)
 		(property "Value" "SS310"
-			(at 48.26 49.53 0)
+			(at 47.752 39.878 0)
 			(effects
 				(font
 					(size 1.27 1.27)

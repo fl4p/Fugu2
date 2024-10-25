@@ -4447,7 +4447,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "001eb2c3-f87d-41f8-99ad-45c9938af7ca")
 		(property "Reference" "TPLO1"
 			(at 186.69 111.76 0)
@@ -4912,7 +4912,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "1902b41f-6def-466e-924f-42d9f3c2e466")
 		(property "Reference" "bfs1"
 			(at 149.606 134.366 0)
@@ -5006,7 +5006,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "19f5b04d-0e65-435a-a4ac-aaf6431dcf04")
 		(property "Reference" "bfg1"
 			(at 152.146 129.54 0)
@@ -5099,7 +5099,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "217b4fe8-8dc4-4cfb-80e2-122d42249958")
 		(property "Reference" "PWRGND1"
@@ -5337,7 +5337,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "N-CH 30V"
 			(at 73.66 132.08 0)
 			(effects
 				(font
@@ -6373,7 +6373,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "8e66fd54-887e-4ca9-8660-b64cbd4ed030")
 		(property "Reference" "TPHO1"
 			(at 186.69 107.6325 0)

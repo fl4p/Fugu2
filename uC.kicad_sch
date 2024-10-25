@@ -5351,7 +5351,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "Male Pin Header"
 			(at 137.16 34.29 0)
 			(effects
 				(font
@@ -6273,6 +6273,15 @@
 			)
 		)
 		(property "Digikey" ""
+			(at 134.62 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "ESP32-S3-WROOM-1U-N4R2"
 			(at 134.62 105.41 0)
 			(effects
 				(font
@@ -7702,7 +7711,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "Male Pin Header"
 			(at 167.64 35.56 0)
 			(effects
 				(font

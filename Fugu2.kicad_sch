@@ -4285,7 +4285,7 @@
 		(uuid "51ea09cc-311d-4c27-897a-97395de46931")
 	)
 	(junction
-		(at 252.73 26.67)
+		(at 246.38 17.78)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "525599e3-0d99-4d51-aad9-101db79a73a3")
@@ -4333,7 +4333,7 @@
 		(uuid "87feba5e-53b8-418c-b903-7488b9c5a7f4")
 	)
 	(junction
-		(at 257.81 26.67)
+		(at 251.46 17.78)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8825ba1f-cae1-46bb-b614-99227f04ee93")
@@ -4562,7 +4562,7 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 27.94) (xy 247.65 26.67)
+			(xy 241.3 19.05) (xy 241.3 17.78)
 		)
 		(stroke
 			(width 0)
@@ -4632,7 +4632,7 @@
 	)
 	(wire
 		(pts
-			(xy 257.81 24.13) (xy 257.81 26.67)
+			(xy 251.46 15.24) (xy 251.46 17.78)
 		)
 		(stroke
 			(width 0)
@@ -4782,7 +4782,7 @@
 	)
 	(wire
 		(pts
-			(xy 261.62 24.13) (xy 257.81 24.13)
+			(xy 261.62 15.24) (xy 251.46 15.24)
 		)
 		(stroke
 			(width 0)
@@ -4802,7 +4802,7 @@
 	)
 	(wire
 		(pts
-			(xy 252.73 26.67) (xy 252.73 31.75)
+			(xy 246.38 17.78) (xy 246.38 22.86)
 		)
 		(stroke
 			(width 0)
@@ -4882,7 +4882,7 @@
 	)
 	(wire
 		(pts
-			(xy 247.65 26.67) (xy 252.73 26.67)
+			(xy 241.3 17.78) (xy 246.38 17.78)
 		)
 		(stroke
 			(width 0)
@@ -5062,7 +5062,7 @@
 	)
 	(wire
 		(pts
-			(xy 257.81 26.67) (xy 257.81 31.75)
+			(xy 251.46 17.78) (xy 251.46 22.86)
 		)
 		(stroke
 			(width 0)
@@ -6222,16 +6222,6 @@
 	)
 	(wire
 		(pts
-			(xy 261.62 15.24) (xy 261.62 24.13)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "eaf98d4f-76de-454b-a03c-84785a28afad")
-	)
-	(wire
-		(pts
 			(xy 200.66 83.82) (xy 203.2 83.82)
 		)
 		(stroke
@@ -7371,7 +7361,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "0d10821d-36dd-4e49-8d05-03678baef0ff")
 		(property "Reference" "H2"
@@ -7582,7 +7572,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "18d8d973-3075-4c90-ad58-634a7b0c19ff")
 		(property "Reference" "J6"
 			(at 154.94 31.75 90)
@@ -8530,7 +8520,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "Male Pin Header"
 			(at 102.87 135.89 0)
 			(effects
 				(font
@@ -8567,7 +8557,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "32ea36b0-ccfb-44be-a123-7c32002bc0f5")
 		(property "Reference" "H3"
@@ -9239,8 +9229,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470u"
-			(at 88.9 35.56 0)
+		(property "Value" "470uF"
+			(at 87.884 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9581,7 +9571,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "low ESR"
+		(property "Description" ""
 			(at 52.07 29.21 0)
 			(effects
 				(font
@@ -9590,7 +9580,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "HMK107C7224KAHTE"
 			(at 52.07 29.21 0)
 			(effects
 				(font
@@ -9617,7 +9607,16 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "HMK107C7224KAHTE"
+			(at 52.07 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "HMK107C7224KAHTE"
 			(at 52.07 29.21 0)
 			(effects
 				(font
@@ -9799,6 +9798,24 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "ST15100S"
+			(at 135.89 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "SMC"
+			(at 135.89 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "K"
 			(uuid "1cf16ad7-dce2-4ff7-8455-e49cfffe5410")
 		)
@@ -9943,8 +9960,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2.2n, 200V, X7R"
-			(at 82.042 97.79 0)
+		(property "Value" "2.2nF, 200V, X7S"
+			(at 82.804 95.758 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9979,7 +9996,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "C0805C222K2GEC7800"
 			(at 88.9 97.79 0)
 			(effects
 				(font
@@ -10006,7 +10023,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "C0805C222K2GEC7800"
 			(at 88.9 97.79 0)
 			(effects
 				(font
@@ -10048,8 +10065,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470u"
-			(at 81.28 35.56 0)
+		(property "Value" "470uF"
+			(at 80.01 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10153,7 +10170,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470u"
+		(property "Value" "470uF"
 			(at 160.02 48.26 0)
 			(effects
 				(font
@@ -10492,7 +10509,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1u, 100V, X7R"
+		(property "Value" "1uF, 100V, X7S"
 			(at 25.4 24.13 0)
 			(effects
 				(font
@@ -10519,7 +10536,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "DC-bias stable"
 			(at 34.29 29.21 0)
 			(effects
 				(font
@@ -10528,7 +10545,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "HMK212BC7105KGHTE"
 			(at 34.29 29.21 0)
 			(effects
 				(font
@@ -10555,7 +10572,16 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "C2012X7S2A105K125AB"
+			(at 34.29 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "HMK212BC7105KGHTE"
 			(at 34.29 29.21 0)
 			(effects
 				(font
@@ -11205,7 +11231,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 255.27 26.67 90)
+		(at 248.92 17.78 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11214,7 +11240,7 @@
 		(fields_autoplaced yes)
 		(uuid "736b8131-e193-4053-b5a9-06bf151185e2")
 		(property "Reference" "C14"
-			(at 255.2763 20.32 90)
+			(at 248.9263 11.43 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11222,7 +11248,7 @@
 			)
 		)
 		(property "Value" "100nF, 100V"
-			(at 255.2763 22.86 90)
+			(at 248.9263 13.97 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11230,7 +11256,7 @@
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
-			(at 255.27 26.67 0)
+			(at 248.92 17.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11239,7 +11265,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 255.27 26.67 0)
+			(at 248.92 17.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11248,7 +11274,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 255.27 26.67 0)
+			(at 248.92 17.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11257,7 +11283,7 @@
 			)
 		)
 		(property "Desc" "HeatSinkCouple"
-			(at 255.27 26.67 0)
+			(at 248.92 17.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11266,7 +11292,7 @@
 			)
 		)
 		(property "MPN" "100nF, 100V"
-			(at 255.27 26.67 0)
+			(at 248.92 17.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11275,7 +11301,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 255.27 26.67 0)
+			(at 248.92 17.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11284,7 +11310,7 @@
 			)
 		)
 		(property "Digikey" ""
-			(at 255.27 26.67 0)
+			(at 248.92 17.78 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11542,7 +11568,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "ST40100C"
 			(at 135.89 45.72 0)
 			(effects
 				(font
@@ -11591,10 +11617,10 @@
 		(lib_id "Device:R_Small")
 		(at 88.9 83.82 0)
 		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
+		(exclude_from_sim yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "825eb012-f867-477d-a294-2b208ae32d02")
 		(property "Reference" "R12"
 			(at 90.678 83.82 0)
@@ -12065,7 +12091,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "91954b1d-4c60-46a1-abf9-0daf7e8af19c")
 		(property "Reference" "H5"
@@ -12280,8 +12306,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
-			(at 95.25 35.56 0)
+		(property "Value" "10uF, 100V, X7S"
+			(at 90.678 37.338 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12307,7 +12333,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "low ESR"
+		(property "Description" ""
 			(at 95.25 33.02 0)
 			(effects
 				(font
@@ -12316,7 +12342,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "GRM32EC72A106KE05L"
 			(at 95.25 33.02 0)
 			(effects
 				(font
@@ -12343,7 +12369,16 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "GRM32EC72A106KE05L"
+			(at 95.25 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "GRM32EC72A106KE05L"
 			(at 95.25 33.02 0)
 			(effects
 				(font
@@ -12854,7 +12889,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1u, 100V, X7R"
+		(property "Value" "1uF, 100V, X7S"
 			(at 30.48 33.02 0)
 			(effects
 				(font
@@ -12881,7 +12916,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "DC-bias stable"
 			(at 27.94 29.21 0)
 			(effects
 				(font
@@ -12890,7 +12925,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "HMK212BC7105KGHTE"
 			(at 27.94 29.21 0)
 			(effects
 				(font
@@ -12917,7 +12952,16 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "C2012X7S2A105K125AB"
+			(at 27.94 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "HMK212BC7105KGHTE"
 			(at 27.94 29.21 0)
 			(effects
 				(font
@@ -13159,7 +13203,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board no)
-		(dnp no)
+		(dnp yes)
 		(uuid "be761d3b-bef2-4c3f-b786-f899b104a8c3")
 		(property "Reference" "L1"
 			(at 152.4 39.37 90)
@@ -13311,7 +13355,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "NCP18XH103F03RB"
 			(at 33.02 110.49 0)
 			(effects
 				(font
@@ -13347,7 +13391,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C13564"
+		(property "LCSC" "NCP18XH103F03RB"
 			(at 33.02 110.49 0)
 			(effects
 				(font
@@ -13484,7 +13528,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small")
-		(at 255.27 31.75 90)
+		(at 248.92 22.86 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13492,7 +13536,7 @@
 		(dnp no)
 		(uuid "c2d15ca5-b0e6-4ef8-af54-c0747e76142d")
 		(property "Reference" "R17"
-			(at 255.27 34.29 90)
+			(at 248.92 25.4 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13500,7 +13544,7 @@
 			)
 		)
 		(property "Value" "1M"
-			(at 255.27 31.75 90)
+			(at 248.92 22.86 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13508,7 +13552,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 255.27 31.75 0)
+			(at 248.92 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13517,7 +13561,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 255.27 31.75 0)
+			(at 248.92 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13526,7 +13570,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 255.27 31.75 0)
+			(at 248.92 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13535,7 +13579,7 @@
 			)
 		)
 		(property "MPN" "1M"
-			(at 255.27 31.75 0)
+			(at 248.92 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13544,7 +13588,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 255.27 31.75 0)
+			(at 248.92 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13553,7 +13597,7 @@
 			)
 		)
 		(property "Digikey" ""
-			(at 255.27 31.75 0)
+			(at 248.92 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13562,7 +13606,7 @@
 			)
 		)
 		(property "Desc" "HeatSinkCouple"
-			(at 255.27 31.75 0)
+			(at 248.92 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13587,7 +13631,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 247.65 27.94 0)
+		(at 241.3 19.05 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -13595,7 +13639,7 @@
 		(dnp no)
 		(uuid "c363ffc4-ecf9-4432-94fe-72160e464186")
 		(property "Reference" "#PWR06"
-			(at 247.65 34.29 0)
+			(at 241.3 25.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13604,7 +13648,7 @@
 			)
 		)
 		(property "Value" "BuckGND"
-			(at 247.65 33.02 0)
+			(at 241.3 24.13 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13612,7 +13656,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 247.65 27.94 0)
+			(at 241.3 19.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13621,7 +13665,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 247.65 27.94 0)
+			(at 241.3 19.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13630,7 +13674,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 247.65 27.94 0)
+			(at 241.3 19.05 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13723,7 +13767,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "cc6ad5d8-78da-42ea-bc9a-10e75698aa5c")
 		(property "Reference" "H1"
 			(at 269.24 16.51 90)
@@ -13836,13 +13880,14 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10uF"
+		(property "Value" "10uF, 100V, X7S"
 			(at 100.33 35.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "Capacitor_SMD:C_2220_5650Metric"
@@ -13863,7 +13908,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "low ESR"
+		(property "Description" ""
 			(at 100.33 33.02 0)
 			(effects
 				(font
@@ -13872,7 +13917,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "GRM32EC72A106KE05L"
 			(at 100.33 33.02 0)
 			(effects
 				(font
@@ -13899,7 +13944,16 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "GRM32EC72A106KE05L"
+			(at 100.33 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "GRM32EC72A106KE05L"
 			(at 100.33 33.02 0)
 			(effects
 				(font
@@ -13930,7 +13984,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "df84d106-bc23-4a39-bd90-55d5476ebac9")
 		(property "Reference" "J3"
 			(at 147.32 31.75 90)
@@ -14132,10 +14186,10 @@
 		(lib_id "Device:C_Small")
 		(at 88.9 78.74 0)
 		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
+		(exclude_from_sim yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "e29b6b34-91d7-42f3-b063-0f1881011b4b")
 		(property "Reference" "C5"
 			(at 91.694 78.486 0)
@@ -14146,8 +14200,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2.2n, 200V, X7R"
-			(at 81.28 78.74 0)
+		(property "Value" "2.2nF, 200V, X7S"
+			(at 81.788 76.454 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14209,7 +14263,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "C0805C222K2GEC7800"
 			(at 88.9 78.74 0)
 			(effects
 				(font
@@ -14409,7 +14463,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "e92ca7fe-ad3a-4179-af7a-14674530b990")
 		(property "Reference" "H4"
@@ -14653,7 +14707,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "low ESR"
+		(property "Description" ""
 			(at 45.72 29.21 0)
 			(effects
 				(font
@@ -14662,7 +14716,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "HMK107C7224KAHTE"
 			(at 45.72 29.21 0)
 			(effects
 				(font
@@ -14689,7 +14743,16 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "HMK107C7224KAHTE"
+			(at 45.72 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "HMK107C7224KAHTE"
 			(at 45.72 29.21 0)
 			(effects
 				(font
@@ -14731,7 +14794,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1u, 100V, X7R"
+		(property "Value" "1uF, 100V, X7S"
 			(at 30.48 24.13 0)
 			(effects
 				(font
@@ -14758,7 +14821,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "DC-bias stable"
 			(at 39.37 29.21 0)
 			(effects
 				(font
@@ -14767,7 +14830,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "HMK212BC7105KGHTE"
 			(at 39.37 29.21 0)
 			(effects
 				(font
@@ -14794,7 +14857,16 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "C2012X7S2A105K125AB"
+			(at 39.37 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "HMK212BC7105KGHTE"
 			(at 39.37 29.21 0)
 			(effects
 				(font
