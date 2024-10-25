@@ -9,7 +9,6 @@
 
 https://electronics.stackexchange.com/questions/60427/calculating-the-pulldown-resistance-for-a-given-mosfets-gate#_=_
 
-
 # PCB
 
 - 10 nH/cm
@@ -52,7 +51,6 @@ sort by ascending price
 
 2EDB8259E
 
-
 UCC21330BQDRQ1 is a pick:
 
 - cheap
@@ -67,4 +65,48 @@ UCC21330BQDRQ1 is a pick:
 ![NCP5183](img/gate-drive-layout-onsemi.png)
 
 onsemi NCP5183
+
+# Bootstrap Diode
+
+Selection:
+
+* high voltage (>=1.5x of DC-Link)
+* fast recovery
+* maybe SiC Schottky
+* low forward voltage
+* low junction capacitance → low reverse recovery → low grounding noise bounce (negative GND voltage)
+
+| MPN                                                                                          | Px    | V_max | I    | Vf_max25 | Qc   | C(Vr=0) | trr  | notes              |
+|----------------------------------------------------------------------------------------------|-------|-------|------|----------|------|---------|------|--------------------|
+| [1N4148](https://www.diodes.com/assets/Datasheets/BAV16W_1N4148W.pdf)                        | 0.1€  | 100V  | 0.3A | 1.25V    |      | 2pF     | 4ns  | General Purpose    |
+| [C4D02120E](https://assets.wolfspeed.com/uploads/2023/10/Wolfspeed_C4D02120E_data_sheet.pdf) | 1.0€  | 1200V | 10A  | 1.8V     | 11nC | 167pF   | 0    | SiC, UCC21330x PDF |
+| [MURS140](https://www.vishay.com/docs/88688/murs140.pdf)                                     | 0.12€ | 400V  | 1A   | 1.25V    |      | 50pF    | 50ns |                    |
+| [SS310](https://www.snapeda.com/parts/SS310/Taiwan%20Semiconductor/datasheet/)               | 0.14€ | 100V  | 3A   | 0.85V    |      | 120pF   | 0    | Schottky           |
+
+
+# Gate Discharge Diodes (Turn-Off Diode)
+
+[TI: Fundamentals of MOSFET and IGBT Gate Driver Circuits](https://www.ti.com/lit/ml/slua618a/slua618a.pdf#page=19)
+
+* Vg_th should be less than Vfwd of the diode
+* small resistance
+* small parasitic capacitance
+* schottky preferred (no reverse recovery)
+
+| MPN          | Px(100) | I  | Ipeak | Vf   | C(4V) | trr  | notes                                                                                                           |
+|--------------|---------|----|-------|------|-------|------|-----------------------------------------------------------------------------------------------------------------|
+| MSS1P4       | 0.07€   | 1A | 25A   | 0.41 | 50pF  |      | schottky                                                                                                        |
+| B540C        | 0.2€    | 5A | 100A  |      | 300pF |      | schottky                                                                                                        |
+| SS310        |         | 3A | 75A   |      | 85pF  |      | 100V                                                                                                            |
+| SS315        |         | 3A | 75A   |      | 55pF  |      | 150V                                                                                                            |
+| 1N4148       |         |    |       |      |       |      |                                                                                                                 |
+| BAS40        |         |    |       |      |       |      |                                                                                                                 |
+| RB160MM-40TR | 0.14€   | 1A | 30A   |      | 90pF  | 12ns | [pdf](https://fscdn.rohm.com/en/products/databook/datasheet/discrete/diode/schottky_barrier/rb160mm-40tr-e.pdf) | 
+| BAS3010B     | 0.16€   | 1  | 3.5A  |      | 33pF  |      |                                                                                                                 |
+|              |         |    |       |      |       |      |                                                                                                                 |
+|              |         |    |       |      |       |      |                                                                                                                 |
+|              |         |    |       |      |       |      |                                                                                                                 |
+|              |         |    |       |      |       |      |                                                                                                                 |
+
+: 1A
 
