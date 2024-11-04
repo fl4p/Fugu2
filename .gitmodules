@@ -1,0 +1,6 @@
+[submodule "buck100-LM5163"]
+	path = psu
+	url = https://github.com/open-pe/buck100-LM5163
+[submodule "mcu-head"]
+	path = mcu-head
+	url = https://github.com/open-pe/mcu-head-p12-esp32s3-wroom

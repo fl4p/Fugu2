@@ -1,3 +1,14 @@
+- li-ion batteries with bms require external power supply (e.g. the solar panel)
+  use source follower as in https://github.com/LibreSolar/mppt-2420-hc/blob/main/build/mppt-2420-hc_schematic.pdf
+  to limit supply voltage (from 100V solar)
+- use lower voltage buck converter for 12V/3.3V supply
+- protection against voltage transient
+- when battery voltage (up to 60V) is available, switch
+- esp32s3 has 300mA peak current consumption
+- expect solar input (80V, or more?) at battery terminal
+    - another charger connected in parallel might be faulty passing through solar voltage (happended to me with Victron)
+      and when battery is disconnected (e.g. BMS cut-off)
+
 # 3.3C
 
 ESP32-S3 WROOM
@@ -6,7 +17,32 @@ https://www.espressif.com/sites/default/files/documentation/esp32-s3-wroom-1_wro
 
 AVG with wifi 120 mA
 
+Suitable Surge Supression
+
+## Clamping
+
+- TVS (or ZVS)
+    - combined with PTC, Coil, Fuse (see Renesas Book)
+- MOV
+- MOSFET
+    - ICs exist (LTC4364)
+
+## Source Follower (common-drain)
+
+- like in https://github.com/LibreSolar/mppt-2420-hc/blob/main/build/mppt-2420-hc_schematic.pdf
+    - as soon as output voltage is available (LV≤60V) the circuit turns-off the source follower
+    - uses a charge pump powered by LV to generate voltage above supply input to switch on a transistor (T2), which
+      turns-off the
+      source follower MOSFET Q4
+    - it only protects from surge voltages at the solar input
+- simple voltage regulator
+- protects against surge voltages, even longer times
+- can implement soft-start
+- min voltage drop: Vgs_th. choose a mosfet with low Vgs_th!
+
 # OV Protection
+
+- surge voltage (voltage spike, voltage transient)
 
 - ZVS + Fuse
 
@@ -18,22 +54,42 @@ LV5144RGYR
 
 https://www.digikey.de/short/83bbnbjn (buck 75V)
 
-|                   | Vin(max) | Iout(max)          | eff (80Vin, 150mA) |                                                                                                                                                       |
-|-------------------|----------|--------------------|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| TPP00031-ES1R     | 100      | 300 mA             |                    |                                                                                                                                                       |
-| LMR38010FDDAR     |          |                    |                    |                                                                                                                                                       |
-| RAA2118034GP3#JA0 | 80       | 300mA (3.3V fixed) | 70%   (3.3Vout)    | [PDF](https://www.renesas.com/en/document/dst/raa211803-805-datasheet?r=25449141)                                                                     |
-| LM5009A           | 95       | 300                | 78%  (10Vout)      | [PDF](https://www.ti.com/lit/ds/symlink/lm5009a.pdf)                                                                                                  |
-| LM5169/8          | 120      | 650/300            | 77%                | Sync, Fly-Buck™ [PDF](https://www.ti.com/lit/ds/symlink/lm5168.pdf)                                                                                   |
-| XL7005            | 70       | 500                | 64% (15Vout)       | [PDF](http://www.ksmcu.com/pdf/XL7005%20datasheet.pdf)                                                                                                |
-| MP4541            | 80       | 800                | ~75%  (10Vout)     | [PDF](https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MP4541GN/document_id/9688/) |
-| LM5164            | 80       |                    | 84                 | [PDF](https://www.ti.com/lit/ds/symlink/lm5164.pdf)                                                                                                   |                                                                           
-| LM5163            | 100      | 500                | 82                 | [PDF](https://www.ti.com/lit/ds/symlink/lm5163.pdf)                                                                                                   |
-| XL7015            | 100      | 300                | 70                 | [PDF](https://www.lcsc.com/datasheet/lcsc_datasheet_2409271802_XLSEMI-XL7015E1_C73013.pdf)                                                            |
-| XL7005            | 80       |                    | 60                 | [PDF](https://www.lcsc.com/datasheet/lcsc_datasheet_1811081614_XLSEMI-XL7005A_C50848.pdf)                                                             |
-| TX4139            |          |                    | 75%                |                                                                                                                                                       |
-| LM5116            | 100      |                    |                    |                                                                                                                                                       |
-| LM5007            | 80       | 700                | 79%                |                                                                                                                                                       |
+|                   |              | Vin(max) | Iout(max)          | Iq    | eff (80Vin, 150mA) | eff in:75V out:12V,100mA | eff 12Vin/3.3V,100mA | $px(100)            |                                                                                                                                                       |
+|-------------------|--------------|----------|--------------------|-------|--------------------|--------------------------|----------------------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| TPP00032          |              | 100      | 300                | 100μA |                    | 72%                      |                      | 0.22 (out of stock) | low stock, sync, FET: 0.75 Ω and 0.4 Ω , light-load operation                                                                                         |
+| TPP00031-ES1R     |              | 100      | 300 mA             |       |                    | 56%                      |                      | 0.22                | sync, FET: 0.75Ω and 0.4 Ω   [PDF](https://static.3peak.com/res/doc/ds/Datasheet_TPP0003x.pdf)                                                        |
+| LMR38010FDDAR     |              | 80       |                    |       |                    |                          |                      | 1.81                |                                                                                                                                                       |
+| LMR38020          |              | 100      |                    |       |                    |                          |                      |                     | prog fsw, SPREAD SPECTRUM (EMI)                                                                                                                       |
+| RAA2118034GP3#JA0 | var freq,DCM | 80 (84)  | 300mA (3.3V fixed) |       | 70%  (3.3Vout)     |                          |                      | 0.87                | [PDF](https://www.renesas.com/en/document/dst/raa211803-805-datasheet?r=25449141)                                                                     |
+| TI LV2862XLVDDCR  |              | 60 (65)  | 600                |       |                    |                          | 83%                  | 0.51                | 0.7mhz                                                                                                                                                |
+| SCT2A22STER       |              | 100      |                    |       |                    | 70%                      |                      |                     | Forced PWM                                                                                                                                            |
+| SCT2600           |              | 80       |                    |       |                    |                          |                      |                     | pulse skipping (light-load)                                                                                                                           |
+| SCT2A12           |              | 100      |                    | 49uA  |                    | 85%                      |                      |                     |                                                                                                                                                       |
+| TI LM5009A        |              | 95       | 300                |       | 78%  (10Vout)      |                          |                      | 1.33                | [PDF](https://www.ti.com/lit/ds/symlink/lm5009a.pdf)                                                                                                  |
+| TI LM5169/8       |              | 120      | 650/300            |       | 77%                |                          |                      | 1.33                | Sync, Fly-Buck™ [PDF](https://www.ti.com/lit/ds/symlink/lm5168.pdf)                                                                                   |
+| XL7005            |              | 70       | 500                |       | 64% (15Vout)       |                          |                      |                     | [PDF](http://www.ksmcu.com/pdf/XL7005%20datasheet.pdf)                                                                                                |
+| MP4541            |              | 80       | 800                |       | ~75%  (10Vout)     |                          |                      | 1.20                | [PDF](https://www.monolithicpower.com/en/documentview/productdocument/index/version/2/document_type/Datasheet/lang/en/sku/MP4541GN/document_id/9688/) |
+| LM5164            |              | 100      | 1000               |       | 84                 | 83%                      |                      | 2.35                | sync, FET: 0.725Ω and 0.34Ω, [PDF](https://www.ti.com/lit/ds/symlink/lm5164.pdf)                                                                      |                                                                           
+| LM5163DDAR        |              | 100      | 500                |       | 82                 | 83% (60Vin)              |                      | 1.61                | sync, FET: 0.725Ω and 0.34Ω, [PDF](https://www.ti.com/lit/ds/symlink/lm5163.pdf)                                                                      |
+| XL7015            |              | 100      | 300                |       | 70                 |                          |                      |                     | [PDF](https://www.lcsc.com/datasheet/lcsc_datasheet_2409271802_XLSEMI-XL7015E1_C73013.pdf)                                                            |
+| XL7005            |              | 80       |                    |       | 60                 |                          |                      |                     | [PDF](https://www.lcsc.com/datasheet/lcsc_datasheet_1811081614_XLSEMI-XL7005A_C50848.pdf)                                                             |
+| TX4139            |              |          |                    |       | 75%                |                          |                      |                     |                                                                                                                                                       |
+| LM5116            |              | 100      |                    |       |                    |                          |                      | 3.80                |                                                                                                                                                       |
+| LM5007            |              | 80       | 700                |       | 79%                |                          |                      | 2.11                |                                                                                                                                                       |
+| LMR16006X         |              | 60       | 600                |       |                    |                          |                      | 1.96                | LibreSolar/mppt-2420-hc                                                                                                                               |
+| LMR51606XDBVR     |              | 65       | 600                |       |                    |                          |                      | 0.58                |                                                                                                                                                       |
+
+Good drop-in for 3.3 and 12V rails, 80,100V:
+
+* LMR38020SDDAR ($1.86 PFM, 80V, prog fsw)
+* LM5163DDAR ($1.6, COT, 100V, prog fsw) <-- pick
+* SCT2A12 ($.35 marketplace, PFM, 100V, 390khz
+  fs) https://www.silicontent.com/uploads/admin/file/20240809/20240809110531_16687.pdf
+*
+* LM5009A (150mA)
+
+PFM: better light-load eff (pulse skipping)
+FPWM: lower ripple, tighter regulation  (forced pwm)
 
 MP4541
 

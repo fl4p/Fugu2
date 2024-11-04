@@ -60,9 +60,9 @@ UCC21330BQDRQ1 is a pick:
 - 9ns rise/fall time
 - 4 A peak source current
 
-![](img/gate-drive-layout-ti.png)
+![](img/gate-drive-layout-ti.webp)
 
-![NCP5183](img/gate-drive-layout-onsemi.png)
+![NCP5183](img/gate-drive-layout-onsemi.webp)
 
 onsemi NCP5183
 
@@ -83,7 +83,6 @@ Selection:
 | [MURS140](https://www.vishay.com/docs/88688/murs140.pdf)                                     | 0.12€ | 400V  | 1A   | 1.25V    |      | 50pF    | 50ns |                    |
 | [SS310](https://www.snapeda.com/parts/SS310/Taiwan%20Semiconductor/datasheet/)               | 0.14€ | 100V  | 3A   | 0.85V    |      | 120pF   | 0    | Schottky           |
 
-
 # Gate Discharge Diodes (Turn-Off Diode)
 
 [TI: Fundamentals of MOSFET and IGBT Gate Driver Circuits](https://www.ti.com/lit/ml/slua618a/slua618a.pdf#page=19)
@@ -93,20 +92,22 @@ Selection:
 * small parasitic capacitance
 * schottky preferred (no reverse recovery)
 
-| MPN          | Px(100) | I  | Ipeak | Vf   | C(4V) | trr  | notes                                                                                                           |
-|--------------|---------|----|-------|------|-------|------|-----------------------------------------------------------------------------------------------------------------|
-| MSS1P4       | 0.07€   | 1A | 25A   | 0.41 | 50pF  |      | schottky                                                                                                        |
-| B540C        | 0.2€    | 5A | 100A  |      | 300pF |      | schottky                                                                                                        |
-| SS310        |         | 3A | 75A   |      | 85pF  |      | 100V                                                                                                            |
-| SS315        |         | 3A | 75A   |      | 55pF  |      | 150V                                                                                                            |
-| 1N4148       |         |    |       |      |       |      |                                                                                                                 |
-| BAS40        |         |    |       |      |       |      |                                                                                                                 |
-| RB160MM-40TR | 0.14€   | 1A | 30A   |      | 90pF  | 12ns | [pdf](https://fscdn.rohm.com/en/products/databook/datasheet/discrete/diode/schottky_barrier/rb160mm-40tr-e.pdf) | 
-| BAS3010B     | 0.16€   | 1  | 3.5A  |      | 33pF  |      |                                                                                                                 |
-|              |         |    |       |      |       |      |                                                                                                                 |
-|              |         |    |       |      |       |      |                                                                                                                 |
-|              |         |    |       |      |       |      |                                                                                                                 |
-|              |         |    |       |      |       |      |                                                                                                                 |
+| MPN          | Vr   | I    | Ipeak | Vf   | C(4V) | trr  | Px(100) | notes                                                                                                           |
+|--------------|------|------|-------|------|-------|------|---------|-----------------------------------------------------------------------------------------------------------------|
+| MSS1P4       |      | 1A   | 25A   | 0.41 | 50pF  |      | 0.07€   | schottky                                                                                                        |
+| B540C        |      | 5A   | 100A  |      | 300pF |      | 0.2€    | schottky                                                                                                        |
+| SS310        |      | 3A   | 75A   |      | 85pF  |      |         | 100V                                                                                                            |
+| SS315        |      | 3A   | 75A   |      | 55pF  |      |         | 150V                                                                                                            |
+| 1N4148       |      |      |       |      |       |      |         |                                                                                                                 |
+| BAS40        |      |      |       |      |       |      |         |                                                                                                                 |
+| RB160MM-40TR |      | 1A   | 30A   |      | 90pF  | 12ns | 0.14€   | [pdf](https://fscdn.rohm.com/en/products/databook/datasheet/discrete/diode/schottky_barrier/rb160mm-40tr-e.pdf) | 
+| BAS3010B     |      | 1    | 3.5A  |      | 33pF  |      | 0.16€   |                                                                                                                 |
+| BAS100CS     | 100V | 0.5A |       |      |       |      | 0.09€   | from RAA211803 datasheet                                                                                        |
+|              |      |      |       |      |       |      |         |                                                                                                                 |
+|              |      |      |       |      |       |      |         |                                                                                                                 |
+|              |      |      |       |      |       |      |         |                                                                                                                 |
 
 : 1A
 
+TI: Fundamentals of MOSFET and IGBT Gate Driver
+Circuits https://www.ti.com/lit/ml/slua618a/slua618a.pdf?ts=1691532999585

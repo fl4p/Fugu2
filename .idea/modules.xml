@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Fugu2.iml" filepath="$PROJECT_DIR$/.idea/Fugu2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Fugu2-esp32s3-wroom-head/.idea/Fugu2-esp32s3-wroom-head.iml" filepath="$PROJECT_DIR$/../Fugu2-esp32s3-wroom-head/.idea/Fugu2-esp32s3-wroom-head.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../buck100-LM5163/.idea/buck100-LM5163.iml" filepath="$PROJECT_DIR$/../buck100-LM5163/.idea/buck100-LM5163.iml" />
+      <module fileurl="file://$USER_HOME$/dev/pv/fugu-mppt-doc/.idea/fugu-mppt-doc.iml" filepath="$USER_HOME$/dev/pv/fugu-mppt-doc/.idea/fugu-mppt-doc.iml" />
     </modules>
   </component>
 </project>

@@ -38,7 +38,7 @@ Switching loss at the LS are negligible because it switches with powered body di
 [This rohm AN](https://fscdn.rohm.com/en/products/databook/applinote/ic/power/switching_regulator/power_loss_appli-e.pdf
 ) presents calculations for power loss estimations.
 
-![](img/mosfet qg.png)
+![](img/mosfet qg.webp)
 
 *^ Composition of
 Qg [[src](https://www.infineon.com/dgdl/Infineon-IPB019N08N3-DS-v02_03-en.pdf?fileId=db3a30431add1d95011ae87fdf90569f)]*
@@ -64,7 +64,7 @@ https://www.onsemi.com/download/application-notes/pdf/an-9010.pdf#page=14
 At the HS there is no self-turn-on because parasitic gate capacitances Cgd/Cgs are charged inversely (
 see [this EETimes article](https://www.eetimes.com/how-fet-selection-can-optimize-synchronous-buck-converter-efficiency/)).
 
-![](img/mosfet-self-turn-on.png)
+![](img/mosfet-self-turn-on.webp)
 
 *^ Waveform of LS gate voltage, HS gate voltage and LS drain current.
 
@@ -100,14 +100,14 @@ https://rocelec.widen.net/view/pdf/605ozlfwbi/ONSM-S-A0003584030-1.pdf?t.downloa
 
 TODO ringing the bell pcb test circuit
 
-![](img/mosfet qrr.png)
+![](img/mosfet qrr.webp)
 
 *^ Diode Reverse
 recovery [[src](https://www.aosmd.com/res/datasheets/AONS66811.pdf#page=6)]*
 
 [TI Video on Reverse Recovery](https://www.ti.com/video/6243277597001)
 
-![](img/reverse-recovery.png)
+![](img/reverse-recovery.webp)
 [[src](https://toshiba.semicon-storage.com/info/application_note_en_20230209_AKX00063.pdf?did=13415)]
 
 ## Figuring the FET
@@ -146,7 +146,7 @@ HS:
 EMI:
 LS self turn-on loss and any
 
-![](dcdc-sw-loss-freq.png)
+![](img/dcdc-sw-loss-freq.webp)
 
 [[src](https://www.ti.com/lit/an/slyt664/slyt664.pdf?ts=1722820278050)]
 
@@ -181,6 +181,8 @@ ltspice [add mosfet model](https://www.analog.com/en/resources/technical-article
 https://forum.qorvo.com/t/mos-simulation-issues/18832/6
 
 # Losses
+
+TODO https://www.infineon.com/dgdl/Infineon-Buck_converters_negative_spike_at_phase_node-AN-v01_00-EN.pdf?fileId=db3a3043338c8ac80133a14f039e4f85
 
 40khz, 500ms DT,
 inspection of power plots using the integration tool:
@@ -218,6 +220,7 @@ Takeaways
 # TODO
 
 [MOSFET power losses and how they affect power-supply efficiency](https://www.ti.com/lit/an/slyt664/slyt664.pdf?ts=1722820278050#page=3)
+![img_4.webp](img/mosfet-gate-charge-curve.webp)
 
 https://eepower.com/technical-articles/rethinking-the-power-mosfet-figure-of-merit/#
 
@@ -245,3 +248,46 @@ recovery loss (in the HS switch).
 
 IRFS4228PBF datasheet with D & S inductances:
 4.5nH/7.5nH. notice that these might not simply add up
+
+
+## reverse recovery
+reverse recovery of sync fet's (buck LS) body diode can cause server EMI and power loss.
+
+During reverse recovery the mosfet is like a capacitor. In a half-bridge, imagine the HS switch
+being a resistor and the LS a capacitor that is inversingly charged. current will flow until this capacitor
+is fully discharged (Vds=0) and then the body diode interrupts. this can cause significant loss, because of the voltage
+drop at HS is equal to the input voltage.
+
+The current peaks at I_RM, which can be quite high. It takes the low resistance path across both switches.
+Parasitic inductances in this path will cause ringing of the switching node voltage.
+
+https://www.onsemi.com/download/application-notes/pdf/an-9010.pdf#page=15
+
+Recovering
+https://sci-hub.se/10.1007/978-3-642-15739-4_12
+
+
+Schottky diode can reduce rr?
+
+![img.webp](img/peak-rr.webp)
+AUIRFS/SL4115
+
+
+![img_1.webp](img/qrr-slew-rate.webp)
+https://www.mouser.com/datasheet/2/268/mscos08164_1-2275581.pdf#page=6
+https://labs.ece.uw.edu/pemodels/papers/simpforeverse.pdf
+
+
+
+# Gan
+
+- very low Qg, very fast 
+- only 5V Vgs
+- no Qrr -> no reverse recovery loss
+
+
+- full potential of GaN needs >2 PCB layers
+  - Strip Lines
+- GaN assembly needs hot-air gun and IR-lamp https://epc-co.com/epc/Portals/0/epc/documents/application-notes/How2AppNote003%20Assembly.pdf
+- thermal resistance is a bit worth, but that probably doesnt matter
+https://epc-co.com/epc/design-support/part-cross-reference-search

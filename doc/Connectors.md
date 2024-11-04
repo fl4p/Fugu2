@@ -25,3 +25,14 @@ Once the ESP32-WROOM is soldered to the PCB, it is tricky to remove.
 
 
 https://www.digikey.de/en/products/filter/rectangular-connectors/
+
+
+https://www.lcsc.com/product-detail/Female-Headers_HOAUC-2343U-240CNG1MNT01_C343632.html
+https://www.lcsc.com/product-detail/Female-Headers_Yxcon-F136-1104S3CMUB2_C20071191.html
+
+Samtec SSM-107-L-SV
+
+USB-C
+
+Standing https://www.lcsc.com/product-detail/USB-Connectors_XUNPU-TYPEC-303-ACP16_C720628.html
+SMD https://www.lcsc.com/product-detail/USB-Connectors_SHOU-HAN-TYPE-C-16P-QTGM027_C2681552.html

@@ -4,5 +4,8 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="fetlib" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="buck100-LM5163" />
+    <orderEntry type="module" module-name="Fugu2-esp32s3-wroom-head" />
+    <orderEntry type="module" module-name="fugu-mppt-doc" />
   </component>
 </module>

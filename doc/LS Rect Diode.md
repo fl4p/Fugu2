@@ -1,6 +1,32 @@
+
+# Synchronous Rectification DC-DC Converters
+
+## MOSBD (MOSFET with SBD)
+
+https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/379/Mosfets_Prod_Guide.pdf#page=18
+
+- wire inductance is problabmatic
+- there are MOSBD: mosfets with built-in schottky diode
+- https://eepower.com/new-industry-products/toshiba-announces-five-new-30v-single-die-mosfet-schottky-barrier-diode-devices/
+
+
+# mosbd (aka FETKEYs)
+- todo do they still exist?
+- https://electronics.stackexchange.com/questions/722022/what-happened-to-mosbd
+
+
+https://www.ti.com/lit/wp/snva595a/snva595a.pdf
+
+
+choosing:
+https://www.ti.com/lit/an/slyt358/slyt358.pdf?ts=1723233149127
+https://electronics.stackexchange.com/questions/676063/reverse-recovery-diode-power-loss-in-switching-mosfet
+
+
+
 # Increasing sync buck efficiency with a diode
 
-<img src="ls-external-sbd.png" width="250"/>
+<img src="img/ls-external-sbd.webp" width="250"/>
 
 A Schottky diode in parallel to the LS switch can increase power conversion efficiency of the buck converter:
 
@@ -29,9 +55,9 @@ magnitude (https://ez.analog.com/ez-blogs/b/engineerzone-spotlight/posts/how-a-s
 
 ## CSD19506KCS and ST40100C
 
-![img.png](mbr30200ct-vf.png)
+![img.webp](img/mbr30200ct-vf.webp)
 
-![img.png](CSD19506KCS-vsd.png)
+![img.webp](img/CSD19506KCS-vsd.webp)
 
 Here's a V-I-plot of the CSD19506KCS mosfet body diode and ST40100C overlay:
 
@@ -74,7 +100,7 @@ Schottky diodes have almost no reverse recovery.
 
 Junction capacitance can be modeled with a capacitor parallel to the diode:
 
-![Fig 4.52](buck-parasitic-cap.png)
+![Fig 4.52](img/buck-parasitic-cap.webp)
 
 Charging the capacitor causes power loss, as it current flows during HS turn-on.
 The energy stored in the parasitic capacitance is mostly recovered into the coil during LS diode turn-on, however the
@@ -86,9 +112,9 @@ This power loss is proportional ~ V**1.5 and usually only significant for voltag
 
 Ct depends on Vr. The higher the reverse voltage is, the lower the capacitance:
 
-![img.png](mbr30200ct-ct.png)
+![img.webp](img/mbr30200ct-ct.webp)
 
-In "Fundamentals of Power Electronics" 4.3.3 (pg 98): C(V) ~ 1/√V
+In the book "Fundamentals of Power Electronics" 4.3.3 (pg 98): C(V) ~ 1/√V
 C(V) ~= C0 * √(V0/V) (V0, C0 part constants, pg 81ff)
 C(V) ~= C0'/√V      (Eq 4.5)
 C0' = C0 * √V0

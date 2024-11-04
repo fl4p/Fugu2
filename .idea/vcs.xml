@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../Fugu2-esp32s3-wroom-head" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/buck100-LM5163" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mcu-head" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../buck100-LM5163" vcs="Git" />
+    <mapping directory="$USER_HOME$/dev/pv/fugu-mppt-doc" vcs="Git" />
+    <mapping directory="$USER_HOME$/dev/pv/fugu-mppt-doc/tools/demo_esp_littlefs" vcs="Git" />
+    <mapping directory="$USER_HOME$/dev/pv/fugu-mppt-doc/tools/demo_esp_littlefs/components/esp_littlefs" vcs="Git" />
+    <mapping directory="$USER_HOME$/dev/pv/fugu-mppt-doc/tools/demo_esp_littlefs/components/esp_littlefs/mklittlefs" vcs="Git" />
+    <mapping directory="$USER_HOME$/dev/pv/fugu-mppt-doc/tools/demo_esp_littlefs/components/esp_littlefs/src/littlefs" vcs="Git" />
+    <mapping directory="$USER_HOME$/dev/pv/fugu-mppt-doc/tools/lcd-hd44780-hello-world" vcs="Git" />
+    <mapping directory="$USER_HOME$/dev/pv/fugu-mppt-doc/tools/lcd-hd44780-hello-world/components/Arduino-LiquidCrystal-I2C/Arduino-LiquidCrystal-I2C-library" vcs="Git" />
   </component>
 </project>
