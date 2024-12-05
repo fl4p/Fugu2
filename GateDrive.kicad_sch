@@ -1109,7 +1109,7 @@
 				)
 			)
 		)
-		(symbol "Transistor_FET:AO3400A"
+		(symbol "Transistor_FET:BSS123"
 			(pin_names hide)
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -1123,7 +1123,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "AO3400A"
+			(property "Value" "BSS123"
 				(at 5.08 0 0)
 				(effects
 					(font
@@ -1143,8 +1143,8 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "http://www.aosmd.com/pdfs/datasheet/AO3400A.pdf"
-				(at 0 0 0)
+			(property "Datasheet" "http://www.diodes.com/assets/Datasheets/ds30366.pdf"
+				(at 5.08 -3.81 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1153,7 +1153,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "30V Vds, 5.7A Id, N-Channel MOSFET, SOT-23"
+			(property "Description" "0.17A Id, 100V Vds, N-Channel MOSFET, SOT-23"
 				(at 0 0 0)
 				(effects
 					(font
@@ -1180,7 +1180,7 @@
 					(hide yes)
 				)
 			)
-			(symbol "AO3400A_0_1"
+			(symbol "BSS123_0_1"
 				(polyline
 					(pts
 						(xy 0.254 0) (xy -2.54 0)
@@ -1347,7 +1347,7 @@
 					)
 				)
 			)
-			(symbol "AO3400A_1_1"
+			(symbol "BSS123_1_1"
 				(pin input line
 					(at -5.08 0 0)
 					(length 2.54)
@@ -3053,7 +3053,7 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 135.89) (xy 154.94 135.89)
+			(xy 177.8 139.7) (xy 185.42 139.7)
 		)
 		(stroke
 			(width 0)
@@ -3073,7 +3073,7 @@
 	)
 	(wire
 		(pts
-			(xy 113.03 63.5) (xy 123.19 63.5)
+			(xy 113.03 63.5) (xy 114.3 63.5)
 		)
 		(stroke
 			(width 0)
@@ -3083,7 +3083,7 @@
 	)
 	(wire
 		(pts
-			(xy 147.32 132.08) (xy 151.13 132.08)
+			(xy 177.8 135.89) (xy 181.61 135.89)
 		)
 		(stroke
 			(width 0)
@@ -3173,6 +3173,16 @@
 	)
 	(wire
 		(pts
+			(xy 209.55 53.34) (xy 217.17 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "26019340-3e92-4892-ab53-08aff2533c90")
+	)
+	(wire
+		(pts
 			(xy 76.2 121.92) (xy 76.2 120.65)
 		)
 		(stroke
@@ -3200,6 +3210,16 @@
 			(type default)
 		)
 		(uuid "2a3adc8f-aca4-46e3-85e9-5044587c4b29")
+	)
+	(wire
+		(pts
+			(xy 209.55 57.15) (xy 217.17 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2f63ee2e-49e7-4bf3-9b84-351d1a83c0f1")
 	)
 	(wire
 		(pts
@@ -3300,6 +3320,16 @@
 			(type default)
 		)
 		(uuid "4582ddda-5588-44a0-ac5d-9b9d9fb6a4fc")
+	)
+	(wire
+		(pts
+			(xy 209.55 49.53) (xy 213.36 49.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "483215c8-a117-477c-93a5-ea0fc53a2785")
 	)
 	(wire
 		(pts
@@ -3473,7 +3503,7 @@
 	)
 	(wire
 		(pts
-			(xy 113.03 58.42) (xy 123.19 58.42)
+			(xy 113.03 58.42) (xy 114.3 58.42)
 		)
 		(stroke
 			(width 0)
@@ -3530,6 +3560,16 @@
 			(type default)
 		)
 		(uuid "961763be-bca3-4162-bb0e-61d533312168")
+	)
+	(wire
+		(pts
+			(xy 119.38 60.96) (xy 123.19 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9785bf29-e1c0-4fc7-a352-c8b115fcd3c9")
 	)
 	(wire
 		(pts
@@ -3600,6 +3640,16 @@
 			(type default)
 		)
 		(uuid "aeb99a12-16be-4218-8c69-f753280f1559")
+	)
+	(wire
+		(pts
+			(xy 119.38 63.5) (xy 123.19 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "afd402cc-0519-4124-b88d-eefd9e6d9794")
 	)
 	(wire
 		(pts
@@ -3723,6 +3773,16 @@
 	)
 	(wire
 		(pts
+			(xy 119.38 58.42) (xy 123.19 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb451a1c-37e9-41b1-af71-ae95deb2be10")
+	)
+	(wire
+		(pts
 			(xy 87.63 120.65) (xy 91.44 120.65)
 		)
 		(stroke
@@ -3753,7 +3813,7 @@
 	)
 	(wire
 		(pts
-			(xy 113.03 60.96) (xy 123.19 60.96)
+			(xy 113.03 60.96) (xy 114.3 60.96)
 		)
 		(stroke
 			(width 0)
@@ -3913,6 +3973,16 @@
 		)
 		(uuid "0b7b83a3-a7af-4150-8496-ec89280df110")
 	)
+	(text "use resistors to\ndisconn drv & uC"
+		(exclude_from_sim no)
+		(at 105.664 56.896 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "20e5420f-522c-4cb5-b654-0e79b0615ee1")
+	)
 	(text "bootstrap D+R\nR reduces transients"
 		(exclude_from_sim no)
 		(at 175.768 53.848 0)
@@ -3923,9 +3993,9 @@
 		)
 		(uuid "28abcf13-2655-4930-8b7b-4d8503b2e3bc")
 	)
-	(text "todo use opto\n\nHO Umax(HO-GND) = 92V\n "
+	(text "todo use opto\n\nQ4 voltage stress:\n15V + 60V = 75V\n\nHO Umax(HO-GND) = 92V\n "
 		(exclude_from_sim no)
-		(at 81.28 139.7 0)
+		(at 80.772 148.844 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4090,7 +4160,7 @@
 	)
 	(global_label "BflowG"
 		(shape input)
-		(at 147.32 132.08 180)
+		(at 177.8 135.89 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4100,7 +4170,29 @@
 		)
 		(uuid "3b77ff4a-77ae-4914-8b73-31d88427782f")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 137.9244 132.08 0)
+			(at 168.4044 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "INH"
+		(shape input)
+		(at 209.55 53.34 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "445c809e-9b9a-4985-a125-76365bc28661")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 203.299 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4310,7 +4402,7 @@
 	)
 	(global_label "BflowS"
 		(shape input)
-		(at 147.32 135.89 180)
+		(at 177.8 139.7 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -4320,7 +4412,7 @@
 		)
 		(uuid "c79671cf-0c56-4357-b68b-5b4fb6e12494")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 137.9849 135.89 0)
+			(at 168.4649 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4343,6 +4435,28 @@
 		(uuid "c8937edd-b726-40ba-b35c-03d095026d4b")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 165.1386 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SD"
+		(shape input)
+		(at 209.55 57.15 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d5b1b406-be82-44b7-981d-59891be3fd19")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 204.0853 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4431,6 +4545,28 @@
 		(uuid "fa4dbfe3-3e28-4167-8ce6-a0464adac4d5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 56.0395 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "INL"
+		(shape input)
+		(at 209.55 49.53 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "fd838726-46d6-4d23-bcfe-96f7099326d9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 203.6014 49.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4529,6 +4665,186 @@
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
 					(reference "TPLO1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 116.84 58.42 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "06f401b9-2752-4764-b6fa-1749fb61b898")
+		(property "Reference" "R31"
+			(at 122.174 57.404 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0"
+			(at 116.84 59.182 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 116.84 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 116.84 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 116.84 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C17168"
+			(at 116.84 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "0"
+			(at 116.84 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b2573793-2cc0-4a14-9360-3fa98c2c991f")
+		)
+		(pin "1"
+			(uuid "4780bf55-64c7-45ff-8bf2-bdb76b58b8fa")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
+					(reference "R31")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint_Probe")
+		(at 213.36 49.53 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "0a01899d-111c-4d30-b231-2248c7ebb1b9")
+		(property "Reference" "TPINL1"
+			(at 214.376 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "~"
+			(at 217.17 49.2125 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 218.44 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 218.44 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 213.36 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 213.36 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
+			(at 213.36 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "DNP"
+			(at 213.36 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "45651ce1-74b5-43b1-a3dd-260f9379b094")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
+					(reference "TPINL1")
 					(unit 1)
 				)
 			)
@@ -4907,7 +5223,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint_Probe")
-		(at 154.94 135.89 0)
+		(at 185.42 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4915,7 +5231,7 @@
 		(dnp yes)
 		(uuid "1902b41f-6def-466e-924f-42d9f3c2e466")
 		(property "Reference" "bfs1"
-			(at 149.606 134.366 0)
+			(at 180.086 138.176 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4924,7 +5240,7 @@
 			)
 		)
 		(property "Value" "~"
-			(at 158.75 135.5725 0)
+			(at 189.23 139.3825 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4934,7 +5250,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 160.02 135.89 0)
+			(at 190.5 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4943,7 +5259,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 160.02 135.89 0)
+			(at 190.5 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4952,7 +5268,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 154.94 135.89 0)
+			(at 185.42 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4961,7 +5277,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 154.94 135.89 0)
+			(at 185.42 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4970,7 +5286,7 @@
 			)
 		)
 		(property "Digikey" ""
-			(at 154.94 135.89 0)
+			(at 185.42 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4979,7 +5295,7 @@
 			)
 		)
 		(property "MPN" "DNP"
-			(at 154.94 135.89 0)
+			(at 185.42 139.7 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5001,7 +5317,7 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint_Probe")
-		(at 151.13 132.08 0)
+		(at 181.61 135.89 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5009,7 +5325,7 @@
 		(dnp yes)
 		(uuid "19f5b04d-0e65-435a-a4ac-aaf6431dcf04")
 		(property "Reference" "bfg1"
-			(at 152.146 129.54 0)
+			(at 182.626 133.35 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5018,7 +5334,7 @@
 			)
 		)
 		(property "Value" "~"
-			(at 154.94 131.7625 0)
+			(at 185.42 135.5725 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5027,7 +5343,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 156.21 132.08 0)
+			(at 186.69 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5036,7 +5352,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 156.21 132.08 0)
+			(at 186.69 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5045,7 +5361,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 151.13 132.08 0)
+			(at 181.61 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5054,7 +5370,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 151.13 132.08 0)
+			(at 181.61 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5063,7 +5379,7 @@
 			)
 		)
 		(property "Digikey" ""
-			(at 151.13 132.08 0)
+			(at 181.61 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5072,7 +5388,7 @@
 			)
 		)
 		(property "MPN" "DNP"
-			(at 151.13 132.08 0)
+			(at 181.61 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5290,7 +5606,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Transistor_FET:AO3400A")
+		(lib_id "Transistor_FET:BSS123")
 		(at 73.66 132.08 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -5307,8 +5623,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "AO3400A"
-			(at 80.01 137.16 90)
+		(property "Value" "BSS123"
+			(at 78.994 131.572 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5327,8 +5643,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://www.aosmd.com/pdfs/datasheet/AO3400A.pdf"
-			(at 73.66 132.08 0)
+		(property "Datasheet" "http://www.diodes.com/assets/Datasheets/ds30366.pdf"
+			(at 78.74 135.89 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5337,7 +5653,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "N-CH 30V"
+		(property "Description" "0.17A Id, 100V Vds, N-Channel MOSFET, SOT-23"
 			(at 73.66 132.08 0)
 			(effects
 				(font
@@ -5346,7 +5662,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "AO3400A"
+		(property "MPN" "BSS123-7-F"
 			(at 73.66 132.08 0)
 			(effects
 				(font
@@ -5364,7 +5680,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" "Diodes Incorporated"
 			(at 73.66 132.08 0)
 			(effects
 				(font
@@ -5373,7 +5689,16 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "BSS123"
+			(at 73.66 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C85107"
 			(at 73.66 132.08 0)
 			(effects
 				(font
@@ -5521,7 +5846,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 71.12 125.73 90)
+			(at 70.358 124.714 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5682,7 +6007,7 @@
 		(dnp no)
 		(uuid "5f5bcadb-cbb7-4883-8e19-0100e6ab1620")
 		(property "Reference" "R22"
-			(at 73.66 124.46 90)
+			(at 74.168 122.428 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6154,7 +6479,7 @@
 				)
 			)
 		)
-		(property "Value" "1N4148"
+		(property "Value" "1N4148W-7-F"
 			(at 83.82 102.87 0)
 			(effects
 				(font
@@ -6189,7 +6514,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "1N4148"
+		(property "MPN" "1N4148W-7-F"
 			(at 83.82 105.41 0)
 			(effects
 				(font
@@ -6225,7 +6550,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" "Diodes Inc."
 			(at 83.82 105.41 0)
 			(effects
 				(font
@@ -6235,6 +6560,15 @@
 			)
 		)
 		(property "Digikey" ""
+			(at 83.82 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C83528"
 			(at 83.82 105.41 0)
 			(effects
 				(font
@@ -6361,6 +6695,93 @@
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
 					(reference "DZ2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 116.84 63.5 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8d903a3a-f3db-4b5f-97e0-b8bedabde889")
+		(property "Reference" "R33"
+			(at 122.174 62.484 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0"
+			(at 116.84 64.262 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 116.84 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 116.84 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 116.84 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C17168"
+			(at 116.84 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "0"
+			(at 116.84 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "bb03d23f-aa7c-4b06-ad08-6d9f61cba7f3")
+		)
+		(pin "1"
+			(uuid "eec42278-9261-48cb-ba65-43f7b99e060d")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
+					(reference "R33")
 					(unit 1)
 				)
 			)
@@ -6665,6 +7086,187 @@
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
 					(reference "R30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R_Small")
+		(at 116.84 60.96 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a6258ba9-8f0b-4b9c-bb0b-6a7b5dcd52bf")
+		(property "Reference" "R32"
+			(at 122.428 60.198 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "0"
+			(at 116.84 61.722 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+			(at 116.84 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 116.84 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor, small symbol"
+			(at 116.84 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C17168"
+			(at 116.84 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "0"
+			(at 116.84 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c481c5f0-99d5-499f-9fa2-04693249d5d9")
+		)
+		(pin "1"
+			(uuid "2a362166-68b9-41c8-8669-c9461c329af6")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
+					(reference "R32")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint_Probe")
+		(at 217.17 57.15 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "ab5af202-2d95-4718-9a08-4a7808846c65")
+		(property "Reference" "TPSD1"
+			(at 211.836 55.626 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 220.98 56.8325 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 222.25 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 222.25 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 217.17 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 217.17 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
+			(at 217.17 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "DNP"
+			(at 217.17 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c57f7caf-874e-476c-9415-5bc07833f3d8")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
+					(reference "TPSD1")
 					(unit 1)
 				)
 			)
@@ -6998,7 +7600,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "SS310"
+		(property "MPN" "DSS310"
 			(at 168.91 59.69 0)
 			(effects
 				(font
@@ -7034,7 +7636,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" " Slkor"
 			(at 168.91 59.69 0)
 			(effects
 				(font
@@ -7043,7 +7645,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "C41369492"
 			(at 168.91 59.69 0)
 			(effects
 				(font
@@ -7237,6 +7839,100 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint_Probe")
+		(at 217.17 53.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp yes)
+		(uuid "dea24e88-4ea4-4677-aa0d-c2895b9b878c")
+		(property "Reference" "TPINH1"
+			(at 211.836 51.816 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "~"
+			(at 220.98 53.0225 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
+			(at 222.25 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 222.25 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 217.17 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 217.17 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
+			(at 217.17 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "DNP"
+			(at 217.17 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9df53a53-6fa1-4514-8bc5-e9e962bb557f")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/f5331cca-fbfe-4ef6-ab6a-b63b09e582ac"
+					(reference "TPINH1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 152.4 49.53 180)
 		(unit 1)
@@ -7349,7 +8045,7 @@
 		(dnp no)
 		(uuid "f12a7f18-8515-4874-a20d-c933e8f14dfc")
 		(property "Reference" "R1"
-			(at 119.38 67.31 0)
+			(at 116.332 67.564 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7358,7 +8054,7 @@
 			)
 		)
 		(property "Value" "20k"
-			(at 117.094 67.31 0)
+			(at 119.634 70.358 90)
 			(effects
 				(font
 					(size 1.27 1.27)

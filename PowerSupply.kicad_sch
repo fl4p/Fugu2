@@ -2722,6 +2722,17 @@
 		)
 		(uuid "37805e59-9041-4b9b-9e0a-48dac176e509")
 	)
+	(text "open-pe/buck80-XL7005A"
+		(exclude_from_sim no)
+		(at 112.776 62.992 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(href "https://github.com/open-pe/buck80-XL7005A")
+		)
+		(uuid "404e764f-1e4a-488e-a35b-9eb5ae6f4e6e")
+	)
 	(text "see esp-rust-board for footprint"
 		(exclude_from_sim no)
 		(at 67.31 105.41 0)
@@ -2733,6 +2744,16 @@
 			(href "https://github.com/esp-rs/esp-rust-board")
 		)
 		(uuid "a72fb07f-d3ce-4a75-8fe4-faaa5f327a35")
+	)
+	(text "TODO: use SMA DO214?\nmore common\n\nreplace with BAS100CS ?"
+		(exclude_from_sim no)
+		(at 41.91 69.342 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "c1af6981-3fa6-42dd-91ab-3614742cbc35")
 	)
 	(global_label "Solar+"
 		(shape input)
@@ -3110,7 +3131,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "SS310"
+		(property "MPN" "DSS310"
 			(at 48.26 54.61 0)
 			(effects
 				(font
@@ -3146,7 +3167,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" " Slkor"
 			(at 48.26 54.61 0)
 			(effects
 				(font
@@ -3155,7 +3176,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "C41369492"
 			(at 48.26 54.61 0)
 			(effects
 				(font
@@ -3834,7 +3855,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "SS310"
+		(property "MPN" "DSS310"
 			(at 48.26 60.96 0)
 			(effects
 				(font
@@ -3870,7 +3891,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" " Slkor"
 			(at 48.26 60.96 0)
 			(effects
 				(font
@@ -3879,7 +3900,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "C41369492"
 			(at 48.26 60.96 0)
 			(effects
 				(font
@@ -4186,7 +4207,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://github.com/open-pe/buck80-XL7005A"
 			(at 95.25 69.85 0)
 			(effects
 				(font
@@ -4295,7 +4316,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://github.com/open-pe/buck80-XL7005A"
 			(at 95.25 57.15 0)
 			(effects
 				(font
@@ -4635,7 +4656,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "SS310"
+		(property "MPN" "DSS310"
 			(at 48.26 44.45 0)
 			(effects
 				(font
@@ -4671,7 +4692,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" " Slkor"
 			(at 48.26 44.45 0)
 			(effects
 				(font
@@ -4680,7 +4701,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "C41369492"
 			(at 48.26 44.45 0)
 			(effects
 				(font
