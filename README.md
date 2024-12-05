@@ -1,23 +1,9 @@
-Links: IBOM
-View this project on [CADLAB.io](https://cadlab.io/project/28046).
+Links: [github](https://github.com/fl4p/Fugu2) | [cadlab](https://cadlab.io/project/28046) | schematics | IBOM | HW dev
+docs & testing
 
-<img src="doc/img/fugu-metal.webp"/>
-<img src="doc/img/fugu2.webp" width=400 />
+View this project on [CADLAB.io].
 
-# How to build
-
-* order PCB (TODO pcbway link)
-* assemble PCB
-* build inductor
-* flash firmware
-
-# TODO
-
-* aluminium case dimensions
-* use 2 current sense resistors in parallel
-* reverse battery protection
-* The metal cover ESP32-S3-WROOM can be a condensation trap in humid environments. Especially when power saving at night
-  and the chip cools down.
+<img src="doc/img/fugu-metal.webp"/> <img src="doc/img/fugu2.webp" width=400 />
 
 ## Specs
 
@@ -25,12 +11,19 @@ View this project on [CADLAB.io](https://cadlab.io/project/28046).
 * Battery voltage: 12 ~ 60V (LiFePo4 4s ~ 16s)
 * Max battery current: 30 A
 
-Explore KiCad project schematic and PCB at [Cadlab](https://cadlab.io/project/28046/main/files)Explore KiCad project
-schematic and PCB at [Cadlab](https://cadlab.io/project/28046/main/files)
+Explore KiCad project schematic and PCB at [Cadlab](https://cadlab.io/project/28046/main/files)
 
 This is inspired by [Fugu MPPT](https://www.instructables.com/DIY-1kW-MPPT-Solar-Charge-Controller/).
 The design has been optimized with real life experience, considering signal noise and EMI issues,
 replaced hall sensor with shunt resistor, faster switching. See the list below for more changes.
+
+# How to build
+
+* order PCB (or make @home)
+* assemble PCB
+* build inductor
+* flash firmware
+
 
 ## Design Principles
 
@@ -62,192 +55,97 @@ replaced hall sensor with shunt resistor, faster switching. See the list below f
 * 4A gate driver UCC21330BQDRQ1 with programmable dead-time
     * fast switching (high-side)
     * optimized dead-time, reduce free-wheeling losses (low-side)
-* dense half-bridge circuitry for minimum inductance
+* dense half-bridge circuitry for minimum parasitic inductance
 * short and min-area gate-drive tracks for minimum gate drive inductance
 * low-side rectifier Schottky barrier diode to reduce free-wheeling loss and reverse-recovery loss
-* 220nF, 1uF, 10uF, 470uF input caps to minimize capacitor ESR-loss
+* cascade of input capacitors: 220nF, 1uF, 10uF, 470uF input caps to minimize capacitor ESR-loss
+* optimized coil designs: R_ac considerations
 
-# High Side Mosfet
+
+# Inductor Quick Start Guide
+
+**Wire**
+
+To eliminate (reduce) ac resistance loss, choose a copper wire with d=0.5mm (AWG#24) with many strands.
+
+Make sure the copper you buy is made for electrical coils or motors. This is commonly referred as "W210 (Grade 2)" or
+"DIN EN 60317-13", "V180", "IEC 60317-51"  and has a typical conductivity of 58.5 MS/m.
+Another commonly traded copper wire material is "CW024A", "2.0090", "C12200", "Cu-DHP" or "C106".
+This copper is intended for use whithout high demands on electrical conductivity, e.g. water/gas pipes. Expect this to
+have an increased resistivity by 28% as compared to the W210 copper.
+
+**Core Material**
+
+Chose sendust with initial permeability 60µ or 90µ.
+Materials with higher permeability tend to suffer from increased dc bias saturation (i.e. inductivity drop) and
+increased light-load loss.
+
+**Core Shape**
+
+Toroids have least leakage flux and are good choice.
+Use two stacked T132 cores (1 core is only suitable for power below ~400W).
+
+Use T184 for currents up to 30A. Micrometals: MS-184090-2, KDM: ???.
+
+| Core           | Strands(Awg24) | Turns | L0   | Rdc | Rac@50kHz |
+|----------------|----------------|-------|------|-----|-----------|
+| MS-184090      | 40             | 15    |      |     |           |
+| 2s MS-130060-2 | 20?            | 21    | 55µH |     |           |
+
+
+
+
+# Mosfet Selection
+
+Use fetlib for an extensive parametric search and ranking by power loss estimation.
+See [Toshibas Product Guide on pg. 16](https://www.mouser.com/datasheet/2/408/toshiba%20america%20electronic%20components,%20inc._bce008-1209380.pdf#page=16).
+
+## High Side Mosfet (HS)
 
 - suffers from switching stress
-- short switching times to lower switching losses but increase potential ringing (EMI)
-- design switch node RC snubber circuit
-- Consider switching loss to be higher than i2r loss. when choosing the component, consider switching times, and reverse
-  recovery characteristics of the body diode
-- Driven in quadrant ?
-- Choose a High-Side switch with low Q_rr (TODO src) [how to compute qrr](https://www.ti.com/lit/ta/ssztc00/ssztc00.pdf)
-- Qrr rises with increasing temperature
-- don't use CDS19505, better TK3R3A06PL
+- short switching times to lower switching losses (small Qsw) but increase potential ringing (EMI)
+- low Rds_on
+- body diode never conducts
 
-# Low Side Switch
+
+## Low Side Switch (LS)
+- Choose a mosfet with low Q_rr ([how to compute qrr loss](https://www.ti.com/lit/ta/ssztc00/ssztc00.pdf))
+  - Qrr rises with increasing temperature, current and current transient
+- low Rds_on
+- low Qgd, Qgd/Qgs
+- low r_g
+- don't use CDS19505, better TK3R3A06PL
 
 Current through the LS Switch always flows from source to drain (4th quadrant of their V-I plane),
 which makes the gate drive signal rather irrelevant. It is much easier to switch than the HS, ringing is generally
 not an issue. [gate drive fudamentals](https://www.ti.com/lit/ml/slua618a/slua618a.pdf#page=22)
 Switching happens near zero voltage, as the body diode is usually already/still conducting when switching on/off.
 
-Choose a MOSFET that is designed for synchronous rectification. Q_rr can be high (>200 nC).
-Prefer low body diode forward voltage. CDS19505 is a suitable choice.
+Choose a MOSFET that is designed for synchronous rectification.
+Prefer low body diode forward voltage.
 
-# Coils
-
-Choosing the inductor is a trade-off between size and power loss. Larger cores have a larger A_L value, requiring
-less copper wire (turns) for the same inductivity (note: L = A_L * N^2) and reducing i2r loss.
-Core loss is ~ f^a * B^b * Ve  (Steinmetz equation)
-(f = frequency, B = peak flux density in gauss, Ve = eff. core volume, a = const. b = const)
-
-with B = V*t/A (V = voltage per turn, t = pulse width, A = core area)
-and f = 1 / (2*t), V = Vl/n, keeping non-inductor parameters const.:
-Pcore ~ Ve/(n*A)^b x
-
-# TODO magnetic path length H = .4pi*n*I/MPL
-
-# TODO flux density B = flux/Ae
-
-# https://www.cwsbytemark.com/CatalogSheets/MPP%20PDF%20files/13.pdf
-
-A well designed inductor has a core/copper loss ratio of
-20/80 ([micrometals](https://www.micrometals.com/design-and-applications/core-design-considerations/#inductor-design-basics)).
-
-If we design under this assumption, a bigger core is always better, because it reduces copper wire length.
-
-https://www.mouser.com/pdfDocs/Coilcraft_inductorlosses.pdf
-https://www.psma.com/sites/default/files/uploads/tech-forums-magnetics/presentations/is17-core-loss-modeling.pdf
-https://www.cwsbytemark.com/CatalogSheets/MPP%20PDF%20files/13.pdf
-https://www.mag-inc.com/design/design-guides/powder-core-loss-calculation
-"Transformer and Inductor Design Handbook"
-
-Higher switching frequency reduces turn-on time, so we can use a smaller inductivity while maintaining an inductor peak
-current below core saturation.
-
-For the 30A MPPT application, a switching frequency of 40-60 kHz turns out to be practible.
-With higher frequency, switch loss increases, so we would need to decrease switching times, which often requires a very
-dense,
-integrated design. PCB with more than 2 layers is common. Hardware becomes less maintainable.
-And we don't have a tight space and weight requirements. With 40 kHz and the given voltage and current requirements
-an inductor with at least 50uH is needed.
-
-Off-the-shelve inductors exists for 30A output current, but mostly with inductivity < 20uH and they are
-pricy.
-
-So we opt to build our own induutor.
-
-## Inductivity
-
-- Choose inductivity L (link TODO)
-    - lower inductivity, higher ripple current
-    - higher voltage -> steeper current slope -> need higher inductivity
-    - consider max flux density and prevent core saturation
-
-## Core Geometry
-
-- toroids have low stray inductance but a hard to wind.
-- PQ-Core
-
-## Core Size
-
-- Depends on the power needs and switching frequency
-- The Bigger the better
-    - reduces flux density and core loss (but higher copper loss)
-    - less thermal issues
-    - but: more expensive, need more space
-- toroid sizes that make sense: T130, T184, T225/T226
-- You can easily stack toroidss
-
-## Geometry
-
-- Choose core geometry and size (depends on power needs). Choose core materials.
-  Sendust aka KoolMu is a good choice. It is an alloy powder, composite of metal and plastic, distributed air gap.
-
-    - sendust has high saturation current, so T130 works. however, wire diameter is limited because it just doesn't fit
-      through
-    - smaller cores have smaller A_l value, so need more turns => more copper loss
-- Choose wire gauge and strands (consider DC loss and skin effect)
-- Compute num windings with A_L value and target L
-- Designers: [micrometals](https://www.micrometals.com/design-and-applications/design-tools/inductor-designer/)
-- The bigger the better (usually)
-- Wire easier to cool than core. Power loss ratio core/wire:
-  20/80 [micrometals core design considerations](https://www.micrometals.com/design-and-applications/core-design-considerations/#inductor-design-basics)
-- Higher initial permeability increases A_L, reduces num windings, moves loss from wire to core
-
-- Sendust Toroid 60u - 125u
+# EMI
+- design switch node RC snubber circuit
 
 
-- T184 (OD=1.84in/46.7mm) 125u A_l=281 https://www.semic-shop.de/ljf-t184-s-125a-bk-de/
-- 17-20 turns of 5xAWG15 (1.45mm)
-- T225 / T226 (OD=2.25in/57.15mm)
-
-T130
-
-- a single T130 with A_l=61 needs a lot of windings
-- stack 2 cores to reduce windings by 2^.5. for same inductivity
-- using 2 strands of 1.8mm wire (140cm length each) works
-- TODO test cores:
-    - Ljf T130-S-125A BK
-    - Ljf T130-S-075A BK
-    - Ljf T130-NF-125A BR
-
-# Materials
-
-three opt spots: saturation vs loss vs costs
-
-* Sendust (black, power supply, 10,5kGauss)
-* Super Sendust (PV inverter, 12kGauss
-* Sendust Plus
-* Neu FLUX
-
-## Advantages of bigger cores
-
-- bigger volume => less magnetic flux density (TODO: replace volume with Ae?)
-- more surface => better cooling
-- usually higher A_l => need less windings
-    - less copper loss due to reduced length **and** thicker wires
-- can fit thicker wires and/or more strands
-
-## disadvantages
-
-- more loss, scales proportional to core size (TODO source)
-- cost, size, weight
-
-https://www.micrometals.com/design-and-applications/material-selection-application/
-
-## Coil designs
-
-* T184 sendust (u_i=125, A_L=281)
-* N=17
-* 5xAWG15 (d=1.45mm) or 3x (d=1.9mm)
-* 130cm wire length for 17 turns on T184 (17 * 65mm)
-
-Strands Formular: d_b = (d_a**2 * n_a/n_b)**.5 # d_b = diameter, n_b = num strands
-
-# Gate Drivers
-
-Higher gate drive current -> faster switching -> less switching losses/heat, but more EMI/ringing
-
-* Careful with mosfet body diodes that have a high Q_rr
-* Measure ringing from switch-node to GND and place snubber if needed
-* IR2104 has a rated output current of 290mA, which is suitable for 33ohm or 47ohm gate resistors. For power >500W this
-  is a bit slow.
-* IR2184 has 1.9A. still can still be a bit weak, causing voltage bounce at the driver output
-* 2ED2748S01G
-
-# Eff Opt
+# General Eff Optimization
 
 * losses in sync buck https://www.ti.com/lit/an/slvaeq9/slvaeq9.pdf
 * main losses are switch loss and inductor loss
 * use thermal imager and start with the components that produce the most heat
 * cheap caps with higher ESR can get hot (especially C_in). Find better caps, place caps in parallel to reduce ESR
 * Check coil core material loss in datasheet. Use bigger core.
-* Use thicker copper wires. To reduce AC losses (skin effect) use multiple strands in parallel
+* Use copper litz wires to reduce AC losses (skin effect, proximity effect)
 * Reduce switching times: smaller gate resistors, stronger driver. Make sure there is no severe ringing at switching
-  node and at the gates. Consider using a faster Misfit (low Qgd, low t_rise, low Qrr)
+  node and at the gates. Consider using a faster Mosfet (low Qsw)
 * Place Schottky diode in parallel to LS switch
 * Use a second HS switch in parallel (with separate gate drive resistor)
 * Use short & wide PCB traces, maybe 4-layer PCB.
 
-#
 
 # Current Sensor
+
+TODO
 
 Temperature drift of components (resistor and amplifier) might be greater than accuracy of the sensor, so choose a small
 burden resistor. Use large copper areas and thermal vias to increase heat dissipation.
@@ -323,6 +221,12 @@ with low Qg and Qrr.
 - MVH4004D
 
 # TODO
+
+* aluminium case dimensions
+* use 2 current sense resistors in parallel
+* reverse battery protection
+* The metal cover ESP32-S3-WROOM can be a condensation trap in humid environments. Especially when power saving at night
+  and the chip cools down.
 
 * use 2 current sense resistors in parallel
 * fugu reverse battery protection

@@ -27,3 +27,14 @@ interactive plots
 https://github.com/matplotlib/ipympl
 
 QSPice
+
+DCDC
+https://www.poweresim.com/
+
+https://www.micrometals.com/design-and-applications/design-tools/
+
+https://www.mag-inc.com/Design/Design-Tools
+
+
+# PV
+https://github.com/pvlib/pvlib-python

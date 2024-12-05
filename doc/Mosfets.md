@@ -79,9 +79,8 @@ the [eetimes article](https://www.eetimes.com/how-fet-selection-can-optimize-syn
 a [nexperia article](https://efficiencywins.nexperia.com/efficient-products/qrr-overlooked-and-underappreciated-in-efficiency-battle
 ). Note that this loss is dissipated in the HS switch during its turn-on.
 
-
-Qrr depends on di/dit https://www.st.com/resource/en/application_note/dm00380483-calculation-of-turnoff-power-losses-generated-by-a-ultrafast-diode-stmicroelectronics.pdf
-
+Qrr depends on
+di/dit https://www.st.com/resource/en/application_note/dm00380483-calculation-of-turnoff-power-losses-generated-by-a-ultrafast-diode-stmicroelectronics.pdf
 
 ringing wave form https://www.ti.com/lit/an/slpa010/slpa010.pdf#page=2
 Causes Voltage peak V_sw and EMI.
@@ -194,19 +193,25 @@ CSD19506KCS H  ~2.6           20       21      30     TODO                    uJ
 AONS66811   L   2.6           1.2      0       12             11   2.6        uJ
 ```
 
-#Mosfet Picks:
+# Mosfet Picks:
+
 Vds Rds Qg tRise tFall Qrr
 
-| MPN           | Vds | Rds_max | Qg_max | tRise | tFall | Qrr | trr | Vsd | comment                                                         |
-|---------------|-----|---------|--------|-------|-------|-----|-----|-----|-----------------------------------------------------------------|
-| STP110N8F6    | 80  | 6.5     | 150    | 61    | 48    | 34  |     |     | very low Qrr, SPICE model buggy                                 |  
-| TK2R4A08QM    | 80  | 2.4     | 179    | 91    | 95    | 100 |     |     | good HS , LS                                                    |
-| TK3R2A08QM    | 80  | 3.2     | 102    | 78    | 79    | 69  |     |     | good LS                                                         |
-| FDP027N08B    | 80  | 2.7     | 178    | 66    | 41    | 112 | 80  | 1.3 | good LS    VGS = 0 V, VDD = 40 V, ISD = 100 A,dIF/dt = 100 A/μs |
-|               |     |         |        |       |       |     |     |     |                                                                 |
-| IPA050N10NM5S |     |         |        |       |       |     |     |     | good HS                                                         |
-| CSD19506KCS   |     |         |        |       |       |     |     |     | good HS but high Qg                                             |
+| MPN             | Vds | Rds_max_25 | Qg_max | tRise | tFall | Qrr | trr | Vsd | comment                                                         |
+|-----------------|-----|------------|--------|-------|-------|-----|-----|-----|-----------------------------------------------------------------|
+| STP110N8F6      | 80  | 6.5        | 150    | 61    | 48    | 34  |     |     | very low Qrr, SPICE model buggy                                 |  
+| TK2R4A08QM      | 80  | 2.4        | 179    | 91    | 95    | 100 |     |     | good HS , LS                                                    |
+| TK3R2A08QM      | 80  | 3.2        | 102    | 78    | 79    | 69  |     |     | good LS                                                         |
+| FDP027N08B      | 80  | 2.7        | 178    | 66    | 41    | 112 | 80  | 1.3 | good LS    VGS = 0 V, VDD = 40 V, ISD = 100 A,dIF/dt = 100 A/μs |
+|                 |     |            |        |       |       |     |     |     |                                                                 |
+| IPA050N10NM5S   |     |            |        |       |       |     |     |     | good HS                                                         |
+| CSD19506KCS     |     |            |        |       |       |     |     |     | good HS but high Qg                                             |
+| NTMFS4D0N08XT1G | 80  | 3.5        | 33     |       |       |     |     |     |                                                                 |
+| FDP8D5N10C      |     |            |        |       |       |     |     |     |                                                                 |
 
+IPP040N08NF2SAKMA1 HS
+IPP022N12NM6AKSA1 LS # pricy!
+IPA052N08NM5S # 80v, 1€
 ,
 
 in this case CSD19506KCS switching loss is 41 and RDS 30
@@ -237,20 +242,19 @@ Adds Qrr loss. (FOMrr)
 Placing a second LS of the same model in parallel will reduce conduction loss to a half but doubles the reverse
 recovery loss (in the HS switch).
 
-
-
 # Advancded Optimizations
-* Cascode against reverse recovery https://ieeexplore.ieee.org/document/10147632 https://www.researchgate.net/figure/Reverse-recovery-current-of-cascodes-standalone-MOSFETs_fig12_346515590
-  * https://www.qorvo.com/products/d/da008868
-* TO220 reduce parasitic inductance https://research-information.bris.ac.uk/ws/portalfiles/portal/164064092/Harry_Dymond_Investigation_of_a_parasitic_inductance_reduction_technique_for_through_hole_packaged_pwer_devices.pdf
 
-
+* Cascode against reverse
+  recovery https://ieeexplore.ieee.org/document/10147632 https://www.researchgate.net/figure/Reverse-recovery-current-of-cascodes-standalone-MOSFETs_fig12_346515590
+    * https://www.qorvo.com/products/d/da008868
+* TO220 reduce parasitic
+  inductance https://research-information.bris.ac.uk/ws/portalfiles/portal/164064092/Harry_Dymond_Investigation_of_a_parasitic_inductance_reduction_technique_for_through_hole_packaged_pwer_devices.pdf
 
 IRFS4228PBF datasheet with D & S inductances:
 4.5nH/7.5nH. notice that these might not simply add up
 
-
 ## reverse recovery
+
 reverse recovery of sync fet's (buck LS) body diode can cause server EMI and power loss.
 
 During reverse recovery the mosfet is like a capacitor. In a half-bridge, imagine the HS switch
@@ -266,28 +270,25 @@ https://www.onsemi.com/download/application-notes/pdf/an-9010.pdf#page=15
 Recovering
 https://sci-hub.se/10.1007/978-3-642-15739-4_12
 
-
 Schottky diode can reduce rr?
 
 ![img.webp](img/peak-rr.webp)
 AUIRFS/SL4115
 
-
 ![img_1.webp](img/qrr-slew-rate.webp)
 https://www.mouser.com/datasheet/2/268/mscos08164_1-2275581.pdf#page=6
 https://labs.ece.uw.edu/pemodels/papers/simpforeverse.pdf
 
-
-
 # Gan
 
-- very low Qg, very fast 
+- very low Qg, very fast
 - only 5V Vgs
 - no Qrr -> no reverse recovery loss
 
 
 - full potential of GaN needs >2 PCB layers
-  - Strip Lines
-- GaN assembly needs hot-air gun and IR-lamp https://epc-co.com/epc/Portals/0/epc/documents/application-notes/How2AppNote003%20Assembly.pdf
+    - Strip Lines
+- GaN assembly needs hot-air gun and
+  IR-lamp https://epc-co.com/epc/Portals/0/epc/documents/application-notes/How2AppNote003%20Assembly.pdf
 - thermal resistance is a bit worth, but that probably doesnt matter
-https://epc-co.com/epc/design-support/part-cross-reference-search
+  https://epc-co.com/epc/design-support/part-cross-reference-search

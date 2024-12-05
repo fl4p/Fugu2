@@ -2,28 +2,43 @@ fugu metal in a aluminium case
 
 G107-IP67 Gehäuse 125x80x40mm Alu-Spritzguss-Gehäuse IP67 https://www.ebay.de/itm/163117581325
 Computed Thermal Resistance (40mm height, 100cm2 area) https://www.omnicalculator.com/physics/thermal-resistance
-  https://www.heatsinkcalculator.com/heat-sink-thermal-resistance-calculator.html
-  R = 0.016547 K/W
+https://www.heatsinkcalculator.com/heat-sink-thermal-resistance-calculator.html
+R = 0.016547 K/W
 
-Alloy Thermal Conductivity: 110 - 120	130 - 160 W/mK https://www.bopla.de/technische-daten/technische-informationen/materialinformationen-aluminium/eigenschaften-von-aluminiumlegierungen
+Alloy Thermal Conductivity: 110 - 120 130 - 160
+W/mK https://www.bopla.de/technische-daten/technische-informationen/materialinformationen-aluminium/eigenschaften-von-aluminiumlegierungen
 
 Input Caps
+
 - 2x Beryl 100V 470µF D16xL26mm
-- 2x 10UF  100V X7S 2220 (TDK C5750X7S2A106K230KB) 2.2uF @ 80V [dc-bias](https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=C5750X7S2A106K230KB)
-- 2x 1uF   100V X7R 1206 (TDK C3216X7R2A105K160AA)
+- 2x 10UF 100V X7S 2220 (TDK C5750X7S2A106K230KB) 2.2uF @
+  80V [dc-bias](https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=C5750X7S2A106K230KB)
+- 2x 1uF 100V X7R 1206 (TDK C3216X7R2A105K160AA)
 - 2x .22uF 100V X7S 0603 (TY HMK107C7224)
 
-Inductor
-* Core: 2x stacked KS130-060A
-  * sendust toroidal  core from [semic-shop](https://www.semic.info/ljf-t130-s-060a-bk-en/)
-  * Al=61nH, BSAT=1050 mT (per Core)
-  * f33.83xf19.30x11.61mm 
-* Wire: 2 strands of 1.8mm copper, 140cm (with σCu=58 we compute ESR=4.7mΩ)
-  * turns=19.5 Turns
+Inductor / Coil
+
+* Core: 2x stacked KS130-060A (33.8mm * 2x11.6mm)
+    * sendust toroidal core from [semic-shop](https://www.semic.info/ljf-t130-s-060a-bk-en/)
+        * micrometals equivalent: MS-132060-2 (optimized OC-132060-2)
+        * https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=26&iavg=26&vin_rms_min=45&vin_rms_max=27&f_switching=40000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=2&wire_strands=2&full_ratio=0.75&min_awg=13&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=19&strandsxawg=2xAWG%2313&partnumber=MS-132060-2&awg=13
+    * Al=61nH, BSAT=1050 mT (per Core)
+    * f33.83xf19.30x11.61mm
+* Wire: 2 strands of 1.8mm (AWG#13) copper, 140cm (with σCu=58 we compute ESR=4.7mΩ)
+    * turns=19.5 Turns
 * Computed Inductivity = 2*61nH * 19.5^2 = 46.4 uH
 
-Snubber: C0805C222K2GEC7800 2.2nF 200V C0G
+Optimizations:
 
+* Use OC with higher µ: OC-132090-2 @26Aout  : 6.3W -> 5.2W Coil Loss (4cu,1.1 Core)
+  https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=26&iavg=26&vin_rms_min=45&vin_rms_max=27&f_switching=40000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=2&wire_strands=2&full_ratio=0.75&min_awg=13&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=19&strandsxawg=2xAWG%2313&partnumber=OC-132090-2&awg=13
+* increase f_sw from 40khz to 60khz:
+    * OC-132090-2 loss: 5.2W ->  4.7W. (3.9W cu loss)
+      * 4.3W https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=26&vin_rms_min=45&vin_rms_max=30&f_switching=60000&ambient_temp=30&max_temp_rise=50&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=2&wire_strands=3&full_ratio=0.45&min_awg=14&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=20&strandsxawg=3xAWG%2314&partnumber=OC-132090-2&awg=14
+    * reducing turn from 19 to 17: 4.5W
+    * with MS-132090-2: 5.4W
+
+Snubber: C0805C222K2GEC7800 2.2nF 200V C0G
 
 - the aluminium enclose is a humdity trap
 - wifi connection with the ESP32-WROOM-1 (PCB antenna) still possible `WiFi.rssi()` returns -88 ~ -80
@@ -33,7 +48,7 @@ Snubber: C0805C222K2GEC7800 2.2nF 200V C0G
 - HS gate charge resistor 22 dis: 5ohm
 
 HS: 2p TK6R8A08QM
-LS switch FDP027N08B
+LS switch [FDP027N08B]()
 
 left it outisde at night it was raining
 suced water inside. found water on the pcb and chips
@@ -80,11 +95,9 @@ V=67.70/27.33 I= 7.9/19.05A 536.9W 76°C 124sps  0kbps PWM(H|L|Lm)= 877|1158|115
 
 ```
 
-
-
-
 the sweep before the 10V power supply burnt
-* todo: why  not re-starting mppt after sweep? and controlMode=0 (st=N/A)
+
+* todo: why not re-starting mppt after sweep? and controlMode=0 (st=N/A)
 
 ```
 V=66.52/27.22 I= 8.4/19.96A 560.2W 75°C 124sps  0kbps PWM(H|L|Lm)= 889|1146|1146 MPPT(st= MPPT,1) lag=10023.8ms N=151197 rssi=-81

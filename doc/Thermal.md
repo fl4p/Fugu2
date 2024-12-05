@@ -21,3 +21,8 @@ https://www.digikey.com/Site/Global/Layouts/DownloadPdf.ashx?pdfUrl=F51974C9A6D5
 
 
 Toshiba offers CFD (CFD (Computational Fluid Dynamics))
+
+# Tools
+- https://explore.partquest.com/
+- https://www.poweresim.com/calculator.jsp
+- https://www.heatsinkcalculator.com/

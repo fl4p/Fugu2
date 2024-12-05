@@ -58,6 +58,10 @@ Power Supply https://www.espressif.com/sites/default/files/documentation/esp32-s
 | Fanstel ANT060     | Rod  | 2.45GHz       | 6dBi           | 10cm  | 2.9€ | [digikey](https://www.digikey.pt/en/products/detail/fanstel-corp/ANT060/8323643)                |
 
 
+# Dev Boards
+https://www.waveshare.com/esp32-s3-zero.htm
+https://github.com/femtoduino/femu-hardware/tree/master/femu/kicad/femu
+esp32-rust
 
 
 

@@ -31,20 +31,21 @@ for prototyping, use a chip with programmable dead-time
 [digikey search](https://www.digikey.de/en/products/filter/isolators-gate-drivers/906), 2ch, output peak current >2A,
 sort by ascending price
 
-| mfr      | mpn            | package      | I   | DT    | isolation |         |
-|----------|----------------|--------------|-----|-------|-----------|---------|
-| infineon | IRS2184        | SOIC-8       | 1.9 | 500ns | funct     |         |
-|          | 2ED2182        | SOIC-8       | 2.5 | 400ns | funct     |         |
-|          | IRS21867S      | SOIC-8       | 4   | -     | funct     |         |
-|          | 2EDL8124G      | PG-VDSON-8-4 | 4   | STP   | funct     |         |
-|          | 2ED2748S01G    | VSON-10      | 4   | 30ns  | funct     |         |
-|          | 2ED3144MC12L   | 6            | 6   | prog  |           | 2.44 €  |
-|          | 2EDB7259K      | 13-LGA       | 5/9 | prog  | galvanic  |         |
-|          | 2EDS8265H      |              |     |       |           |         |
-|          | 2EDB8259F      | SOIC-16      | 5/9 | prog  | funct     | for GaN |
-|          | LM5100A        | SOIC-8       | 3   | -     |           |         |
-|          |                |              |     |       |           |         |
-| ti       | UCC21330BQDRQ1 | SOIC-16      | 4/6 | prog  |           | 1.43 €  |
+| mfr      | mpn            | package      | I       | DT    | isolation |         |
+|----------|----------------|--------------|---------|-------|-----------|---------|
+| infineon | IRS2184        | SOIC-8       | 1.9     | 500ns | funct     |         |
+|          | 2ED2182        | SOIC-8       | 2.5     | 400ns | funct     |         |
+|          | IRS21867S      | SOIC-8       | 4       | -     | funct     |         |
+|          | 2EDL8124G      | PG-VDSON-8-4 | 4       | STP   | funct     |         |
+|          | 2ED2748S01G    | VSON-10      | 4       | 30ns  | funct     |         |
+|          | 2ED3144MC12L   | 6            | 6       | prog  |           | 2.44 €  |
+|          | 2EDB7259K      | 13-LGA       | 5/9     | prog  | galvanic  |         |
+|          | 2EDS8265H      |              |         |       |           |         |
+|          | 2EDB8259F      | SOIC-16      | 5/9     | prog  | funct     | for GaN |
+|          | LM5100A        | SOIC-8       | 3       | -     |           |         |
+|          |                |              |         |       |           |         |
+| ti       | UCC21330BQDRQ1 | SOIC-16      | 4/6     | prog  |           | 1.43 €  |
+|          | lm5107         |              | 1.4/1.3 |       | 100V      | 1.3$    |
 
 2EDB8259Y
 2EDR8259X

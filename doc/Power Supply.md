@@ -58,7 +58,7 @@ https://www.digikey.de/short/83bbnbjn (buck 75V)
 |-------------------|--------------|----------|--------------------|-------|--------------------|--------------------------|----------------------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
 | TPP00032          |              | 100      | 300                | 100μA |                    | 72%                      |                      | 0.22 (out of stock) | low stock, sync, FET: 0.75 Ω and 0.4 Ω , light-load operation                                                                                         |
 | TPP00031-ES1R     |              | 100      | 300 mA             |       |                    | 56%                      |                      | 0.22                | sync, FET: 0.75Ω and 0.4 Ω   [PDF](https://static.3peak.com/res/doc/ds/Datasheet_TPP0003x.pdf)                                                        |
-| LMR38010FDDAR     |              | 80       |                    |       |                    |                          |                      | 1.81                |                                                                                                                                                       |
+| LMR38010FDDAR     |              | 80       |                    | 40µ   |                    |                          |                      | 1.81                |                                                                                                                                                       |
 | LMR38020          |              | 100      |                    |       |                    |                          |                      |                     | prog fsw, SPREAD SPECTRUM (EMI)                                                                                                                       |
 | RAA2118034GP3#JA0 | var freq,DCM | 80 (84)  | 300mA (3.3V fixed) |       | 70%  (3.3Vout)     |                          |                      | 0.87                | [PDF](https://www.renesas.com/en/document/dst/raa211803-805-datasheet?r=25449141)                                                                     |
 | TI LV2862XLVDDCR  |              | 60 (65)  | 600                |       |                    |                          | 83%                  | 0.51                | 0.7mhz                                                                                                                                                |
@@ -122,5 +122,17 @@ usually these diodes have a peak power of 600 W.
 | NXP PTVS3V3S1UR,115   | .4€ | 3.3  | 5.2 | 8    | 44A  | 350W |
 
 * Vishay SMBJ3V3-E3/52 (.4€)
-* 
+*
 
+Surge Protect:
+https://ir.canterbury.ac.nz/items/e7c8c3da-042c-4d4a-9b7b-2b93970b0d82
+
+# Boost 3.3 -> 12V .
+
+* one FET needs ~< 50mW gate-drive power
+* 4 FETs at 10V need 20 mA @ 40 kHz
+* 20mA@12V = 240mW, 20mA@80V = 1.6W
+* AP3012KTR-G1 @ 20mA has 75% eff.
+    * $.24 + 10uH(.4$) + D=1N5819 (C: X5R or X7R Dielectric, L: SUMIDA CDTH3D14/HPNP-100NC or Equivalent)
+    * ⇒ for <$1 a 75% eff. solution (better than using another 100v→10V buck)
+    * consider using using a 100V diode maybe after C_out to protect any HV 

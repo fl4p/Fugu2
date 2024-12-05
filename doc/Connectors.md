@@ -36,3 +36,12 @@ USB-C
 
 Standing https://www.lcsc.com/product-detail/USB-Connectors_XUNPU-TYPEC-303-ACP16_C720628.html
 SMD https://www.lcsc.com/product-detail/USB-Connectors_SHOU-HAN-TYPE-C-16P-QTGM027_C2681552.html
+
+
+# Power Connectors
+* preferably cross-head screws
+* connectors with 51A or 65A have good wire gauge
+https://ihiconnectors.com/PCB-Technical-Information.htm#B2A-B2C-PCB
+https://www.digikey.de/en/products/filter/terminal-blocks/wire-to-board/371
+https://www.digikey.de/en/products/detail/amphenol-anytek/VP0285850000G/4957853
+https://www.digikey.de/en/products/detail/altech-corporation/MV-1002/9457249
