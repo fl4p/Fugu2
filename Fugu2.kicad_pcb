@@ -13860,16 +13860,16 @@
 			)
 		)
 	)
-	(footprint "Fuse:Fuse_Blade_ATO_directSolder"
+	(footprint "open-pe:Fuse_Blade_ATO_directSolderThin"
 		(layer "F.Cu")
 		(uuid "67a36396-a9a4-43bd-9622-c94243d85ab4")
-		(at 65.015 84.504 -90)
+		(at 64.77 84.504 -90)
 		(descr "car blade fuse direct solder")
 		(tags "car blade fuse")
 		(property "Reference" "F1"
-			(at 3.4816 -4.0222 90)
+			(at 4.65 -3.9 -90)
 			(layer "F.SilkS")
-			(uuid "5e6ea44d-7772-471e-90e3-6c2c2e5d0192")
+			(uuid "dffd5891-de26-4a47-873d-40b12e8da45a")
 			(effects
 				(font
 					(size 1 1)
@@ -13878,9 +13878,9 @@
 			)
 		)
 		(property "Value" "Fuse"
-			(at 4.6 4 90)
+			(at 4.6 4 -90)
 			(layer "F.Fab")
-			(uuid "46e773ab-a725-4f88-afa9-904856d45d99")
+			(uuid "46246134-cb22-47c0-9e8f-709b9017a49b")
 			(effects
 				(font
 					(size 1 1)
@@ -13888,11 +13888,12 @@
 				)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_Blade_ATO_directSolder"
+		(property "Footprint" "open-pe:Fuse_Blade_ATO_directSolderThin"
 			(at 0 0 -90)
+			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "360c3a6f-5c6c-4bca-8b2f-4f8fc4e6e667")
+			(uuid "5f786d82-9884-42ef-bd6c-80536af76f5d")
 			(effects
 				(font
 					(size 1.27 1.27)

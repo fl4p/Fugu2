@@ -11197,7 +11197,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_Blade_ATO_directSolder"
+		(property "Footprint" "open-pe:Fuse_Blade_ATO_directSolderThin"
 			(at 184.15 39.878 90)
 			(effects
 				(font
