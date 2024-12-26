@@ -1,3 +1,10 @@
+
+# Inductivity value
+
+* Todo formular
+* Lower inductivity -> higher ripple -> more loss in other components
+* Lower inductivity needs faster OC response
+
 # Finding the coil
 
 Designing the coil is a multi-target optimization between size, cost, efficiency.
@@ -74,6 +81,9 @@ Notice that µi is the initial permeability. Effective permeability might be muc
 - higher µ cores saturate earlier
 - lower Ipp means lower core loss *and* lower copper loss (P~I2R)
 - a higher µ usually means lower light-load efficiency (and higher eff at high-load)
+- a higher µ with same winding does usually not increase Ldc
+- if you have a core with hight µi and you are not satisfied with the dc bias performance, stack cores
+- big cores with ⁄
 
 for an application with Idc=30A, 75V/30V µ <= 125 appears to be a good choice.
 
@@ -126,6 +136,15 @@ OC-157090-2 https://www.micrometals.com/design-and-applications/design-tools/ind
 | OC-184125-2         |    |     |      |        |                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | OC-184090-2         | 90 | 184 |      |        | 3.4W loss @ 50uH, 30Adc, V=45/30, 50khz | https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=30&vin_rms_min=45&vin_rms_max=30&f_switching=50000&ambient_temp=40&max_temp_rise=50&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=1&wire_strands=6&full_ratio=0.75&min_awg=14&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=18&strandsxawg=6xAWG%2314&partnumber=OC-184090-2&awg=14 |
 |                     |    |     |      |        |                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+
+
+MS-250147-2
+T184-S-075A BK (MS-184-S-07A)
+T184-AH-125A BU
+
+2s MS-184-S-125
+
+
 
 https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=55&iavg=30&vin_rms_min=45&vin_rms_max=30&f_switching=50000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=1&wire_strands=6&full_ratio=0.85&min_awg=14&pct_win_fill_max_e=85&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=19&strandsxawg=6xAWG%2314&partnumber=OC-184090-2&awg=14
 
@@ -319,3 +338,20 @@ https://www.micrometals.com/design-and-applications/material-selection-applicati
 * 130cm wire length for 17 turns on T184 (17 * 65mm)
 
 Strands Formular: d_b = (d_a**2 * n_a/n_b)**.5 # d_b = diameter, n_b = num strands
+
+
+# FEMM
+
+
+
+# 60 Khz
+* MS-184125-2, N17, AWG14, 1stack, 5strands (30A, 45/30V: Ipp=9A, Ploss=3.8W)
+* MS-184090-2 N22
+
+
+# Core Suppliers
++ semic
++ https://www.cwsbytemark.com/index.php?main_page=index&cPath=206_220&page=1&sort=field&sortby=data6&sortorder=a
+  + only a few cores up to T184 (good selection)
++ https://www.spulen.com/ferrite-iron-powder-cores/toroids/micrometals.html?___store=english&___from_store=english
++ 

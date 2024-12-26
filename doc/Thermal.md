@@ -26,3 +26,10 @@ Toshiba offers CFD (CFD (Computational Fluid Dynamics))
 - https://explore.partquest.com/
 - https://www.poweresim.com/calculator.jsp
 - https://www.heatsinkcalculator.com/
+
+# Sensors
+
+- P3T1755DPZ
+- MC74A5-33SNTR
+- SHTC3 (Temp + Humidity
+- MVH4004D

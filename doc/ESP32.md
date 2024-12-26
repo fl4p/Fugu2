@@ -1,7 +1,20 @@
+ESP32 vs ESP32-S3
+
+The ESP32 has a higher bandwidth ADC and PWM high-speed mode for "glitch free" transition, whatever this means.
+see LED Control (LEDC) https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-reference/peripherals/ledc.html
+
+|                     | ESP32 | ESP32-S3 |
+|---------------------|-------|----------|
+| ADC SPS             | 2M    | 83.3k    |
+| PWM high-speed mode | y     | n        |
+| USB phy             | n     | y        |
+| heap RAM            |       |          |
+|                     |       |          |
+
 https://github.com/UnexpectedMaker/esp32s3/blob/main/schematics/schematic-omgs3.pdf
 
 * Programming /flashing over USB
-  * need BOOT button, as when chip is in panic boot loop, unable to put it in download mode over USB
+    * need BOOT button, as when chip is in panic boot loop, unable to put it in download mode over USB
 
 Mounting the ESP32-S3 on a small break out enables easy replacement.
 We can choose another chip with a different footprint.
@@ -57,8 +70,8 @@ Power Supply https://www.espressif.com/sites/default/files/documentation/esp32-s
 | Inventek W2.4-5P-U | PCB  | 2.4GHz, 5Ghz  | 2.6dBi, 3.3dBi | 9cm   | 1.5€ | [digikey](https://www.digikey.pt/en/products/detail/inventek-systems/W2-4-5P-U/4965325)         |
 | Fanstel ANT060     | Rod  | 2.45GHz       | 6dBi           | 10cm  | 2.9€ | [digikey](https://www.digikey.pt/en/products/detail/fanstel-corp/ANT060/8323643)                |
 
-
 # Dev Boards
+
 https://www.waveshare.com/esp32-s3-zero.htm
 https://github.com/femtoduino/femu-hardware/tree/master/femu/kicad/femu
 esp32-rust

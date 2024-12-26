@@ -10,7 +10,7 @@ W/mK https://www.bopla.de/technische-daten/technische-informationen/materialinfo
 
 Input Caps
 
-- 2x Beryl 100V 470µF D16xL26mm
+- 2x Beryl 100V 470µF D16xL26mm (china)
 - 2x 10UF 100V X7S 2220 (TDK C5750X7S2A106K230KB) 2.2uF @
   80V [dc-bias](https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=C5750X7S2A106K230KB)
 - 2x 1uF 100V X7R 1206 (TDK C3216X7R2A105K160AA)
@@ -132,3 +132,16 @@ V=77.24/26.66 I=-0.1/-0.17A  -4.8W 76°C 164sps  0kbps PWM(H|L|Lm)=   0|   0| 12
 V=77.24/26.66 I=-0.1/-0.18A  -4.9W 76°C 165sps  0kbps PWM(H|L|Lm)=   0|   0| 123 MPPT(st=  N/A,1) lag=10023.8ms N=4464 rssi=-81
 V=77.27/26.65 I=-0.1/-0.18A  -5.0W 76°C 165sps  0kbps PWM(H|L|Lm)=   0|   0| 123 MPPT(st=  N/A,1) lag=10023.8ms N=4961 rssi=-81
 ```
+
+
+# V2
+- Caps
+  - the beryl cap is poor, high impedance
+  - https://www.digikey.de/short/b9pp4zc5
+  - KYOCERA REF1625471M100B has 45mΩ with 16mm.
+  - maybe change to 18mm caps
+    - chemi con EKZN101ELL561MM25S
+    - ruby con 100ZLJ470M18X25 (18mm dia)
+- Inductor
+  - OE-130090-2 https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=35&iavg=26&vin_rms_min=27&vin_rms_max=42&f_switching=50000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=33&part_type=A&winding=F&num_cores=2&wire_strands=3&full_ratio=0.45&min_awg=14&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=19&strandsxawg=3xAWG%2314&partnumber=OE-130090-2&awg=14
+  - SM-130060-2 (KAM* nanodust, Ljf T130-AM-060A-E14 GK) https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=35&iavg=26&vin_rms_min=27&vin_rms_max=42&f_switching=50000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=33&part_type=A&winding=F&num_cores=2&wire_strands=3&full_ratio=0.45&min_awg=14&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=19&strandsxawg=3xAWG%2314&partnumber=SM-130060-2&awg=14

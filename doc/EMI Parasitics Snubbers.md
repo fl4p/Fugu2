@@ -64,3 +64,10 @@ https://fscdn.rohm.com/en/products/databook/applinote/discrete/sic/mosfet/sic-mo
 ![img.webp](img/mosfet-csi-to220.webp)
 https://www.cc.okayama-u.ac.jp/~eng_epc/pdf/IFEEC2017_Aikawa.pdf
 TO-220: 4nH common source inductance
+
+
+# Snubber
+
+* C0G caps are more temperature stable than X7R.
+* Resistor should handle 2W power
+
