@@ -4492,6 +4492,16 @@
 	)
 	(wire
 		(pts
+			(xy 180.34 72.39) (xy 181.61 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2432ec47-4f48-4386-9746-27c602fd06c8")
+	)
+	(wire
+		(pts
 			(xy 172.72 86.36) (xy 172.72 88.9)
 		)
 		(stroke
@@ -6260,7 +6270,7 @@
 	)
 	(global_label "Bat+"
 		(shape output)
-		(at 241.3 154.94 0)
+		(at 238.76 154.94 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6270,7 +6280,7 @@
 		)
 		(uuid "2a3f044f-3d4b-4daa-b501-561543e3c113")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 249.0023 154.94 0)
+			(at 246.4623 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6480,6 +6490,28 @@
 	)
 	(global_label "BT+"
 		(shape input)
+		(at 181.61 72.39 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a7d309ab-bb2d-4dfe-95db-609514562557")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 188.4052 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "BT+"
+		(shape input)
 		(at 190.5 38.1 90)
 		(fields_autoplaced yes)
 		(effects
@@ -6491,28 +6523,6 @@
 		(uuid "acff1619-0b89-448f-83e6-e21b763af3bb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 190.5 31.3048 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "Bat+"
-		(shape input)
-		(at 180.34 72.39 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "ad399f81-fd23-476f-8401-648729eec3e1")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 188.0423 72.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6568,7 +6578,7 @@
 	)
 	(global_label "BflowG"
 		(shape input)
-		(at 234.95 146.05 180)
+		(at 233.68 147.32 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6578,7 +6588,7 @@
 		)
 		(uuid "bc8640e3-1ad2-458b-bf67-28b0bbdd8465")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 225.5544 146.05 0)
+			(at 224.2844 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9366,7 +9376,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D16.0mm_P7.50mm"
+		(property "Footprint" "Capacitor_THT:CP_Radial_D18.0mm_P7.50mm"
 			(at 160.9852 49.53 0)
 			(effects
 				(font
@@ -12916,9 +12926,8 @@
 		)
 	)
 	(symbol
-		(lib_name "open-pe:HYG025N06LS1C2")
 		(lib_id "open-pe:HYG025N06LS1C2")
-		(at 234.95 152.4 270)
+		(at 233.68 152.4 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12926,7 +12935,7 @@
 		(dnp no)
 		(uuid "d3bfa552-c911-4668-b4c2-9ae4cd5f01a3")
 		(property "Reference" "Q7"
-			(at 237.49 156.21 90)
+			(at 236.22 156.21 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12935,7 +12944,7 @@
 			)
 		)
 		(property "Value" "TPH1R306PL,L1Q"
-			(at 233.68 160.02 90)
+			(at 232.41 160.02 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12944,7 +12953,7 @@
 			)
 		)
 		(property "Footprint" "open-pe:Infineon_PG-TDSON-8_FL"
-			(at 233.045 157.48 0)
+			(at 231.775 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12954,7 +12963,7 @@
 			)
 		)
 		(property "Datasheet" "https://toshiba.semicon-storage.com/info/TPH1R306PL_datasheet_en_20191018.pdf?did=30818&prodName=TPH1R306PL"
-			(at 234.95 152.4 90)
+			(at 233.68 152.4 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12964,7 +12973,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 234.95 152.4 0)
+			(at 233.68 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12973,7 +12982,7 @@
 			)
 		)
 		(property "MPN" "TPH1R306PL,L1Q"
-			(at 234.95 152.4 0)
+			(at 233.68 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12982,7 +12991,7 @@
 			)
 		)
 		(property "Desc" "Bflow"
-			(at 234.95 152.4 0)
+			(at 233.68 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12991,7 +13000,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 234.95 152.4 0)
+			(at 233.68 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13000,7 +13009,7 @@
 			)
 		)
 		(property "Digikey" ""
-			(at 234.95 152.4 0)
+			(at 233.68 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)

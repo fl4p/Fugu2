@@ -2733,6 +2733,16 @@
 		)
 		(uuid "404e764f-1e4a-488e-a35b-9eb5ae6f4e6e")
 	)
+	(text "F2: 375mA seems to small"
+		(exclude_from_sim no)
+		(at 40.132 84.328 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "5322eb9f-fa10-4f9d-a0bb-8f0129bbedba")
+	)
 	(text "see esp-rust-board for footprint"
 		(exclude_from_sim no)
 		(at 67.31 105.41 0)
@@ -2926,7 +2936,7 @@
 				)
 			)
 		)
-		(property "Value" "375mA fast, 50A"
+		(property "Value" "500mA fast, 50A"
 			(at 56.642 51.562 90)
 			(effects
 				(font
@@ -2961,7 +2971,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "375mA fast 0603"
+		(property "MPN" "0467.500NRHF"
 			(at 55.88 54.61 0)
 			(effects
 				(font
@@ -2979,7 +2989,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" "  Littelfuse"
 			(at 55.88 54.61 0)
 			(effects
 				(font
