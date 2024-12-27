@@ -1,4 +1,3 @@
-
 # Inductivity value
 
 * Todo formular
@@ -137,14 +136,11 @@ OC-157090-2 https://www.micrometals.com/design-and-applications/design-tools/ind
 | OC-184090-2         | 90 | 184 |      |        | 3.4W loss @ 50uH, 30Adc, V=45/30, 50khz | https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=30&vin_rms_min=45&vin_rms_max=30&f_switching=50000&ambient_temp=40&max_temp_rise=50&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=1&wire_strands=6&full_ratio=0.75&min_awg=14&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=18&strandsxawg=6xAWG%2314&partnumber=OC-184090-2&awg=14 |
 |                     |    |     |      |        |                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
-
 MS-250147-2
 T184-S-075A BK (MS-184-S-07A)
 T184-AH-125A BU
 
 2s MS-184-S-125
-
-
 
 https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=55&iavg=30&vin_rms_min=45&vin_rms_max=30&f_switching=50000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=1&wire_strands=6&full_ratio=0.85&min_awg=14&pct_win_fill_max_e=85&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=19&strandsxawg=6xAWG%2314&partnumber=OC-184090-2&awg=14
 
@@ -159,7 +155,8 @@ DC-DC operating point: 26Adc, 45/30Von/off, 60khz
 * MS-184090-2
   3.5W () [analyzer](https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=26&vin_rms_min=45&vin_rms_max=30&f_switching=60000&ambient_temp=30&max_temp_rise=50&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=1&wire_strands=5&full_ratio=0.85&min_awg=14&pct_win_fill_max_e=75&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=22&strandsxawg=5xAWG%2314&partnumber=MS-184090-2&awg=14)
 * MS-184125-2 3.4W
-* 2s MS-184125-2 2.8W  https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=26&vin_rms_min=45&vin_rms_max=30&f_switching=60000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=2&wire_strands=11&full_ratio=0.75&min_awg=16&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=12&strandsxawg=11xAWG%2316&partnumber=MS-184125-2&awg=16  
+* 2s MS-184125-2
+  2.8W  https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=26&vin_rms_min=45&vin_rms_max=30&f_switching=60000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=2&wire_strands=11&full_ratio=0.75&min_awg=16&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=12&strandsxawg=11xAWG%2316&partnumber=MS-184125-2&awg=16
 
 # 2stack T132 Designs
 
@@ -181,7 +178,10 @@ DC-DC operating point: 26Adc, 45/30Von/off, 60khz
 
 # T199
 
-* MS-199125-2 https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=26&vin_rms_min=45&vin_rms_max=27&f_switching=60000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=1&wire_strands=9&full_ratio=0.75&min_awg=16&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=17&strandsxawg=9xAWG%2316&partnumber=MS-199125-2&awg=16
+*
+
+MS-199125-2 https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=26&vin_rms_min=45&vin_rms_max=27&f_switching=60000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=1&wire_strands=9&full_ratio=0.75&min_awg=16&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=17&strandsxawg=9xAWG%2316&partnumber=MS-199125-2&awg=16
+
 * OC-199090-2, 2.3W
 
 # T250
@@ -210,7 +210,6 @@ SP-292090-2
     * Mag-inc
     * [Chang Sung Corp](https://changsung.com/)
 
-
 # Coils
 
 Choosing the inductor is a trade-off between size and power loss. Larger cores have a larger A_L value, requiring
@@ -221,7 +220,6 @@ Core loss is ~ f^a * B^b * Ve  (Steinmetz equation)
 with B = V*t/A (V = voltage per turn, t = pulse width, A = core area)
 and f = 1 / (2*t), V = Vl/n, keeping non-inductor parameters const.:
 Pcore ~ Ve/(n*A)^b x
-
 
 # https://www.cwsbytemark.com/CatalogSheets/MPP%20PDF%20files/13.pdf
 
@@ -339,19 +337,93 @@ https://www.micrometals.com/design-and-applications/material-selection-applicati
 
 Strands Formular: d_b = (d_a**2 * n_a/n_b)**.5 # d_b = diameter, n_b = num strands
 
-
 # FEMM
 
-
-
 # 60 Khz
+
 * MS-184125-2, N17, AWG14, 1stack, 5strands (30A, 45/30V: Ipp=9A, Ploss=3.8W)
 * MS-184090-2 N22
 
-
 # Core Suppliers
+
 + semic
 + https://www.cwsbytemark.com/index.php?main_page=index&cPath=206_220&page=1&sort=field&sortby=data6&sortorder=a
-  + only a few cores up to T184 (good selection)
+    + only a few cores up to T184 (good selection)
 + https://www.spulen.com/ferrite-iron-powder-cores/toroids/micrometals.html?___store=english&___from_store=english
-+ 
+
+# Soldering Litz wires
+
+<img src="img.png" width=300 />
+
+https://www.e-magnetica.pl/doku.php/litz_wire
+
+# Specific Cores
+
+|      | Al     | OD     | ID | HT | mat          | µi | Micrometals | KDM | Mag-Inc                                                                                             |   |   |
+|------|--------|--------|----|----|--------------|----|-------------|-----|-----------------------------------------------------------------------------------------------------|---|---|
+| T184 | 139 nH | 46.7mm |    |    | KoolMu Ultra | 60 |             |     | [DK](https://www.digikey.de/en/products/detail/magnetics-a-division-of-spang-co/0070439A7/22033014) |   |   |
+
+
+
+CSC Winding Table
+![img_1.png](img_1.png)
+from https://mrccomponents.com/images/downloads_csc/pdf/OD467.pdf
+
+CSC Shapes
+https://mrccomponents.com/en/products/material-core-materials-csc/toroidal-cores/highflux
+
+
+
+
+**Wire**
+
+To eliminate (reduce) ac resistance loss, choose a copper wire with d=1.2mm and multiple strands.
+This decreases the resistance rise due to skin and proximity effects. It is also easier to wind than a thick 2.5mm
+single
+strand coils.
+
+Make sure the copper you buy is made for electrical coils or motors. This is commonly referred as *W210 (Grade 2)*,
+*DIN EN 60317-13*, *V180* or *IEC 60317-51*  and has a typical conductivity of 58.5 MS/m.
+Another commonly traded copper wire material is *CW024A*, *2.0090*, *C12200*, *Cu-DHP* or *C106*.
+This copper is intended for use with low demands on electrical conductivity, e.g. water/gas pipes. Expect this to
+have an increased resistivity by 28% as compared to the W210 copper.
+
+**Core Material**
+
+Chose sendust with initial permeability 60µ, 75µ, 90µ or 125µ.
+Materials with higher permeability tend to suffer from increased dc bias saturation (i.e. inductivity drop) and
+increased light-load loss. Use micrometals designer to find the right core for a given load condition.
+
+[Overview](https://semic.cz/!old/files/pdf_www/Ljf_KDM.pdf)
+http://shindokogyo.com/products/toroidalCore
+https://www.cwsbytemark.com/mfg/sendust.php
+https://mhw-intl.com/products/magnetics/csc-powder-cores/
+
+|                                                                                                    | apps                              | Alloy    | Bsat/Gs | loss | µi      | Micrometals   | KDM                                                    | mag-inc                 |   |   |
+|----------------------------------------------------------------------------------------------------|-----------------------------------|----------|---------|------|---------|---------------|--------------------------------------------------------|-------------------------|---|---|
+| Sendust  <br/>Cost eff. low loss                                                                   |                                   | Fe-Si-Al | 10000   | 1    | 25~125  | MS (14~160µi) | [KS](https://semic.cz/!old/files/pdf_www/Ljf_KS.pdf)   | KoolMµ                  |   |   |
+| Fe-Si, Mega Flux<br/>improved DC bias perf.                                                        | buck/boost, solar, high-end       | Fe-Si    | 16000   |      | 14~90   | FS FluxScan   | [KSF](https://semic.cz/!old/files/pdf_www/Ljf_KSF.pdf) | 78 Series XFLUX (X)     |   |   |
+| High Flux<br/>best DC bias perf.                                                                   |                                   | Fe-Ni    | 15000   | <1   |         | HF, GX        | KH                                                     | 58 Series High Flux (H) |   |   |
+| Neu Flux, Optimized Economy<br/>Lowest Cost, half loss than Fe-Si. Cheap replacement for High Flux |                                   |          | 16000   | ~.5  | 26~xx90 | OE            | KNF                                                    |                         |   |   |
+| Nanodust, SenMax<br/>audibly quiet, MHz operation                                                  |                                   |          | 13000   |      |         | SM            | KAM                                                    |                         |   |   |
+| Nanodust                                                                                           |                                   |          |         |      |         | OC            | KAH                                                    |                         |   |   |
+| MPP  <br/>lowest loss, highest temp. stability                                                     | high Q, aero, mil, med, high temp | Ni-Fe-Mo | 8000    |      | 26~550  |               |                                                        |                         |   |   |
+
+**Core Shape**
+
+Toroids have least leakage flux and are good choice.
+Use two stacked T132 cores (1 core is only suitable for power below ~400W).
+
+| T184 | OD     | ID     | HT   | A_e     | l_e    | Wa      | V       | CSC                                                                   |    |   |   |
+|------|--------|--------|------|---------|--------|---------|---------|-----------------------------------------------------------------------|----|---|---|
+| T184 | 46.7mm | 24.1mm | 18mm | 1.99cm2 | 10.7cm | 4.27cm2 | 21.4cm3 | [OD467](https://mrccomponents.com/images/downloads_csc/pdf/OD467.pdf) |    |   |   |
+|      |        |        |      |         |        |         |         |                                                                       |    |   |   |
+
+Use T184 for currents up to 30A. Micrometals: MS-184090-2, KDM: ???.
+
+| Core                | Wire           | Num Strands | Turns | L0   | Rdc | Rac@50kHz | notesl    |
+|---------------------|----------------|-------------|-------|------|-----|-----------|-----------|
+| 2 stack MS-184125-2 | AWG17 (⌀1.2mm) | 10          | 12    |      |     |           | up to 35A |
+| MS-184125-2         |                | 12 AWG 16?  | 10    |      |     |           |           |
+| MS-184090           |                | 40          | 15    |      |     |           |           |
+| 2 stack MS-130060-2 |                | 20?         | 21    | 55µH |     |           |           |
