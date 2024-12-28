@@ -2898,6 +2898,12 @@
 		)
 	)
 	(junction
+		(at 114.3 58.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "11a7b151-7a92-46f2-92d5-2fec9bea753f")
+	)
+	(junction
 		(at 97.79 129.54)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2934,10 +2940,22 @@
 		(uuid "2b32e903-13f3-4326-8e67-d5539e59006f")
 	)
 	(junction
+		(at 114.3 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3e3b0949-9e63-40f2-9c0e-1bcc5b1483f1")
+	)
+	(junction
 		(at 148.59 45.72)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4a3e9859-0cd4-4307-97c2-433f22cc7143")
+	)
+	(junction
+		(at 120.65 58.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4ef164ee-f858-4e73-82df-2a617e844b75")
 	)
 	(junction
 		(at 148.59 66.04)
@@ -2964,16 +2982,34 @@
 		(uuid "7b5eb825-fb4e-4b3a-83f7-131f8f74981c")
 	)
 	(junction
+		(at 119.38 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "91ff878e-d645-4233-a5f8-27ff77e60f23")
+	)
+	(junction
 		(at 97.79 120.65)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "969c460f-fdd3-4a6f-85e0-035d96fcee5c")
 	)
 	(junction
+		(at 114.3 60.96)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a102fc92-53b9-46a1-b2b9-319049379f9d")
+	)
+	(junction
 		(at 104.14 120.65)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a61e660a-4629-4788-b8bd-0aa9b3823732")
+	)
+	(junction
+		(at 119.38 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "af4a6285-b25e-4da2-981b-f1f06c5cb482")
 	)
 	(junction
 		(at 121.92 71.12)
@@ -3060,6 +3096,16 @@
 			(type default)
 		)
 		(uuid "0a80d080-82f0-44d2-8071-d9165b63d8e4")
+	)
+	(wire
+		(pts
+			(xy 114.3 57.15) (xy 114.3 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "130fe576-146e-4ebd-8dd1-e53285344f1c")
 	)
 	(wire
 		(pts
@@ -3273,6 +3319,26 @@
 	)
 	(wire
 		(pts
+			(xy 120.65 58.42) (xy 123.19 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3a5948dd-114e-47d6-90dd-b947f65e55c0")
+	)
+	(wire
+		(pts
+			(xy 114.3 63.5) (xy 119.38 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3e5465b4-3128-46d6-9c49-9e65be28ff2f")
+	)
+	(wire
+		(pts
 			(xy 156.21 71.12) (xy 161.29 71.12)
 		)
 		(stroke
@@ -3310,6 +3376,16 @@
 			(type default)
 		)
 		(uuid "44a3d01b-9ebe-44bc-9628-afc61cacf0d8")
+	)
+	(wire
+		(pts
+			(xy 114.3 60.96) (xy 119.38 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4503e6a6-f1ff-4c13-8abe-35b4c64fbfd7")
 	)
 	(wire
 		(pts
@@ -3530,6 +3606,16 @@
 			(type default)
 		)
 		(uuid "900fd505-44ee-46fa-867b-282d68320c1b")
+	)
+	(wire
+		(pts
+			(xy 120.65 57.15) (xy 114.3 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "919c42c7-938b-4f31-8d02-ef05d921d2b0")
 	)
 	(wire
 		(pts
@@ -3773,7 +3859,7 @@
 	)
 	(wire
 		(pts
-			(xy 119.38 58.42) (xy 123.19 58.42)
+			(xy 119.38 58.42) (xy 120.65 58.42)
 		)
 		(stroke
 			(width 0)
@@ -3850,6 +3936,16 @@
 			(type default)
 		)
 		(uuid "e4faf85f-ee19-44f2-8877-bc2878faa714")
+	)
+	(wire
+		(pts
+			(xy 120.65 58.42) (xy 120.65 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5c3b5e5-3da9-490f-a187-e4f87d8dd1a8")
 	)
 	(wire
 		(pts
@@ -4581,7 +4677,7 @@
 		(at 182.88 114.3 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(uuid "001eb2c3-f87d-41f8-99ad-45c9938af7ca")
@@ -4675,9 +4771,9 @@
 		(at 116.84 58.42 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+		(in_bom no)
+		(on_board no)
+		(dnp yes)
 		(uuid "06f401b9-2752-4764-b6fa-1749fb61b898")
 		(property "Reference" "R31"
 			(at 122.174 57.404 90)
@@ -5226,7 +5322,7 @@
 		(at 185.42 139.7 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(uuid "1902b41f-6def-466e-924f-42d9f3c2e466")
@@ -5320,7 +5416,7 @@
 		(at 181.61 135.89 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(uuid "19f5b04d-0e65-435a-a4ac-aaf6431dcf04")
@@ -5413,7 +5509,7 @@
 		(at 182.88 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(fields_autoplaced yes)
@@ -6705,9 +6801,9 @@
 		(at 116.84 63.5 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+		(in_bom no)
+		(on_board no)
+		(dnp yes)
 		(uuid "8d903a3a-f3db-4b5f-97e0-b8bedabde889")
 		(property "Reference" "R33"
 			(at 122.174 62.484 90)
@@ -6792,7 +6888,7 @@
 		(at 182.88 110.49 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(uuid "8e66fd54-887e-4ca9-8660-b64cbd4ed030")
@@ -7096,9 +7192,9 @@
 		(at 116.84 60.96 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+		(in_bom no)
+		(on_board no)
+		(dnp yes)
 		(uuid "a6258ba9-8f0b-4b9c-bb0b-6a7b5dcd52bf")
 		(property "Reference" "R32"
 			(at 122.428 60.198 90)

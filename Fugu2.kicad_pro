@@ -58,7 +58,10 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [],
+      "drc_exclusions": [
+        "starved_thermal|38635000|38325000|65fcb45e-9146-4148-988d-83ebdeb6cd47|efa3ee08-83b9-4b78-a3f6-0e2a3e01ac8b|F.Cu",
+        "starved_thermal|56082863|36083000|65fcb45e-9146-4148-988d-83ebdeb6cd47|1b373cb4-d438-4f13-9773-5e9031c18ddb|F.Cu"
+      ],
       "meta": {
         "version": 2
       },
@@ -676,8 +679,8 @@
       "filter_string": "",
       "group_symbols": true,
       "name": "",
-      "sort_asc": false,
-      "sort_field": "Reference"
+      "sort_asc": true,
+      "sort_field": "Value"
     },
     "connection_grid_size": 50.0,
     "drawing": {

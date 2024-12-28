@@ -5992,7 +5992,7 @@
 		)
 		(uuid 1eb7c9a2-8823-4468-bd1d-6078e314f0ec)
 	)
-	(text "Why current senser here?\n- Low side is simpler\n- MCU ground should be bat(-)\n  for wired interfaces"
+	(text "Why current senser here?\n- Low side is simpler\n- ~0V common mode -> can use ina226 @ 48V battery\n- MCU ground should be bat(-)\n  for wired interfaces"
 		(exclude_from_sim no)
 		(at 152.4 66.802 0)
 		(effects
@@ -6003,7 +6003,7 @@
 		)
 		(uuid "1fafced8-1e4b-4efa-91c7-6a6953f45b37")
 	)
-	(text "TODO\n- use 2p fuses?\n- extension header 12V, 3.3V, i2c, io pins, SPI?\n   -> UEXT connector (SPI, i2c, UART)\n- LCD and buttons?\n- replace Cin 10u with 4.7u\n- external temp\n- IR2184 input decoupling cap 1u? 10u?\n"
+	(text "TODO\n- use 2p fuses?\n- extension header 12V, 3.3V, i2c, io pins, SPI?\n   -> UEXT connector (SPI, i2c, UART)\n- LCD and buttons?\n- replace Cin 10u with 4.7u\n- external temp\n"
 		(exclude_from_sim no)
 		(at 179.07 181.61 0)
 		(effects
@@ -6092,16 +6092,6 @@
 			(justify left bottom)
 		)
 		(uuid "8db38646-b872-4206-a400-db4eb27f6a02")
-	)
-	(text "ST40100C"
-		(exclude_from_sim no)
-		(at 133.096 69.85 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "9d22f716-2974-4ef1-a1cc-60507817c90b")
 	)
 	(text "f_c=1/(2pi*R20*C15)\nf_c=221Hz"
 		(exclude_from_sim no)
@@ -6270,7 +6260,7 @@
 	)
 	(global_label "Bat+"
 		(shape output)
-		(at 238.76 154.94 0)
+		(at 243.84 154.94 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6280,7 +6270,7 @@
 		)
 		(uuid "2a3f044f-3d4b-4daa-b501-561543e3c113")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 246.4623 154.94 0)
+			(at 251.5423 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6292,7 +6282,7 @@
 	)
 	(global_label "BflowS"
 		(shape input)
-		(at 228.6 154.94 180)
+		(at 233.68 154.94 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6302,7 +6292,7 @@
 		)
 		(uuid "43dbb000-1838-46bb-b577-cac875b172d1")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 219.2649 154.94 0)
+			(at 224.3449 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6578,7 +6568,7 @@
 	)
 	(global_label "BflowG"
 		(shape input)
-		(at 233.68 147.32 180)
+		(at 238.76 147.32 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6588,7 +6578,7 @@
 		)
 		(uuid "bc8640e3-1ad2-458b-bf67-28b0bbdd8465")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 224.2844 147.32 0)
+			(at 229.3644 147.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6945,7 +6935,7 @@
 		(at 256.54 53.34 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(fields_autoplaced yes)
@@ -7058,7 +7048,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TK6R8A08QM"
+		(property "Value" "IPP055N08NF2SAKMA1"
 			(at 142.24 20.32 0)
 			(effects
 				(font
@@ -7078,7 +7068,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.infineon.com/dgdl/Infineon-IPP060N06N-DS-v02_02-en.pdf?fileId=db3a30433727a44301372c06d9d7498a"
+		(property "Datasheet" ""
 			(at 144.78 27.94 0)
 			(effects
 				(font
@@ -7156,7 +7146,7 @@
 		(at 157.48 33.02 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(uuid "18d8d973-3075-4c90-ad58-634a7b0c19ff")
@@ -7643,7 +7633,7 @@
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole")
-		(at 256.54 33.02 270)
+		(at 256.54 33.02 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
@@ -7652,7 +7642,7 @@
 		(fields_autoplaced yes)
 		(uuid "2d94fdaa-af7e-4394-84a9-ca45a5ce5df0")
 		(property "Reference" "H6"
-			(at 259.08 31.75 90)
+			(at 259.08 31.7499 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7661,7 +7651,7 @@
 			)
 		)
 		(property "Value" "MountingHole"
-			(at 259.08 34.29 90)
+			(at 259.08 34.2899 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7858,7 +7848,7 @@
 		(at 256.54 48.26 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(fields_autoplaced yes)
@@ -8023,7 +8013,7 @@
 		(at 128.27 57.15 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(fields_autoplaced yes)
@@ -8435,7 +8425,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D16.0mm_P7.50mm"
+		(property "Footprint" "Capacitor_THT:CP_Radial_D18.0mm_P7.50mm"
 			(at 88.5952 36.83 0)
 			(effects
 				(font
@@ -9046,7 +9036,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TK6R8A08QM"
+		(property "Value" "IPP055N08NF2SAKMA1"
 			(at 123.19 20.32 0)
 			(effects
 				(font
@@ -9066,7 +9056,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.infineon.com/dgdl/Infineon-IPP060N06N-DS-v02_02-en.pdf?fileId=db3a30433727a44301372c06d9d7498a"
+		(property "Datasheet" ""
 			(at 125.73 27.94 0)
 			(effects
 				(font
@@ -10029,7 +10019,7 @@
 				)
 			)
 		)
-		(property "Value" "10"
+		(property "Value" "4.7"
 			(at 115.57 25.654 90)
 			(effects
 				(font
@@ -10064,7 +10054,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "4.7"
 			(at 115.57 25.4 0)
 			(effects
 				(font
@@ -10132,7 +10122,7 @@
 				)
 			)
 		)
-		(property "Value" "10"
+		(property "Value" "4.7"
 			(at 135.89 26.67 90)
 			(effects
 				(font
@@ -10167,7 +10157,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "4.7"
 			(at 135.89 27.94 0)
 			(effects
 				(font
@@ -10709,7 +10699,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "79e929ba-bf9a-4250-9acc-b1f4331f8125")
 		(property "Reference" "D9"
 			(at 140.97 45.72 90)
@@ -10864,7 +10854,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "7.5"
+		(property "MPN" "DNP"
 			(at 99.06 86.36 0)
 			(effects
 				(font
@@ -11152,7 +11142,7 @@
 		(at 256.54 43.18 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(fields_autoplaced yes)
@@ -12496,7 +12486,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "CSD19505"
+		(property "Value" "FDPF2D3N10C"
 			(at 117.348 39.624 0)
 			(effects
 				(font
@@ -12516,7 +12506,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.infineon.com/dgdl/Infineon-IPP060N06N-DS-v02_02-en.pdf?fileId=db3a30433727a44301372c06d9d7498a"
+		(property "Datasheet" ""
 			(at 125.73 44.45 0)
 			(effects
 				(font
@@ -12828,7 +12818,7 @@
 		(at 255.27 26.67 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(uuid "cc6ad5d8-78da-42ea-bc9a-10e75698aa5c")
@@ -12927,7 +12917,7 @@
 	)
 	(symbol
 		(lib_id "open-pe:HYG025N06LS1C2")
-		(at 233.68 152.4 270)
+		(at 238.76 152.4 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -12935,7 +12925,7 @@
 		(dnp no)
 		(uuid "d3bfa552-c911-4668-b4c2-9ae4cd5f01a3")
 		(property "Reference" "Q7"
-			(at 236.22 156.21 90)
+			(at 241.3 156.21 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12944,7 +12934,7 @@
 			)
 		)
 		(property "Value" "TPH1R306PL,L1Q"
-			(at 232.41 160.02 90)
+			(at 237.49 160.02 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12953,7 +12943,7 @@
 			)
 		)
 		(property "Footprint" "open-pe:Infineon_PG-TDSON-8_FL"
-			(at 231.775 157.48 0)
+			(at 236.855 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12963,7 +12953,7 @@
 			)
 		)
 		(property "Datasheet" "https://toshiba.semicon-storage.com/info/TPH1R306PL_datasheet_en_20191018.pdf?did=30818&prodName=TPH1R306PL"
-			(at 233.68 152.4 90)
+			(at 238.76 152.4 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12973,7 +12963,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 233.68 152.4 0)
+			(at 238.76 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12982,7 +12972,7 @@
 			)
 		)
 		(property "MPN" "TPH1R306PL,L1Q"
-			(at 233.68 152.4 0)
+			(at 238.76 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12991,7 +12981,7 @@
 			)
 		)
 		(property "Desc" "Bflow"
-			(at 233.68 152.4 0)
+			(at 238.76 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13000,7 +12990,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 233.68 152.4 0)
+			(at 238.76 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13009,7 +12999,7 @@
 			)
 		)
 		(property "Digikey" ""
-			(at 233.68 152.4 0)
+			(at 238.76 152.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13161,7 +13151,7 @@
 		(at 148.59 33.02 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(uuid "df84d106-bc23-4a39-bd90-55d5476ebac9")
@@ -13275,7 +13265,7 @@
 				)
 			)
 		)
-		(property "Value" "22"
+		(property "Value" "4.7"
 			(at 115.57 44.45 90)
 			(effects
 				(font
@@ -13310,7 +13300,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "22"
+		(property "MPN" "4.7"
 			(at 115.57 44.45 0)
 			(effects
 				(font
@@ -13549,7 +13539,7 @@
 				)
 			)
 		)
-		(property "Value" "7.5"
+		(property "Value" "0"
 			(at 135.636 33.274 90)
 			(effects
 				(font
@@ -13584,7 +13574,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "7.5"
+		(property "MPN" "0"
 			(at 135.89 33.02 0)
 			(effects
 				(font
@@ -13640,7 +13630,7 @@
 		(at 256.54 38.1 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(fields_autoplaced yes)
@@ -14086,7 +14076,7 @@
 				)
 			)
 		)
-		(property "Value" "7.5"
+		(property "Value" "0"
 			(at 116.84 30.48 90)
 			(effects
 				(font
@@ -14121,7 +14111,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "7.5"
+		(property "MPN" "0"
 			(at 116.84 30.48 0)
 			(effects
 				(font
