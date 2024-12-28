@@ -8,7 +8,7 @@ Condition:
 
 
 ## lying on wood
-![Fugu 2](img/fugu2-2T130-heatsink.webp "Fugu2")
+![Fugu 2](../img/fugu2-2T130-heatsink.webp "Fugu2")
 
 ![Fugu 2](img/TR000132-fugu2-T130.JPG "Fugu2 T130 heat image")
 *^the coil get very hot^*
@@ -18,7 +18,7 @@ Condition:
 
 
 ## in a cardbox
-![Fugu 2](img/fugu2-cardbox.jpg "Fugu2 in cardbox")
+![Fugu 2](../img/fugu2-cardbox.jpg "Fugu2 in cardbox")
 
 * avg power: 470W
 * heatsink equi temp: 61 C

@@ -188,6 +188,7 @@ MS-199125-2 https://www.micrometals.com/design-and-applications/design-tools/ind
 
 * MS-250147-2
   2.3W https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=26&vin_rms_min=45&vin_rms_max=30&f_switching=60000&ambient_temp=30&max_temp_rise=50&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=1&wire_strands=11&full_ratio=0.75&min_awg=14&pct_win_fill_max_e=75&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=14&strandsxawg=11xAWG%2314&partnumber=MS-250147-2&awg=14
+  * 13T https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=40&iavg=30&vin_rms_min=45&vin_rms_max=27&f_switching=50000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=1&wire_strands=10&full_ratio=0.5&min_awg=14&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=13&strandsxawg=10xAWG%2314&partnumber=MS-250147-2&awg=14
 
 SP-226090-2H305
 1.8W https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=26&vin_rms_min=45&vin_rms_max=30&f_switching=60000&ambient_temp=30&max_temp_rise=50&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=1&wire_strands=10&full_ratio=0.85&min_awg=14&pct_win_fill_max_e=75&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=12&strandsxawg=10xAWG%2314&partnumber=SP-226090-2H305&awg=14
@@ -427,3 +428,10 @@ Use T184 for currents up to 30A. Micrometals: MS-184090-2, KDM: ???.
 | MS-184125-2         |                | 12 AWG 16?  | 10    |      |     |           |           |
 | MS-184090           |                | 40          | 15    |      |     |           |           |
 | 2 stack MS-130060-2 |                | 20?         | 21    | 55µH |     |           |           |
+
+
+
+
+Fugu1 T134 20A Inductor
+- 25 turns, 3x1.45mm, MS-134075-2
+https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=40&iavg=20&vin_rms_min=45&vin_rms_max=27&f_switching=39000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=1&wire_strands=3&full_ratio=0.45&min_awg=14&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=25&strandsxawg=3xAWG%2315&partnumber=MS-134075-2&awg=15

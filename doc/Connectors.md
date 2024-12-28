@@ -1,8 +1,9 @@
-
 # MCU board
 
 During prototyping and testing the MCU might get damaged (over-voltage, faulty currents, water).
-Once the ESP32-WROOM is soldered to the PCB, it is tricky to remove.
+Once the ESP32-WROOM is soldered to the PCB, it is tricky to remove on the field without the right tools.
+
+For a break-out connector, we need at least these signals:
 
 1. GND
 2. 3.3V
@@ -20,12 +21,10 @@ Once the ESP32-WROOM is soldered to the PCB, it is tricky to remove.
 
 - 2.54mm pitch might be too clunky
 - 1.27mm appears to be a good fit
-- via-less solution preferred
-- programmer on external board
+- via-less solution preferred (SMD pin headers)
+- programmer interface and USB on external board
 
-
-https://www.digikey.de/en/products/filter/rectangular-connectors/
-
+https://www.digikey.com/en/products/category/rectangular-connectors/2027
 
 https://www.lcsc.com/product-detail/Female-Headers_HOAUC-2343U-240CNG1MNT01_C343632.html
 https://www.lcsc.com/product-detail/Female-Headers_Yxcon-F136-1104S3CMUB2_C20071191.html
@@ -37,11 +36,18 @@ USB-C
 Standing https://www.lcsc.com/product-detail/USB-Connectors_XUNPU-TYPEC-303-ACP16_C720628.html
 SMD https://www.lcsc.com/product-detail/USB-Connectors_SHOU-HAN-TYPE-C-16P-QTGM027_C2681552.html
 
+# Power Connectors, Lugs
 
-# Power Connectors
-* preferably cross-head screws
+* preferably cross-head (Phillips) screws
 * connectors with 51A or 65A have good wire gauge
-https://ihiconnectors.com/PCB-Technical-Information.htm#B2A-B2C-PCB
-https://www.digikey.de/en/products/filter/terminal-blocks/wire-to-board/371
-https://www.digikey.de/en/products/detail/amphenol-anytek/VP0285850000G/4957853
-https://www.digikey.de/en/products/detail/altech-corporation/MV-1002/9457249
+  https://ihiconnectors.com/PCB-Technical-Information.htm#B2A-B2C-PCB
+  https://www.digikey.de/en/products/filter/terminal-blocks/wire-to-board/371
+  https://www.digikey.de/en/products/detail/amphenol-anytek/VP0285850000G/4957853
+  https://www.digikey.de/en/products/detail/altech-corporation/MV-1002/9457249
+
+Terminal Lug
+CBS35-36-C
+![img_2.png](img_2.png)CB35-36-CY
+CXS35-36-C
+
+https://lugsdirect.com/single-wire-lugs.htm

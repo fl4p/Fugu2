@@ -4,13 +4,13 @@ IBOM | [firmware](https://github.com/fl4p/fugu-mppt-firmware)
 
 ## Gallery
 
-| <img src="doc/img/fugu-metal.webp" width=400/> | <img src="doc/img/fugu2.webp" width=400 /> |
-|:----------------------------------------------:|:------------------------------------------:|
-|           Small aluminium enclosure            |                on heatsink                 |
+|    <img src="doc/img/fugu-metal.webp" width=400/>     | <img src="doc/img/fugu2.webp" width=400 /> |
+|:-----------------------------------------------------:|:------------------------------------------:|
+| Small aluminium enclosure with two T130 sendust cores |       on heatsink, T184 sendust core       |
 
 | <img src="doc/img/fheat2.webp" width=400 /> | <img src="img/fisi.webp" width=400 /> |
 |:-------------------------------------------:|:-------------------------------------:|
-|                                             |      [fisi](HW Stories/fisi.md)       |
+|           two T184 sendust cores            |      [fisi](HW%20Stories/fisi.md)       |
 
 ## Specs
 
@@ -81,12 +81,16 @@ replaced hall sensor with shunt resistor and faster switching. See the list belo
 
 # Inductor Quick Start Guide
 
-## Big inductor with low loss up to 40A
+## Double T184 inductor with low loss up to 40A
 
 * Core: 2 stacked [KS184-125A](https://www.semic.info/ljf-t184-s-125a-bk/)
 * Wire: Ø=1.18mm Cu (1.25mm total), W210 (Grade 2) Copper
-* Winding: 10 strands, 12 turns, 20 meter in total
+* Winding: 10 strands, 12 turns, need 20 meter wire in total (10x 2m)
 * Systematic name: 2s-KS184-125A-118cu-10s-12t
+* [Micrometals analyzer](https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=30.37&vin_rms_min=45&vin_rms_max=27&f_switching=39000.0&ambient_temp=40&max_temp_rise=50&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=2&wire_strands=10&full_ratio=0.9&min_awg=30&pct_win_fill_max_e=100&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=12&strandsxawg=10xAWG%252316.8&partnumber=MS-184125-2&awg=16.8)
+
+<img src="doc/coil-journal/img_9.webp" width=300 />
+<img src="doc/coil-journal/img_10.webp" width=300 />
 
 # Mosfet Selection
 
@@ -125,26 +129,27 @@ fet to avoid channel break-down if needed.
 To improve conversion efficiency we first need to understand where power is lost and quantify it.
 For quantification we can model power loss or measure it.
 There is plenty of literature about modelling power loss in a DC-DC converter.
+[fetlib](https://github.com/fl4p/fetlib) can model switch loss, inductor loss and capacitor loss.
 
-[TI slvaeq9](https://www.ti.com/lit/an/slvaeq9/slvaeq9.pdf)
+Literature: [TI slvaeq9](https://www.ti.com/lit/an/slvaeq9/slvaeq9.pdf) TODO more
 
-For measurement, there are multiple approaches:
+The are multiple ways for power loss measurement:
 
 - Measure temperature rise of components using a thermal imager or thermal probe. This will give you can idea where
   most power is lost. If you know the thermal resistance between a component and ambient, you can calculate the power loss in
   watts.
-- Measure total converter power loss.
-- Measure component loss using an oscilloscope. Needs careful probe calibration and de-skew.
+- Measure total converter power loss using power two power meters, one at the input and one the output.
+- Measure component loss using a multimeter (static i2r loss) or [oscilloscope](https://www.tek.com/en/documents/application-note/circuit-measurement-inductors-and-transformers-oscilloscope). Needs careful probe calibration and de-skew.
 
 Some points to consider:
 
 * main losses are usually switch loss and inductor loss
 * measure coil ripple current. dc core saturation can lead to significant inductance drop and extreme current peaks, increasing loss in capacitors and switches.
-* cheap caps with higher impedance can get hot (especially C_in). Find better caps, place caps in parallel to reduce ESR
 * Check coil core material loss in datasheet. Use bigger core.
 * Use inductor design tool, such as
   the [micrometals designer](https://www.micrometals.com/design-and-applications/design-tools/inductor-designer/)
 * Use multi strand wires to reduce AC losses (skin effect, proximity effect)
+* cheap caps with higher impedance can get hot (especially C_in). Find better caps, place caps in parallel to reduce ESR
 * Reduce switching times: smaller gate resistors, stronger driver. Make sure there is no severe ringing at switching
   node and at the gates. Consider using a faster Mosfet (low Qsw)
 * Place Schottky diode in parallel to LS switch. this can decrease reverse-recovery loss

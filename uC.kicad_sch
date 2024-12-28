@@ -8636,7 +8636,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_02x07_Odd_Even"
+		(property "Value" "MCU head"
 			(at 43.18 19.05 0)
 			(effects
 				(font
