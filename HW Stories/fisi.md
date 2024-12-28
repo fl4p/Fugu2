@@ -12,6 +12,10 @@
 - Caps:
   - in: 2x Rubycon ZLH 470uF 100V 16mmx31mm (Z=33mΩ each)
   - out: 1x "
-- Power Measurement:
-  - Pin=879 Pout=863W, Ploss=1.83%
-  - pin=1.02kw put=1.00 Ploss=2.09%
+- Power Measurement: ([smart-shunt](https://github.com/open-pe/smart-shunt-fw))
+  - Pin=879W Pout=863W, Ploss=1.83%
+  - Pin=1.02kw Pout=1.00 Ploss=2.09%
+
+
+<img src="../img/fisi1.webp" width="500">
+<img src="../img/wisi.webp" width="500">

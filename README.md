@@ -4,13 +4,13 @@ IBOM | [firmware](https://github.com/fl4p/fugu-mppt-firmware)
 
 ## Gallery
 
-|    <img src="doc/img/fugu-metal.webp" width=400/>     | <img src="doc/img/fugu2.webp" width=400 /> |
-|:-----------------------------------------------------:|:------------------------------------------:|
-| Small aluminium enclosure with two T130 sendust cores |       on heatsink, T184 sendust core       |
+|                           <img src="doc/img/fugu-metal.webp" width=300/>                            |           <img src="doc/img/fugu2.webp" width=400 />            |
+|:---------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------:|
+| Small aluminium enclosure with two T130 sendust cores [fmetal](HW%20Stories/Fugu%20Metal/README.md) | on heatsink, T184 sendust core   [fheat](HW%20Stories/fheat.md) |
 
-| <img src="doc/img/fheat2.webp" width=400 /> | <img src="img/fisi.webp" width=400 /> |
-|:-------------------------------------------:|:-------------------------------------:|
-|           two T184 sendust cores            |      [fisi](HW%20Stories/fisi.md)       |
+|        <img src="doc/img/fheat2.webp" width=400 />        | <img src="img/fisi.webp" width=400 /> |
+|:---------------------------------------------------------:|:-------------------------------------:|
+| two T184 sendust cores   [fheat2](HW%20Stories/fheat2.md) |      [fisi](HW%20Stories/fisi.md)       |
 
 ## Specs
 

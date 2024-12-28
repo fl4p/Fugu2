@@ -1,7 +1,7 @@
 
-![img.png](img.webp)
+![img.png](../img/wisi.webp)
 
-![img_1.png](img_1.webp)
+![img_1.png](../img/fisi1.webp)
 
 
 F-Type connectors (SAT)

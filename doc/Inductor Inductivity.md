@@ -354,7 +354,7 @@ Strands Formular: d_b = (d_a**2 * n_a/n_b)**.5 # d_b = diameter, n_b = num stran
 
 # Soldering Litz wires
 
-<img src="img.png" width=300 />
+<img src="img/litz-stranded.webp" width=300 />
 
 https://www.e-magnetica.pl/doku.php/litz_wire
 
@@ -367,7 +367,7 @@ https://www.e-magnetica.pl/doku.php/litz_wire
 
 
 CSC Winding Table
-![img_1.png](img_1.png)
+![t184-winding.webp](img/t184-winding.webp)
 from https://mrccomponents.com/images/downloads_csc/pdf/OD467.pdf
 
 CSC Shapes

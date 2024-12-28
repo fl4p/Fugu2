@@ -47,7 +47,7 @@ SMD https://www.lcsc.com/product-detail/USB-Connectors_SHOU-HAN-TYPE-C-16P-QTGM0
 
 Terminal Lug
 CBS35-36-C
-![img_2.png](img_2.png)CB35-36-CY
+![lug.webp](img/lug.webp)CB35-36-CY
 CXS35-36-C
 
 https://lugsdirect.com/single-wire-lugs.htm
