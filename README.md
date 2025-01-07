@@ -10,7 +10,7 @@ IBOM | [firmware](https://github.com/fl4p/fugu-mppt-firmware)
 
 |        <img src="doc/img/fheat2.webp" width=400 />        | <img src="img/fisi.webp" width=400 /> |
 |:---------------------------------------------------------:|:-------------------------------------:|
-| two T184 sendust cores   [fheat2](HW%20Stories/fheat2.md) |      [fisi](HW%20Stories/fisi.md)       |
+| two T184 sendust cores   [fheat2](HW%20Stories/fheat2.md) |     [fisi](HW%20Stories/fisi.md)      |
 
 ## Specs
 
@@ -81,16 +81,27 @@ replaced hall sensor with shunt resistor and faster switching. See the list belo
 
 # Inductor Quick Start Guide
 
-## Double T184 inductor with low loss up to 40A
+## 12V or 24V battery up to 40A
 
+* Optimized for low loss 12V and 24V batteries, up to 40A battery current @39kHz
 * Core: 2 stacked [KS184-125A](https://www.semic.info/ljf-t184-s-125a-bk/)
+  * choose optimized material for even lower loss
 * Wire: Ø=1.18mm Cu (1.25mm total), W210 (Grade 2) Copper
+  * the diameter is arbitrary. prefer multiple strands for easier winding and reduced ac loss (skin & proximity effects)
 * Winding: 10 strands, 12 turns, need 20 meter wire in total (10x 2m)
 * Systematic name: 2s-KS184-125A-118cu-10s-12t
 * [Micrometals analyzer](https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=30.37&vin_rms_min=45&vin_rms_max=27&f_switching=39000.0&ambient_temp=40&max_temp_rise=50&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=2&wire_strands=10&full_ratio=0.9&min_awg=30&pct_win_fill_max_e=100&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=12&strandsxawg=10xAWG%252316.8&partnumber=MS-184125-2&awg=16.8)
 
 <img src="doc/coil-journal/img_9.webp" width=300 />
 <img src="doc/coil-journal/img_10.webp" width=300 />
+
+## 48V batteries up to 20A
+
+* Core: [KS184-125A](https://www.semic.info/ljf-t184-s-125a-bk/)
+* Wire: Ø=1.63mm Cu (AWG14), W210 (Grade 2) Copper
+* Winding: 4 strands, 20 turns
+* Systematic name: 1s-KS184-125A-163cu-4s-20t
+* [Micrometals Analyzer](https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=60&iavg=15&vin_rms_min=20&vin_rms_max=55&f_switching=39000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=1&wire_strands=4&full_ratio=0.45&min_awg=14&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=19&strandsxawg=4xAWG%2314&partnumber=MS-184147-2&awg=14)
 
 # Mosfet Selection
 
@@ -136,15 +147,19 @@ Literature: [TI slvaeq9](https://www.ti.com/lit/an/slvaeq9/slvaeq9.pdf) TODO mor
 The are multiple ways for power loss measurement:
 
 - Measure temperature rise of components using a thermal imager or thermal probe. This will give you can idea where
-  most power is lost. If you know the thermal resistance between a component and ambient, you can calculate the power loss in
+  most power is lost. If you know the thermal resistance between a component and ambient, you can calculate the power
+  loss in
   watts.
 - Measure total converter power loss using power two power meters, one at the input and one the output.
-- Measure component loss using a multimeter (static i2r loss) or [oscilloscope](https://www.tek.com/en/documents/application-note/circuit-measurement-inductors-and-transformers-oscilloscope). Needs careful probe calibration and de-skew.
+- Measure component loss using a multimeter (static i2r loss)
+  or [oscilloscope](https://www.tek.com/en/documents/application-note/circuit-measurement-inductors-and-transformers-oscilloscope).
+  Needs careful probe calibration and de-skew.
 
 Some points to consider:
 
 * main losses are usually switch loss and inductor loss
-* measure coil ripple current. dc core saturation can lead to significant inductance drop and extreme current peaks, increasing loss in capacitors and switches.
+* measure coil ripple current. dc core saturation can lead to significant inductance drop and extreme current peaks,
+  increasing loss in capacitors and switches.
 * Check coil core material loss in datasheet. Use bigger core.
 * Use inductor design tool, such as
   the [micrometals designer](https://www.micrometals.com/design-and-applications/design-tools/inductor-designer/)
