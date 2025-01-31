@@ -18,3 +18,5 @@ _autosave-Fugu2.kicad_pcb
 __pycache__/
 
 /panelized*
+
+_autosave-*
