@@ -57,7 +57,7 @@ https://lugsdirect.com/single-wire-lugs.htm
 - UEXT
 - Pmod https://digilent.com/reference/_media/reference/pmod/pmod-interface-specification-1_2_0.pdf
 
-![img.png](img.png)
+![img.png](connector-pmod.png)
 10 pin, 1.27mm pitch, SMD
 
 
