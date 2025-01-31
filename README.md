@@ -81,13 +81,23 @@ replaced hall sensor with shunt resistor and faster switching. See the list belo
 
 # Inductor Quick Start Guide
 
+The magnetic core material Sendust (KoolMµ) is cheap with good availability and has good saturation characteristics and
+low loss.
+Manufacturers offer optimized materials, focusing on price, dc bias and core loss.
+([KDM](https://semic.cz/!old/files/pdf_www/Ljf_KDM.pdf): KPH, KAM, KAH, KH)
+
+For the coil choose isolated Copper wire made for electrical applictions commonly referred as W210 with typical
+conductivity of 58.5 MS/m. Choose diameter and number of strands so that inner diameter of the toroid core has a good
+usage.
+Prefer multiple strands for easier winding (>2mm diameter becomes unhandy to wind) and reduced ac loss (skin & proximity
+effects). Many strands (>10) increase complexity of winding. a diameter between 1 and 2mm appears to be good choice.
+More copper reduces dc resistance and leakage fringing (TODO ref).
+
 ## 12V or 24V battery up to 40A
 
 * Optimized for low loss 12V and 24V batteries, up to 40A battery current @39kHz
 * Core: 2 stacked [KS184-125A](https://www.semic.info/ljf-t184-s-125a-bk/)
-  * choose optimized material for even lower loss
 * Wire: Ø=1.18mm Cu (1.25mm total), W210 (Grade 2) Copper
-  * the diameter is arbitrary. prefer multiple strands for easier winding and reduced ac loss (skin & proximity effects)
 * Winding: 10 strands, 12 turns, need 20 meter wire in total (10x 2m)
 * Systematic name: 2s-KS184-125A-118cu-10s-12t
 * [Micrometals analyzer](https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=30.37&vin_rms_min=45&vin_rms_max=27&f_switching=39000.0&ambient_temp=40&max_temp_rise=50&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=2&wire_strands=10&full_ratio=0.9&min_awg=30&pct_win_fill_max_e=100&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=12&strandsxawg=10xAWG%252316.8&partnumber=MS-184125-2&awg=16.8)
@@ -187,3 +197,10 @@ Some points to consider:
 * If using a (almost) sealed enclosure (aluminium box), add a bag silica to compensate internal humidity. When the
   converter is cooling down at night it'll suck water into the enclosure. The ESP32 WROOM metallic case is not sealed.
   Consider placing a membrane? Sticker on its breathing hole.
+
+
+# Panelize PCBs
+
+You can create a single panel of boards containing the mainboard, 2 psu and and 1 mcu head.
+https://github.com/yaqwsx/KiKit/discussions/242
+

@@ -14,3 +14,5 @@ bom/ibom.html
 _autosave-Fugu2.kicad_pcb
 
 .DS_Store
+
+__pycache__/

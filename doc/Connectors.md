@@ -51,3 +51,19 @@ CBS35-36-C
 CXS35-36-C
 
 https://lugsdirect.com/single-wire-lugs.htm
+
+
+# Standards
+- UEXT
+- Pmod https://digilent.com/reference/_media/reference/pmod/pmod-interface-specification-1_2_0.pdf
+
+![img.png](img.png)
+10 pin, 1.27mm pitch, SMD
+
+
+from https://www.renesas.com/en/document/mae/ek-ra2l1-v1-users-manual?r=1398391 ::
+1. Two Seeed Grove® system (I2C/Analog) connectors
+2. SparkFun® Qwiic® connector
+3. Two Digilent Pmod™ (SPI and UART) connectors
+4. Arduino™ (Uno R3) connector
+5. MikroElektronika™ mikroBUS connector

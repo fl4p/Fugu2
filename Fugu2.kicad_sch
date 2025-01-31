@@ -6117,7 +6117,6 @@
 	)
 	(label "HeatSink"
 		(at 252.73 30.48 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -7168,7 +7167,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "open-pe:SolderWire-1x01_D3mm"
+		(property "Footprint" "open-pe:SolderWire-1x01_D3.5mm"
 			(at 157.48 33.02 0)
 			(effects
 				(font
@@ -13173,7 +13172,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "open-pe:SolderWire-1x01_D3mm"
+		(property "Footprint" "open-pe:SolderWire-1x01_D3.5mm"
 			(at 148.59 33.02 0)
 			(effects
 				(font

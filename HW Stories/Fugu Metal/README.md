@@ -145,3 +145,13 @@ V=77.27/26.65 I=-0.1/-0.18A  -5.0W 76°C 165sps  0kbps PWM(H|L|Lm)=   0|   0| 12
 - Inductor
   - OE-130090-2 https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=35&iavg=26&vin_rms_min=27&vin_rms_max=42&f_switching=50000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=33&part_type=A&winding=F&num_cores=2&wire_strands=3&full_ratio=0.45&min_awg=14&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=19&strandsxawg=3xAWG%2314&partnumber=OE-130090-2&awg=14
   - SM-130060-2 (KAM* nanodust, Ljf T130-AM-060A-E14 GK) https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=35&iavg=26&vin_rms_min=27&vin_rms_max=42&f_switching=50000&ambient_temp=40&max_temp_rise=40&temp_rise=1&min_l=33&part_type=A&winding=F&num_cores=2&wire_strands=3&full_ratio=0.45&min_awg=14&pct_win_fill_max_e=55&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=19&strandsxawg=3xAWG%2314&partnumber=SM-130060-2&awg=14
+  - 2s HS-130060 (58071A2-2)
+    - 19Turns, 1.18mmCu, 5strands
+  - 2s GX-130125-2
+    - 15/16 turns, 1.18mmCu 6strands
+    - got 18 turns (L0=90µH with 6strands), very tight!
+      - micrometals analyzer with 16,8AWG says ID use=0.47 (for awg17=0.44)
+
+- Switches:
+  - Low: IPP022N12NM6AKSA1 (gdrv: 4.7R) and  ST15100S Trench MOS Schottky Rectifier (SMD)
+  - HS: 2x IPP040N08NF2SAKMA1 (gdrv: 4.7R, discharge: 4.7R/2)
