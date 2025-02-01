@@ -1,3 +1,5 @@
+View this project on [CADLAB.io](https://cadlab.io/project/28816). 
+
 Links: [github](https://github.com/fl4p/Fugu2) | [cadlab](https://cadlab.io/project/28046) | [docs](doc/) | schematics |
 IBOM | [firmware](https://github.com/fl4p/fugu-mppt-firmware)
 |~ [additional documentation & resources](https://github.com/fl4p/fugu-mppt-doc)
