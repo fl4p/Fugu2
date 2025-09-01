@@ -104,7 +104,7 @@ Junction capacitance can be modeled with a capacitor parallel to the diode:
 
 Charging the capacitor causes power loss, as it current flows during HS turn-on.
 The energy stored in the parasitic capacitance is mostly recovered into the coil during LS diode turn-on, however the
-inefficient resistive charging across the HS already wastes most of the energy. TODO.
+inefficient resistive charging across the HS introduces power loss. (Ideal inductive charge/discharge has no loss)
 
 This power loss is proportional ~ V**1.5 and usually only significant for voltages > 100V.
 

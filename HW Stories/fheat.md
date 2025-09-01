@@ -5,9 +5,12 @@ heat-sink
 - 160 x 83 x 25 AK-EL83-160
 - 6.6 °C/W ? ( https://www.heatsinkcalculator.com/heat-sink-size-calculator.html )
 
-Coil
+# Coil
+
 
 15 Turns, 2 Strands, d=2mm?
+
+L0 = 126µH
 
 ## Core
 

@@ -6,20 +6,20 @@ IBOM | [firmware](https://github.com/fl4p/fugu-mppt-firmware)
 
 ## Gallery
 
-|                           <img src="doc/img/fugu-metal.webp" width=300/>                            |           <img src="doc/img/fugu2.webp" width=400 />            |
-|:---------------------------------------------------------------------------------------------------:|:---------------------------------------------------------------:|
-| Small aluminium enclosure with two T130 sendust cores [fmetal](HW%20Stories/Fugu%20Metal/README.md) | on heatsink, T184 sendust core   [fheat](HW%20Stories/fheat.md) |
+|                              <img src="doc/img/fugu-metal.webp" width=300/>                              |               <img src="doc/img/fugu2.webp" width=400 />                |
+|:--------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------:|
+| Small aluminium enclosure with two T130 sendust coil cores [fmetal](HW%20Stories/Fugu%20Metal/README.md) | mounted on heatsink, T184 sendust core   [fheat](HW%20Stories/fheat.md) |
 
-|        <img src="doc/img/fheat2.webp" width=400 />        | <img src="img/fisi.webp" width=400 /> |
-|:---------------------------------------------------------:|:-------------------------------------:|
-| two T184 sendust cores   [fheat2](HW%20Stories/fheat2.md) |     [fisi](HW%20Stories/fisi.md)      |
+|                 <img src="doc/img/fheat2.webp" width=400 />                  |              <img src="img/fisi.webp" width=400 />              |
+|:----------------------------------------------------------------------------:|:---------------------------------------------------------------:|
+| improved coil with two T184 sendust cores   [fheat2](HW%20Stories/fheat2.md) | inside an enclosure from a RF amp  [fisi](HW%20Stories/fisi.md) |
 
 ## Specs
 
 * Solar input voltage: 12 ~ 80V (higher voltage configurations possible, please create an issue if you need help with
   component selection)
 * Battery output voltage: 12 ~ 60V (LiFePo4 4s ~ 16s)
-* Max battery current: 32 A
+* Max output current: 32 A
 * Efficiency
     * Vin=72 Vout=27 Iout=32A: 98.17% (measured with INA228 & Riedon
       SSA-100, [smart-shunt](https://github.com/open-pe/smart-shunt-fw))
@@ -39,7 +39,7 @@ replaced hall sensor with shunt resistor and faster switching. See the list belo
 * build inductor
     * order core and copper wire
     * wind the coil
-* flash firmware
+* flash [firmware](https://github.com/fl4p/fugu-mppt-firmware)
 
 ## Design Principles
 
@@ -83,33 +83,70 @@ replaced hall sensor with shunt resistor and faster switching. See the list belo
 
 # Inductor Quick Start Guide
 
-The magnetic core material Sendust (KoolMµ) is cheap with good availability and has good saturation characteristics and
-low loss.
-Manufacturers offer optimized materials, focusing on price, dc bias and core loss.
+The inductor should have an inductivity value that is high enough to keep the ripple current in range, a common design
+rule is that ripple is in the range of 0.3 ~ 0.5 of the dc current. Notice that inductivity decreases with dc bias
+current.
+The micrometals design tool is a good starting point to find suitable designs.
+
+Off-the-shelf inductors exists, however they are usually expensive (>$20), such as the 	
+CODACA CPEX4141L-500MC (optimized for dc bias) and CPEA4141L-500MC (optimized for low loss).
+On LCSC you'll
+find [Ruishen RSEQ32-470M](https://www.lcsc.com/product-detail/Power-Inductors_Ruishen-RSEQ32-470M_C37634010.html),
+RSEQ3635-460M
+and [RSEQ3635-700M](https://www.lcsc.com/product-detail/Power-Inductors_Ruishen-RSEQ3635-700M_C37634013.html)
+
+Diving into inductor design can be challenging at first. In practice there is no perfect inductor for a specific
+application.
+Given current, voltage and temperature contraints, the designer usually optimizes for one or more goals, which always
+comes
+with trade-offs. In short:
+
+* chose inductivity L0 sufficiently high (L0 is the unbiased inductivity, e.g. I=0)
+* good dc bias saturation performance (L drops with increased dc current)
+* low DC resistance of winding
+* low core losses
+
+Winding an inductor is nothing to worry about and is actually fun. Below you'll find two design proposals, one
+for 12 and 24V, upto 40A and the other for 48V batteries. Before, let's have a short intro to better understand the
+design decisions.
+
+A well designed inductor has a core/copper loss ratio between 50/50 and 20/80 (micrometals). Copper is easier to cool
+than the core.
+With higher DC output current the core material magnetization increases and inductivity value drops. A good design has a
+maximum drop of ~50% of its initial inductivity.
+Lower inductivity will cause higher ripple current, which will cause more loss in the core and capacitors.
+
+For higher DC currents chose a larger core (or optimized materials).
+For higher output voltage chose a higher inductivity value.
+
+Sendust (KoolMµ)  is a magnetic core material commonly used for power applications. It is cheap with good availability,
+has good saturation characteristics and low loss.
+Manufacturers offer optimized materials, tuning for price, dc bias and/or core loss.
 ([KDM](https://semic.cz/!old/files/pdf_www/Ljf_KDM.pdf): KPH, KAM, KAH, KH)
 
-For the coil choose isolated Copper wire made for electrical applictions commonly referred as W210 with typical
+For the coil winding choose isolated Copper wire made for electrical applictions commonly referred as W210 with typical
 conductivity of 58.5 MS/m. Choose diameter and number of strands so that inner diameter of the toroid core has a good
 usage.
 Prefer multiple strands for easier winding (>2mm diameter becomes unhandy to wind) and reduced ac loss (skin & proximity
-effects). Many strands (>10) increase complexity of winding. a diameter between 1 and 2mm appears to be good choice.
-More copper reduces dc resistance and leakage fringing (TODO ref).
+effects). Many strands (>10) increase complexity of winding. A diameter between 1 and 2mm appears to be good choice.
+More copper reduces dc resistance and leakage fringing (TODO ref). Evenly wind the wire on the core to reduce leakage
+fringing.
 
 ## 12V or 24V battery up to 40A
 
 * Optimized for low loss 12V and 24V batteries, up to 40A battery current @39kHz
-* Core: 2 stacked [KS184-125A](https://www.semic.info/ljf-t184-s-125a-bk/)
+* Core: 2 stacked [KS184-125A](https://www.semic.info/ljf-t184-s-125a-bk/) (or 0077438A7
+  from [digikey](https://www.digikey.com/en/products/detail/magnetics-a-division-of-spang-co/0077438A7/18626927))
 * Wire: Ø=1.18mm Cu (1.25mm total), W210 (Grade 2) Copper
 * Winding: 10 strands, 12 turns, need 20 meter wire in total (10x 2m)
 * Systematic name: 2s-KS184-125A-118cu-10s-12t
 * [Micrometals analyzer](https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=30.37&vin_rms_min=45&vin_rms_max=27&f_switching=39000.0&ambient_temp=40&max_temp_rise=50&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=2&wire_strands=10&full_ratio=0.9&min_awg=30&pct_win_fill_max_e=100&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=12&strandsxawg=10xAWG%252316.8&partnumber=MS-184125-2&awg=16.8)
 
-<img src="doc/coil-journal/img_9.webp" width=300 />
-<img src="doc/coil-journal/img_10.webp" width=300 />
+<img src="doc/coil-journal/img_9.webp" width=300 /> <img src="doc/coil-journal/img_10.webp" width=300 />
 
 ## 48V batteries up to 20A
 
-* Core: [KS184-125A](https://www.semic.info/ljf-t184-s-125a-bk/)
+* Core: 1x [KS184-125A](https://www.semic.info/ljf-t184-s-125a-bk/)
 * Wire: Ø=1.63mm Cu (AWG14), W210 (Grade 2) Copper
 * Winding: 4 strands, 20 turns
 * Systematic name: 1s-KS184-125A-163cu-4s-20t
@@ -199,7 +236,6 @@ Some points to consider:
 * If using a (almost) sealed enclosure (aluminium box), add a bag silica to compensate internal humidity. When the
   converter is cooling down at night it'll suck water into the enclosure. The ESP32 WROOM metallic case is not sealed.
   Consider placing a membrane? Sticker on its breathing hole.
-
 
 # Panelize PCBs
 

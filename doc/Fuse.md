@@ -12,3 +12,11 @@
 
 # Blade
 0287035.PXCN 35A 1.61m
+
+
+# SMD
+
+60V, 20A: JAK 6002203 NA52
+
+# Catridge
+60V, 40A: AXT 40A 60V (PF)

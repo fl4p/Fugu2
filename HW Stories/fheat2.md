@@ -22,6 +22,7 @@ Switches:
 
 Measurements:
 
+- Vin= 72V ? , Vout=27V?
 - pin=835.81 W, pout=821.10 W, ploss=-1.75%  !!!  (TODO verify, calibrate shunts?)
     - Il=30A ipp=12.2A
 - 961.58 W 942.78 W ploss=1.95%
