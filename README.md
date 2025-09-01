@@ -30,6 +30,11 @@ replaced hall sensor with shunt resistor and faster switching. See the list belo
 
 ## How to build
 
+You can place the ESP32-S3 directly on the board and use the USB pin header or the ESP-PROG header for flashing.
+Alternatively, you can place SMD pin headers where the ESP32-S3 footprint is and use the MCU header board.
+This makes it easier to replace the MCU in case it breaks. You can of course create your own header board using another
+MCU series such as the STM32.
+
 * order PCB (or make @home)
     * 1x `Fugu2.kicad_pcb`
     * 2x `psu/buck100.kicad_pcb` (one for 3.3V and one for 12V)
