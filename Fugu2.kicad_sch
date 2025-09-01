@@ -3343,7 +3343,7 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 77.47) (xy 142.24 99.695)
+			(xy 142.24 77.47) (xy 142.24 98.425)
 		)
 		(stroke
 			(width 0)
@@ -4013,7 +4013,7 @@
 	)
 	(wire
 		(pts
-			(xy 132.715 77.47) (xy 132.715 99.695)
+			(xy 132.715 77.47) (xy 132.715 98.425)
 		)
 		(stroke
 			(width 0)
@@ -4524,7 +4524,7 @@
 		)
 		(uuid "3b71f984-e5b2-4741-9ab6-e220a570f946")
 	)
-	(text "Why backflow switch here?\n- Can stop any battery current from\n  flowing into the converter (eFuse)\n- In case of a HS short, can leave\n   LS on permanentely to avoid\n   battery over-voltage\n- We already have a suitable gate\n    drive voltage from HO"
+	(text "Why backflow switch here?\n- Can stop any battery current from\n  flowing into the converter (eFuse)\n- In case of a HS short, can leave\n   LS on permanentely to avoid\n   battery over-voltage\n- We already have a suitable gate\n    drive voltage from HO\nDisadvantage: doesn't work with boost mode"
 		(exclude_from_sim no)
 		(at 144.78 39.37 0)
 		(effects
@@ -6413,7 +6413,6 @@
 		)
 	)
 	(symbol
-		(lib_name "open-pe:HYG025N06LS1C2")
 		(lib_id "open-pe:HYG025N06LS1C2")
 		(at 141.605 48.895 270)
 		(unit 1)
@@ -10405,7 +10404,7 @@
 		)
 	)
 	(sheet
-		(at 113.03 99.695)
+		(at 113.03 98.425)
 		(size 37.465 15.24)
 		(fields_autoplaced yes)
 		(stroke
@@ -10417,7 +10416,7 @@
 		)
 		(uuid "d823af85-5d33-4f5e-bd70-5bd51b184406")
 		(property "Sheetname" "Sensors"
-			(at 113.03 98.9834 0)
+			(at 113.03 97.7134 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10426,7 +10425,7 @@
 			)
 		)
 		(property "Sheetfile" "Sensors.kicad_sch"
-			(at 113.03 115.5196 0)
+			(at 113.03 114.2496 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10435,7 +10434,7 @@
 			)
 		)
 		(pin "Vin-" input
-			(at 142.24 99.695 90)
+			(at 142.24 98.425 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10445,7 +10444,7 @@
 			(uuid "ddfa466d-1fed-4377-b3fe-bea85932a0a4")
 		)
 		(pin "Vin+" input
-			(at 132.715 99.695 90)
+			(at 132.715 98.425 90)
 			(effects
 				(font
 					(size 1.27 1.27)
