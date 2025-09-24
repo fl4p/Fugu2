@@ -1,4 +1,5 @@
-Links: [github](https://github.com/fl4p/Fugu2) | [cadlab](https://cadlab.io/project/28816) | [docs](doc/) | [schematics](Schematics.pdf) |
+Links: [github](https://github.com/fl4p/Fugu2) | [cadlab](https://cadlab.io/project/28816) (schematics &
+pcb) | [docs](doc/) | [schematics](Schematics.pdf) |
 IBOM | [firmware](https://github.com/fl4p/fugu-mppt-firmware)
 |~ [additional documentation & resources](https://github.com/fl4p/fugu-mppt-doc)
 
@@ -60,10 +61,10 @@ MCU series such as the STM32.
 - Current sense on the battery side (less noise, can detect bat reverse current)
 - Low-side current sensing because it supports up to 60V battery voltage (for 16s lifepo4 48V batteries)
 - Backflow switch on battery side (bat eFuse if sth goes wrong, can safely handle a short of the high-side switches)
-- Backflow switch powered by charge pump from the HS gate driver (no extra DC-DC)
-- Much higher 4 A gate drive current (previously 130mA and 1.4 A) to reduce switching losses
+- Backflow switch powered by bootstrapping charge pump from the HS gate driver (no extra DC-DC)
+- Much higher 4 A gate drive current (previously 130mA and 1.4 A) to reduce switching losses (TI UCC21330)
 - Introducing RC snubber circuit to reduce EMI and MOSFET voltage stress
-- TVS protection circuit
+- TVS protection circuit to protect internal power supply
 - off-board 3.3V and 12V power-supply
 - USB break-out and off-board programmer (ESP PROG Header)
 - Improved voltage and current sense PCB Design (voltage divider & filter caps close to ADC)
@@ -98,13 +99,12 @@ find [Ruishen RSEQ32-470M](https://www.lcsc.com/product-detail/Power-Inductors_R
 RSEQ3635-460M
 and [RSEQ3635-700M](https://www.lcsc.com/product-detail/Power-Inductors_Ruishen-RSEQ3635-700M_C37634013.html)
 
-Diving into inductor design can be challenging at first. In practice there is no perfect inductor for a specific
+Diving into inductor design can be overwhelming at first. In practice there is no perfect inductor for a specific
 application.
 Given current, voltage and temperature contraints, the designer usually optimizes for one or more goals, which always
-comes
-with trade-offs. In short:
+comes with trade-offs. In short:
 
-* chose inductivity L0 sufficiently high (L0 is the unbiased inductivity, e.g. I=0)
+* chose inductivity L0 high enough (L0 is the unbiased inductivity, e.g. I=0)
 * good dc bias saturation performance (L drops with increased dc current)
 * low DC resistance of winding
 * low core losses
@@ -117,12 +117,14 @@ A well designed inductor has a core/copper loss ratio between 50/50 and 20/80 (m
 than the core.
 With higher DC output current the core material magnetization increases and inductivity value drops. A good design has a
 maximum drop of ~50% of its initial inductivity.
-Lower inductivity will cause higher ripple current, which will cause more loss in the core and capacitors.
+Lower inductivity will cause higher ripple current, which will cause more loss in the core and capacitors (increased AC
+amplitude of magnetic field and current).
 
-For higher DC currents chose a larger core (or optimized materials).
+For higher DC currents chose a larger core (or materials optimized for DC saturation, which can have low availability
+and a higher price tag).
 For higher output voltage chose a higher inductivity value.
 
-Sendust (KoolMµ)  is a magnetic core material commonly used for power applications. It is cheap with good availability,
+Sendust (KoolMµ)  is a magnetic core material commonly used for power applications. It is affordable with high availability,
 has good saturation characteristics and low loss.
 Manufacturers offer optimized materials, tuning for price, dc bias and/or core loss.
 ([KDM](https://semic.cz/!old/files/pdf_www/Ljf_KDM.pdf): KPH, KAM, KAH, KH)
@@ -168,6 +170,10 @@ See [Toshibas Product Guide on pg. 16](https://www.mouser.com/datasheet/2/408/to
 - body diode never conducts
 - picks:
     - IPP055N08NF2SAKMA1 (80V 5.5mΩ Qsw=13nC)
+    - IPP040N08NF2S
+    - CSD19501KCS (80V 5.5mΩ Qsw=11nC)
+    - IPP089N15NM6 (150V Qsw=11nC)
+    - IPP057N15NM6 (150V Qsw=16nC)
 
 ## Low Side Switch (LS, sync)
 
@@ -178,6 +184,10 @@ See [Toshibas Product Guide on pg. 16](https://www.mouser.com/datasheet/2/408/to
 - low Rds_on
 - low Qgd, Qgd/Qgs (prevent self turn-on)
 - low r_g (prevent self turn-on)
+- Picks
+  - IPP040N08NF2S
+  - IPP022N12NM6
+  - IPP019N08NF2S
 
 Current through the LS Switch always flows from source to drain (4th quadrant of V-I plane),
 which makes the gate drive signal rather irrelevant. It is much easier to switch than the HS, ringing is generally
@@ -191,7 +201,7 @@ fet to avoid channel break-down if needed.
 
 To improve conversion efficiency we first need to understand where power is lost and quantify it.
 For quantification we can model power loss or measure it.
-There is plenty of literature about modelling power loss in a DC-DC converter.
+There is plenty of literature about modeling power loss in a DC-DC converter.
 [fetlib](https://github.com/fl4p/fetlib) can model switch loss, inductor loss and capacitor loss.
 
 Literature: [TI slvaeq9](https://www.ti.com/lit/an/slvaeq9/slvaeq9.pdf) TODO more
@@ -200,8 +210,7 @@ The are multiple ways for power loss measurement:
 
 - Measure temperature rise of components using a thermal imager or thermal probe. This will give you can idea where
   most power is lost. If you know the thermal resistance between a component and ambient, you can calculate the power
-  loss in
-  watts.
+  loss in watts.
 - Measure total converter power loss using power two power meters, one at the input and one the output.
 - Measure component loss using a multimeter (static i2r loss)
   or [oscilloscope](https://www.tek.com/en/documents/application-note/circuit-measurement-inductors-and-transformers-oscilloscope).
@@ -220,14 +229,15 @@ Some points to consider:
 * Reduce switching times: smaller gate resistors, stronger driver. Make sure there is no severe ringing at switching
   node and at the gates. Consider using a faster Mosfet (low Qsw)
 * Place Schottky diode in parallel to LS switch. this can decrease reverse-recovery loss
+* LS cascode of 2 MOSFETs (an additional low-voltage MOSFET) can help decreasing reverse-recovery effects
 * Use a second HS switch in parallel (with separate gate drive resistor)
 * Use short & wide PCB traces, maybe 4-layer PCB.
 
 # Higher input voltages
 
 * input caps
-* remove PV supply diode
-* bigger inductivity to keep ripple current in a reasonable level
+* remove PV supply diode at board power supply
+* bigger inductivity to keep ripple current at a reasonable level
 * change mosfets HS & LS V_GS(breakdown) to 120V, 150V or 200V
 * voltage sense resistors
 

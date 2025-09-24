@@ -38,3 +38,7 @@ https://www.mag-inc.com/Design/Design-Tools
 
 # PV
 https://github.com/pvlib/pvlib-python
+
+# Thermal, Heatsink
+
+https://epc-co.com/epc/design-support/gan-power-bench/gan-fet-thermal-calculator

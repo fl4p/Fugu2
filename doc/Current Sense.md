@@ -68,3 +68,10 @@ the OP amp should have no Vos cross-over distortion, and a low Vos drift
 
 ![img_1.png](img_1.png)
 https://www.analog.com/media/en/technical-documentation/data-sheets/ltc2063-2064-2065.pdf
+
+
+![img.png](img.png)
+from https://www.mouser.com/pdfDocs/RECOMACDCBOOKOFKNOWLEDGE.pdf#page=181
+
+
+
