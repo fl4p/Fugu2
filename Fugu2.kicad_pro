@@ -48,7 +48,7 @@
         "silk_text_thickness": 0.15,
         "silk_text_upright": false,
         "zones": {
-          "min_clearance": 0.15
+          "min_clearance": 0.2
         }
       },
       "diff_pair_dimensions": [
@@ -61,10 +61,6 @@
       "drc_exclusions": [
         [
           "starved_thermal|38635000|38325000|65fcb45e-9146-4148-988d-83ebdeb6cd47|efa3ee08-83b9-4b78-a3f6-0e2a3e01ac8b|F.Cu",
-          ""
-        ],
-        [
-          "starved_thermal|56082863|36083000|65fcb45e-9146-4148-988d-83ebdeb6cd47|1b373cb4-d438-4f13-9773-5e9031c18ddb|F.Cu",
           ""
         ]
       ],
@@ -135,7 +131,7 @@
         "max_error": 0.005,
         "min_clearance": 0.125,
         "min_connection": 0.0,
-        "min_copper_edge_clearance": 0.2,
+        "min_copper_edge_clearance": 0.15,
         "min_groove_width": 0.0,
         "min_hole_clearance": 0.25,
         "min_hole_to_hole": 0.25,

@@ -1,13 +1,15 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "e6692049-eaa1-423b-b1ac-05fb6d0f1fc2")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Connector:Conn_01x01_Socket"
 			(pin_names
-				(offset 1.016) hide)
+				(offset 1.016)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -94,9 +96,9 @@
 					)
 				)
 				(arc
-					(start 0 0.508)
+					(start 0 -0.508)
 					(mid -0.5058 0)
-					(end 0 -0.508)
+					(end 0 0.508)
 					(stroke
 						(width 0.1524)
 						(type default)
@@ -124,11 +126,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "D_Small_5"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.254) hide)
+				(offset 0.254)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -216,10 +223,10 @@
 			(symbol "D_Small_5_0_1"
 				(polyline
 					(pts
-						(xy -0.762 -1.016) (xy -0.762 1.016)
+						(xy -0.762 0) (xy 0.762 0)
 					)
 					(stroke
-						(width 0.254)
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -228,10 +235,10 @@
 				)
 				(polyline
 					(pts
-						(xy -0.762 0) (xy 0.762 0)
+						(xy -0.762 -1.016) (xy -0.762 1.016)
 					)
 					(stroke
-						(width 0)
+						(width 0.254)
 						(type default)
 					)
 					(fill
@@ -289,9 +296,12 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:C"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0.254)
 			)
@@ -364,7 +374,7 @@
 			(symbol "C_0_1"
 				(polyline
 					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
+						(xy -2.032 0.762) (xy 2.032 0.762)
 					)
 					(stroke
 						(width 0.508)
@@ -376,7 +386,7 @@
 				)
 				(polyline
 					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
 					)
 					(stroke
 						(width 0.508)
@@ -425,9 +435,12 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:C_Polarized"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0.254)
 			)
@@ -583,11 +596,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:C_Small"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.254) hide)
+				(offset 0.254)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -657,10 +675,10 @@
 			(symbol "C_Small_0_1"
 				(polyline
 					(pts
-						(xy -1.524 -0.508) (xy 1.524 -0.508)
+						(xy -1.524 0.508) (xy 1.524 0.508)
 					)
 					(stroke
-						(width 0.3302)
+						(width 0.3048)
 						(type default)
 					)
 					(fill
@@ -669,10 +687,10 @@
 				)
 				(polyline
 					(pts
-						(xy -1.524 0.508) (xy 1.524 0.508)
+						(xy -1.524 -0.508) (xy 1.524 -0.508)
 					)
 					(stroke
-						(width 0.3048)
+						(width 0.3302)
 						(type default)
 					)
 					(fill
@@ -718,10 +736,13 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:D_Dual_CommonCathode_AKA_Parallel"
 			(pin_names
-				(offset 0.762) hide)
+				(offset 0.762)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -780,7 +801,7 @@
 			(symbol "D_Dual_CommonCathode_AKA_Parallel_0_0"
 				(polyline
 					(pts
-						(xy 0 -1.27) (xy 0 -3.81)
+						(xy 0 3.81) (xy 0 1.27)
 					)
 					(stroke
 						(width 0.254)
@@ -792,7 +813,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 3.81) (xy 0 1.27)
+						(xy 0 -1.27) (xy 0 -3.81)
 					)
 					(stroke
 						(width 0.254)
@@ -806,22 +827,10 @@
 			(symbol "D_Dual_CommonCathode_AKA_Parallel_0_1"
 				(polyline
 					(pts
-						(xy 1.27 0) (xy 2.54 0)
+						(xy -2.54 3.81) (xy 0 2.54) (xy -2.54 1.27) (xy -2.54 3.81) (xy -2.54 3.81) (xy -2.54 3.81)
 					)
 					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 -2.54) (xy 1.27 -2.54) (xy 1.27 2.54) (xy -2.54 2.54)
-					)
-					(stroke
-						(width 0)
+						(width 0.254)
 						(type default)
 					)
 					(fill
@@ -842,10 +851,22 @@
 				)
 				(polyline
 					(pts
-						(xy -2.54 3.81) (xy 0 2.54) (xy -2.54 1.27) (xy -2.54 3.81) (xy -2.54 3.81) (xy -2.54 3.81)
+						(xy -2.54 -2.54) (xy 1.27 -2.54) (xy 1.27 2.54) (xy -2.54 2.54)
 					)
 					(stroke
-						(width 0.254)
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy 2.54 0)
+					)
+					(stroke
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -882,24 +903,6 @@
 					)
 				)
 				(pin passive line
-					(at 5.08 0 180)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
 					(at -5.08 -2.54 0)
 					(length 2.54)
 					(name "K"
@@ -917,12 +920,35 @@
 						)
 					)
 				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:D_Small"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.254) hide)
+				(offset 0.254)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1010,10 +1036,10 @@
 			(symbol "D_Small_0_1"
 				(polyline
 					(pts
-						(xy -0.762 -1.016) (xy -0.762 1.016)
+						(xy -0.762 0) (xy 0.762 0)
 					)
 					(stroke
-						(width 0.254)
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -1022,10 +1048,10 @@
 				)
 				(polyline
 					(pts
-						(xy -0.762 0) (xy 0.762 0)
+						(xy -0.762 -1.016) (xy -0.762 1.016)
 					)
 					(stroke
-						(width 0)
+						(width 0.254)
 						(type default)
 					)
 					(fill
@@ -1083,9 +1109,12 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:Fuse"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
 			)
@@ -1216,11 +1245,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:L"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 1.016) hide)
+				(offset 1.016)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1287,32 +1321,8 @@
 			)
 			(symbol "L_0_1"
 				(arc
-					(start 0 -2.54)
-					(mid 0.6323 -1.905)
-					(end 0 -1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 -1.27)
-					(mid 0.6323 -0.635)
-					(end 0 0)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 0)
-					(mid 0.6323 0.635)
+					(start 0 2.54)
+					(mid 0.6323 1.905)
 					(end 0 1.27)
 					(stroke
 						(width 0)
@@ -1324,8 +1334,32 @@
 				)
 				(arc
 					(start 0 1.27)
-					(mid 0.6323 1.905)
-					(end 0 2.54)
+					(mid 0.6323 0.635)
+					(end 0 0)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 0)
+					(mid 0.6323 -0.635)
+					(end 0 -1.27)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -1.27)
+					(mid 0.6323 -1.905)
+					(end 0 -2.54)
 					(stroke
 						(width 0)
 						(type default)
@@ -1373,9 +1407,12 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:R"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
 			)
@@ -1494,11 +1531,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Device:R_Small"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 0.254) hide)
+				(offset 0.254)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1616,6 +1658,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Mechanical:MountingHole"
 			(pin_names
@@ -1698,11 +1741,16 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Mechanical:MountingHole_Pad"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 1.016) hide)
+				(offset 1.016)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1800,9 +1848,12 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "Transistor_FET:IPP060N06N"
-			(pin_names hide)
+			(pin_names
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1875,18 +1926,6 @@
 			(symbol "IPP060N06N_0_1"
 				(polyline
 					(pts
-						(xy 0.254 0) (xy -2.54 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
 						(xy 0.254 1.905) (xy 0.254 -1.905)
 					)
 					(stroke
@@ -1899,7 +1938,19 @@
 				)
 				(polyline
 					(pts
-						(xy 0.762 -1.27) (xy 0.762 -2.286)
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0.254)
@@ -1923,34 +1974,10 @@
 				)
 				(polyline
 					(pts
-						(xy 0.762 2.286) (xy 0.762 1.27)
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
 					)
 					(stroke
 						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 2.54) (xy 2.54 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
-					)
-					(stroke
-						(width 0)
 						(type default)
 					)
 					(fill
@@ -1981,6 +2008,63 @@
 						(type outline)
 					)
 				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(polyline
 					(pts
 						(xy 2.794 0.508) (xy 2.921 0.381) (xy 3.683 0.381) (xy 3.81 0.254)
@@ -2003,39 +2087,6 @@
 					)
 					(fill
 						(type none)
-					)
-				)
-				(circle
-					(center 1.651 0)
-					(radius 2.794)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.54 -1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center 2.54 1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
 					)
 				)
 			)
@@ -2095,9 +2146,12 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "open-pe:HYG025N06LS1C2"
-			(pin_names hide)
+			(pin_names
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -2169,6 +2223,18 @@
 			(symbol "HYG025N06LS1C2_0_1"
 				(polyline
 					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
 						(xy 0.254 0) (xy -2.54 0)
 					)
 					(stroke
@@ -2181,7 +2247,31 @@
 				)
 				(polyline
 					(pts
-						(xy 0.254 1.905) (xy 0.254 -1.905)
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 1.778) (xy 3.302 1.778) (xy 3.302 -1.778) (xy 0.762 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
 					)
 					(stroke
 						(width 0.254)
@@ -2205,20 +2295,19 @@
 				)
 				(polyline
 					(pts
-						(xy 0.762 0.508) (xy 0.762 -0.508)
+						(xy 1.27 0) (xy 2.286 -0.381) (xy 2.286 0.381) (xy 1.27 0)
 					)
 					(stroke
-						(width 0.254)
+						(width 0)
 						(type default)
 					)
 					(fill
-						(type none)
+						(type outline)
 					)
 				)
-				(polyline
-					(pts
-						(xy 0.762 2.286) (xy 0.762 1.27)
-					)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
 					(stroke
 						(width 0.254)
 						(type default)
@@ -2239,6 +2328,28 @@
 						(type none)
 					)
 				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
 				(polyline
 					(pts
 						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
@@ -2249,30 +2360,6 @@
 					)
 					(fill
 						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.762 1.778) (xy 3.302 1.778) (xy 3.302 -1.778) (xy 0.762 -1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 0) (xy 2.286 -0.381) (xy 2.286 0.381) (xy 1.27 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
 					)
 				)
 				(polyline
@@ -2299,81 +2386,12 @@
 						(type none)
 					)
 				)
-				(circle
-					(center 1.651 0)
-					(radius 2.794)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 2.54 -1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(circle
-					(center 2.54 1.778)
-					(radius 0.254)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
 			)
 			(symbol "HYG025N06LS1C2_1_1"
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 				(pin input line
 					(at -5.08 0 0)
 					(length 2.54)
 					(name "G"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -6.35 90)
-					(length 2.54) hide
-					(name "S"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2408,7 +2426,26 @@
 				)
 				(pin passive line
 					(at 2.54 -5.08 90)
-					(length 2.54) hide
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(hide yes)
 					(name "S"
 						(effects
 							(font
@@ -2424,12 +2461,36 @@
 						)
 					)
 				)
+				(pin passive line
+					(at 2.54 -6.35 90)
+					(length 2.54)
+					(hide yes)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "open-pe:ST15100S"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
-				(offset 1.016) hide)
+				(offset 1.016)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -2547,6 +2608,18 @@
 				)
 				(polyline
 					(pts
+						(xy -0.889 -0.889) (xy -1.778 0) (xy 0.889 0.889) (xy 0 -1.778) (xy -0.889 -0.889)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
 						(xy 0 1.778) (xy 1.778 0)
 					)
 					(stroke
@@ -2579,18 +2652,6 @@
 					)
 					(fill
 						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.889 -0.889) (xy -1.778 0) (xy 0.889 0.889) (xy 0 -1.778) (xy -0.889 -0.889)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
 					)
 				)
 			)
@@ -2634,24 +2695,6 @@
 			)
 			(symbol "ST15100S_1_2"
 				(pin passive line
-					(at 2.54 2.54 180)
-					(length 0)
-					(name "K"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
 					(at -2.54 -2.54 0)
 					(length 0)
 					(name "A"
@@ -2669,11 +2712,32 @@
 						)
 					)
 				)
+				(pin passive line
+					(at 2.54 2.54 180)
+					(length 0)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "open-pe:Screw_TerminalBlock_WR-TBL_2566_01x02"
 			(pin_names
-				(offset 1.016) hide)
+				(offset 1.016)
+				(hide yes)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -2750,9 +2814,10 @@
 						(type background)
 					)
 				)
-				(circle
-					(center 0 -2.54)
-					(radius 0.635)
+				(polyline
+					(pts
+						(xy -0.5334 0.3302) (xy 0.3302 -0.508)
+					)
 					(stroke
 						(width 0.1524)
 						(type default)
@@ -2775,7 +2840,7 @@
 				)
 				(polyline
 					(pts
-						(xy -0.5334 0.3302) (xy 0.3302 -0.508)
+						(xy -0.3556 0.508) (xy 0.508 -0.3302)
 					)
 					(stroke
 						(width 0.1524)
@@ -2797,10 +2862,9 @@
 						(type none)
 					)
 				)
-				(polyline
-					(pts
-						(xy -0.3556 0.508) (xy 0.508 -0.3302)
-					)
+				(circle
+					(center 0 0)
+					(radius 0.635)
 					(stroke
 						(width 0.1524)
 						(type default)
@@ -2810,7 +2874,7 @@
 					)
 				)
 				(circle
-					(center 0 0)
+					(center 0 -2.54)
 					(radius 0.635)
 					(stroke
 						(width 0.1524)
@@ -2857,6 +2921,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "power:GND"
 			(power)
@@ -2936,7 +3001,8 @@
 			(symbol "GND_1_1"
 				(pin power_in line
 					(at 0 0 270)
-					(length 0) hide
+					(length 0)
+					(hide yes)
 					(name "GND"
 						(effects
 							(font
@@ -2953,7 +3019,97 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
+	)
+	(rectangle
+		(start 116.84 146.05)
+		(end 151.13 184.15)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 1eb7c9a2-8823-4468-bd1d-6078e314f0ec)
+	)
+	(text "TODO\n- use 2p fuses?\n- extension header 12V, 3.3V, i2c, io pins, SPI?\n   -> UEXT connector (SPI, i2c, UART)\n- LCD and buttons?\n- replace Cin 10u with 4.7u\n- external temp\n"
+		(exclude_from_sim no)
+		(at 179.07 181.61 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "3b71f984-e5b2-4741-9ab6-e220a570f946")
+	)
+	(text "Why backflow switch here?\n- Can stop any battery current from\n  flowing into the converter (eFuse)\n- In case of a HS short, can leave\n   LS on permanentely to avoid\n   battery over-voltage\n- We already have a suitable gate\n    drive voltage from HO\nDisadvantage: doesn't work with boost mode"
+		(exclude_from_sim no)
+		(at 144.78 39.37 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "76e5c66e-50b3-41e3-8683-d44990d08d45")
+	)
+	(text "alternativse in 8-power* housing\n(Rdson(max)@25°C,10V):\n\nTPH1R306PL,L1Q (60V 1.3mΩ)\nSiR626LDP (60V, 1.5m)\nAONS66612 (60V 1.65mΩ)\nHYG025N06LS1C2 (60V, 2.1mΩ)\n\n\nTPHR6503PL,L1Q (30V 0.6mΩ)\nTPHR9003NL1,LQ (30V 0.9mΩ)\nAON6500   (30V 0.95mΩ)\nAONS32302 (30v 1.35mΩ) AONS32311\n"
+		(exclude_from_sim no)
+		(at 194.818 144.018 0)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left bottom)
+			(href "https://www.digikey.de/de/products/filter/transistoren/fets-mosfets/einzelne-fets-mosfets/278?s=N4IgjCBcpgbFoDGUBmBDANgZwKYBoQB7KAbRFgBYBWMC%2BAgJgE4KB2JgZhEZfYA5uIZhT4AGUYOFj6QlmNaS5YCTxFgGIALoEADgBcoIAMp6ATgEsAdgHMQAXwKx1CEMkjps%2BIqRCsaDWAECPyZRWA1GKlEKFSEojiZJBj4mRODYKlhRLkYOPlYI8g5mVhkQsNiGOjFBQOqqWuKmViDyJkywBUcm9lqmPibaimVUwQomZj5C2B6GxlZB4NZsjgpJEJzfKnHixpLNhhaoyTFxQT91CZOOUvOGBkzCjnUnPaZYLqKSteCqfuTFHRYjMSp8qKVYLA0r4VuDBBxRFUIN0SrEEVVNuiKD8QFi5r4MlkcQUClRMaIFp9WHQ6E8wGBRulpK1ngwzgRVvTWhdmJtlhwOFQWcMGfDhmyxepkbj7lR8cUHp8FUK3qxpWp3piES14Qiahy9dKBcUWatGSBwXQaGM%2BAzXgQgRV4RlREaXTiOC6ZJ6okqRDc7qSnlFqPC5ctBFFOg8xtQBcSbmAEmHwcHwZismTzoEwtDPaJtm9Ic7JmMsgXofFwUa%2BDMlbW8vCG3nazEm5QjQsUvCFqE3vrcaxSsCmhkeyk8%2Bx2YPQk9pJjpB6%2BNQWXxMqvwbF1GE6IJt5RPvvxnu2S6T2FrQR91RCtecdf8deZMMhdDsVHChQ2WExvcAmMhWyVov3uYC-zfZpnnxApbVWMZnmTB11xxahAmfddgPXN9MiYdUcM-HD8VQ94%2BimKpAzXbCoU%2BYjuShbFoQKTpegdAYaQAsloljOpIwpWs33qbjayEmjqmA6oBKhWIRD%2BaTKPVSjNhklgbT%2BIjKOfSiaMot9a2nd9XTkw5RF0gYBjLdgiICEzgOpU8xmWUUHWWCVnJiT9qWyByYhQzyiM8spkkubzlDLG9wlqPx2D5BhOltG0GWlGgC1iZLLwtZQb0jTKZDSsFMtaZKIoIIrNiKnEiqIlhmhtMycSk19AzVStXQKXjOgqik4RKrruSChFI2YFUepaCMSuYLJBveQob01Xiv2Ki0Joqib8Vm4txveStUSmtVdpm75sqHVK2T%2BJqGDK2UDoeS6HmgzJthm7YC0jZ7K22ZwSo%2BsqPoqj61o%2BsEPsKj73q-VLHqSx6nq-Mqbj2kqFrWhaqWiC7TLye6MjgkqQjWkIygyChnkjEIwRCQrhyS4cZuHfGskprJK1KUKSsoYS2ZEUTN2puAJG0EB9EMEwLBsexGDCARoEFgxIBAABVSxzD0AB5FAAFkcDQLAAFdTBwQQdcMAA1QQAFs0AAD0MNsCDNqxDAGhwQAAWg0aW3DMHWvGISAyAaTQ7Gd%2BBpfMAATQwnEKIW5ZFqxbAIPQAE8dANuXteQIOgA")
+		)
+		(uuid "807f9b3a-7b7f-4800-9ac0-2273be1a48f0")
+	)
+	(text "60V Battery\n\nLifepo4 16s max Voltage:\n16*3.65 = 58.4V\n"
+		(exclude_from_sim no)
+		(at 167.005 71.12 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8d9433be-498b-4aea-9fc7-829f723a83d4")
+	)
+	(text "Why current senser here?\n- Low side is simpler\n- ~0V common mode -> can use ina226 @ 48V battery\n- MCU ground should be bat(-)\n  for wired interfaces"
+		(exclude_from_sim no)
+		(at 119.38 95.885 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c6f9c5e2-df14-4f70-9bc9-ea863fd7d1cd")
+	)
+	(text "optional diode to\nreduce reverse recovery\neffects and free wheeling\nloss during dead time"
+		(exclude_from_sim no)
+		(at 111.125 71.755 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "d2c4f80a-a950-4979-90a0-d3868efea942")
+	)
+	(text "snubber circuits"
+		(exclude_from_sim no)
+		(at 118.618 148.844 0)
+		(effects
+			(font
+				(size 1.016 1.016)
+			)
+			(justify left bottom)
+		)
+		(uuid "d85fc1a7-a902-40d4-867f-1497dfdef6fb")
 	)
 	(junction
 		(at 135.255 51.435)
@@ -4500,95 +4656,6 @@
 			(type default)
 		)
 		(uuid "fdc0f84e-ab0f-42ea-b7a9-bf813b040ee2")
-	)
-	(rectangle
-		(start 116.84 146.05)
-		(end 151.13 184.15)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(fill
-			(type none)
-		)
-		(uuid 1eb7c9a2-8823-4468-bd1d-6078e314f0ec)
-	)
-	(text "TODO\n- use 2p fuses?\n- extension header 12V, 3.3V, i2c, io pins, SPI?\n   -> UEXT connector (SPI, i2c, UART)\n- LCD and buttons?\n- replace Cin 10u with 4.7u\n- external temp\n"
-		(exclude_from_sim no)
-		(at 179.07 181.61 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "3b71f984-e5b2-4741-9ab6-e220a570f946")
-	)
-	(text "Why backflow switch here?\n- Can stop any battery current from\n  flowing into the converter (eFuse)\n- In case of a HS short, can leave\n   LS on permanentely to avoid\n   battery over-voltage\n- We already have a suitable gate\n    drive voltage from HO\nDisadvantage: doesn't work with boost mode"
-		(exclude_from_sim no)
-		(at 144.78 39.37 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "76e5c66e-50b3-41e3-8683-d44990d08d45")
-	)
-	(text "alternativse in 8-power* housing\n(Rdson(max)@25°C,10V):\n\nTPH1R306PL,L1Q (60V 1.3mΩ)\nSiR626LDP (60V, 1.5m)\nAONS66612 (60V 1.65mΩ)\nHYG025N06LS1C2 (60V, 2.1mΩ)\n\n\nTPHR6503PL,L1Q (30V 0.6mΩ)\nTPHR9003NL1,LQ (30V 0.9mΩ)\nAON6500   (30V 0.95mΩ)\nAONS32302 (30v 1.35mΩ) AONS32311\n"
-		(exclude_from_sim no)
-		(at 194.818 144.018 0)
-		(effects
-			(font
-				(size 1.016 1.016)
-			)
-			(justify left bottom)
-			(href "https://www.digikey.de/de/products/filter/transistoren/fets-mosfets/einzelne-fets-mosfets/278?s=N4IgjCBcpgbFoDGUBmBDANgZwKYBoQB7KAbRFgBYBWMC%2BAgJgE4KB2JgZhEZfYA5uIZhT4AGUYOFj6QlmNaS5YCTxFgGIALoEADgBcoIAMp6ATgEsAdgHMQAXwKx1CEMkjps%2BIqRCsaDWAECPyZRWA1GKlEKFSEojiZJBj4mRODYKlhRLkYOPlYI8g5mVhkQsNiGOjFBQOqqWuKmViDyJkywBUcm9lqmPibaimVUwQomZj5C2B6GxlZB4NZsjgpJEJzfKnHixpLNhhaoyTFxQT91CZOOUvOGBkzCjnUnPaZYLqKSteCqfuTFHRYjMSp8qKVYLA0r4VuDBBxRFUIN0SrEEVVNuiKD8QFi5r4MlkcQUClRMaIFp9WHQ6E8wGBRulpK1ngwzgRVvTWhdmJtlhwOFQWcMGfDhmyxepkbj7lR8cUHp8FUK3qxpWp3piES14Qiahy9dKBcUWatGSBwXQaGM%2BAzXgQgRV4RlREaXTiOC6ZJ6okqRDc7qSnlFqPC5ctBFFOg8xtQBcSbmAEmHwcHwZismTzoEwtDPaJtm9Ic7JmMsgXofFwUa%2BDMlbW8vCG3nazEm5QjQsUvCFqE3vrcaxSsCmhkeyk8%2Bx2YPQk9pJjpB6%2BNQWXxMqvwbF1GE6IJt5RPvvxnu2S6T2FrQR91RCtecdf8deZMMhdDsVHChQ2WExvcAmMhWyVov3uYC-zfZpnnxApbVWMZnmTB11xxahAmfddgPXN9MiYdUcM-HD8VQ94%2BimKpAzXbCoU%2BYjuShbFoQKTpegdAYaQAsloljOpIwpWs33qbjayEmjqmA6oBKhWIRD%2BaTKPVSjNhklgbT%2BIjKOfSiaMot9a2nd9XTkw5RF0gYBjLdgiICEzgOpU8xmWUUHWWCVnJiT9qWyByYhQzyiM8spkkubzlDLG9wlqPx2D5BhOltG0GWlGgC1iZLLwtZQb0jTKZDSsFMtaZKIoIIrNiKnEiqIlhmhtMycSk19AzVStXQKXjOgqik4RKrruSChFI2YFUepaCMSuYLJBveQob01Xiv2Ki0Joqib8Vm4txveStUSmtVdpm75sqHVK2T%2BJqGDK2UDoeS6HmgzJthm7YC0jZ7K22ZwSo%2BsqPoqj61o%2BsEPsKj73q-VLHqSx6nq-Mqbj2kqFrWhaqWiC7TLye6MjgkqQjWkIygyChnkjEIwRCQrhyS4cZuHfGskprJK1KUKSsoYS2ZEUTN2puAJG0EB9EMEwLBsexGDCARoEFgxIBAABVSxzD0AB5FAAFkcDQLAAFdTBwQQdcMAA1QQAFs0AAD0MNsCDNqxDAGhwQAAWg0aW3DMHWvGISAyAaTQ7Gd%2BBpfMAATQwnEKIW5ZFqxbAIPQAE8dANuXteQIOgA")
-		)
-		(uuid "807f9b3a-7b7f-4800-9ac0-2273be1a48f0")
-	)
-	(text "60V Battery\n\nLifepo4 16s max Voltage:\n16*3.65 = 58.4V\n"
-		(exclude_from_sim no)
-		(at 167.005 71.12 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "8d9433be-498b-4aea-9fc7-829f723a83d4")
-	)
-	(text "Why current senser here?\n- Low side is simpler\n- ~0V common mode -> can use ina226 @ 48V battery\n- MCU ground should be bat(-)\n  for wired interfaces"
-		(exclude_from_sim no)
-		(at 119.38 95.885 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "c6f9c5e2-df14-4f70-9bc9-ea863fd7d1cd")
-	)
-	(text "optional diode to\nreduce reverse recovery\neffects and free wheeling\nloss during dead time"
-		(exclude_from_sim no)
-		(at 111.125 71.755 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "d2c4f80a-a950-4979-90a0-d3868efea942")
-	)
-	(text "snubber circuits"
-		(exclude_from_sim no)
-		(at 118.618 148.844 0)
-		(effects
-			(font
-				(size 1.016 1.016)
-			)
-			(justify left bottom)
-		)
-		(uuid "d85fc1a7-a902-40d4-867f-1497dfdef6fb")
 	)
 	(label "HeatSink"
 		(at 252.73 30.48 0)
@@ -10328,6 +10395,10 @@
 	(sheet
 		(at 16.51 157.48)
 		(size 36.83 12.7)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -10366,6 +10437,10 @@
 	(sheet
 		(at 16.51 177.8)
 		(size 36.83 12.7)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -10406,6 +10481,10 @@
 	(sheet
 		(at 113.03 98.425)
 		(size 37.465 15.24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -10435,23 +10514,23 @@
 		)
 		(pin "Vin-" input
 			(at 142.24 98.425 90)
+			(uuid "ddfa466d-1fed-4377-b3fe-bea85932a0a4")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "ddfa466d-1fed-4377-b3fe-bea85932a0a4")
 		)
 		(pin "Vin+" input
 			(at 132.715 98.425 90)
+			(uuid "7c560328-7584-4f0f-8cca-0b458e1b50da")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
 			)
-			(uuid "7c560328-7584-4f0f-8cca-0b458e1b50da")
 		)
 		(instances
 			(project "Fugu2"
@@ -10464,6 +10543,10 @@
 	(sheet
 		(at 17.78 135.89)
 		(size 33.02 10.16)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(stroke
 			(width 0.1524)
@@ -10504,4 +10587,5 @@
 			(page "1")
 		)
 	)
+	(embedded_fonts no)
 )
