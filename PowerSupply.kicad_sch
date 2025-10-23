@@ -3018,7 +3018,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0467.500NRHF"
+		(property "MPN" "TR-0603HV500-R"
 			(at 55.88 54.61 0)
 			(effects
 				(font
@@ -3036,7 +3036,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "  Littelfuse"
+		(property "Manufacturer" "EATON"
 			(at 55.88 54.61 0)
 			(effects
 				(font

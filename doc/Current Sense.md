@@ -50,7 +50,7 @@ INA229
 
 
 
-# OP amp
+# OP amp / current sense amp
 ![img.png](img.png)
 
 the OP amp should have no Vos cross-over distortion, and a low Vos drift
@@ -75,3 +75,7 @@ from https://www.mouser.com/pdfDocs/RECOMACDCBOOKOFKNOWLEDGE.pdf#page=181
 
 
 
+
+![img_1.png](img_1.png)
+
+from https://recom-power.com/en/acdc-bok-chapter13-measuring.html?0 (AC/DC book of knowledge)

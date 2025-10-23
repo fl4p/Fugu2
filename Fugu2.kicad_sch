@@ -128,6 +128,113 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Connector:TestPoint"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.762)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TestPoint"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "test point"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "test point tp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Pin* Test*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TestPoint_0_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "TestPoint_1_1"
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "D_Small_5"
 			(pin_numbers
 				(hide yes)
@@ -3389,7 +3496,7 @@
 	)
 	(wire
 		(pts
-			(xy 32.385 34.29) (xy 32.385 53.34)
+			(xy 32.385 34.29) (xy 32.385 50.8)
 		)
 		(stroke
 			(width 0)
@@ -3969,7 +4076,7 @@
 	)
 	(wire
 		(pts
-			(xy 32.385 55.88) (xy 32.385 77.47)
+			(xy 32.385 53.34) (xy 32.385 77.47)
 		)
 		(stroke
 			(width 0)
@@ -4429,6 +4536,16 @@
 	)
 	(wire
 		(pts
+			(xy 161.925 57.15) (xy 161.925 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c35e6376-a6a2-47ab-bb8e-52bbf472ec2a")
+	)
+	(wire
+		(pts
 			(xy 54.61 49.53) (xy 57.15 49.53)
 		)
 		(stroke
@@ -4509,6 +4626,16 @@
 	)
 	(wire
 		(pts
+			(xy 161.925 62.23) (xy 161.925 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d52527b7-ffff-4048-a49e-83acd6322336")
+	)
+	(wire
+		(pts
 			(xy 91.44 34.29) (xy 110.49 34.29)
 		)
 		(stroke
@@ -4586,16 +4713,6 @@
 			(type default)
 		)
 		(uuid "e944d6c3-5b02-42a0-b353-00d53d2f9445")
-	)
-	(wire
-		(pts
-			(xy 161.925 59.69) (xy 161.925 77.47)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "edf36131-9c88-4beb-aaa8-5545b8e0bb59")
 	)
 	(wire
 		(pts
@@ -4773,6 +4890,50 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "RX"
+		(shape input)
+		(at 230.505 82.55 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3c16c478-de56-4d00-b826-c50c5f1c206e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 225.0403 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "TX"
+		(shape input)
+		(at 230.505 88.265 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "42a48644-2615-4b36-a639-c6ccccfef072")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 225.3427 88.265 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -5125,6 +5286,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "GND"
+		(shape input)
+		(at 230.505 94.615 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "de4bb276-2693-4a79-9783-5cdc726728b7")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 223.6493 94.615 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -5791,8 +5974,7 @@
 	)
 	(symbol
 		(lib_id "open-pe:Screw_TerminalBlock_WR-TBL_2566_01x02")
-		(at 27.305 53.34 0)
-		(mirror y)
+		(at 27.305 53.34 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5800,7 +5982,7 @@
 		(dnp no)
 		(uuid "21ef264f-7e8c-4fb3-b44e-1ffe3eb9fa3a")
 		(property "Reference" "J10"
-			(at 27.305 62.23 0)
+			(at 27.305 44.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5808,14 +5990,14 @@
 			)
 		)
 		(property "Value" "SOLAR"
-			(at 27.305 59.69 0)
+			(at 27.305 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Footprint" "TerminalBlock_MetzConnect:TerminalBlock_MetzConnect_Type703_RT10N02HGLU_1x02_P9.52mm_Horizontal"
+		(property "Footprint" "open-pe:TerminalBlock_WR-TBL_2566_1x02_P10.16mm"
 			(at 27.305 53.34 0)
 			(effects
 				(font
@@ -5869,7 +6051,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "691256610002, VP0265840000G or VP0265540000G"
 			(at 27.305 53.34 0)
 			(effects
 				(font
@@ -8729,7 +8911,6 @@
 	(symbol
 		(lib_id "open-pe:Screw_TerminalBlock_WR-TBL_2566_01x02")
 		(at 167.005 59.69 0)
-		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8746,7 +8927,7 @@
 			)
 		)
 		(property "Value" "BAT"
-			(at 169.545 57.15 0)
+			(at 169.545 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8754,7 +8935,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TerminalBlock_MetzConnect:TerminalBlock_MetzConnect_Type703_RT10N02HGLU_1x02_P9.52mm_Horizontal"
+		(property "Footprint" "open-pe:TerminalBlock_WR-TBL_2566_1x02_P10.16mm"
 			(at 167.005 59.69 0)
 			(effects
 				(font
@@ -8808,7 +8989,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "691256610002, VP0265840000G or VP0265540000G"
 			(at 167.005 59.69 0)
 			(effects
 				(font
@@ -9210,6 +9391,73 @@
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2"
 					(reference "#PWR06")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 230.505 82.55 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ca8d411c-4b54-4b8d-9b6e-702ebeb29627")
+		(property "Reference" "TP1"
+			(at 236.22 81.2799 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "RX"
+			(at 236.22 83.8199 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 230.505 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 230.505 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 230.505 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f42e8ad5-eab5-404f-9d01-64eda4f5d2b8")
+		)
+		(instances
+			(project ""
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2"
+					(reference "TP1")
 					(unit 1)
 				)
 			)
@@ -10062,6 +10310,73 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 230.505 88.265 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ead22ad7-fd0e-4e87-b3a4-2170af31d01b")
+		(property "Reference" "TP2"
+			(at 236.22 86.9949 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TX"
+			(at 236.22 89.5349 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 230.505 93.345 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 230.505 93.345 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 230.505 88.265 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cefe8e53-fa43-4cb0-a9d5-20e12251b3f2")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2"
+					(reference "TP2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 70.485 106.045 0)
 		(unit 1)
@@ -10284,6 +10599,73 @@
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2"
 					(reference "C27")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:TestPoint")
+		(at 230.505 94.615 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f305e2ee-e47a-40fa-b35c-56e94852e77f")
+		(property "Reference" "TP3"
+			(at 236.22 93.3449 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "GND"
+			(at 236.22 95.8849 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
+			(at 230.505 99.695 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 230.505 99.695 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "test point"
+			(at 230.505 94.615 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "debdd0f5-423d-48da-b04e-025f91319ac5")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2"
+					(reference "TP3")
 					(unit 1)
 				)
 			)

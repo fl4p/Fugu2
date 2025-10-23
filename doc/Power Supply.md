@@ -56,15 +56,15 @@ https://www.digikey.de/short/83bbnbjn (buck 75V)
 
 |                   |              | Vin(max) | Iout(max)          | Iq    | eff (80Vin, 150mA) | eff in:75V out:12V,100mA | eff 12Vin/3.3V,100mA | $px(100)            |                                                                                                                                                       |
 |-------------------|--------------|----------|--------------------|-------|--------------------|--------------------------|----------------------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
-| TPP00032          |              | 100      | 300                | 100μA |                    | 72%                      |                      | 0.56 (out of stock) | low stock, sync, FET: 0.75 Ω and 0.4 Ω , light-load operation                                                                                         |
+| *TPP00032*        |              | 100      | 300                | 100μA |                    | 72%                      |                      | 0.56 (out of stock) | low stock, sync, FET: 0.75 Ω and 0.4 Ω , light-load operation                                                                                         |
 | TPP00031-ES1R     |              | 100      | 300 mA             |       |                    | 56%                      |                      | 0.22                | sync, FET: 0.75Ω and 0.4 Ω   [PDF](https://static.3peak.com/res/doc/ds/Datasheet_TPP0003x.pdf)                                                        |
 | LMR38010FDDAR     |              | 80       |                    | 40µ   |                    |                          |                      | 1.81                |                                                                                                                                                       |
 | LMR38020          |              | 100      |                    |       |                    |                          |                      |                     | prog fsw, SPREAD SPECTRUM (EMI)                                                                                                                       |
 | RAA2118034GP3#JA0 | var freq,DCM | 80 (84)  | 300mA (3.3V fixed) |       | 70%  (3.3Vout)     |                          |                      | 0.87                | [PDF](https://www.renesas.com/en/document/dst/raa211803-805-datasheet?r=25449141)                                                                     |
 | TI LV2862XLVDDCR  |              | 60 (65)  | 600                |       |                    |                          | 83%                  | 0.51                | 0.7mhz                                                                                                                                                |
 | SCT2A22STER       |              | 100      |                    |       |                    | 70%                      |                      |                     | Forced PWM                                                                                                                                            |
-| *SCT2600*         |              | 80       |                    |       |                    | 65%?                     |                      | $.24                | pulse skipping (light-load)                                                                                                                           |
-| SCT2A12           |              | 100      |                    | 49uA  |                    | 85%                      |                      |                     |                                                                                                                                                       |
+| *SCT2600*         |              | 60       |                    |       |                    | 65%?                     |                      | $.24                | pulse skipping (light-load)                                                                                                                           |
+| SCT2A12           |              | 100      |                    | 49uA  |                    | 85%                      |                      | $.53                | async                                                                                                                                                 |
 | TI LM5009A        |              | 95       | 300                |       | 78%  (10Vout)      |                          |                      | 1.33                | [PDF](https://www.ti.com/lit/ds/symlink/lm5009a.pdf)                                                                                                  |
 | TI LM5169/8       |              | 120      | 650/300            |       | 77%                |                          |                      | 1.33                | Sync, Fly-Buck™ [PDF](https://www.ti.com/lit/ds/symlink/lm5168.pdf)                                                                                   |
 | XL7005            |              | 70       | 500                |       | 64% (15Vout)       |                          |                      |                     | [PDF](http://www.ksmcu.com/pdf/XL7005%20datasheet.pdf)                                                                                                |
@@ -137,7 +137,7 @@ https://ir.canterbury.ac.nz/items/e7c8c3da-042c-4d4a-9b7b-2b93970b0d82
     * ⇒ for <$1 a 75% eff. solution (better than using another 100v→10V buck)
     * consider using using a 100V diode maybe after C_out to protect any HV
 
-|              |      |   |
-|--------------|------|---|
-| AP3012KTR-G1 | $.25 |   |
-|              |      |   |
+|              | px(100) | Iq(3.3V) |
+|--------------|---------|----------|
+| AP3012KTR-G1 | $.15    | 2.65mA   |
+|              |         |          |

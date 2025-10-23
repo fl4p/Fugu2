@@ -4920,7 +4920,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "INL"
 			(at 217.17 49.2125 0)
 			(effects
 				(font
@@ -7341,7 +7341,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "SD"
 			(at 220.98 56.8325 0)
 			(effects
 				(font
@@ -8001,7 +8001,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "~"
+		(property "Value" "INH"
 			(at 220.98 53.0225 0)
 			(effects
 				(font

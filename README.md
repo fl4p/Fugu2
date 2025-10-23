@@ -90,14 +90,15 @@ MCU series such as the STM32.
 The inductor should have an inductivity value that is high enough to keep the ripple current in range, a common design
 rule is that ripple is in the range of 0.3 ~ 0.5 of the dc current. Notice that inductivity decreases with dc bias
 current.
-The micrometals design tool is a good starting point to find suitable designs.
+The [micrometals design tool](TODO link) is a good starting point to find suitable designs.
 
 Off-the-shelf inductors exists, however they are usually expensive (>$20), such as the 	
 CODACA CPEX4141L-500MC (optimized for dc bias) and CPEA4141L-500MC (optimized for low loss).
 On LCSC you'll
 find [Ruishen RSEQ32-470M](https://www.lcsc.com/product-detail/Power-Inductors_Ruishen-RSEQ32-470M_C37634010.html),
 RSEQ3635-460M
-and [RSEQ3635-700M](https://www.lcsc.com/product-detail/Power-Inductors_Ruishen-RSEQ3635-700M_C37634013.html)
+and [RSEQ3635-700M](https://www.lcsc.com/product-detail/Power-Inductors_Ruishen-RSEQ3635-700M_C37634013.html). On
+Digikey suitable parts are TODO .
 
 Diving into inductor design can be overwhelming at first. In practice there is no perfect inductor for a specific
 application.
@@ -255,3 +256,8 @@ Some points to consider:
 You can create a single panel of boards containing the mainboard, 2 psu and and 1 mcu head.
 https://github.com/yaqwsx/KiKit/discussions/242
 
+
+
+
+todo zener clamp over bootstrap C
+- if convert output is shortecd, during low duty cycle, the coil swings back and switch node goes below zero. wtf it should not go below zero!
