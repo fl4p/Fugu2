@@ -3,6 +3,10 @@ pcb) | [docs](doc/) | [schematics](Schematics.pdf) |
 IBOM | [firmware](https://github.com/fl4p/fugu-mppt-firmware)
 |~ [additional documentation & resources](https://github.com/fl4p/fugu-mppt-doc)
 
+| <img src="img/fugu2-3d-top.webp" width="400"/> <img src="img/fugu2-3d-bottom.webp" width="400"/> |
+|:------------------------------------------------------------------------------------------------:|
+|       Current Hardware v2.3 with USB type-C port and large terminal blocks (top & bottom)        |
+
 ## Gallery
 
 |                              <img src="doc/img/fugu-metal.webp" width=300/>                              |               <img src="doc/img/fugu2.webp" width=400 />                |
@@ -125,7 +129,8 @@ For higher DC currents chose a larger core (or materials optimized for DC satura
 and a higher price tag).
 For higher output voltage chose a higher inductivity value.
 
-Sendust (KoolMµ)  is a magnetic core material commonly used for power applications. It is affordable with high availability,
+Sendust (KoolMµ)  is a magnetic core material commonly used for power applications. It is affordable with high
+availability,
 has good saturation characteristics and low loss.
 Manufacturers offer optimized materials, tuning for price, dc bias and/or core loss.
 ([KDM](https://semic.cz/!old/files/pdf_www/Ljf_KDM.pdf): KPH, KAM, KAH, KH)
@@ -186,9 +191,9 @@ See [Toshibas Product Guide on pg. 16](https://www.mouser.com/datasheet/2/408/to
 - low Qgd, Qgd/Qgs (prevent self turn-on)
 - low r_g (prevent self turn-on)
 - Picks
-  - IPP040N08NF2S
-  - IPP022N12NM6
-  - IPP019N08NF2S
+    - IPP040N08NF2S
+    - IPP022N12NM6
+    - IPP019N08NF2S
 
 Current through the LS Switch always flows from source to drain (4th quadrant of V-I plane),
 which makes the gate drive signal rather irrelevant. It is much easier to switch than the HS, ringing is generally
@@ -256,8 +261,13 @@ Some points to consider:
 You can create a single panel of boards containing the mainboard, 2 psu and and 1 mcu head.
 https://github.com/yaqwsx/KiKit/discussions/242
 
-
-
-
 todo zener clamp over bootstrap C
-- if convert output is shortecd, during low duty cycle, the coil swings back and switch node goes below zero. wtf it should not go below zero!
+
+- if convert output is shortecd, during low duty cycle, the coil swings back and switch node goes below zero. wtf it
+  should not go below zero!
+
+# Rendering 3d model
+
+* use pcb2blender plugin
+* in blender update the camera
+    * 
