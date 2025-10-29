@@ -1,11 +1,10 @@
-Links: [github](https://github.com/fl4p/Fugu2) | [cadlab](https://cadlab.io/project/28816) (schematics &
-pcb) | [docs](doc/) | [schematics](Schematics.pdf) |
-IBOM | [firmware](https://github.com/fl4p/fugu-mppt-firmware)
-|~ [additional documentation & resources](https://github.com/fl4p/fugu-mppt-doc)
+Links: [github](https://github.com/fl4p/Fugu2) | [cadlab](https://cadlab.io/project/28816) (view schematics & pcb) |
+[docs](doc/) | [pdf schematics](Schematics.pdf) | IBOM (TODO) | [firmware](https://github.com/fl4p/fugu-mppt-firmware)
+| [additional documentation & resources](https://github.com/fl4p/fugu-mppt-doc)
 
 | <img src="img/fugu2-3d-top.webp" width="400"/> <img src="img/fugu2-3d-bottom.webp" width="400"/> |
 |:------------------------------------------------------------------------------------------------:|
-|       Current Hardware v2.3 with USB type-C port and large terminal blocks (top & bottom)        |
+|  Current Hardware v2.3 rendering with USB type-C port and large terminal blocks (top & bottom)   |
 
 ## Gallery
 
@@ -41,11 +40,27 @@ MCU series such as the STM32.
 * order PCB (or make @home)
     * 1x `Fugu2.kicad_pcb`
     * 2x `psu/buck100.kicad_pcb` (one for 3.3V and one for 12V)
-    * 1x `mcu-head/Fugu2-esp32s3-wroom-head.kicad_pcb` (optional. alternatively place the ESP32(-S3) directly on the
-      Fugu2 board)
-* assemble PCBs
+    * 1x `mcu-head/Fugu2-esp32s3-wroom-head.kicad_pcb` (optional. this allows easy replacement of the ESP32S3 during
+      development. alternatively place the ESP32(-S3) directly on the Fugu2 board)
+    * you can use [kikit-packer script](https://github.com/fl4p/kikit-packer/)
+      or [Kikakuka](https://github.com/buganini/Kikakuka/) to create a single PCB for the manufacturing job
+* assemble PCBs (ibom TODO)
+    * you can order assembly through pcbway or jlcpcb
+    * if you assemble @home
+        * place solder-paste on all SMD pads
+        * put SMD items first (resistors, caps, diodes, inductors and then IC)
+        * heat with a hotplate (a cooking pan filled with sand works) or hot air gun
+        * solder the THT components (electrolytic caps, power inductor, mosfets, pin headers, power terminal blocks)
+* mount the PCB on a heatsink (expect 20W of heat)
+    * drill mounting holes
+    * if mosfets are not isolated use thermal pads for isolation
+    * M3 plastic screws are a cheap and easy alternative
+* enclosure
+    * todo: there is no enclosure yet
 * build inductor
-    * order core and copper wire
+    * order core and copper wire.
+      cores are available at [semic](https://www.semic.info/) or digikey.
+      I buy wire from eBay.
     * wind the coil
 * flash [firmware](https://github.com/fl4p/fugu-mppt-firmware)
 
@@ -93,16 +108,22 @@ MCU series such as the STM32.
 
 The inductor should have an inductivity value that is high enough to keep the ripple current in range, a common design
 rule is that ripple is in the range of 0.3 ~ 0.5 of the dc current. Notice that inductivity decreases with dc bias
-current.
-The [micrometals design tool](TODO link) is a good starting point to find suitable designs.
+current. The dc bias current is the average current through the coil. This means that the higher the output current of
+the converter,
+the lower the inductivity. This causes the AC indcutor ripple current to rise faster than linear with higher currents.
+Going beyond the safe limits can cause extremely high peak currents leading to destruction of the FETs.
+
+The [micrometals design tool](https://www.micrometals.com/design-and-applications/design-tools/inductor-designer/) is a
+good starting point to find suitable inductor designs with mostly toroid cores. It gives the user recommendations on
+core shape, core material and wire (diameter and strands).
 
 Off-the-shelf inductors exists, however they are usually expensive (>$20), such as the 	
-CODACA CPEX4141L-500MC (optimized for dc bias) and CPEA4141L-500MC (optimized for low loss).
+CODACA CPEX4141L-500MC (optimized for dc bias / saturation current) and CPEA4141L-500MC (optimized for low loss).
 On LCSC you'll
 find [Ruishen RSEQ32-470M](https://www.lcsc.com/product-detail/Power-Inductors_Ruishen-RSEQ32-470M_C37634010.html),
-RSEQ3635-460M
-and [RSEQ3635-700M](https://www.lcsc.com/product-detail/Power-Inductors_Ruishen-RSEQ3635-700M_C37634013.html). On
-Digikey suitable parts are TODO .
+[RSEQ3635-460M](https://www.lcsc.com/product-detail/C37634012.html)  and
+[RSEQ3635-700M](https://www.lcsc.com/product-detail/Power-Inductors_Ruishen-RSEQ3635-700M_C37634013.html).
+I have only tested toe CODACA cores and no experience with the LCSC parts.
 
 Diving into inductor design can be overwhelming at first. In practice there is no perfect inductor for a specific
 application.
@@ -118,7 +139,9 @@ Winding an inductor is nothing to worry about and is actually fun. Below you'll 
 for 12 and 24V, upto 40A and the other for 48V batteries. Before, let's have a short intro to better understand the
 design decisions.
 
-A well designed inductor has a core/copper loss ratio between 50/50 and 20/80 (micrometals). Copper is easier to cool
+A well designed inductor has a core/copper loss ratio between 50/50 and
+20/80 ([micrometals](https://www.micrometals.com/design-and-applications/core-design-considerations/#inductor-design-basics)).
+Copper is easier to cool
 than the core.
 With higher DC output current the core material magnetization increases and inductivity value drops. A good design has a
 maximum drop of ~50% of its initial inductivity.
@@ -165,8 +188,11 @@ fringing.
 
 # Mosfet Selection
 
-Use [fetlib](https://github.com/fl4p/fetlib) for an extensive parametric search and ranking by power loss estimation.
+In a nutshell, the LS switch should have low Rds_on, low Qrr, low Qgd (low self turn-on). The HS switch should have low
+Qsw.
 See [Toshibas Product Guide on pg. 16](https://www.mouser.com/datasheet/2/408/toshiba%20america%20electronic%20components,%20inc._bce008-1209380.pdf#page=16).
+
+Use [fetlib](https://github.com/fl4p/fetlib) for an extensive parametric search and ranking by power loss estimation.
 
 ## High Side Mosfet (HS, cntrl)
 
@@ -203,42 +229,6 @@ Switching happens near zero voltage, as the body diode is usually already/still 
 Choose a MOSFET that is designed for synchronous rectification. Consider switch node ringing and choose a higher voltage
 fet to avoid channel break-down if needed.
 
-# Power Conversion Efficiency Optimization
-
-To improve conversion efficiency we first need to understand where power is lost and quantify it.
-For quantification we can model power loss or measure it.
-There is plenty of literature about modeling power loss in a DC-DC converter.
-[fetlib](https://github.com/fl4p/fetlib) can model switch loss, inductor loss and capacitor loss.
-
-Literature: [TI slvaeq9](https://www.ti.com/lit/an/slvaeq9/slvaeq9.pdf) TODO more
-
-The are multiple ways for power loss measurement:
-
-- Measure temperature rise of components using a thermal imager or thermal probe. This will give you can idea where
-  most power is lost. If you know the thermal resistance between a component and ambient, you can calculate the power
-  loss in watts.
-- Measure total converter power loss using power two power meters, one at the input and one the output.
-- Measure component loss using a multimeter (static i2r loss)
-  or [oscilloscope](https://www.tek.com/en/documents/application-note/circuit-measurement-inductors-and-transformers-oscilloscope).
-  Needs careful probe calibration and de-skew.
-
-Some points to consider:
-
-* main losses are usually switch loss and inductor loss
-* measure coil ripple current. dc core saturation can lead to significant inductance drop and extreme current peaks,
-  increasing loss in capacitors and switches.
-* Check coil core material loss in datasheet. Use bigger core.
-* Use inductor design tool, such as
-  the [micrometals designer](https://www.micrometals.com/design-and-applications/design-tools/inductor-designer/)
-* Use multi strand wires to reduce AC losses (skin effect, proximity effect)
-* cheap caps with higher impedance can get hot (especially C_in). Find better caps, place caps in parallel to reduce ESR
-* Reduce switching times: smaller gate resistors, stronger driver. Make sure there is no severe ringing at switching
-  node and at the gates. Consider using a faster Mosfet (low Qsw)
-* Place Schottky diode in parallel to LS switch. this can decrease reverse-recovery loss
-* LS cascode of 2 MOSFETs (an additional low-voltage MOSFET) can help decreasing reverse-recovery effects
-* Use a second HS switch in parallel (with separate gate drive resistor)
-* Use short & wide PCB traces, maybe 4-layer PCB.
-
 # Higher input voltages
 
 * input caps
@@ -256,18 +246,6 @@ Some points to consider:
   converter is cooling down at night it'll suck water into the enclosure. The ESP32 WROOM metallic case is not sealed.
   Consider placing a membrane? Sticker on its breathing hole.
 
-# Panelize PCBs
+# Further Reads
 
-You can create a single panel of boards containing the mainboard, 2 psu and and 1 mcu head.
-https://github.com/yaqwsx/KiKit/discussions/242
-
-todo zener clamp over bootstrap C
-
-- if convert output is shortecd, during low duty cycle, the coil swings back and switch node goes below zero. wtf it
-  should not go below zero!
-
-# Rendering 3d model
-
-* use pcb2blender plugin
-* in blender update the camera
-    * 
+* [Power Conversion Eff. Opt.](doc/Power%20Conversion%20Efficiency%20Optimization.md)
