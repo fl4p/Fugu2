@@ -9625,13 +9625,12 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "open-pe:USB_C_Receptacle_GCT_USB4110"
+		(property "Footprint" "Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal"
 			(at 247.015 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
 		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2102241736_SHOU-HAN-TYPE-C-16P-QTGM027_C2681552.pdf"

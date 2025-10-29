@@ -86,6 +86,7 @@ ringing wave form https://www.ti.com/lit/an/slpa010/slpa010.pdf#page=2
 Causes Voltage peak V_sw and EMI.
 
 Using a cascode to reduce reverse recovery https://ieeexplore.ieee.org/document/10147632
+    https://sci-hub.hlgczx.com/10.1109/TPEL.2018.2837747
 
 https://www.onsemi.com/download/application-notes/pdf/an-9010.pdf#page=15
 
