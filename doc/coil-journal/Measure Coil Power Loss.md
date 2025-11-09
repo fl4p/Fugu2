@@ -33,3 +33,12 @@ https://scdn.rohde-schwarz.com/ur/pws/dl_downloads/dl_application/pdfs/Working-w
 
 put the part in circuit where you know the other losses or keep them as low as possible.
 e.g. for a coil you can use a highly efficient GaN half-bridge, and keep capicator loss low
+
+
+
+
+# Measurement Results:
+![img_1.png](img_1.png)
+coils with total converter efficiencies.
+measured with ftall, 72vin/27vout P=~800W
+[detailed measurement log](../../HW%20Stories/ftall.md)

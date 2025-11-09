@@ -34,3 +34,21 @@ Condition:
 
 ![Fugu 2](img/TR000137-fugu2-fan.JPG "Fugu2 Fan cooled")
 *^ Cooled with a fan ^*
+
+
+
+
+# Thermal meltdown
+* running for an hour, Vin=75V, Vout=27, Iout=32A
+* on 10x10 cm heatsink
+
+
+temperature measured with TMP117 attached to heatsink:
+![img_2.png](../../../../../dev/pv/fugu-mppt-doc/img_2.png)
+* the HS melted at arround 00:28
+* not sure what happend at 00:08
+* i adjusted the output power manually to keep the temperature at 80°C, which worked for 40minutes
+* then temperature dropped, and increased. 
+
+![img_3.png](../../../../../dev/pv/fugu-mppt-doc/img_3.png)
+

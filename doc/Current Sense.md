@@ -66,16 +66,14 @@ the OP amp should have no Vos cross-over distortion, and a low Vos drift
   * CMRR: 154 dB (typical)
 
 
-![img_1.png](img_1.png)
+![img_1.png](../../../../../dev/pv/fugu-mppt-doc/img_1.png)
 https://www.analog.com/media/en/technical-documentation/data-sheets/ltc2063-2064-2065.pdf
 
 
-![img.png](img.png)
+![img_1.png](img/highside-current-sense.webp)
+
 from https://www.mouser.com/pdfDocs/RECOMACDCBOOKOFKNOWLEDGE.pdf#page=181
-
-
-
-
-![img_1.png](img_1.png)
-
 from https://recom-power.com/en/acdc-bok-chapter13-measuring.html?0 (AC/DC book of knowledge)
+
+
+![img_4.png](img/low-side-current-shunt-ads1015.webp)
