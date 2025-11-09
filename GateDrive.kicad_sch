@@ -2999,6 +2999,16 @@
 		)
 		(uuid "3ababb0d-df13-4fbb-bd40-dc057e700554")
 	)
+	(text "TODO: use normally on fet"
+		(exclude_from_sim no)
+		(at 68.58 135.89 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "e4cd343e-48c2-4a69-8cb2-8247fc47cb67")
+	)
 	(junction
 		(at 114.3 58.42)
 		(diameter 0)
@@ -7031,9 +7041,9 @@
 		(at 87.63 124.46 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+		(in_bom no)
+		(on_board no)
+		(dnp yes)
 		(uuid "94e317d9-30ab-4462-946b-ad291b041b00")
 		(property "Reference" "C20"
 			(at 85.09 121.92 0)

@@ -2102,6 +2102,341 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "HYG025N06LS1C2_2"
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "HYG025N06LS1C2"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "open-pe:Infineon_PG-TDSON-8_FL"
+				(at 5.08 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://datasheet.lcsc.com/lcsc/2105242011_HUAYI-HYG025N06LS1C2_C2827231.pdf"
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "N-Channel MOSFET, 170A Id, 60V Vds, DFN-8"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "N-Channel MOSFET AONS66612"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "AO*DFN*8*1EP*5.55x5.2mm*P1.27mm*EP4.12x4.6mm*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "HYG025N06LS1C2_2_0_1"
+				(polyline
+					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 1.778) (xy 3.302 1.778) (xy 3.302 -1.778) (xy 0.762 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy 2.286 -0.381) (xy 2.286 0.381) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.3123 0.3206) (xy 3.6933 -0.3144) (xy 2.9313 -0.3144) (xy 3.3123 0.3206)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.8203 0.4476) (xy 3.6933 0.3206) (xy 2.9313 0.3206) (xy 2.8043 0.1936)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "HYG025N06LS1C2_2_1_1"
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(hide yes)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -6.35 90)
+					(length 2.54)
+					(hide yes)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Mechanical:MountingHole"
 			(pin_names
 				(offset 1.016)
@@ -3498,7 +3833,7 @@
 		)
 		(uuid "76e5c66e-50b3-41e3-8683-d44990d08d45")
 	)
-	(text "alternativse in 8-power* housing\n(Rdson(max)@25°C,10V):\n\nTPH1R306PL,L1Q (60V 1.3mΩ)\nSiR626LDP (60V, 1.5m)\nAONS66612 (60V 1.65mΩ)\nHYG025N06LS1C2 (60V, 2.1mΩ)\n\n\nTPHR6503PL,L1Q (30V 0.6mΩ)\nTPHR9003NL1,LQ (30V 0.9mΩ)\nAON6500   (30V 0.95mΩ)\nAONS32302 (30v 1.35mΩ) AONS32311\n"
+	(text "click to open spreadsheet\n\nalternativse in 8-power* housing\n(Rdson(max)@25°C,10V):\n\nTPH1R306PL,L1Q (60V 1.3mΩ)\nSiR626LDP (60V, 1.5m)\nAONS66612 (60V 1.65mΩ)\nHYG025N06LS1C2 (60V, 2.1mΩ)\n\n\nTPHR6503PL,L1Q (30V 0.6mΩ)\nTPHR9003NL1,LQ (30V 0.9mΩ)\nAON6500   (30V 0.95mΩ)\nAONS32302 (30v 1.35mΩ) AONS32311\n"
 		(exclude_from_sim no)
 		(at 194.818 144.018 0)
 		(effects
@@ -3506,7 +3841,7 @@
 				(size 1.016 1.016)
 			)
 			(justify left bottom)
-			(href "https://www.digikey.de/de/products/filter/transistoren/fets-mosfets/einzelne-fets-mosfets/278?s=N4IgjCBcpgbFoDGUBmBDANgZwKYBoQB7KAbRFgBYBWMC%2BAgJgE4KB2JgZhEZfYA5uIZhT4AGUYOFj6QlmNaS5YCTxFgGIALoEADgBcoIAMp6ATgEsAdgHMQAXwKx1CEMkjps%2BIqRCsaDWAECPyZRWA1GKlEKFSEojiZJBj4mRODYKlhRLkYOPlYI8g5mVhkQsNiGOjFBQOqqWuKmViDyJkywBUcm9lqmPibaimVUwQomZj5C2B6GxlZB4NZsjgpJEJzfKnHixpLNhhaoyTFxQT91CZOOUvOGBkzCjnUnPaZYLqKSteCqfuTFHRYjMSp8qKVYLA0r4VuDBBxRFUIN0SrEEVVNuiKD8QFi5r4MlkcQUClRMaIFp9WHQ6E8wGBRulpK1ngwzgRVvTWhdmJtlhwOFQWcMGfDhmyxepkbj7lR8cUHp8FUK3qxpWp3piES14Qiahy9dKBcUWatGSBwXQaGM%2BAzXgQgRV4RlREaXTiOC6ZJ6okqRDc7qSnlFqPC5ctBFFOg8xtQBcSbmAEmHwcHwZismTzoEwtDPaJtm9Ic7JmMsgXofFwUa%2BDMlbW8vCG3nazEm5QjQsUvCFqE3vrcaxSsCmhkeyk8%2Bx2YPQk9pJjpB6%2BNQWXxMqvwbF1GE6IJt5RPvvxnu2S6T2FrQR91RCtecdf8deZMMhdDsVHChQ2WExvcAmMhWyVov3uYC-zfZpnnxApbVWMZnmTB11xxahAmfddgPXN9MiYdUcM-HD8VQ94%2BimKpAzXbCoU%2BYjuShbFoQKTpegdAYaQAsloljOpIwpWs33qbjayEmjqmA6oBKhWIRD%2BaTKPVSjNhklgbT%2BIjKOfSiaMot9a2nd9XTkw5RF0gYBjLdgiICEzgOpU8xmWUUHWWCVnJiT9qWyByYhQzyiM8spkkubzlDLG9wlqPx2D5BhOltG0GWlGgC1iZLLwtZQb0jTKZDSsFMtaZKIoIIrNiKnEiqIlhmhtMycSk19AzVStXQKXjOgqik4RKrruSChFI2YFUepaCMSuYLJBveQob01Xiv2Ki0Joqib8Vm4txveStUSmtVdpm75sqHVK2T%2BJqGDK2UDoeS6HmgzJthm7YC0jZ7K22ZwSo%2BsqPoqj61o%2BsEPsKj73q-VLHqSx6nq-Mqbj2kqFrWhaqWiC7TLye6MjgkqQjWkIygyChnkjEIwRCQrhyS4cZuHfGskprJK1KUKSsoYS2ZEUTN2puAJG0EB9EMEwLBsexGDCARoEFgxIBAABVSxzD0AB5FAAFkcDQLAAFdTBwQQdcMAA1QQAFs0AAD0MNsCDNqxDAGhwQAAWg0aW3DMHWvGISAyAaTQ7Gd%2BBpfMAATQwnEKIW5ZFqxbAIPQAE8dANuXteQIOgA")
+			(href "https://docs.google.com/spreadsheets/d/1ql6IhMRyge8UA_0qRoCBumG02TB9kBVcVhrEdqqOgb8/edit?usp=sharing")
 		)
 		(uuid "807f9b3a-7b7f-4800-9ac0-2273be1a48f0")
 	)
@@ -3662,6 +3997,12 @@
 		(uuid "5b9368b1-710b-4156-b17f-35b0eeb711f7")
 	)
 	(junction
+		(at 91.44 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "67c85371-a859-4256-9c1d-602758d14b06")
+	)
+	(junction
 		(at 142.24 77.47)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3734,22 +4075,10 @@
 		(uuid "a7ef7cc6-3965-4213-b878-1ee52a5790fc")
 	)
 	(junction
-		(at 91.44 46.99)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "aa5de223-3246-4bcd-acc5-c56ab7f371e9")
-	)
-	(junction
 		(at 32.385 34.29)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ad3b3896-a879-408a-9656-f0c7225af61d")
-	)
-	(junction
-		(at 91.44 44.45)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "afa48b42-5173-4e61-b150-18b6a43f0681")
 	)
 	(junction
 		(at 133.35 163.83)
@@ -3878,16 +4207,6 @@
 			(type default)
 		)
 		(uuid "05ba0ca6-db87-4414-9075-04d1c02bbf70")
-	)
-	(wire
-		(pts
-			(xy 77.47 44.45) (xy 91.44 44.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "07ed6e54-7285-4d85-8beb-9515b79a697f")
 	)
 	(wire
 		(pts
@@ -4041,7 +4360,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 46.99) (xy 91.44 46.99)
+			(xy 86.36 48.26) (xy 91.44 48.26)
 		)
 		(stroke
 			(width 0)
@@ -4211,6 +4530,16 @@
 	)
 	(wire
 		(pts
+			(xy 77.47 45.085) (xy 96.52 45.085)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "480779ac-b4c2-4da1-a971-7871306ccfbb")
+	)
+	(wire
+		(pts
 			(xy 52.07 49.53) (xy 54.61 49.53)
 		)
 		(stroke
@@ -4341,7 +4670,7 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 51.435) (xy 91.44 46.99)
+			(xy 91.44 51.435) (xy 91.44 48.26)
 		)
 		(stroke
 			(width 0)
@@ -4461,16 +4790,6 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 44.45) (xy 96.52 44.45)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "801f9746-f95b-436e-9a78-80cde040ed96")
-	)
-	(wire
-		(pts
 			(xy 85.725 109.855) (xy 85.725 114.935)
 		)
 		(stroke
@@ -4521,7 +4840,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 46.99) (xy 86.36 45.72)
+			(xy 86.36 48.26) (xy 86.36 45.72)
 		)
 		(stroke
 			(width 0)
@@ -4558,6 +4877,16 @@
 			(type default)
 		)
 		(uuid "8dfca392-b839-4fe5-bddb-ea2bf9e620e0")
+	)
+	(wire
+		(pts
+			(xy 91.44 44.45) (xy 91.44 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9194eb48-904e-4835-bd93-6ac77021a6dc")
 	)
 	(wire
 		(pts
@@ -4651,7 +4980,7 @@
 	)
 	(wire
 		(pts
-			(xy 77.47 41.91) (xy 77.47 44.45)
+			(xy 77.47 41.91) (xy 77.47 45.085)
 		)
 		(stroke
 			(width 0)
@@ -4731,7 +5060,7 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 39.37) (xy 101.6 44.45)
+			(xy 101.6 39.37) (xy 101.6 45.085)
 		)
 		(stroke
 			(width 0)
@@ -4828,16 +5157,6 @@
 			(type default)
 		)
 		(uuid "bdd2054d-0c3d-4678-94ff-97b865530da3")
-	)
-	(wire
-		(pts
-			(xy 91.44 44.45) (xy 91.44 46.99)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "be24cca3-2423-486a-9723-f948588a433e")
 	)
 	(wire
 		(pts
@@ -6127,6 +6446,7 @@
 		)
 	)
 	(symbol
+		(lib_name "HYG025N06LS1C2_2")
 		(lib_id "open-pe:HYG025N06LS1C2")
 		(at 237.49 133.35 270)
 		(unit 1)
@@ -6144,7 +6464,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TPH1R306PL,L1Q"
+		(property "Value" "NTMFS5C612NLT1G"
 			(at 236.22 140.97 90)
 			(effects
 				(font
@@ -6163,7 +6483,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://toshiba.semicon-storage.com/info/TPH1R306PL_datasheet_en_20191018.pdf?did=30818&prodName=TPH1R306PL"
+		(property "Datasheet" ""
 			(at 237.49 133.35 90)
 			(effects
 				(font
@@ -6182,7 +6502,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "TPH1R306PL,L1Q"
+		(property "MPN" "NTMFS5C612NLT1G"
 			(at 237.49 133.35 0)
 			(effects
 				(font
@@ -7015,7 +7335,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TPH1R306PL,L1Q"
+		(property "Value" "NTMFS5C612NLT1G"
 			(at 133.985 55.245 90)
 			(effects
 				(font
@@ -7034,7 +7354,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://datasheet.lcsc.com/lcsc/2105242011_HUAYI-HYG025N06LS1C2_C2827231.pdf"
+		(property "Datasheet" ""
 			(at 141.605 48.895 90)
 			(effects
 				(font
@@ -7044,7 +7364,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "N-Channel MOSFET, 170A Id, 60V Vds, DFN-8"
+		(property "Description" ""
 			(at 141.605 48.895 0)
 			(effects
 				(font
@@ -7053,7 +7373,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "TPH1R306PL,L1Q"
+		(property "MPN" "NTMFS5C612NLT1"
 			(at 141.605 48.895 0)
 			(effects
 				(font
@@ -10019,7 +10339,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TPH1R306PL,L1Q"
+		(property "Value" "NTMFS5C612NLT1G"
 			(at 237.49 160.02 90)
 			(effects
 				(font
@@ -10038,7 +10358,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://toshiba.semicon-storage.com/info/TPH1R306PL_datasheet_en_20191018.pdf?did=30818&prodName=TPH1R306PL"
+		(property "Datasheet" ""
 			(at 238.76 152.4 90)
 			(effects
 				(font
@@ -10057,7 +10377,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "TPH1R306PL,L1Q"
+		(property "MPN" "NTMFS5C612NLT1G"
 			(at 238.76 152.4 0)
 			(effects
 				(font
@@ -10544,7 +10864,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small")
-		(at 99.06 44.45 270)
+		(at 99.06 45.085 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10552,7 +10872,7 @@
 		(dnp no)
 		(uuid "e53c11a5-eb5d-4336-ba14-41e6dfcb2a48")
 		(property "Reference" "R5"
-			(at 98.806 42.418 90)
+			(at 98.806 43.053 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10560,7 +10880,7 @@
 			)
 		)
 		(property "Value" "0"
-			(at 98.806 44.704 90)
+			(at 98.806 45.339 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10568,7 +10888,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 99.06 44.45 0)
+			(at 99.06 45.085 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10577,7 +10897,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 99.06 44.45 0)
+			(at 99.06 45.085 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10586,7 +10906,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 99.06 44.45 0)
+			(at 99.06 45.085 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10595,7 +10915,7 @@
 			)
 		)
 		(property "MPN" "0"
-			(at 99.06 44.45 0)
+			(at 99.06 45.085 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10604,7 +10924,7 @@
 			)
 		)
 		(property "Desc" "GateDischarge"
-			(at 99.06 44.45 0)
+			(at 99.06 45.085 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10613,7 +10933,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 99.06 44.45 0)
+			(at 99.06 45.085 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10622,7 +10942,7 @@
 			)
 		)
 		(property "Digikey" ""
-			(at 99.06 44.45 0)
+			(at 99.06 45.085 0)
 			(effects
 				(font
 					(size 1.27 1.27)

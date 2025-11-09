@@ -212,589 +212,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Connector:USB_C_Plug_USB2.0"
-			(pin_names
-				(offset 1.016)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "P"
-				(at -10.16 19.05 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "USB_C_Plug_USB2.0"
-				(at 12.7 19.05 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify right)
-				)
-			)
-			(property "Footprint" ""
-				(at 3.81 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
-				(at 3.81 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "USB 2.0-only Type-C Plug connector"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "usb universal serial bus type-C USB2.0"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "USB*C*Plug*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "USB_C_Plug_USB2.0_0_0"
-				(rectangle
-					(start -0.254 -17.78)
-					(end 0.254 -16.764)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 15.494)
-					(end 9.144 14.986)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 10.414)
-					(end 9.144 9.906)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 7.874)
-					(end 9.144 7.366)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 2.794)
-					(end 9.144 2.286)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 10.16 -2.286)
-					(end 9.144 -2.794)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "USB_C_Plug_USB2.0_0_1"
-				(rectangle
-					(start -10.16 17.78)
-					(end 10.16 -17.78)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(polyline
-					(pts
-						(xy -8.89 -3.81) (xy -8.89 3.81)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -7.62 -3.81)
-					(end -6.35 3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(arc
-					(start -7.62 3.81)
-					(mid -6.985 4.4423)
-					(end -6.35 3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -7.62 3.81)
-					(mid -6.985 4.4423)
-					(end -6.35 3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(arc
-					(start -8.89 3.81)
-					(mid -6.985 5.7067)
-					(end -5.08 3.81)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -5.08 -3.81)
-					(mid -6.985 -5.7067)
-					(end -8.89 -3.81)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -6.35 -3.81)
-					(mid -6.985 -4.4423)
-					(end -7.62 -3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -6.35 -3.81)
-					(mid -6.985 -4.4423)
-					(end -7.62 -3.81)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy -5.08 3.81) (xy -5.08 -3.81)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center -2.54 1.143)
-					(radius 0.635)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 4.318) (xy 0 6.858) (xy 1.27 4.318) (xy -1.27 4.318)
-					)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -2.032) (xy 2.54 0.508) (xy 2.54 1.778)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -3.302) (xy -2.54 -0.762) (xy -2.54 0.508)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 -5.842) (xy 0 4.318)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 0 -5.842)
-					(radius 1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start 1.905 1.778)
-					(end 3.175 3.048)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-			)
-			(symbol "USB_C_Plug_USB2.0_1_1"
-				(pin passive line
-					(at -7.62 -22.86 90)
-					(length 5.08)
-					(name "SHIELD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "S1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -22.86 90)
-					(length 5.08)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -22.86 90)
-					(length 5.08)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -22.86 90)
-					(length 5.08)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "B1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -22.86 90)
-					(length 5.08)
-					(hide yes)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "B12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 15.24 15.24 180)
-					(length 5.08)
-					(name "VBUS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 15.24 15.24 180)
-					(length 5.08)
-					(hide yes)
-					(name "VBUS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 15.24 15.24 180)
-					(length 5.08)
-					(hide yes)
-					(name "VBUS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "B4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 15.24 15.24 180)
-					(length 5.08)
-					(hide yes)
-					(name "VBUS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "B9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 10.16 180)
-					(length 5.08)
-					(name "CC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 7.62 180)
-					(length 5.08)
-					(name "VCONN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "B5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 2.54 180)
-					(length 5.08)
-					(name "D-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 15.24 -2.54 180)
-					(length 5.08)
-					(name "D+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "A6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "D_Small_3"
 			(pin_numbers
 				(hide yes)
@@ -2276,17 +1693,6 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "esp32 has wifi. we will need usb mostly for dev, jtag, hw config. system integration through usb is rather uncommon and usb hosts usually have bluetooth.\nwe can also put the esp32 i host mode and use a female connector for usb sticks etc.\nto keep things simple & small, we chose for a 2.54 4-pin header connector (TOOD JST?)\n\nthe USB connector enables\n- flashing/programming and serial console\n- JTAG debugger\n- USB mass storage, otg, host\nboard can read usb sticks or emulate one\nTODO: feed vbus into PV inp? \nif we manage to get 20v 5A, the board can be a usb-c powered charger, power supply\n- usb type c can (no PD) 15 W at 5 V / 3 A\n\nTODO> have CC1 and CC2 NOT CONNECTED to each other, like RPI issue, see https://hackaday.com/2023/01/04/all-about-usb-c-resistors-and-emarkers/\n\n\nto keep things simple, maybe just add another 4pin header, +5V, GND, D- D+ \nthe extension board can then implement usb-connector (type C has many different footprint), protection diodes, resistors, even PD? "
-		(exclude_from_sim no)
-		(at 36.83 177.8 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "14cf61f1-4d04-46ba-9ce1-39654089e19b")
-	)
 	(text "maybe add Inductor?\nLSQPA322525T101MR\nor use TVS2200 TVS3300"
 		(exclude_from_sim no)
 		(at 64.77 52.07 0)
@@ -2300,7 +1706,7 @@
 	)
 	(text "TODO add inductor, fuse PTC?\n"
 		(exclude_from_sim no)
-		(at 154.94 62.23 0)
+		(at 164.465 70.485 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2330,18 +1736,6 @@
 		)
 		(uuid "5322eb9f-fa10-4f9d-a0bb-8f0129bbedba")
 	)
-	(text "see esp-rust-board for footprint"
-		(exclude_from_sim no)
-		(at 67.31 105.41 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-			(href "https://github.com/esp-rs/esp-rust-board")
-		)
-		(uuid "a72fb07f-d3ce-4a75-8fe4-faaa5f327a35")
-	)
 	(text "TODO: use SMA DO214?\nmore common\n\nreplace with BAS100CS ?"
 		(exclude_from_sim no)
 		(at 41.91 69.342 0)
@@ -2363,12 +1757,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "47d17308-fc85-4bc3-9142-364290da7782")
-	)
-	(junction
-		(at 62.23 119.38)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4a1ffb25-7d73-4cbc-b193-f91ff8c096ae")
 	)
 	(junction
 		(at 85.09 60.96)
@@ -2421,16 +1809,6 @@
 			(type default)
 		)
 		(uuid "02d47cae-c236-4ce8-a122-b6c26311a8d5")
-	)
-	(wire
-		(pts
-			(xy 81.28 138.43) (xy 87.63 138.43)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "181f554b-f79d-4579-b4f7-8aa8b61ddecb")
 	)
 	(wire
 		(pts
@@ -2594,26 +1972,6 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 134.62) (xy 100.33 138.43)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8d9961f2-22ba-4005-84c7-2c092c41c2de")
-	)
-	(wire
-		(pts
-			(xy 87.63 134.62) (xy 87.63 138.43)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8e01768d-e21a-41b6-971a-542c767d6497")
-	)
-	(wire
-		(pts
 			(xy 63.5 57.15) (xy 63.5 54.61)
 		)
 		(stroke
@@ -2664,16 +2022,6 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 119.38) (xy 62.23 119.38)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c2a77dab-346d-4112-982c-0d590a0eaf02")
-	)
-	(wire
-		(pts
 			(xy 85.09 57.15) (xy 85.09 60.96)
 		)
 		(stroke
@@ -2711,16 +2059,6 @@
 			(type default)
 		)
 		(uuid "d460b657-fa73-4b85-a594-3f2f684ade8d")
-	)
-	(wire
-		(pts
-			(xy 81.28 134.62) (xy 82.55 134.62)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dcf7c535-39df-4a9c-8896-8dc443446ba0")
 	)
 	(wire
 		(pts
@@ -2784,16 +2122,6 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 111.76) (xy 62.23 119.38)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "edc96ca1-af7f-477a-b098-234971bdcc3a")
-	)
-	(wire
-		(pts
 			(xy 63.5 67.31) (xy 63.5 64.77)
 		)
 		(stroke
@@ -2834,50 +2162,6 @@
 			)
 		)
 	)
-	(global_label "USB_D-"
-		(shape bidirectional)
-		(at 81.28 138.43 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "2c7fde5c-4151-4f9d-af84-499432986d9b")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 69.5635 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "Vusb"
-		(shape input)
-		(at 100.33 138.43 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "6f18a64b-99c3-4bb3-b2d8-c46c07691e5e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 107.7299 138.43 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "BuckGND"
 		(shape input)
 		(at 86.36 87.63 180)
@@ -2891,28 +2175,6 @@
 		(uuid "80830e02-e485-4640-ba85-583b79d320b9")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 74.9686 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "USB_D+"
-		(shape bidirectional)
-		(at 81.28 134.62 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "80e1b861-c73d-4abf-9ac7-9409f6e87ec5")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 69.5635 134.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2983,7 +2245,7 @@
 				)
 			)
 		)
-		(property "Value" "500mA fast, 50A"
+		(property "Value" "SMD1206B010TF/60 or 500mA fast, 50A"
 			(at 56.642 51.562 90)
 			(effects
 				(font
@@ -2991,7 +2253,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_0603_1608Metric"
+		(property "Footprint" "Fuse:Fuse_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
 			(at 55.88 56.388 90)
 			(effects
 				(font
@@ -3000,7 +2262,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "~"
+		(property "Datasheet" "https://www.yageogroup.com/content/Resource%20Library/Datasheet/SMD1206_1.pdf"
 			(at 55.88 54.61 0)
 			(effects
 				(font
@@ -3018,7 +2280,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "TR-0603HV500-R"
+		(property "MPN" "SMD1206B010TF/60 or TR-0603HV500-R"
 			(at 55.88 54.61 0)
 			(effects
 				(font
@@ -3487,71 +2749,6 @@
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
 					(reference "#FLG02")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 59.69 119.38 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "50c2b8b6-37a2-4bc4-a7d5-bc06d94d4a9c")
-		(property "Reference" "#PWR035"
-			(at 53.34 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 55.88 120.65 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 59.69 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 59.69 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 59.69 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "7b61fd4d-c924-4c3b-bdfc-fb61cf8d6ec3")
-		)
-		(instances
-			(project "Fugu2"
-				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "#PWR035")
 					(unit 1)
 				)
 			)
@@ -4440,154 +3637,6 @@
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
 					(reference "J7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:USB_C_Plug_USB2.0")
-		(at 85.09 119.38 270)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board no)
-		(dnp yes)
-		(fields_autoplaced yes)
-		(uuid "e083ccfb-d70e-4926-852c-1c578bd11241")
-		(property "Reference" "P1"
-			(at 104.14 118.11 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "USB4105-GF-A"
-			(at 104.14 120.65 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 85.09 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
-			(at 85.09 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 85.09 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C2765186 https://datasheet.lcsc.com/lcsc/2111231930_SHOU-HAN-TYPE-C-16PIN-2MD-073_C2765186.pdf"
-			(at 85.09 119.38 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Field5" ""
-			(at 85.09 119.38 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "DNP"
-			(at 85.09 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 85.09 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Digikey" ""
-			(at 85.09 119.38 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "A1"
-			(uuid "f2318a4c-83f2-409d-a394-08a0f4ec1fed")
-		)
-		(pin "A12"
-			(uuid "9008904c-3078-49ab-8f15-8835b6e66bc7")
-		)
-		(pin "A4"
-			(uuid "1af60175-0937-4f8c-a149-422532734d55")
-		)
-		(pin "A5"
-			(uuid "2aaf7386-9f01-4dc2-87d6-c92c46ea28b5")
-		)
-		(pin "A6"
-			(uuid "3bb8ddc1-f3c2-418d-93b2-0985adaf2996")
-		)
-		(pin "A7"
-			(uuid "76df805d-ba47-4577-af4b-0c523071c7bf")
-		)
-		(pin "A9"
-			(uuid "fddeae49-00f8-4b09-b1f7-d4c10f599fb9")
-		)
-		(pin "B1"
-			(uuid "e7a916a3-5117-4bf8-8e84-66d64a78ee6d")
-		)
-		(pin "B12"
-			(uuid "6dc3d488-b365-4ef9-b2a6-baa3da2b988a")
-		)
-		(pin "B4"
-			(uuid "e7538dc5-c953-421e-8ebc-334978ad326f")
-		)
-		(pin "B5"
-			(uuid "e4df4569-f7c4-4458-95f9-1490278375b6")
-		)
-		(pin "B9"
-			(uuid "3d747e30-c2e3-435c-980f-7a99f9e0b469")
-		)
-		(pin "S1"
-			(uuid "0444cd63-209d-4957-ae60-47efa4e97877")
-		)
-		(instances
-			(project "Fugu2"
-				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/8bdaa788-2fc2-4872-9b0d-b14952df8b59"
-					(reference "P1")
 					(unit 1)
 				)
 			)
