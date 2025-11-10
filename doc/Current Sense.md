@@ -77,3 +77,6 @@ from https://recom-power.com/en/acdc-bok-chapter13-measuring.html?0 (AC/DC book 
 
 
 ![img_4.png](img/low-side-current-shunt-ads1015.webp)
+
+
+![img.png](img.png)
