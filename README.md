@@ -111,6 +111,7 @@ rule is that ripple is in the range of 0.3 ~ 0.5 of the dc current. Notice that 
 current. The dc bias current is the average current through the coil. This means that the higher the output current of
 the converter,
 the lower the inductivity. This causes the AC indcutor ripple current to rise faster than linear with higher currents.
+High ripple currents cause more loss in the inductor core (hysteresis loss) and capacitors (parasitic ESR).
 Going beyond the safe limits can cause extremely high peak currents leading to destruction of the FETs.
 
 The [micrometals design tool](https://www.micrometals.com/design-and-applications/design-tools/inductor-designer/) is a
@@ -201,9 +202,10 @@ Use [fetlib](https://github.com/fl4p/fetlib) for an extensive parametric search 
 - low Rds_on
 - body diode never conducts
 - picks:
-    - IPP055N08NF2SAKMA1 (80V 5.5mΩ Qsw=13nC)
-    - IPP040N08NF2S
+    - IPP055N08NF2S (80V 5.5mΩ Qsw=13nC)
+    - IPP040N08NF2S (80V,)
     - CSD19501KCS (80V 5.5mΩ Qsw=11nC)
+    - IPA050N10NM5S (100V 5mΩ Qsw=16nC Qoss=67nC)
     - IPP089N15NM6 (150V Qsw=11nC)
     - IPP057N15NM6 (150V Qsw=16nC)
 
