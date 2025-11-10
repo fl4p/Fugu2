@@ -2971,15 +2971,15 @@
 		)
 		(uuid "3ababb0d-df13-4fbb-bd40-dc057e700554")
 	)
-	(text "TODO: use depletion (normally) on fet?"
+	(text "C20 reduces ripple\nand prevents self-turn on"
 		(exclude_from_sim no)
-		(at 57.15 144.145 0)
+		(at 78.105 114.935 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 		)
-		(uuid "e4cd343e-48c2-4a69-8cb2-8247fc47cb67")
+		(uuid "bbc85156-d349-4233-801d-af9557978147")
 	)
 	(junction
 		(at 114.3 58.42)
@@ -6729,7 +6729,7 @@
 		(dnp no)
 		(uuid "8d0a9327-476a-4666-b8bf-ace2aeb05b85")
 		(property "Reference" "DZ2"
-			(at 99.06 129.54 90)
+			(at 99.06 118.745 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6738,7 +6738,7 @@
 			)
 		)
 		(property "Value" "BZT52C13-TP"
-			(at 100.33 128.27 0)
+			(at 100.33 132.715 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7010,9 +7010,9 @@
 		(at 87.63 124.46 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(dnp yes)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(uuid "94e317d9-30ab-4462-946b-ad291b041b00")
 		(property "Reference" "C20"
 			(at 85.09 121.92 0)
@@ -7406,7 +7406,7 @@
 		(dnp no)
 		(uuid "ad307556-4a10-4baa-b578-db8311a390a1")
 		(property "Reference" "R24"
-			(at 101.6 124.46 90)
+			(at 104.775 118.11 0)
 			(effects
 				(font
 					(size 1.27 1.27)
