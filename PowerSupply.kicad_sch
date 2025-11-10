@@ -552,7 +552,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:C_Polarized"
+		(symbol "Device:C"
 			(pin_numbers
 				(hide yes)
 			)
@@ -571,7 +571,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "C_Polarized"
+			(property "Value" "C"
 				(at 0.635 -2.54 0)
 				(effects
 					(font
@@ -598,7 +598,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "Polarized capacitor"
+			(property "Description" "Unpolarized capacitor"
 				(at 0 0 0)
 				(effects
 					(font
@@ -616,7 +616,7 @@
 					(hide yes)
 				)
 			)
-			(property "ki_fp_filters" "CP_*"
+			(property "ki_fp_filters" "C_*"
 				(at 0 0 0)
 				(effects
 					(font
@@ -625,12 +625,13 @@
 					(hide yes)
 				)
 			)
-			(symbol "C_Polarized_0_1"
-				(rectangle
-					(start -2.286 0.508)
-					(end 2.286 1.016)
+			(symbol "C_0_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
 					(stroke
-						(width 0)
+						(width 0.508)
 						(type default)
 					)
 					(fill
@@ -639,41 +640,18 @@
 				)
 				(polyline
 					(pts
-						(xy -1.778 2.286) (xy -0.762 2.286)
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
 					)
 					(stroke
-						(width 0)
+						(width 0.508)
 						(type default)
 					)
 					(fill
 						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.27 2.794) (xy -1.27 1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start 2.286 -0.508)
-					(end -2.286 -1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
 					)
 				)
 			)
-			(symbol "C_Polarized_1_1"
+			(symbol "C_1_1"
 				(pin passive line
 					(at 0 3.81 270)
 					(length 2.794)
@@ -3311,7 +3289,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C_Polarized")
+		(lib_id "Device:C")
 		(at 72.39 60.96 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3328,7 +3306,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "47uF, 100V"
+		(property "Value" "2.2uF, 100V"
 			(at 72.39 64.77 0)
 			(effects
 				(font
@@ -3337,7 +3315,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D8.0mm_P3.50mm"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
 			(at 73.3552 64.77 0)
 			(effects
 				(font
@@ -3355,7 +3333,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Unpolarized capacitor"
 			(at 72.39 60.96 0)
 			(effects
 				(font
@@ -3364,7 +3342,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "47uF, 100V"
+		(property "MPN" "2.2uF, 100V"
 			(at 72.39 60.96 0)
 			(effects
 				(font
@@ -3391,7 +3369,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "GMC32X7R225K100NT"
 			(at 72.39 60.96 0)
 			(effects
 				(font
@@ -3400,7 +3378,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "ERS1KM470F12OT"
+		(property "LCSC" ""
 			(at 72.39 60.96 0)
 			(effects
 				(font
