@@ -3856,6 +3856,16 @@
 		)
 		(uuid "8d9433be-498b-4aea-9fc7-829f723a83d4")
 	)
+	(text "the device can work\nin boost topology\nso the HV side might be \nconnected to a battery"
+		(exclude_from_sim no)
+		(at 27.305 27.94 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "a9373b58-3568-4664-901b-578de1f90cd0")
+	)
 	(text "Why current senser here?\n- Low side is simpler\n- ~0V common mode -> can use ina226 @ 48V battery\n- MCU ground should be bat(-)\n  for wired interfaces"
 		(exclude_from_sim no)
 		(at 119.38 95.885 0)
@@ -4075,12 +4085,6 @@
 		(uuid "a7ef7cc6-3965-4213-b878-1ee52a5790fc")
 	)
 	(junction
-		(at 32.385 34.29)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "ad3b3896-a879-408a-9656-f0c7225af61d")
-	)
-	(junction
 		(at 133.35 163.83)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4160,7 +4164,7 @@
 	)
 	(wire
 		(pts
-			(xy 32.385 34.29) (xy 32.385 50.8)
+			(xy 32.385 34.29) (xy 32.385 36.83)
 		)
 		(stroke
 			(width 0)
@@ -4730,6 +4734,16 @@
 	)
 	(wire
 		(pts
+			(xy 32.385 44.45) (xy 32.385 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7131de61-b646-4b97-980a-9d3e62b851e2")
+	)
+	(wire
+		(pts
 			(xy 44.45 34.29) (xy 44.45 49.53)
 		)
 		(stroke
@@ -4847,16 +4861,6 @@
 			(type default)
 		)
 		(uuid "8a0f74fe-0fc6-4509-832a-84fe201f605a")
-	)
-	(wire
-		(pts
-			(xy 31.75 34.29) (xy 32.385 34.29)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8c39b5bc-6155-469b-947c-0063702c53a9")
 	)
 	(wire
 		(pts
@@ -5482,6 +5486,28 @@
 			)
 		)
 	)
+	(global_label "Solar+"
+		(shape input)
+		(at 41.91 34.29 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0e38117e-e222-487e-ae44-972986983d81")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 41.91 24.7735 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "BuckGND"
 		(shape input)
 		(at 266.7 149.86 0)
@@ -5715,28 +5741,6 @@
 		(uuid "83b71198-4f17-401a-9609-a9afba404e23")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 18.4536 114.935 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "Solar+"
-		(shape input)
-		(at 31.75 34.29 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "86543ef7-8ac4-4314-a154-9273072a5501")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 22.2335 34.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6006,6 +6010,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "T_HV+"
+		(shape input)
+		(at 32.385 45.72 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "ff6e8911-f1c1-4a06-926a-6fa1914b68ed")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 23.4731 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)
@@ -9106,6 +9132,109 @@
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2"
 					(reference "H5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:Fuse")
+		(at 32.385 40.64 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "91d25e9c-0c68-4e99-afe3-a1c96bc0085f")
+		(property "Reference" "F3"
+			(at 32.385 40.64 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Fuse"
+			(at 35.56 40.64 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "open-pe:Fuse_Blade_ATO_directSolderThin"
+			(at 34.163 40.64 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 32.385 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 32.385 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "DNP"
+			(at 32.385 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Desc" ""
+			(at 32.385 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 32.385 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" ""
+			(at 32.385 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ca1cb2d9-acf2-46c8-b22f-c14f6a9e1656")
+		)
+		(pin "2"
+			(uuid "e3ff04ce-a8d0-4c8c-b4f2-4004db723efb")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2"
+					(reference "F3")
 					(unit 1)
 				)
 			)
