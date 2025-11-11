@@ -3042,12 +3042,6 @@
 		(uuid "4ef164ee-f858-4e73-82df-2a617e844b75")
 	)
 	(junction
-		(at 148.59 66.04)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "58c730b4-7b8c-4332-b943-98028b53b425")
-	)
-	(junction
 		(at 161.29 59.69)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3088,6 +3082,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "a61e660a-4629-4788-b8bd-0aa9b3823732")
+	)
+	(junction
+		(at 152.4 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a844917b-7dba-4c4f-8a00-42831e34955c")
 	)
 	(junction
 		(at 119.38 63.5)
@@ -3163,7 +3163,7 @@
 	)
 	(wire
 		(pts
-			(xy 81.28 105.41) (xy 77.47 105.41)
+			(xy 81.28 105.41) (xy 79.375 105.41)
 		)
 		(stroke
 			(width 0)
@@ -3180,6 +3180,16 @@
 			(type default)
 		)
 		(uuid "0a80d080-82f0-44d2-8071-d9165b63d8e4")
+	)
+	(wire
+		(pts
+			(xy 152.4 66.04) (xy 152.4 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0bd7aeb9-52ae-42f0-b765-40272fea14fb")
 	)
 	(wire
 		(pts
@@ -3270,16 +3280,6 @@
 			(type default)
 		)
 		(uuid "20d9d780-1cad-438a-91f2-7ffe1c8be301")
-	)
-	(wire
-		(pts
-			(xy 147.32 66.04) (xy 148.59 66.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "21578730-a02f-4235-888b-6a3a32033e90")
 	)
 	(wire
 		(pts
@@ -3610,6 +3610,16 @@
 			(type default)
 		)
 		(uuid "636cb793-0cd5-4f95-8156-06c57deee471")
+	)
+	(wire
+		(pts
+			(xy 152.4 96.52) (xy 79.375 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "681b94d7-e553-4ddd-a519-f94e510f1403")
 	)
 	(wire
 		(pts
@@ -4110,6 +4120,16 @@
 			(type default)
 		)
 		(uuid "f694c3d0-aac5-469e-a350-2c13ded8597f")
+	)
+	(wire
+		(pts
+			(xy 79.375 96.52) (xy 79.375 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7bc8e00-3d41-4b4c-9683-500613e49c67")
 	)
 	(wire
 		(pts
@@ -4628,28 +4648,6 @@
 		(uuid "eb45a878-e6c6-468c-942d-1a0237fa12a5")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 107.0814 58.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "HO"
-		(shape input)
-		(at 77.47 105.41 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "ee28971d-bd61-4286-aaa7-06f1c8e5419d")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 72.3959 105.3306 0)
 			(effects
 				(font
 					(size 1.27 1.27)
