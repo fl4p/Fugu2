@@ -80,3 +80,8 @@ from https://recom-power.com/en/acdc-bok-chapter13-measuring.html?0 (AC/DC book 
 
 
 ![img.png](img.png)
+
+
+OPA333:
+
+![cs-opa333.web](img/cs-opa333.webp)

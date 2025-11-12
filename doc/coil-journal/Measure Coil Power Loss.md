@@ -38,7 +38,7 @@ e.g. for a coil you can use a highly efficient GaN half-bridge, and keep capicat
 
 
 # Measurement Results:
-![img_1.png](img_1.png)
+![img_1.png](coil-loss-ranking.webp)
 coils with total converter efficiencies.
 measured with ftall, 72vin/27vout P=~800W
 [detailed measurement log](../../HW%20Stories/ftall.md)
