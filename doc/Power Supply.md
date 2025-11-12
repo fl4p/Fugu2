@@ -9,6 +9,11 @@
     - another charger connected in parallel might be faulty passing through solar voltage (happended to me with Victron)
       and when battery is disconnected (e.g. BMS cut-off)
 
+# LibreSolar MPPT power rail selection
+![libresolar-power-rail](libresolar-power-rail.webp)
+
+![img.png](libresolar-12v.webp)
+
 # 3.3C
 
 ESP32-S3 WROOM
