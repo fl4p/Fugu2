@@ -82,6 +82,6 @@ Ipp=9.5A
 - in boost converter
 - I=31A, Ipp = 14.8A
 - Ploss = 4.9W std=0.33
-  ![img.png](img.webp)![img_1.png](img_1.webp)
+  ![img.png](codaca-wf.webp)![img_1.png](codaca-wf1.webp)
 - Power Measurements
     - 26/73V I=35.5A ipp=15A
