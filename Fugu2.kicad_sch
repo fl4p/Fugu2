@@ -128,113 +128,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Connector:TestPoint"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.762)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "TP"
-				(at 0 6.858 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "TestPoint"
-				(at 0 5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 5.08 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 5.08 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "test point"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "test point tp"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "Pin* Test*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "TestPoint_0_1"
-				(circle
-					(center 0 3.302)
-					(radius 0.762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TestPoint_1_1"
-				(pin passive line
-					(at 0 0 90)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "D_Small_5"
 			(pin_numbers
 				(hide yes)
@@ -5574,50 +5467,6 @@
 			)
 		)
 	)
-	(global_label "RX"
-		(shape input)
-		(at 230.505 82.55 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "3c16c478-de56-4d00-b826-c50c5f1c206e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 225.0403 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "TX"
-		(shape input)
-		(at 230.505 88.265 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "42a48644-2615-4b36-a639-c6ccccfef072")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 225.3427 88.265 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "BflowS"
 		(shape input)
 		(at 233.68 154.94 180)
@@ -5948,28 +5797,6 @@
 			)
 		)
 	)
-	(global_label "GND"
-		(shape input)
-		(at 230.505 94.615 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "de4bb276-2693-4a79-9783-5cdc726728b7")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 223.6493 94.615 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "BflowG"
 		(shape input)
 		(at 237.49 127 180)
@@ -6276,7 +6103,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "IPP055N08NF2SAKMA1"
+		(property "Value" "IPA050N10NM5S"
 			(at 102.87 31.75 0)
 			(effects
 				(font
@@ -6670,7 +6497,7 @@
 				)
 			)
 		)
-		(property "Value" "SOLAR / HV"
+		(property "Value" "691256610002"
 			(at 26.035 57.15 0)
 			(effects
 				(font
@@ -6733,6 +6560,15 @@
 			)
 		)
 		(property "Digikey" "691256610002, VP0265840000G or VP0265540000G"
+			(at 27.305 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C48688005"
 			(at 27.305 53.34 0)
 			(effects
 				(font
@@ -7889,7 +7725,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "IPP055N08NF2SAKMA1"
+		(property "Value" "IPA050N10NM5S"
 			(at 77.47 31.115 0)
 			(effects
 				(font
@@ -8531,7 +8367,7 @@
 				)
 			)
 		)
-		(property "Value" "4.7"
+		(property "Value" "4.7, 1%"
 			(at 78.74 37.084 90)
 			(effects
 				(font
@@ -8566,7 +8402,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "4.7"
+		(property "MPN" "4.7, 1%"
 			(at 78.74 36.83 0)
 			(effects
 				(font
@@ -8634,7 +8470,7 @@
 				)
 			)
 		)
-		(property "Value" "4.7"
+		(property "Value" "4.7, 1%"
 			(at 99.06 38.1 90)
 			(effects
 				(font
@@ -8669,7 +8505,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "4.7"
+		(property "MPN" "4.7, 1%"
 			(at 99.06 39.37 0)
 			(effects
 				(font
@@ -8738,7 +8574,7 @@
 				)
 			)
 		)
-		(property "Value" "100nF, 100V"
+		(property "Value" "1uF, 100V, X7S"
 			(at 240.0363 25.4 90)
 			(effects
 				(font
@@ -8829,7 +8665,7 @@
 		(at 110.49 61.595 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(uuid "79e929ba-bf9a-4250-9acc-b1f4331f8125")
@@ -9154,7 +8990,7 @@
 				)
 			)
 		)
-		(property "Value" "Fuse"
+		(property "Value" "40A"
 			(at 35.56 40.64 90)
 			(effects
 				(font
@@ -9258,7 +9094,7 @@
 				)
 			)
 		)
-		(property "Value" "Fuse"
+		(property "Value" "40A"
 			(at 154.305 47.625 90)
 			(effects
 				(font
@@ -9711,7 +9547,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "BAT"
+		(property "Value" "691256610002"
 			(at 169.545 62.23 0)
 			(effects
 				(font
@@ -9775,6 +9611,15 @@
 			)
 		)
 		(property "Digikey" "691256610002, VP0265840000G or VP0265540000G"
+			(at 167.005 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C48688005"
 			(at 167.005 59.69 0)
 			(effects
 				(font
@@ -9920,7 +9765,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "FDPF2D3N10C"
+		(property "Value" "IPP022N12NM6"
 			(at 76.835 57.15 0)
 			(effects
 				(font
@@ -9950,7 +9795,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "IPP022N12NM6: 120V"
 			(at 88.9 62.23 0)
 			(effects
 				(font
@@ -10030,7 +9875,7 @@
 				)
 			)
 		)
-		(property "Value" "1M"
+		(property "Value" "200k"
 			(at 240.03 34.29 90)
 			(effects
 				(font
@@ -10065,7 +9910,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "1M"
+		(property "MPN" "200k"
 			(at 240.03 34.29 0)
 			(effects
 				(font
@@ -10176,73 +10021,6 @@
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2"
 					(reference "#PWR06")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 230.505 82.55 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ca8d411c-4b54-4b8d-9b6e-702ebeb29627")
-		(property "Reference" "TP1"
-			(at 236.22 81.2799 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "RX"
-			(at 236.22 83.8199 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 230.505 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 230.505 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 230.505 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "f42e8ad5-eab5-404f-9d01-64eda4f5d2b8")
-		)
-		(instances
-			(project ""
-				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2"
-					(reference "TP1")
 					(unit 1)
 				)
 			)
@@ -10700,7 +10478,7 @@
 				)
 			)
 		)
-		(property "Value" "4.7"
+		(property "Value" "4.7, 1%"
 			(at 76.835 62.23 90)
 			(effects
 				(font
@@ -10908,7 +10686,7 @@
 				)
 			)
 		)
-		(property "Value" "0"
+		(property "Value" "2.2, 1%"
 			(at 98.806 45.339 90)
 			(effects
 				(font
@@ -10943,7 +10721,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0"
+		(property "MPN" "2.2, 1%"
 			(at 99.06 45.085 0)
 			(effects
 				(font
@@ -11089,73 +10867,6 @@
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2"
 					(reference "H4")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 230.505 88.265 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "ead22ad7-fd0e-4e87-b3a4-2170af31d01b")
-		(property "Reference" "TP2"
-			(at 236.22 86.9949 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "TX"
-			(at 236.22 89.5349 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 230.505 93.345 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 230.505 93.345 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 230.505 88.265 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "cefe8e53-fa43-4cb0-a9d5-20e12251b3f2")
-		)
-		(instances
-			(project "Fugu2"
-				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2"
-					(reference "TP2")
 					(unit 1)
 				)
 			)
@@ -11390,73 +11101,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
-		(at 230.505 94.615 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "f305e2ee-e47a-40fa-b35c-56e94852e77f")
-		(property "Reference" "TP3"
-			(at 236.22 93.3449 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "GND"
-			(at 236.22 95.8849 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "TestPoint:TestPoint_Pad_D1.5mm"
-			(at 230.505 99.695 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 230.505 99.695 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "test point"
-			(at 230.505 94.615 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "debdd0f5-423d-48da-b04e-025f91319ac5")
-		)
-		(instances
-			(project "Fugu2"
-				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2"
-					(reference "TP3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R_Small")
 		(at 80.01 41.91 270)
 		(unit 1)
@@ -11473,7 +11117,7 @@
 				)
 			)
 		)
-		(property "Value" "0"
+		(property "Value" "2.2, 1%"
 			(at 80.01 41.91 90)
 			(effects
 				(font
@@ -11508,7 +11152,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0"
+		(property "MPN" "2.2, 1%"
 			(at 80.01 41.91 0)
 			(effects
 				(font

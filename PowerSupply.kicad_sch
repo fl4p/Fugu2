@@ -3401,7 +3401,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "SMD1206B010TF/60 or TR-0603HV500-R"
+		(property "MPN" "SMD1206B010TF/60"
 			(at 55.88 54.61 0)
 			(effects
 				(font
@@ -3837,7 +3837,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
 			(at 55.88 141.605 0)
 			(effects
 				(font
@@ -3864,7 +3864,16 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "HMK212BC7105KGHTE"
+		(property "MPN" "1uF, 10V, X7S"
+			(at 55.88 141.605 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" "HMK212BC7105KGHTE"
 			(at 55.88 141.605 0)
 			(effects
 				(font
@@ -3971,7 +3980,7 @@
 				)
 			)
 		)
-		(property "Value" "1N5819WS"
+		(property "Value" "MSS1P4-M3/89A"
 			(at 122.8725 128.27 0)
 			(effects
 				(font
@@ -3979,7 +3988,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:D_SOD-323"
+		(property "Footprint" "Diode_SMD:D_MicroSMP_AK"
 			(at 122.555 127 0)
 			(effects
 				(font
@@ -3988,7 +3997,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://datasheet.lcsc.com/lcsc/2204281430_Guangdong-Hottech-1N5819WS_C191023.pdf"
+		(property "Datasheet" ""
 			(at 122.555 131.445 0)
 			(effects
 				(font
@@ -3997,7 +4006,16 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "40V 600mV@1A 1A SOD-323 Schottky Barrier Diodes, SOD-323"
+		(property "Description" ""
+			(at 122.555 131.445 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "MSS1P4-M3/89A"
 			(at 122.555 131.445 0)
 			(effects
 				(font
@@ -4040,7 +4058,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5.1k"
+		(property "Value" "5.1k 1%"
 			(at 150.495 151.7649 0)
 			(effects
 				(font
@@ -4068,6 +4086,24 @@
 			)
 		)
 		(property "Description" ""
+			(at 147.955 150.495 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "5.1k 1%"
+			(at 147.955 150.495 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25905"
 			(at 147.955 150.495 0)
 			(effects
 				(font
@@ -5156,7 +5192,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "2.2uF, 100V"
+		(property "Value" "4.7uF, 100V"
 			(at 72.39 64.77 0)
 			(effects
 				(font
@@ -5192,7 +5228,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "4.7uF 100V"
+		(property "MPN" "4.7uF, 100V"
 			(at 72.39 60.96 0)
 			(effects
 				(font

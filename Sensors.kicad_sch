@@ -1499,6 +1499,17 @@
 			(embedded_fonts no)
 		)
 	)
+	(text "rely on mcu internal diodes to power\nrail. this esd diode probably doesnt\nmake sense anyway. better to place a shottky to\n3.3V"
+		(exclude_from_sim no)
+		(at 90.805 57.785 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "30e79261-d926-44bc-8fbd-4bba9cfb64b1")
+	)
 	(text "from AS333\ndatasheet"
 		(exclude_from_sim no)
 		(at 122.555 109.22 0)
@@ -2761,7 +2772,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470nF, 25V"
+		(property "Value" "1uF, 10V, X7S"
 			(at 188.595 70.485 90)
 			(effects
 				(font
@@ -4193,9 +4204,9 @@
 		(at 86.36 57.785 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "8dcf8406-3c49-44bc-bf99-80658ec385b9")
 		(property "Reference" "D6"
 			(at 83.82 57.785 0)

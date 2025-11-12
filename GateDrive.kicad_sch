@@ -4887,7 +4887,7 @@
 		(at 213.36 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(uuid "0a01899d-111c-4d30-b231-2248c7ebb1b9")
@@ -6139,7 +6139,7 @@
 				)
 			)
 		)
-		(property "Value" "47k"
+		(property "Value" "47k, 1%"
 			(at 78.74 124.46 90)
 			(effects
 				(font
@@ -6174,7 +6174,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "47k"
+		(property "MPN" "47k, 1%"
 			(at 76.2 124.46 0)
 			(effects
 				(font
@@ -6604,7 +6604,7 @@
 				)
 			)
 		)
-		(property "Value" "1N4148W-7-F"
+		(property "Value" "SS310"
 			(at 83.82 102.87 0)
 			(effects
 				(font
@@ -6630,7 +6630,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "alternative: 1N4148W-7-F (C83528)"
 			(at 83.82 105.41 0)
 			(effects
 				(font
@@ -6639,7 +6639,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "1N4148W-7-F"
+		(property "MPN" "DSS310"
 			(at 83.82 105.41 0)
 			(effects
 				(font
@@ -6693,7 +6693,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C83528"
+		(property "LCSC" ""
 			(at 83.82 105.41 0)
 			(effects
 				(font
@@ -7305,7 +7305,7 @@
 		(at 217.17 57.15 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(uuid "ab5af202-2d95-4718-9a08-4a7808846c65")
@@ -7516,7 +7516,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "20"
+		(property "Value" "22"
 			(at 173.99 59.69 90)
 			(effects
 				(font
@@ -7965,7 +7965,7 @@
 		(at 217.17 53.34 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp yes)
 		(uuid "dea24e88-4ea4-4677-aa0d-c2895b9b878c")
