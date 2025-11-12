@@ -1,17 +1,31 @@
 
-https://ds.murata.co.jp/simsurfing/mlcc.html?lcid=en-us
+# Inductor
 
-# Indcutor
+[micrometals designer](https://www.micrometals.com/design-and-applications/design-tools/inductor-designer/)
 
-micro metals
+[micrometals analyzer](https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/)
 
+https://www.mag-inc.com/Design/Design-Tools
 
-# Caps
+# Capacitors
 https://product.tdk.com/en/search/lc_select_tool
 
-# Mosfets
-https://epc-co.com/epc/design-support/part-cross-reference-search
+https://ds.murata.com/simsurfing/mlcc.html?lcid=en-us
+
+
+# Mosfets / GaN
+EPC Cross Reference https://epc-co.com/epc/design-support/part-cross-reference-search
+[EPC Buck](https://epc-co.com/epc/design-support/tools-and-calculators/gan-power-bench/gan-fet-selection-tool-for-buck-convertors)
+
 https://www.dmcinfo.com/latest-thinking/blog/id/10517/mosfet-power-loss-calculator
+
+
+# Thermal, Heat sink
+
+https://www.heatsinkcalculator.com/heat-sink-size-calculator.html
+
+https://epc-co.com/epc/design-support/gan-power-bench/gan-fet-thermal-calculator
+
 
 # Python
 
@@ -28,17 +42,9 @@ https://github.com/matplotlib/ipympl
 
 QSPice
 
-DCDC
+# DCDC
 https://www.poweresim.com/
-
-https://www.micrometals.com/design-and-applications/design-tools/
-
-https://www.mag-inc.com/Design/Design-Tools
 
 
 # PV
 https://github.com/pvlib/pvlib-python
-
-# Thermal, Heatsink
-
-https://epc-co.com/epc/design-support/gan-power-bench/gan-fet-thermal-calculator

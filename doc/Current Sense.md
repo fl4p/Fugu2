@@ -1,17 +1,32 @@
-# PCB Design Notes
+## High-side current sensing
 
-* Current sense: INA226 datasheet https://www.ti.com/lit/ds/symlink/ina226.pdf#page=30
+* immune to ground connecting errors, leakage
+* works in an non-isolated power-loop rig (buck output connected to boost input and boost output to buck input)
+* can monitor coil current if bandwidth is sufficiently high (x10 switching freq?)
 
-# Schematics Design Notes
+how to implement:
 
+* using a high CMRR amplifier (e.g. INA226, INA228)
+* or heaper: put op amp supply to power rail (+) and a supply that creates -5V from power rail (+). open collector output
+  builds a current source that allows level-shift to ground through a resistor:
+  ![img.png](img/cs-LMV93x-N.webp) (from the LMV93x-N datasheet)
+
+## low side current sensing
+* simpler and cheaper
+
+
+## bi-directional current sensing
+* independently of high- or low-side measurement
+* buck hardware can become boost hardware by swapping input and output
+* detect faults that cause reverse current 
+
+# Design Notes / Literature
+
+* [pcb: INA226 datasheet](https://www.ti.com/lit/ds/symlink/ina226.pdf#page=30) 
 * Current sense filtering https://www.ti.com/lit/ds/symlink/ina226.pdf#page=14
 
-# TODO paper about
-
-Current-sensing techniques for DC-DC converters, H.P. Forghani-zadeh et
-al. https://sci-hub.se/10.1109/MWSCAS.2002.1186927
-
-https://rincon-mora.gatech.edu/publicat/cnfs/mw02_isns.pdf
+[Current-sensing techniques for DC-DC converters](https://rincon-mora.gatech.edu/publicat/cnfs/mw02_isns.pdf), H.P. Forghani-zadeh et
+al.
 
 * series sense resistor
 * Rds sensing
@@ -21,6 +36,9 @@ https://rincon-mora.gatech.edu/publicat/cnfs/mw02_isns.pdf
 * ![img_8.webp](img/img_8.webp)
 * ![img_9.webp](img/img_9.webp)
 
+# Amplifiers
+Todo this list needs an update
+
 |         |        | DC CMRR | CMRR @50 kHz | Gain err | TempDrift | Voff  | BW     | gains   | notes                 |
 |---------|--------|---------|--------------|----------|-----------|-------|--------|---------|-----------------------|
 | INA281  | +110 V | 120-dB  | 65-dB        | 0.5%     | 20ppm     |       | 1.3MHz | 20..500 | cheapest TI , $1.18   |
@@ -28,8 +46,6 @@ https://rincon-mora.gatech.edu/publicat/cnfs/mw02_isns.pdf
 | INA310B | 110V   | 160dB   |              | 0.5%     | 20ppm     | 150uV | 1.3MHz | 20..500 | int. Comparator       |
 | INA169  | 60V    |         |              |          |           |       |        |         | $1.22                 |
 | INA791x |        |         |              |          |           |       |        |         | internal 50A EZ-Shunt |
-
-
 
 Reject Noise
 
@@ -48,9 +64,8 @@ https://sci-hub.se/10.1109/MWSCAS.2002.1186927
 INA226
 INA229
 
-
-
 # OP amp / current sense amp
+
 ![img.png](img.png)
 
 the OP amp should have no Vos cross-over distortion, and a low Vos drift
@@ -60,28 +75,25 @@ the OP amp should have no Vos cross-over distortion, and a low Vos drift
 * for Vbat up to 60V: BC856BLT1G (65V, 100mA) or MMBT2907ALT1G (60V, 600mA) or MMBTA56LT1G (80V, 500mA), all ~300MHz
 
 * MCP6C02 https://www.mouser.de/datasheet/2/268/Zero_Drift_65V_High_Side_Current_Sense_Amplifier_D-3444102.pdf
-  * already comes with level-shift
-  * 68V common mode
-  * VOS: ±1.65 μV (typic
-  * CMRR: 154 dB (typical)
-
+    * already comes with level-shift
+    * 68V common mode
+    * VOS: ±1.65 μV (typic
+    * CMRR: 154 dB (typical)
 
 ![img_1.png](../../../../../dev/pv/fugu-mppt-doc/img_1.png)
 https://www.analog.com/media/en/technical-documentation/data-sheets/ltc2063-2064-2065.pdf
-
 
 ![img_1.png](img/highside-current-sense.webp)
 
 from https://www.mouser.com/pdfDocs/RECOMACDCBOOKOFKNOWLEDGE.pdf#page=181
 from https://recom-power.com/en/acdc-bok-chapter13-measuring.html?0 (AC/DC book of knowledge)
 
-
 ![img_4.png](img/low-side-current-shunt-ads1015.webp)
-
-
-![img.png](img/cs-LMV93x-N.webp)
-
 
 OPA333:
 
 ![cs-opa333.web](img/cs-opa333.webp)
+
+# Simulations
+
+[low-side bi-directional](https://www.falstad.com/circuit/circuitjs.html?ctz=CQAgjCAMB0l3BWEAmB0FksgHGAbAOyRHLKR4oAsISCkNApgLRhgBQATiJXCttt16U81ejHgI2Ad0H1h1ZAWTcRUNgEMQeSAIDMeAQX0h9AgJwnouqOHjwosXdmT4zInAmS6Mox8+RmGOT8urrE1Jh2nLImxtp6njaRkNHxJtjUPHL4SfCpOiaJaYrK9GB0eVxpTtRp8jYEFSkydapGFPXNIO0mBt3GndL9FKYg2LrKo11ZsR28OALTQjkzgwDmMfWr2GJqAG4oSnwCMwtJghe7MJJcJceHyp3gbABKWgV3eAgUpKI2PJZrFd0PkEo8dlRdsk4GwNpQIcgAZQJihETYUjxrAQ+qgKGYcIVSiAzAB9EQkyAkgAeOFYYGQJLA0FQFNg8DM2O+LJYJIZ2FZCBJTGxJNJulZdkoZmlMtlcrwFLYAGN3mDVelMg47JAIOJ4PSEPJIGFAtpiKF0WxMQ8TJBMrwpuBxeTKciEOKeCSMMyhWBeYzxbo2EA)
