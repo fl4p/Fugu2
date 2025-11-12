@@ -45011,8 +45011,8 @@
 		(uuid "2f005564-737b-411b-ab57-84b6b4bed6c9")
 	)
 	(gr_rect
-		(start 34.4995 91.586)
-		(end 42.5005 107)
+		(start 34.9995 91.586)
+		(end 39.7505 107)
 		(stroke
 			(width 0.15)
 			(type solid)
@@ -45113,8 +45113,8 @@
 		(uuid "bb504a79-3386-432b-995c-d0d5eeee3d1b")
 	)
 	(gr_rect
-		(start 34.535 64.723)
-		(end 42.536 90.637)
+		(start 35.035 64.723)
+		(end 39.786 90.637)
 		(stroke
 			(width 0.15)
 			(type solid)
