@@ -1,5 +1,10 @@
-Links: [github](https://github.com/fl4p/Fugu2) | [cadlab](https://cadlab.io/project/28816) (view schematics & pcb) |
-[docs](doc/) | [pdf schematics](Schematics.pdf) | IBOM (TODO) | [firmware](https://github.com/fl4p/fugu-mppt-firmware)
+Links: [github](https://github.com/fl4p/Fugu2)
+| [kicanvas](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Ffl4p%2FFugu2)
+| [cadlab](https://cadlab.io/project/28816) 
+| [docs](doc/)
+| [pdf schematics](Schematics.pdf)
+| IBOM (TODO)
+| [firmware](https://github.com/fl4p/fugu-mppt-firmware)
 | [additional documentation & resources](https://github.com/fl4p/fugu-mppt-doc)
 
 | <img src="img/fugu2-3d-top.webp" width="400"/> <img src="img/fugu2-3d-bottom.webp" width="400"/> |
