@@ -1586,6 +1586,16 @@
 		)
 		(uuid "d2dfdcd9-c88c-4d8d-a4a1-a258e85f1b13")
 	)
+	(text "new INA226 replacement\ncircuit (bi-directional, cheaper)"
+		(exclude_from_sim no)
+		(at 132.715 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "eea03aeb-862d-408c-a446-da8632c0855d")
+	)
 	(text "ADC max: 2.45V "
 		(exclude_from_sim no)
 		(at 36.322 60.325 0)
