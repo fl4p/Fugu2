@@ -5778,7 +5778,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "0.17A Id, 100V Vds, N-Channel MOSFET, SOT-23"
+		(property "Description" "100V, 6Ω, 0.17A, N-Channel MOSFET, SOT-23"
 			(at 73.66 132.08 0)
 			(effects
 				(font

@@ -4611,10 +4611,6 @@
 		(uuid "2d269989-ba83-46aa-81f1-eee9cf8273b4")
 	)
 	(no_connect
-		(at 88.9 135.89)
-		(uuid "4b877326-b1e4-441e-b3d4-84d2201fb702")
-	)
-	(no_connect
 		(at 180.34 140.97)
 		(uuid "5bf760c1-1088-4541-9e93-af9dabe617da")
 	)
@@ -5594,6 +5590,16 @@
 	)
 	(wire
 		(pts
+			(xy 86.995 135.89) (xy 88.9 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e199eec7-df85-4159-966a-92ff30f50223")
+	)
+	(wire
+		(pts
 			(xy 180.34 110.49) (xy 181.61 110.49)
 		)
 		(stroke
@@ -5958,6 +5964,28 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "LV_PGOOD"
+		(shape input)
+		(at 86.995 135.89 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "23c564e1-e9ee-47a9-923e-c21be7637d8b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 74.4545 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 				(hide yes)
 			)
 		)

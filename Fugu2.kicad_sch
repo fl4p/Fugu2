@@ -1667,8 +1667,8 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "Q"
-				(at 5.08 1.905 0)
+			(property "Reference" "Q6"
+				(at -2.54 0 90)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1676,8 +1676,8 @@
 					(justify left)
 				)
 			)
-			(property "Value" "HYG025N06LS1C2"
-				(at 5.08 0 0)
+			(property "Value" "NTMFS5C612NLT1G"
+				(at 6.35 -7.62 90)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -1695,7 +1695,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://datasheet.lcsc.com/lcsc/2105242011_HUAYI-HYG025N06LS1C2_C2827231.pdf"
+			(property "Datasheet" ""
 				(at 0 0 90)
 				(effects
 					(font
@@ -1705,7 +1705,43 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "N-Channel MOSFET, 170A Id, 60V Vds, DFN-8"
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MPN" "NTMFS5C612NLT1"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Desc" "Bflow"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Manufacturer" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Digikey" ""
 				(at 0 0 0)
 				(effects
 					(font
@@ -1947,44 +1983,6 @@
 						)
 					)
 					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(hide yes)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -6.35 90)
-					(length 2.54)
-					(hide yes)
-					(name "S"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -7277,14 +7275,8 @@
 		(pin "2"
 			(uuid "a2780656-19df-4690-8aed-cf23f78e352b")
 		)
-		(pin "2"
-			(uuid "a2780656-19df-4690-8aed-cf23f78e352c")
-		)
 		(pin "3"
 			(uuid "8ed6bea3-2bbb-4726-bded-4f9ca8c2adb6")
-		)
-		(pin "3"
-			(uuid "8ed6bea3-2bbb-4726-bded-4f9ca8c2adb7")
 		)
 		(instances
 			(project "Fugu2"

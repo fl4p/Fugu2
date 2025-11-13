@@ -183,7 +183,7 @@ fringing.
 * Systematic name: 2s-KS184-125A-118cu-10s-12t
 * [Micrometals analyzer](https://www.micrometals.com/design-and-applications/design-tools/inductor-analyzer/?name=&inductor_type=D&l=50&iavg=30.37&vin_rms_min=45&vin_rms_max=27&f_switching=39000.0&ambient_temp=40&max_temp_rise=50&temp_rise=1&min_l=40&part_type=A&winding=F&num_cores=2&wire_strands=10&full_ratio=0.9&min_awg=30&pct_win_fill_max_e=100&energy_cost=0.2&continuous_use=0.5&conductor_material=Cu&n=12&strandsxawg=10xAWG%252316.8&partnumber=MS-184125-2&awg=16.8)
 
-<img src="doc/coil-journal/img_9.webp" width=300 /> <img src="doc/coil-journal/img_10.webp" width=300 />
+<img src="doc/coil-journal/img/img_9.webp" width=300 /> <img src="doc/coil-journal/img/img_10.webp" width=300 />
 
 ## 48V batteries up to 20A
 
