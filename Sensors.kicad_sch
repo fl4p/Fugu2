@@ -2818,7 +2818,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "470nF, 25V"
+		(property "MPN" "1uF, 10V, X7S"
 			(at 183.515 67.945 0)
 			(effects
 				(font
@@ -2845,7 +2845,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "CL21B105KAFNNNE"
 			(at 183.515 67.945 0)
 			(effects
 				(font
@@ -2923,7 +2923,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "47k 1%"
+		(property "MPN" "47k, 1%"
 			(at 197.485 57.785 0)
 			(effects
 				(font
@@ -3294,7 +3294,7 @@
 				)
 			)
 		)
-		(property "Value" "100nF, 25V"
+		(property "Value" "100nF, X7R, 25V"
 			(at 224.155 53.975 90)
 			(effects
 				(font
@@ -3329,7 +3329,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "100nF, 25V"
+		(property "MPN" "100nF, X7R, 25V"
 			(at 221.615 56.515 0)
 			(effects
 				(font
@@ -3533,7 +3533,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "100nF, 25V"
+		(property "Value" "100nF, X7R, 25V"
 			(at 72.39 53.975 0)
 			(effects
 				(font
@@ -3569,7 +3569,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "100nF, 25V"
+		(property "MPN" "100nF, X7R, 25V"
 			(at 76.2 57.785 0)
 			(effects
 				(font
@@ -4122,7 +4122,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10nF, 50V"
+		(property "Value" "10nF, 100V"
 			(at 188.341 67.183 0)
 			(effects
 				(font
@@ -4158,7 +4158,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "10nF, 50V"
+		(property "MPN" "10nF, 100V"
 			(at 189.865 64.135 0)
 			(effects
 				(font
@@ -4185,7 +4185,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "0805B103K101CT"
 			(at 189.865 64.135 0)
 			(effects
 				(font
@@ -4469,7 +4469,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "47k 1%"
+		(property "MPN" "47k, 1%"
 			(at 197.485 64.135 0)
 			(effects
 				(font

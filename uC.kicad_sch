@@ -7043,7 +7043,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "Male Pin Header"
+		(property "MPN" "ZX-PM2.0-1-4PY"
 			(at 229.87 41.91 0)
 			(effects
 				(font
@@ -7320,7 +7320,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "Male Pin Header"
+		(property "MPN" "DNP"
 			(at 137.16 34.29 0)
 			(effects
 				(font
@@ -7432,7 +7432,7 @@
 				)
 			)
 		)
-		(property "Value" "100nF, 25V"
+		(property "Value" "100nF, X7R, 25V"
 			(at 151.13 61.976 90)
 			(effects
 				(font
@@ -7467,7 +7467,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "100nF, 25V"
+		(property "MPN" "100nF, X7R, 25V"
 			(at 143.51 64.77 0)
 			(effects
 				(font
@@ -8587,7 +8587,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "DNP"
+		(property "MPN" "ESP32-S3-WROOM-1U-N4R2"
 			(at 134.62 105.41 0)
 			(effects
 				(font
@@ -8950,7 +8950,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "WS2812B"
+		(property "MPN" "XINGLIGHT XL-5050RGBC-2812B-S"
 			(at 35.56 69.215 0)
 			(effects
 				(font
@@ -8977,7 +8977,16 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "FZ2812-5050"
+			(at 35.56 69.215 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C22461793"
 			(at 35.56 69.215 0)
 			(effects
 				(font
@@ -9658,7 +9667,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "USB4215-03-A"
 			(at 247.015 77.47 0)
 			(effects
 				(font
@@ -10235,7 +10244,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "CL21B105KAFNNNE"
 			(at 110.49 63.5 0)
 			(effects
 				(font
@@ -11372,6 +11381,24 @@
 		)
 		(property "Description" "Push button switch, generic, two pins"
 			(at 254 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "XUNPU TS-1088-AR02016"
+			(at 254 137.16 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C720477"
+			(at 254 137.16 90)
 			(effects
 				(font
 					(size 1.27 1.27)

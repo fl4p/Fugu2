@@ -5033,7 +5033,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "SMAJ85A"
+		(property "MPN" "DNP"
 			(at 156.845 55.88 0)
 			(effects
 				(font
@@ -5147,7 +5147,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" "HMK212BC7105KGHTE"
+		(property "Digikey" "CL21B105KAFNNNE"
 			(at 82.55 141.605 0)
 			(effects
 				(font
@@ -5331,7 +5331,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10nF"
+		(property "Value" "10nF, 100V"
 			(at 102.235 52.705 0)
 			(effects
 				(font
@@ -5359,6 +5359,24 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 102.235 48.895 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Digikey" "0805B103K101CT"
+			(at 102.235 48.895 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "10nF, 100V"
 			(at 102.235 48.895 0)
 			(effects
 				(font
@@ -5402,7 +5420,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1M"
+		(property "Value" "200k"
 			(at 109.22 46.3549 0)
 			(effects
 				(font
@@ -5430,6 +5448,15 @@
 			)
 		)
 		(property "Description" "Resistor, small symbol"
+			(at 107.315 45.085 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1M"
 			(at 107.315 45.085 0)
 			(effects
 				(font
@@ -6294,6 +6321,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "200k"
+			(at 97.155 37.465 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "967c9912-614d-4bc9-bf8e-ca71807049b2")
 		)
@@ -6431,6 +6467,15 @@
 				(hide yes)
 			)
 		)
+		(property "MPN" "33k"
+			(at 147.955 128.905 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "89a73a94-2639-4425-adb1-10f2e38c72ca")
 		)
@@ -6502,6 +6547,15 @@
 			)
 		)
 		(property "Digikey" "AP3012KTR-G1"
+			(at 100.33 133.985 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AP3012KTR-G1"
 			(at 100.33 133.985 0)
 			(effects
 				(font
@@ -7193,7 +7247,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C47087986(goford), C42374594(doingter), C48888435(siliup)"
+		(property "LCSC" "C47087986(goford), C42374594(doingter), C48888435(siliup SP010N90NJ)"
 			(at 113.03 42.545 0)
 			(effects
 				(font
