@@ -4639,7 +4639,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "UCC21330BQDRQ1"
+		(property "MPN" "DNP"
 			(at 135.89 60.96 0)
 			(effects
 				(font
@@ -4658,6 +4658,15 @@
 			)
 		)
 		(property "Digikey" "UCC21330BQDRQ1"
+			(at 135.89 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "_pcbway_notes" "$3.37"
 			(at 135.89 60.96 0)
 			(effects
 				(font
@@ -6105,7 +6114,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10nF, 50V"
+		(property "Value" "10nF, 100V"
 			(at 90.17 130.81 90)
 			(effects
 				(font
@@ -6123,7 +6132,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "CL21F104ZBCNNNC"
+		(property "Datasheet" ""
 			(at 87.63 124.46 0)
 			(effects
 				(font
@@ -6141,7 +6150,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "10nF, 50V"
+		(property "MPN" "10nF, 100V"
 			(at 87.63 124.46 0)
 			(effects
 				(font
@@ -6168,7 +6177,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "0805B103K101CT"
 			(at 87.63 124.46 0)
 			(effects
 				(font
@@ -6531,7 +6540,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "20"
+		(property "MPN" "22"
 			(at 175.26 59.69 0)
 			(effects
 				(font
@@ -6853,7 +6862,7 @@
 				)
 			)
 		)
-		(property "Value" "100nF, 25V"
+		(property "Value" "100nF, X7R, 25V"
 			(at 117.094 47.498 0)
 			(effects
 				(font
@@ -6888,7 +6897,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "100nF, 25V"
+		(property "MPN" "100nF, X7R, 25V"
 			(at 121.92 53.34 0)
 			(effects
 				(font

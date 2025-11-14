@@ -6103,7 +6103,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "NTMFS5C612NLT1G"
+		(property "Value" "TPH1R306PL,L1Q or NTMFS5C612NLT1G"
 			(at 236.22 140.97 90)
 			(effects
 				(font
@@ -6141,7 +6141,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "NTMFS5C612NLT1G"
+		(property "MPN" "TPH1R306PL,L1Q"
 			(at 237.49 133.35 0)
 			(effects
 				(font
@@ -6983,7 +6983,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "NTMFS5C612NLT1G"
+		(property "Value" "TPH1R306PL,L1Q or NTMFS5C612NLT1G"
 			(at 133.985 55.245 90)
 			(effects
 				(font
@@ -7021,7 +7021,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "NTMFS5C612NLT1"
+		(property "MPN" "TPH1R306PL,L1Q"
 			(at 141.605 48.895 0)
 			(effects
 				(font
@@ -7093,7 +7093,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470uF"
+		(property "Value" "470uF, 100V"
 			(at 44.704 55.88 0)
 			(effects
 				(font
@@ -7454,7 +7454,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "ST15100S"
+		(property "MPN" "DNP"
 			(at 265.43 146.05 0)
 			(effects
 				(font
@@ -7465,6 +7465,15 @@
 		)
 		(property "Manufacturer" "SMC"
 			(at 265.43 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "_pcbway_notes" "7-10 Workdays, $1.36"
+			(at 265.43 146.05 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7721,7 +7730,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470uF"
+		(property "Value" "470uF, 100V"
 			(at 36.83 55.88 0)
 			(effects
 				(font
@@ -7826,7 +7835,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470uF"
+		(property "Value" "470uF, 100V"
 			(at 130.175 64.135 0)
 			(effects
 				(font
@@ -8398,7 +8407,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "100nF, 100V"
+		(property "MPN" "HMK212BC7105KGHTE"
 			(at 240.03 29.21 0)
 			(effects
 				(font
@@ -8418,6 +8427,15 @@
 		)
 		(property "Digikey" ""
 			(at 240.03 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "HMK212BC7105KGHTE"
+			(at 240.03 29.21 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8987,7 +9005,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_2220_5650Metric"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
 			(at 53.0352 57.15 0)
 			(effects
 				(font
@@ -9805,7 +9823,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "NTMFS5C612NLT1G"
+		(property "Value" "TPH1R306PL,L1Q or NTMFS5C612NLT1G"
 			(at 237.49 160.02 90)
 			(effects
 				(font
@@ -9843,7 +9861,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "NTMFS5C612NLT1G"
+		(property "MPN" "TPH1R306PL,L1Q"
 			(at 238.76 152.4 0)
 			(effects
 				(font
@@ -9872,6 +9890,15 @@
 		)
 		(property "Digikey" ""
 			(at 238.76 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "_pcbway_notes" "TPH1R306PL,L1Q: $1.724"
+			(at 238.76 152.4 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9931,7 +9958,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_2220_5650Metric"
+		(property "Footprint" "Capacitor_SMD:C_1210_3225Metric_Pad1.33x2.70mm_HandSolder"
 			(at 58.1152 57.15 0)
 			(effects
 				(font
@@ -10172,7 +10199,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "4.7"
+		(property "MPN" "4.7, 1%"
 			(at 76.835 62.23 0)
 			(effects
 				(font

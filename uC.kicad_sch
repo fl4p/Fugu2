@@ -9640,15 +9640,6 @@
 				(hide yes)
 			)
 		)
-		(property "Field5" ""
-			(at 247.015 77.47 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
 		(property "MPN" "SHOU HAN TYPE-C 16P QTGM027"
 			(at 247.015 77.47 0)
 			(effects
