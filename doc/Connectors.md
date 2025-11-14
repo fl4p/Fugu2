@@ -36,6 +36,8 @@ USB-C
 Standing https://www.lcsc.com/product-detail/USB-Connectors_XUNPU-TYPEC-303-ACP16_C720628.html
 SMD https://www.lcsc.com/product-detail/USB-Connectors_SHOU-HAN-TYPE-C-16P-QTGM027_C2681552.html
 
+PD-chip HUSB238 (https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Fblinken%2Fpower-rail-probe)
+
 # Power Connectors, Lugs
 
 * preferably cross-head (Phillips) screws

@@ -1,6 +1,6 @@
 Links: [git](https://github.com/fl4p/Fugu2)
 | [kicanvas](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Ffl4p%2FFugu2)
-| [cadlab](https://cadlab.io/project/28816) 
+| [cadlab](https://cadlab.io/project/28816)
 | [docs](doc/)
 | [pdf schematics](Schematics.pdf)
 | IBOM (TODO)
@@ -28,10 +28,12 @@ Links: [git](https://github.com/fl4p/Fugu2)
   component selection)
 * Battery output voltage: 12 ~ 60V (LiFePo4 4s ~ 16s)
 * Max output current: 32 A
-* Efficiency
+* Efficiency Measurements
     * Vin=72 Vout=27 Iout=32A: 98.17% (measured with INA228 & Riedon
       SSA-100, [smart-shunt](https://github.com/open-pe/smart-shunt-fw))
-
+    * Vin=71.5 Vout=27.1 Iout=29.1A: 98.12% (measured with INA228, Riedon RSN20-50, DCCT
+      DS200ID, [details](doc/Efficiency%20Measurements.md))
+     
 This is inspired by [Fugu MPPT](https://www.instructables.com/DIY-1kW-MPPT-Solar-Charge-Controller/).
 The design has been optimized with real life experience, considering signal noise and EMI issues,
 replaced hall sensor with shunt resistor and faster switching. See the list below for more changes.

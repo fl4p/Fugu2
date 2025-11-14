@@ -13,7 +13,7 @@ fugu2 board mounted on heat-sink
 
 ## Inductor (2s-KS184-125A-d118-s10-n12)
 
-<img src="../doc/coil-journal/img_10.webp" width="200"/>
+<img src="../doc/coil-journal/img/img_10.webp" width="200"/>
 
 - core: 2s KS184-125A
 - coil: w210 cu, 1.18mm (schneitec), 10 strands (used 2m wire per strand)

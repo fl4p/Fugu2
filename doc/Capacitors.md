@@ -7,11 +7,17 @@ https://docs.google.com/spreadsheets/d/1vxxJvD4m8UsKfiyYFJieKQtYqnGDK7agQkgYiSCF
 * X7S (and C0G ?) has lower DC-bias capacitance drop
     * good for snubbers, input caps
 
-|                          |      |      |     |      | 80V dc-bias |                                                                                                   |
-|--------------------------|------|------|-----|------|-------------|---------------------------------------------------------------------------------------------------|
-| murata GRM32EC72A106KE05 | 10uF | 100V | X7S | 1210 | 1.4uF       | [link](https://www.murata.com/en-global/products/productdetail?partno=GRM32EC72A106KE05%23)       |
-| tdk C5750X7S2A106K230KB  | 10uF | 100V | X7S |      | 2.22uF      | [link](https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=C5750X7S2A106K230KB) |
-| tdk CKG57NX7R2A106M500JH | 10uF | 100V | X7R |      | 3.6uF       | 5mm MEGACAP!  expensive                                                                           |
+|                                 |      |      |     |      | 80V dc-bias | R@1kHz | R@50Khz | px              |                                                                                                   |
+|---------------------------------|------|------|-----|------|-------------|--------|---------|-----------------|---------------------------------------------------------------------------------------------------|
+| murate GRM31cr60e227            |      |      |     |      |             |        |         |                 |                                                                                                   |
+| murata GRM32EC72A106KE05        | 10uF | 100V | X7S | 1210 | 1.4uF       |        | 5mΩ     |                 | [link](https://www.murata.com/en-global/products/productdetail?partno=GRM32EC72A106KE05%23)       |
+| tdk C5750X7S2A106K230KB         | 10uF | 100V | X7S |      | 2.22uF      | 162mΩ  | 6.3mΩ   |                 | [link](https://product.tdk.com/en/search/capacitor/ceramic/mlcc/info?part_no=C5750X7S2A106K230KB) |
+| tdk CKG57NX7R2A106M500JH        | 10uF | 100V | X7R |      | 3.6uF       | 104mΩ  | 5.3mΩ   |                 | 5mm MEGACAP!  expensive                                                                           |
+| tdk C3216X6S2A106K160AC         | 10uF | 100V | X6S |      | 0.8uF       |        | 4mΩ     |                 |                                                                                                   |
+| yuden HMK212BC7105KGHTE (smps)  | 1uF  | 100V | X7S | 0805 | -83%        | 762Ω   | 20m     | 100 : 0,14650 € | [link](https://ds.yuden.co.jp/TYCOMPAS/ut/detail?pn=MMASH21GBC7105KTCA01&u=M)                     |
+| murata GRJ21BC72A105ME11L       | 1uF  | 100V |     |      | 0.165uF     | 1.5k   | 40m     | 100 : 0,10120 € |                                                                                                   |
+| yuden HMR212CC7105KG-T (bypass) | 1uF  | 100V | X7S | 0805 | -82%        | 724    | 20m     | 100 : 0,12090 € |                                                                                                   |
+| yuden HMK316AC7225KL-TE (smps)  | 2.2  | 100V |     |      |             |        | 10m     | 100 : 0,16320   |                                                                                                   |
 
 # Electrolytic
 
