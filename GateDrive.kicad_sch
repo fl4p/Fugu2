@@ -2700,9 +2700,9 @@
 		)
 		(uuid "04b05176-e203-49da-ab53-795dc36c8bba")
 	)
-	(text "to power the Ideal Diode gate Q5\nbuffered and clamped HS gate drive voltage\nprovides a 15V stable voltage above Q5's source"
+	(text "to power the Ideal Diode gate Q5\nbuffered and clamped HS gate drive voltage\nprovides a 12V stable voltage above Q5's source\n(as long as the LS is actively switching)"
 		(exclude_from_sim no)
-		(at 93.218 102.108 0)
+		(at 92.71 103.505 0)
 		(effects
 			(font
 				(size 1.016 1.016)

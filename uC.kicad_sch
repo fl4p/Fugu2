@@ -4133,6 +4133,17 @@
 		)
 		(uuid "42badeda-cca0-4d2c-879e-860e7ab3df81")
 	)
+	(text "-> mcu head board"
+		(exclude_from_sim no)
+		(at 40.64 43.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(href "https://github.com/open-pe/mcu-head-p12-esp32s3-wroom")
+		)
+		(uuid "591a8c62-87e2-4e32-86cd-1d624e611ba5")
+	)
 	(text "see esp-rust-board for footprint"
 		(exclude_from_sim no)
 		(at 230.505 64.77 0)
@@ -11079,7 +11090,7 @@
 		(exclude_from_sim no)
 		(in_bom no)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f6dc4b50-4ffc-4ece-ba16-e87cd1e49a2e")
 		(property "Reference" "J4"
