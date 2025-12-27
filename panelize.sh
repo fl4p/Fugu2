@@ -1,18 +1,8 @@
-
-#cat ../hw/precision-current-sensor/precision-current-sensor.kicad_pcb
-
-#kikit panelize \
-#  --layout 'plugin; code: panelize.py.Plugin; cols: 2; space: 2mm; boards: 1 * Fugu2.kicad_pcb, 2 * psu/buck100.kicad_pcb, 1 * ../hw/precision-current-sensor/precision-current-sensor.kicad_pcb' \
-#  --tabs full \
-#  --cuts vcuts \
-# Fugu2.kicad_pcb panelized1.kicad_pcb
+input_yaml=kikit-packer.yaml
 
 kikit panelize \
-  --layout 'plugin; code: panelize.py.Plugin2; cols: 2; space: 2mm' \
-    --tabs 'fixed; hwidth: 4mm; vwidth: 4mm' \
-    --cuts vcuts \
-    --post 'millradius: 1mm' \
-  Fugu2.kicad_pcb panelized2.kicad_pcb
-
-  # CHSXPPVA
-#--tabs ...etc...
+  --layout "plugin; code: ../kikit-packer.py.Plugin; input:$input_yaml" \
+    --tabs "fixed; hwidth: 2mm; vwidth: 2mm" \
+    --cuts "mousebites" \
+    --post "millradius: 1mm" \
+  Fugu2.kicad_pcb combined.kicad_pcb

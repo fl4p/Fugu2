@@ -47,11 +47,15 @@ MCU series such as the STM32.
 
 * order PCB (or make @home)
     * 1x `Fugu2.kicad_pcb`
-    * 2x `psu/buck100.kicad_pcb` (one for 3.3V and one for 12V)
+    * 1x `psu/buck100.kicad_pcb` (for 3.3V supply)
     * 1x `mcu-head/Fugu2-esp32s3-wroom-head.kicad_pcb` (optional. this allows easy replacement of the ESP32S3 during
       development. alternatively place the ESP32(-S3) directly on the Fugu2 board)
-    * you can use [kikit-packer script](https://github.com/fl4p/kikit-packer/)
-      or [Kikakuka](https://github.com/buganini/Kikakuka/) to create a single PCB for the manufacturing job
+    * you can use [kikit-packer](https://github.com/fl4p/kikit-packer/)
+      or [Kikakuka](https://github.com/buganini/Kikakuka/) to create a single PCB for the manufacturing job.
+        * kikit-packer instructions: follow the install instructions in
+          the [readme](https://github.com/fl4p/kikit-packer/tree/main?tab=readme-ov-file). make sure you have `Fugu2/`
+          and `kikit-packer/` in the same directory. then run `panelize.sh` (linux, mac) or `panelize.bat` (windows). It
+          will generate `combined.kicad_pcb` which you can send to your PCB manufacturer.
 * assemble PCBs (ibom TODO)
     * you can order assembly through pcbway or jlcpcb
     * if you assemble @home

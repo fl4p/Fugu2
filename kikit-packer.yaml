@@ -1,0 +1,11 @@
+#
+#
+#
+boards:
+- board: Fugu2.kicad_pcb
+  qty: 1
+  margin_mm: 2
+- board: psu/buck100.kicad_pcb
+  qty: 1
+- board: mcu-head/Fugu2-esp32s3-wroom-head.kicad_pcb  # optional
+  qty: 1
