@@ -3201,7 +3201,7 @@
 	)
 	(text "F2: 375mA seems to small (for 47uF cap load)"
 		(exclude_from_sim no)
-		(at 151.765 76.2 0)
+		(at 130.81 62.23 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3222,7 +3222,7 @@
 	)
 	(text "TODO: use SMA DO214?\nmore common\n\nreplace with BAS100CS ?"
 		(exclude_from_sim no)
-		(at 135.255 64.262 0)
+		(at 140.97 27.94 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3254,7 +3254,7 @@
 		)
 		(uuid "d81d31e7-0b55-46cc-9654-3113615e3cfa")
 	)
-	(text "power rail selection\n- suppresses voltage transients\n- we can use lower voltage buck regulators\n- increases efficiency when switching to LV"
+	(text "power rail selection\n- in-rush current limiting\n- suppresses voltage transients\n- we can use lower voltage buck regulators\n- increases efficiency when switching to LV"
 		(exclude_from_sim no)
 		(at 70.485 23.495 0)
 		(effects
@@ -3394,12 +3394,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "cad90956-306c-40af-83f2-ee78c15c0018")
-	)
-	(junction
-		(at 110.49 131.445)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "dae71ff5-80e3-4c25-84fa-c7e70accd340")
 	)
 	(junction
 		(at 100.33 151.765)
@@ -4057,16 +4051,6 @@
 	)
 	(wire
 		(pts
-			(xy 109.22 131.445) (xy 110.49 131.445)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d249acde-5900-4a9e-abf8-1df307710377")
-	)
-	(wire
-		(pts
 			(xy 144.145 39.37) (xy 154.305 39.37)
 		)
 		(stroke
@@ -4591,6 +4575,15 @@
 				(hide yes)
 			)
 		)
+		(property "Desc" "PwrSupply"
+			(at 97.155 48.26 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "5a89ec35-0bf7-446c-8013-28aac34ddd27")
 		)
@@ -4672,7 +4665,7 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "PwrSupply"
 			(at 86.995 47.625 0)
 			(effects
 				(font
@@ -5156,6 +5149,15 @@
 				(hide yes)
 			)
 		)
+		(property "Desc" "PwrSupply"
+			(at 82.55 141.605 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "a0387f4c-85e5-4e14-be96-1533cc915f11")
 		)
@@ -5298,6 +5300,15 @@
 				(hide yes)
 			)
 		)
+		(property "Desc" "PwrSupply"
+			(at 122.555 131.445 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bad24e67-b111-41af-8d6c-da058a54d851")
 		)
@@ -5385,6 +5396,15 @@
 				(hide yes)
 			)
 		)
+		(property "Desc" "PwrSupply"
+			(at 102.235 48.895 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "983980bb-b227-4e23-97bc-4d6a40717014")
 		)
@@ -5456,7 +5476,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "1M"
+		(property "MPN" "200k"
 			(at 107.315 45.085 0)
 			(effects
 				(font
@@ -6251,6 +6271,15 @@
 				(hide yes)
 			)
 		)
+		(property "Desc" "PwrSupply"
+			(at 102.87 121.285 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "593e251b-7845-4302-9701-491043ccfc2b")
 		)
@@ -6877,7 +6906,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "4.7uF, 100V"
+		(property "MPN" "HMK325C7475KN-TE"
 			(at 165.735 55.88 0)
 			(effects
 				(font
@@ -6913,7 +6942,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "HMK325C7475KN-TE"
 			(at 165.735 55.88 0)
 			(effects
 				(font
@@ -7211,7 +7240,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "GT800N10D3"
+		(property "MPN" "GT800N10D3 or SP010N90NJ"
 			(at 113.03 42.545 0)
 			(effects
 				(font
@@ -7220,7 +7249,7 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "PwrSupply"
 			(at 113.03 42.545 0)
 			(effects
 				(font

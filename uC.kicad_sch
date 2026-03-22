@@ -4144,6 +4144,17 @@
 		)
 		(uuid "591a8c62-87e2-4e32-86cd-1d624e611ba5")
 	)
+	(text "SCH_ESP32-S3-DevKitC-1"
+		(exclude_from_sim no)
+		(at 99.695 24.13 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(href "https://dl.espressif.com/dl/schematics/SCH_ESP32-S3-DevKitC-1_V1.1_20220413.pdf")
+		)
+		(uuid "ab9ee080-6949-4a3a-8c3f-90aad767e205")
+	)
 	(text "see esp-rust-board for footprint"
 		(exclude_from_sim no)
 		(at 230.505 64.77 0)
@@ -4156,9 +4167,9 @@
 		)
 		(uuid "bcd45270-dfea-4497-99ee-fbf3c4149652")
 	)
-	(text "the ESP32 already has ESD diodes\nplace these if you want additional\nprotection"
+	(text "although the ESP32 already has internal ESD diodes\nit is general practice to put these\n"
 		(exclude_from_sim no)
-		(at 124.46 16.51 0)
+		(at 106.045 19.05 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4201,12 +4212,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3f7d6730-e381-47df-9123-dce441648bac")
-	)
-	(junction
-		(at 130.81 25.4)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7dac1cd1-c6d4-40c9-8a67-fb0d2b1628ea")
 	)
 	(junction
 		(at 255.905 100.33)
@@ -4392,7 +4397,7 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 21.59) (xy 130.81 25.4)
+			(xy 130.81 27.305) (xy 130.81 29.21)
 		)
 		(stroke
 			(width 0)
@@ -4582,7 +4587,7 @@
 	)
 	(wire
 		(pts
-			(xy 121.92 40.64) (xy 123.19 40.64)
+			(xy 121.92 41.275) (xy 123.19 41.275)
 		)
 		(stroke
 			(width 0)
@@ -4902,7 +4907,7 @@
 	)
 	(wire
 		(pts
-			(xy 123.19 35.56) (xy 123.19 40.64)
+			(xy 123.19 35.56) (xy 123.19 41.275)
 		)
 		(stroke
 			(width 0)
@@ -5029,16 +5034,6 @@
 			(type default)
 		)
 		(uuid "9d126710-7b80-4562-94e4-3060bb63417f")
-	)
-	(wire
-		(pts
-			(xy 120.65 31.75) (xy 123.19 31.75)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9d7f461e-9523-440d-897b-7ef4699f24fb")
 	)
 	(wire
 		(pts
@@ -5352,16 +5347,6 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 25.4) (xy 130.81 29.21)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f098b820-d2fa-4e16-a1db-6e7f4da73cd2")
-	)
-	(wire
-		(pts
 			(xy 220.98 23.495) (xy 223.52 23.495)
 		)
 		(stroke
@@ -5409,26 +5394,6 @@
 			(type default)
 		)
 		(uuid "f7693295-e5c3-4190-8780-d24d46a746ac")
-	)
-	(wire
-		(pts
-			(xy 120.65 22.86) (xy 120.65 25.4)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f7794a8e-29ef-4d66-88fa-0585959db7d1")
-	)
-	(wire
-		(pts
-			(xy 119.38 22.86) (xy 120.65 22.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f980e63d-2855-4a89-8f12-5baa4e3ffd71")
 	)
 	(wire
 		(pts
@@ -6188,7 +6153,7 @@
 	)
 	(global_label "Vusb"
 		(shape input)
-		(at 130.81 21.59 180)
+		(at 130.81 27.305 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6198,7 +6163,7 @@
 		)
 		(uuid "8b7c61c8-3a2a-4c7d-8725-fd78213a15db")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 123.4101 21.59 0)
+			(at 123.4101 27.305 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6210,7 +6175,7 @@
 	)
 	(global_label "USB_D+"
 		(shape bidirectional)
-		(at 121.92 40.64 180)
+		(at 121.92 41.275 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6220,7 +6185,7 @@
 		)
 		(uuid "94066693-0fa3-4d19-ac65-39b02e23d417")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 110.2035 40.64 0)
+			(at 110.2035 41.275 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6930,7 +6895,7 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "MCU"
 			(at 127 64.77 0)
 			(effects
 				(font
@@ -7362,71 +7327,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 119.38 22.86 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "24dddccb-6c5a-4e87-a61b-a04d3a42debd")
-		(property "Reference" "#PWR037"
-			(at 113.03 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 115.57 24.13 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 119.38 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 119.38 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 119.38 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a1c41eef-1ee8-4587-9654-fd368af8f29c")
-		)
-		(instances
-			(project "Fugu2"
-				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/2d287cf3-2750-462b-9179-706ea8653260"
-					(reference "#PWR037")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C_Small")
 		(at 143.51 64.77 270)
 		(unit 1)
@@ -7659,7 +7559,7 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "I2C"
 			(at 252.73 39.37 0)
 			(effects
 				(font
@@ -7765,7 +7665,7 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "MCU"
 			(at 254 128.905 0)
 			(effects
 				(font
@@ -8134,7 +8034,7 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "I2C"
 			(at 256.54 39.37 0)
 			(effects
 				(font
@@ -8375,109 +8275,6 @@
 		)
 	)
 	(symbol
-		(lib_id "PCM_Diode_TVS_AKL:D_TVS_Bidirectional_Generic")
-		(at 125.73 25.4 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp yes)
-		(uuid "854b7647-4d3d-466f-be2f-ab07f7b6dc63")
-		(property "Reference" "D5"
-			(at 123.19 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LESD5D5.0CT1G"
-			(at 127 26.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-523"
-			(at 125.73 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 125.73 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 125.73 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Desc" "USB"
-			(at 125.73 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "LESD5D5.0CT1G"
-			(at 125.73 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" ""
-			(at 125.73 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Digikey" ""
-			(at 125.73 25.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "2e617b42-dcef-4a07-b93e-0857c7fb74c8")
-		)
-		(pin "2"
-			(uuid "33df6aa6-a716-410d-b38d-76c55c5f5a52")
-		)
-		(instances
-			(project "Fugu2"
-				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/2d287cf3-2750-462b-9179-706ea8653260"
-					(reference "D5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3.3V")
 		(at 254 123.825 0)
 		(mirror y)
@@ -8562,7 +8359,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "ESP32-S3-WROOM-1"
+		(property "Value" "ESP32-S3-WROOM-1-N4"
 			(at 99.06 69.85 0)
 			(effects
 				(font
@@ -8598,7 +8395,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "ESP32-S3-WROOM-1U-N4R2"
+		(property "MPN" "ESP32-S3-WROOM-1-N4"
 			(at 134.62 105.41 0)
 			(effects
 				(font
@@ -8634,7 +8431,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "ESP32-S3-WROOM-1U-N4R2"
+		(property "LCSC" "ESP32-S3-WROOM-1-N4"
 			(at 134.62 105.41 0)
 			(effects
 				(font
@@ -9032,12 +8829,12 @@
 		(at 118.11 35.56 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "98e1aa4a-4fb1-42ef-9f8d-d92a83d624e2")
 		(property "Reference" "D4"
-			(at 121.92 38.1 0)
+			(at 121.92 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9045,7 +8842,7 @@
 			)
 		)
 		(property "Value" "LESD5D5.0CT1G"
-			(at 118.11 36.83 0)
+			(at 107.95 37.465 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9480,7 +9277,7 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "I2C"
 			(at 248.92 39.37 0)
 			(effects
 				(font
@@ -9861,12 +9658,12 @@
 		(at 118.11 31.75 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
-		(dnp yes)
+		(dnp no)
 		(uuid "b2320981-1059-40ff-88c8-6125a3935629")
 		(property "Reference" "D3"
-			(at 115.57 29.21 0)
+			(at 121.92 29.845 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9874,7 +9671,7 @@
 			)
 		)
 		(property "Value" "LESD5D5.0CT1G"
-			(at 119.38 33.02 0)
+			(at 107.315 31.115 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9935,7 +9732,7 @@
 				(hide yes)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "XCEZ6V2,L3XHF or DF2B6.8E,L3F or SLESD5D5.0C"
 			(at 118.11 31.75 0)
 			(effects
 				(font

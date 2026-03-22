@@ -2700,7 +2700,7 @@
 		)
 		(uuid "04b05176-e203-49da-ab53-795dc36c8bba")
 	)
-	(text "to power the Ideal Diode gate Q5\nbuffered and clamped HS gate drive voltage\nprovides a 12V stable voltage above Q5's source\n(as long as the LS is actively switching)"
+	(text "to power the Ideal Diode gate Q5\nbuffered and clamped HS gate drive voltage\nprovides a 12V stable voltage above Q5's source\n(as long as LS or HS are actively switching)"
 		(exclude_from_sim no)
 		(at 92.71 103.505 0)
 		(effects
@@ -4947,7 +4947,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "TestPoint:TestPoint_THTPad_1.5x1.5mm_Drill0.7mm"
+		(property "Footprint" "TestPoint:TestPoint_THTPad_D1.5mm_Drill0.7mm"
 			(at 236.22 92.075 0)
 			(effects
 				(font
@@ -5864,7 +5864,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "BZT52C13-TP"
+		(property "MPN" "BZT52C16 or BZT52C13-TP"
 			(at 97.79 124.46 0)
 			(effects
 				(font
@@ -5893,6 +5893,15 @@
 		)
 		(property "Digikey" ""
 			(at 97.79 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "BZT52C16"
+			(at 97.79 124.46 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6549,7 +6558,7 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "bootstrap"
 			(at 175.26 59.69 0)
 			(effects
 				(font

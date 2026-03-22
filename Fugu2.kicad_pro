@@ -60,6 +60,30 @@
       ],
       "drc_exclusions": [
         [
+          "copper_edge_clearance|28739966|33019933|40ef0fdc-5bd0-41ad-bffd-9abfc9161708|13e2196f-791a-43f0-a7fc-0b79e360e028",
+          ""
+        ],
+        [
+          "hole_clearance|47950000|37775000|98c9ee80-c2c9-4c79-be70-0a5774a8af12|2113f531-394c-4e34-afc5-40d92ccbec36",
+          ""
+        ],
+        [
+          "hole_clearance|47950000|37775000|98c9ee80-c2c9-4c79-be70-0a5774a8af12|9be48827-ee21-4987-8abb-ec47b22112f6",
+          ""
+        ],
+        [
+          "hole_clearance|54050000|37775000|211c1a56-cf99-4db2-9640-aa87f9abd59d|7605996e-9a4a-4887-9708-c2211a897e01",
+          ""
+        ],
+        [
+          "hole_clearance|54050000|37775000|211c1a56-cf99-4db2-9640-aa87f9abd59d|820c4134-991b-4b3b-a98b-be5db7b44c34",
+          ""
+        ],
+        [
+          "starved_thermal|38635000|38325000|65fcb45e-9146-4148-988d-83ebdeb6cd47|efa3ee08-83b9-4b78-a3f6-0e2a3e01ac8b|F.Cu",
+          ""
+        ],
+        [
           "starved_thermal|55920000|37605000|65fcb45e-9146-4148-988d-83ebdeb6cd47|a4f07c44-66fe-4a72-ac30-f83e58afcac6|B.Cu",
           ""
         ]
@@ -129,22 +153,22 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.125,
-        "min_connection": 0.0,
-        "min_copper_edge_clearance": 0.15,
+        "min_clearance": 0.15,
+        "min_connection": 0.2,
+        "min_copper_edge_clearance": 0.3,
         "min_groove_width": 0.0,
-        "min_hole_clearance": 0.19,
-        "min_hole_to_hole": 0.25,
-        "min_microvia_diameter": 0.2,
-        "min_microvia_drill": 0.1,
+        "min_hole_clearance": 0.25,
+        "min_hole_to_hole": 0.3,
+        "min_microvia_diameter": 0.0,
+        "min_microvia_drill": 0.0,
         "min_resolved_spokes": 2,
         "min_silk_clearance": 0.0,
         "min_text_height": 0.8,
-        "min_text_thickness": 0.08,
+        "min_text_thickness": 0.15,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.15,
-        "min_via_annular_width": 0.1,
-        "min_via_diameter": 0.5,
+        "min_track_width": 0.2,
+        "min_via_annular_width": 0.2,
+        "min_via_diameter": 0.7,
         "solder_mask_clearance": 0.0,
         "solder_mask_min_width": 0.0,
         "solder_mask_to_copper_clearance": 0.0,
@@ -239,7 +263,7 @@
           "drill": 0.0
         },
         {
-          "diameter": 0.5,
+          "diameter": 0.7,
           "drill": 0.3
         },
         {
@@ -707,8 +731,8 @@
       "group_symbols": true,
       "include_excluded_from_bom": false,
       "name": "",
-      "sort_asc": false,
-      "sort_field": "Value"
+      "sort_asc": true,
+      "sort_field": "Reference"
     },
     "connection_grid_size": 50.0,
     "drawing": {

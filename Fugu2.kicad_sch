@@ -3543,7 +3543,7 @@
 		)
 		(uuid "3b71f984-e5b2-4741-9ab6-e220a570f946")
 	)
-	(text "Why backflow switch here?\n- Can stop any battery current from\n  flowing into the converter (eFuse)\n- In case of a HS short, can leave\n   LS on permanentely to avoid\n   battery over-voltage\n- We already have a suitable gate\n    drive voltage from HO\n- Shut down output in boost operation"
+	(text "Why backflow switch here?\n- Can stop any battery current from\n  flowing into the converter (eFuse)\n- In case of a HS short, can leave\n   LS on permanentely to avoid\n   battery over-voltage\n- Can shut down output in boost operation\n- We already have a suitable gate\n    drive voltage from HO"
 		(exclude_from_sim no)
 		(at 144.78 39.37 0)
 		(effects
@@ -3577,7 +3577,7 @@
 		)
 		(uuid "8d9433be-498b-4aea-9fc7-829f723a83d4")
 	)
-	(text "the device can work\nin boost topology\nso the HV side might be \nconnected to a battery"
+	(text "F3: the device can work\nin boost topology\nso the HV side might be \nconnected to a battery"
 		(exclude_from_sim no)
 		(at 27.305 27.94 0)
 		(effects
@@ -4103,16 +4103,6 @@
 	)
 	(wire
 		(pts
-			(xy 158.75 57.15) (xy 161.925 57.15)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "29b958f9-0c9f-4e5f-855d-e24c671971ae")
-	)
-	(wire
-		(pts
 			(xy 237.49 29.21) (xy 237.49 34.29)
 		)
 		(stroke
@@ -4223,7 +4213,7 @@
 	)
 	(wire
 		(pts
-			(xy 77.47 45.085) (xy 96.52 45.085)
+			(xy 77.47 46.355) (xy 96.52 46.355)
 		)
 		(stroke
 			(width 0)
@@ -4303,16 +4293,6 @@
 	)
 	(wire
 		(pts
-			(xy 158.75 57.15) (xy 158.75 51.435)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "532f0fbf-8137-4a21-b866-ef19068414f8")
-	)
-	(wire
-		(pts
 			(xy 54.61 34.29) (xy 91.44 34.29)
 		)
 		(stroke
@@ -4383,7 +4363,7 @@
 	)
 	(wire
 		(pts
-			(xy 158.115 51.435) (xy 158.75 51.435)
+			(xy 158.115 51.435) (xy 161.925 51.435)
 		)
 		(stroke
 			(width 0)
@@ -4663,7 +4643,7 @@
 	)
 	(wire
 		(pts
-			(xy 77.47 41.91) (xy 77.47 45.085)
+			(xy 77.47 41.91) (xy 77.47 46.355)
 		)
 		(stroke
 			(width 0)
@@ -4743,7 +4723,7 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 39.37) (xy 101.6 45.085)
+			(xy 101.6 39.37) (xy 101.6 46.355)
 		)
 		(stroke
 			(width 0)
@@ -4873,7 +4853,7 @@
 	)
 	(wire
 		(pts
-			(xy 161.925 57.15) (xy 161.925 59.69)
+			(xy 161.925 51.435) (xy 161.925 59.69)
 		)
 		(stroke
 			(width 0)
@@ -5409,7 +5389,7 @@
 	)
 	(global_label "BT+"
 		(shape input)
-		(at 160.655 57.15 90)
+		(at 161.925 51.435 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5419,7 +5399,7 @@
 		)
 		(uuid "acff1619-0b89-448f-83e6-e21b763af3bb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 160.655 50.3548 90)
+			(at 168.7202 51.435 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6284,7 +6264,7 @@
 			)
 		)
 		(property "Value" "691256610002"
-			(at 26.035 57.15 0)
+			(at 23.495 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6878,7 +6858,7 @@
 				)
 			)
 		)
-		(property "Value" "7.5k"
+		(property "Value" "10k"
 			(at 86.995 69.215 0)
 			(effects
 				(font
@@ -6913,7 +6893,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "7.5k"
+		(property "MPN" "10k"
 			(at 83.82 69.85 0)
 			(effects
 				(font
@@ -6922,7 +6902,7 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "GateDischarge"
 			(at 83.82 69.85 0)
 			(effects
 				(font
@@ -6984,12 +6964,13 @@
 			)
 		)
 		(property "Value" "TPH1R306PL,L1Q or NTMFS5C612NLT1G"
-			(at 133.985 55.245 90)
+			(at 128.905 55.245 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "open-pe:Infineon_PG-TDSON-8_FL"
@@ -7932,15 +7913,15 @@
 		(dnp no)
 		(uuid "6096757c-4bcf-4a9a-b36a-517b0f18c435")
 		(property "Reference" "R9"
-			(at 87.63 46.228 0)
+			(at 88.265 45.085 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "7.5k"
-			(at 86.36 43.18 90)
+		(property "Value" "10k"
+			(at 86.995 43.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7974,7 +7955,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "7.5k"
+		(property "MPN" "10k"
 			(at 86.36 43.18 0)
 			(effects
 				(font
@@ -7983,7 +7964,7 @@
 				(hide yes)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "GateDischarge"
 			(at 86.36 43.18 0)
 			(effects
 				(font
@@ -8781,7 +8762,7 @@
 		(dnp no)
 		(uuid "91d25e9c-0c68-4e99-afe3-a1c96bc0085f")
 		(property "Reference" "F3"
-			(at 32.385 40.64 90)
+			(at 29.845 39.37 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8789,7 +8770,7 @@
 			)
 		)
 		(property "Value" "40A"
-			(at 35.56 40.64 90)
+			(at 29.21 41.275 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10357,7 +10338,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small")
-		(at 99.06 45.085 270)
+		(at 99.06 46.355 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10365,7 +10346,7 @@
 		(dnp no)
 		(uuid "e53c11a5-eb5d-4336-ba14-41e6dfcb2a48")
 		(property "Reference" "R5"
-			(at 98.806 43.053 90)
+			(at 98.806 44.323 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10373,7 +10354,7 @@
 			)
 		)
 		(property "Value" "2.2, 1%"
-			(at 99.06 46.99 90)
+			(at 99.06 48.26 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10381,7 +10362,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 99.06 45.085 0)
+			(at 99.06 46.355 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10390,7 +10371,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 99.06 45.085 0)
+			(at 99.06 46.355 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10399,7 +10380,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 99.06 45.085 0)
+			(at 99.06 46.355 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10408,7 +10389,7 @@
 			)
 		)
 		(property "MPN" "2.2, 1%"
-			(at 99.06 45.085 0)
+			(at 99.06 46.355 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10417,7 +10398,7 @@
 			)
 		)
 		(property "Desc" "GateDischarge"
-			(at 99.06 45.085 0)
+			(at 99.06 46.355 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10426,7 +10407,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 99.06 45.085 0)
+			(at 99.06 46.355 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10435,7 +10416,7 @@
 			)
 		)
 		(property "Digikey" ""
-			(at 99.06 45.085 0)
+			(at 99.06 46.355 0)
 			(effects
 				(font
 					(size 1.27 1.27)
