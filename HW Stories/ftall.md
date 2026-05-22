@@ -109,7 +109,7 @@ eff 96.51% (std=0.001071,last=96.51)   loss=28.95W
 ```
 
 ```
-other double strand coil KS184125A (KDM)
+other double strand coil KS184125A (KDM) TODO Iripple?
 eff 97.92% (std=0.000000,last=97.92)   loss=17.00W      < wow this is supringly good for
    in power     816.153 W  (std 0.0000)   @ 71.483V     < a single T184 core
   out power     799.137 W  (std 0.0000)   @ 27.132V

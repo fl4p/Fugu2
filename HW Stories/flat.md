@@ -19,7 +19,8 @@ Switches (written on board)
 - HS: 2p CSD
 
 Coil
-- Core: 2s T130-u060
+- Core: 2s T130-u060 (Al=122nH/N^2)
+- 21?Turns => 55 H?
 
 Caps:
 - Input: 2p rubycon ZLH 470u 100v

@@ -72,7 +72,23 @@ Power Supply https://www.espressif.com/sites/default/files/documentation/esp32-s
 
 # Dev Boards
 
+## Unexpected Maker Nano
+
+https://lectronz.com/products/nanos3
+![img_2.png](img_2.png)
+
+* pricy
+* 
+
+## WaveShare
 https://www.waveshare.com/esp32-s3-zero.htm
+
+![img_1.png](img_1.png)
+
+* has thermal issues (over-heat) without heat-sink
+* had wifi connection issues. antenna performance is lower than WROOM PCB antenna
+
+
 https://github.com/femtoduino/femu-hardware/tree/master/femu/kicad/femu
 esp32-rust
 
