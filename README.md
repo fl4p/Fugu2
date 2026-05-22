@@ -1,3 +1,5 @@
+# Bi-directional DC-DC buck or boost converter for Solar MPPT
+
 Links: [git](https://github.com/fl4p/Fugu2)
 | [kicanvas](https://kicanvas.org/?github=https%3A%2F%2Fgithub.com%2Ffl4p%2FFugu2)
 | [cadlab](https://cadlab.io/project/28816)
@@ -7,6 +9,28 @@ Links: [git](https://github.com/fl4p/Fugu2)
 | [firmware](https://github.com/fl4p/fugu-mppt-firmware)
 | [additional docs & resources](https://github.com/fl4p/fugu-mppt-doc)
 
+```
+TODO 3d web rendering
+gate drv considerations:
+- separate gate discharge diode?
+- eval gate drv voltage?
+- pull down for each fet? 10k pull down?
+usb-c: select 12V instead of 5V
+
+
+final points:
+- what about the LS diodes? SMD and TO220, do power measurements.
+    - ST15100S and ...
+    - 2nd LS switch parallel ?
+- sw push footprint
+- test without TVS diodes at solar voltage divider. when does the mcu die? 
+- tune dead-time
+
+
+bom opts:
+- Cin: C11, C22 replace with MSASH32MSB5475MPCA01 / HMK325BJ475MM-PE ?
+    cheaper and specifically for SMPS
+```
 
 | <img src="img/fugu2-3d-top.webp" width="400"/> <img src="img/fugu2-3d-bottom.webp" width="400"/> |
 |:------------------------------------------------------------------------------------------------:|
@@ -28,12 +52,13 @@ Links: [git](https://github.com/fl4p/Fugu2)
   component selection)
 * Battery output voltage: 12 ~ 60V (LiFePo4 4s ~ 16s)
 * Max output current: 32 A
+* Boost operation with input and output terminals swapped
 * Efficiency Measurements
     * Vin=72 Vout=27 Iout=32A: 98.17% (measured with INA228 & Riedon
       SSA-100, [smart-shunt](https://github.com/open-pe/smart-shunt-fw))
     * Vin=71.5 Vout=27.1 Iout=29.1A: 98.12% (measured with INA228, Riedon RSN20-50, DCCT
       DS200ID, [details](doc/Efficiency%20Measurements.md))
-     
+
 This is inspired by [Fugu MPPT](https://www.instructables.com/DIY-1kW-MPPT-Solar-Charge-Controller/).
 The design has been optimized with real life experience, considering signal noise and EMI issues,
 replaced hall sensor with shunt resistor and faster switching. See the list below for more changes.

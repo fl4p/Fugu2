@@ -4607,7 +4607,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 132.08) (xy 66.04 132.08)
+			(xy 263.525 26.035) (xy 272.415 26.035)
 		)
 		(stroke
 			(width 0)
@@ -4734,6 +4734,16 @@
 			(type default)
 		)
 		(uuid "4d1eaaff-534f-489c-a1f5-3b4d1219ed59")
+	)
+	(wire
+		(pts
+			(xy 180.34 87.63) (xy 180.975 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4f2c7e72-18fe-40e4-b967-91c06fbb421b")
 	)
 	(wire
 		(pts
@@ -5337,16 +5347,6 @@
 	)
 	(wire
 		(pts
-			(xy 180.34 87.63) (xy 181.61 87.63)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f02d9f50-e776-4117-8f4a-78561d2c76b8")
-	)
-	(wire
-		(pts
 			(xy 220.98 23.495) (xy 223.52 23.495)
 		)
 		(stroke
@@ -5685,28 +5685,6 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
-				(hide yes)
-			)
-		)
-	)
-	(global_label "LED"
-		(shape input)
-		(at 181.61 87.63 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "3af4786e-d4d1-40fc-b726-2841a81d5403")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 188.0423 87.63 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -6197,7 +6175,7 @@
 	)
 	(global_label "ALERT"
 		(shape output)
-		(at 57.15 132.08 180)
+		(at 263.525 26.035 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -6207,7 +6185,7 @@
 		)
 		(uuid "945180d2-bd14-403c-bc8e-dca1ba52904d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 48.6615 132.08 0)
+			(at 255.0365 26.035 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6305,7 +6283,7 @@
 			)
 		)
 	)
-	(global_label "LED"
+	(global_label "ADC_ISENSE"
 		(shape output)
 		(at 33.02 22.86 180)
 		(fields_autoplaced yes)
@@ -6317,7 +6295,7 @@
 		)
 		(uuid "9b458e26-f042-4ad1-9162-4fc29f7f9696")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 26.5877 22.86 0)
+			(at 18.7863 22.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6503,7 +6481,7 @@
 			)
 		)
 	)
-	(global_label "ALERT"
+	(global_label "LED"
 		(shape input)
 		(at 52.07 27.94 0)
 		(fields_autoplaced yes)
@@ -6515,7 +6493,29 @@
 		)
 		(uuid "c62d2f85-aad7-441d-a736-a989a495c7f6")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 60.5585 27.94 0)
+			(at 58.5023 27.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "ADC_ISENSE"
+		(shape output)
+		(at 180.975 87.63 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c67fa420-259a-4475-b91e-d7e79e70adc9")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 195.2087 87.63 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6767,7 +6767,7 @@
 			)
 		)
 	)
-	(global_label "ALERT"
+	(global_label "LED"
 		(shape output)
 		(at 87.63 90.17 180)
 		(fields_autoplaced yes)
@@ -6779,7 +6779,7 @@
 		)
 		(uuid "f798999f-0dbc-4c85-901e-b878996d49eb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 79.1415 90.17 0)
+			(at 81.1977 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7976,9 +7976,9 @@
 		(at 256.54 39.37 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+		(in_bom no)
+		(on_board no)
+		(dnp yes)
 		(uuid "5d57ec74-7c75-4092-80b1-3b4ee3ab137d")
 		(property "Reference" "R15"
 			(at 257.81 38.1 0)
@@ -10647,15 +10647,15 @@
 	)
 	(symbol
 		(lib_id "Connector:TestPoint_Probe")
-		(at 66.04 132.08 0)
+		(at 272.415 26.035 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom no)
-		(on_board yes)
+		(on_board no)
 		(dnp yes)
 		(uuid "eb902bc0-f049-4c0e-b1b7-148c81943a48")
 		(property "Reference" "TPA1"
-			(at 69.85 129.2225 0)
+			(at 276.225 23.1775 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10664,7 +10664,7 @@
 			)
 		)
 		(property "Value" "alert"
-			(at 69.85 131.7625 0)
+			(at 276.225 25.7175 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10674,7 +10674,7 @@
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
-			(at 71.12 132.08 0)
+			(at 277.495 26.035 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10683,7 +10683,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 71.12 132.08 0)
+			(at 277.495 26.035 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10692,7 +10692,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 66.04 132.08 0)
+			(at 272.415 26.035 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10701,7 +10701,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 66.04 132.08 0)
+			(at 272.415 26.035 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10710,7 +10710,7 @@
 			)
 		)
 		(property "Digikey" ""
-			(at 66.04 132.08 0)
+			(at 272.415 26.035 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10719,7 +10719,7 @@
 			)
 		)
 		(property "MPN" "DNP"
-			(at 66.04 132.08 0)
+			(at 272.415 26.035 0)
 			(effects
 				(font
 					(size 1.27 1.27)
