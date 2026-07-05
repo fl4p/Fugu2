@@ -1,0 +1,11 @@
+* Qrr fit/validate bench -- uses the DERIVED refit model (qrr_refit.lib).
+.param IF=32 VR=80 LDI=30n RD=1.5 TTX=25.5n
+.param VF={IF*RD+0.9}
+.inc qrr_refit.lib
+Vsrc p 0 PWL(0 {VF} 4u {VF} 4.0005u {-VR})
+Rd  p q {RD}
+Ldi q a {LDI}
+XD 0 g a TK6R8A08QM_QRRFIT
+Vg g a 0
+.tran 0 4.3u 0 0.02n uic
+.end

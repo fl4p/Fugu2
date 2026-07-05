@@ -1,0 +1,18 @@
+* Reverse-recovery (Qrr) bench for the Toshiba TK6R8A08QM body diode.
+* di/dt set by Ldi (=VR/didt), post-snap ring damped by Rd, channel OFF.
+* Two operating points via .param:
+*   DATASHEET: IF=14.5 VR=80 LDI=800n  -> di/dt=100 A/us (validate vs Qrr=43nC,trr=40ns)
+*   APP:       IF=32   VR=80 LDI=30n   -> di/dt=2.67 A/ns (commutation stress)
+* TTX overrides the body-diode transit time for re-fit sensitivity (base=25.5n).
+.param IF=14.5 VR=80 LDI=800n RD=1.5 TTX=25.5n
+.param VF={IF*RD+0.9}
+.inc extract/capmodels/fets/TK6R8A08QM_G0_00_PSpice_rev1.lib
+
+Vsrc p 0 PWL(0 {VF} 4u {VF} 4.0005u {-VR})
+Rd  p q {RD}
+Ldi q a {LDI}
+XD 0 g a TK6R8A08QM_G0_00
+Vg g a 0
+
+.tran 0 4.3u 0 0.02n uic
+.end

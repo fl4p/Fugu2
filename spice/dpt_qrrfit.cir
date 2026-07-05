@@ -1,0 +1,38 @@
+* DPT ring bench with the Toshiba TK6R8A08QM model (standard primitives, robust).
+* Same DPT structure that converges: ideal coil current source + LS channel ON @ t=0.
+* External TO-220 leads (Ld=2.5n Ls=2n Lg=4n) so loop L ~ matches the extraction.
+.param VIN=80 ILOAD=32
+.inc extract/capmodels/vendor/c9c16_1u_0805_std.cir
+.inc extract/capmodels/vendor/c17c18_220n_0603_std.cir
+.inc extract/capmodels/vendor/c21c22_10u_2220_GRM32EC72A106KE05.mod
+.inc extract/capmodels/cin_hotloop.lib
+.inc extract/capmodels/fets/TK6R8A08QM_G0_00_PSpice_rev1.lib
+.inc qrr_refit.lib
+.param TTX=1.8n
+
+Vin vin 0 {VIN}
+Lfeed vin vi 200n Rser=10m
+Cbulk vi 0 940u
+XCIN vi 0 Cin_hotloop
+L5 vi hd 2n Rser=1m
+L4 sw ld 2n Rser=1m
+
+* HS (Toshiba) + TO-220 leads ; X = drain gate source
+Ld1 hd h1d 2.5n
+XHS h1d h1gg h1s TK6R8A08QM_G0_00
+Ls1 h1s sw 2n
+Lg1 hgg h1gl 4n
+Rg1 h1gl h1gg 4
+* LS (Toshiba)
+LdL ld ldd 2.5n
+XLS ldd lgg lss TK6R8A08QM_QRRFIT
+LsL lss 0 2n
+
+Iload ld 0 {ILOAD}
+Rpar ld 0 100k
+
+Vlsdrv lgg 0  PWL(0 10  0.96u 10  0.97u 0)
+Vhsdrv hgg sw PWL(0 0  1.0u 0  1.01u 10)
+
+.tran 0 1.2u 0 0.1n
+.end
