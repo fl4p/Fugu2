@@ -27,3 +27,11 @@ _autosave-*
 .idea/sshConfigs.xml
 
 parts.kicad_pro
+
+*.raw
+
+*.log
+
+spice/extract/loop.inp
+
+*.rpt
