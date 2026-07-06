@@ -11,15 +11,25 @@ error (missing input decoupling)**, not device physics.
 | Config | Vin | SW peak | Overshoot | Rise | Ring | Avalanche? |
 |---|---|---|---|---|---|---|
 | No coil, no snubber | 60 V | **74 V** (max 74.1, mean 66.6) | ~1.23× | 15.8 ns | ~55–65 MHz, ~4 cyc | **No** |
-| Coil + load (Vout 9 V, Iout 2.6 A) | 20 V | **24 V** (max 24.1, mean 22.1) | ~1.2× | 15.3 ns | ~55–65 MHz | **No** |
+| Coil + load (Vout 9 V, Iout 2.6 A) | 20 V | **24 V** (max 24.1, mean 22.1) | ~1.2× | 15.3 ns | **~18–19 MHz** (coil, V-indep) | **No** |
 
 Key cross-checks from having two operating points:
 
 - **Overshoot ratio is ~1.2× in both** (60 V→74 V and 20 V→24 V). A steep-low-V-Coss
   device would blow up the *20 V* case (ratio grows as Vin drops); it doesn't. → the real
   Coss(V) is **gentle** (StrongIRFET is planar-trench, not superjunction).
-- The **~60 MHz ring is present with and without the coil** → it's the local Coss
-  commutation ring, unaffected by the output inductor.
+- **The ~60 MHz ring is the NO-COIL local Coss commutation ring.** With the coil connected,
+  the dominant SW ring instead drops to **~18–19 MHz and is voltage-INDEPENDENT** (20 V→18,
+  40 V→18, 60 V→19.2 MHz). A fixed frequency across 3× Vin **rules out the Coss tank** (Coss
+  varies ~2.5× over that range) → the loaded ring is the **output-coil resonance** (coil
+  self-resonance), a *different* loop. **Correction:** an earlier draft claimed the 60 MHz ring
+  is "present with and without the coil / unaffected by the inductor" — that is backwards; the
+  coil *changes* the ring 60→~19 MHz. (Falsified by loaded-point bench sweep, cross-checked by
+  the `dcdc-tools` loaded-sw-ring verification: a curve-fit-Coss deck matches the loaded ring
+  only at 20 V, by coincidence — the large low-Vds Coss puts the Coss loop ~18 MHz there — and
+  diverges to 42 MHz at 40 V while the bench stays ~18 MHz.) The **peak and no-avalanche verdict
+  remain coil-independent** (loaded peaks reconcile via Coss: ~25 V@20 V / ~54 V@40 V / 74 V@60 V
+  = the no-coil 74 V).
 - **No flat clamp plateau** at 80–85 V in either capture → no avalanche.
 - Two grounding methods (GND-croc and "no probe clips") agreed at 72–74 V → the peak is
   real, not a probe-attenuation artifact.
@@ -282,8 +292,9 @@ The frequency reconciliation does **not** reopen (nor was it needed for) that co
 
 ## Verdict
 
-At 60 V no-coil (and in normal loaded operation), the real board rings to ~74 V / ~24 V with
-a well-damped ~60 MHz ring and **does not avalanche**. The sim's avalanche prediction was an
+At 60 V no-coil the real board rings to ~74 V with a well-damped **~60 MHz local-Coss ring**;
+in normal loaded operation it rings to ~24 V with a **~18–19 MHz output-coil ring** (a different
+loop). It **does not avalanche** in either case. The sim's avalanche prediction was an
 artifact of (1) a missing input capacitor, (2) the vendor model's behavioral Miller network,
 and (3) an unmodeled device Coss-loss damping term — none of them a real board hazard.
 
