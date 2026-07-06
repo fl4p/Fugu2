@@ -11,25 +11,27 @@ error (missing input decoupling)**, not device physics.
 | Config | Vin | SW peak | Overshoot | Rise | Ring | Avalanche? |
 |---|---|---|---|---|---|---|
 | No coil, no snubber | 60 V | **74 V** (max 74.1, mean 66.6) | ~1.23× | 15.8 ns | ~55–65 MHz, ~4 cyc | **No** |
-| Coil + load (Vout 9 V, Iout 2.6 A) | 20 V | **24 V** (max 24.1, mean 22.1) | ~1.2× | 15.3 ns | **~18–19 MHz** (coil, V-indep) | **No** |
+| Coil + load (Vout 9 V, Iout 2.6 A) | 20 V | **24 V** (max 24.1, mean 22.1) | ~1.2× | 15.3 ns | **~37 MHz** (Coss loop, scales w/ Vin) | **No** |
 
 Key cross-checks from having two operating points:
 
 - **Overshoot ratio is ~1.2× in both** (60 V→74 V and 20 V→24 V). A steep-low-V-Coss
   device would blow up the *20 V* case (ratio grows as Vin drops); it doesn't. → the real
   Coss(V) is **gentle** (StrongIRFET is planar-trench, not superjunction).
-- **The ~60 MHz ring is the NO-COIL local Coss commutation ring.** With the coil connected,
-  the dominant SW ring instead drops to **~18–19 MHz and is voltage-INDEPENDENT** (20 V→18,
-  40 V→18, 60 V→19.2 MHz). A fixed frequency across 3× Vin **rules out the Coss tank** (Coss
-  varies ~2.5× over that range) → the loaded ring is the **output-coil resonance** (coil
-  self-resonance), a *different* loop. **Correction:** an earlier draft claimed the 60 MHz ring
-  is "present with and without the coil / unaffected by the inductor" — that is backwards; the
-  coil *changes* the ring 60→~19 MHz. (Falsified by loaded-point bench sweep, cross-checked by
-  the `dcdc-tools` loaded-sw-ring verification: a curve-fit-Coss deck matches the loaded ring
-  only at 20 V, by coincidence — the large low-Vds Coss puts the Coss loop ~18 MHz there — and
-  diverges to 42 MHz at 40 V while the bench stays ~18 MHz.) The **peak and no-avalanche verdict
-  remain coil-independent** (loaded peaks reconcile via Coss: ~25 V@20 V / ~54 V@40 V / 74 V@60 V
-  = the no-coil 74 V).
+- **The ~60 MHz ring is the local Coss commutation ring — present with *and* without the coil.**
+  The loaded (coil-connected) ring **scales with bias** exactly as a Coss tank must:
+  **37.0 / 53.8 / 58.5 MHz at 20 / 40 / 60 V** (Fab on-scope periods 27 / 18.6 / 17.1 ns),
+  matching **f ∝ 1/√Coss(V)** (bench ratios f₂₀/f₆₀ = 0.63, f₄₀/f₆₀ = 0.92 vs predicted 0.64 / 0.89).
+  Solving the tank at 60 V (58.5 MHz, ~800 pF) gives **L ≈ 9.3 nH = the same commutation loop as
+  no-coil**, and **loaded-60 V (58.5 MHz) ≈ no-coil-60 V (60 MHz)** → the output coil does **not**
+  touch the ring. **Correction history (reversed twice, now stable):** an intermediate draft claimed
+  the loaded ring was a *voltage-independent ~18–19 MHz coil self-resonance* (a different loop) —
+  that was **bad on-scope cursor reads, ~2× too low**, since retracted: `codex-ee-ring`'s pixel reads
+  flagged the scaling, and Fab re-measured 20 V = 27 ns = **37 MHz**. The `--coil-cw` winding-cap SRF
+  model built for it is reverted. So the original "present with and without the coil" reading stands,
+  now backed by the full 1/√Coss scaling. **(My own earlier pixel read of the 20 V shot as ~20 MHz
+  was also wrong — the humps are ~27 ns apart, ~37 MHz.)** Peak/no-avalanche is coil-independent
+  regardless (loaded peaks reconcile via Coss: ~25 V@20 V / ~54 V@40 V / 74 V@60 V = the no-coil 74 V).
 - **No flat clamp plateau** at 80–85 V in either capture → no avalanche.
 - Two grounding methods (GND-croc and "no probe clips") agreed at 72–74 V → the peak is
   real, not a probe-attenuation artifact.
@@ -310,8 +312,9 @@ The frequency reconciliation does **not** reopen (nor was it needed for) that co
 ## Verdict
 
 At 60 V no-coil the real board rings to ~74 V with a well-damped **~60 MHz local-Coss ring**;
-in normal loaded operation it rings to ~24 V with a **~18–19 MHz output-coil ring** (a different
-loop). It **does not avalanche** in either case. The sim's avalanche prediction was an
+in normal loaded operation it rings to ~24 V (20 V) with the **same Coss commutation ring, scaling
+with bias** (~37 / 54 / 58.5 MHz at 20 / 40 / 60 V — the coil doesn't touch it). It **does not
+avalanche** in either case. The sim's avalanche prediction was an
 artifact of (1) a missing input capacitor, (2) the vendor model's behavioral Miller network,
 and (3) a too-fast simulated edge over-exciting the ring (the ~2.5 Ω "Coss-loss damping" was a
 peak-calibration knob, not physics — see §3) — none of them a real board hazard.
