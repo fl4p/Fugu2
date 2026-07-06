@@ -161,6 +161,17 @@ datasheet, the ring C (chord over the real 60→74 V swing) is **~780–800 pF**
 ~470 pF once speculated, and *not* the models' ~890 pF. (HS Coss is confirmed **shunted**
 during the HS-on ring — its channel mΩ shorts its Coss — so the ring C is LS-side only.)
 
+*Curve-fit close (no scale fudge).* Rather than scaling the whole model down, the home-built
+Coss/Cgd were **re-fit to the datasheet Diagram-11 curve** (`coss_fit.py` → behavioral charge
+capacitors, with `Qoss=105 nC` / `Qgd=19 nC` as integral constraints). C–V re-verify:
+**815 pF@60 V (ds 800), 727@74 V (ds 748)** — within ~3 % of the datasheet across 40–80 V. On
+that curve-fit model the ring lands at **60 MHz @ 9.2 nH with no `coss_scale`** — so the
+reconciliation is not an artifact of the earlier 0.85 scaling. This also surfaced a genuine
+model bug: the old build held **`Cgd = Qgd/40 = 475 pF` constant**, but the real Crss collapses
+to ~37 pF by 60 V — so the old model carried ~440 pF of **phantom Cgd** at the ring bias, which
+was silently **loading/damping the ring** (see the peak note below). Lesson: a charge-averaged
+*constant* Cgd secretly damps a ring and can fake a peak match — use a voltage-dependent Cgd.
+
 **Anchor 2 — the source lead is a *measured* package floor, not a tunable stub.** Aikawa et
 al., *"Measurement of the Common Source Inductance of Typical Switching Device Packages"*
 (IFEEC 2017, DOI 10.1109/IFEEC.2017.7992207) measured TO-220 **common-source inductance**
@@ -181,14 +192,17 @@ plane — not a ~2.5 nH vertical stub) and runs the bent leads close to the retu
 (image-plane lowers loop L). So horizontal mount *helps* the drain/external term, but cannot
 touch the ~4 nH source-CSI floor.
 
-**The reconciliation (transient, home-built model scaled to ~800 pF@60 V):**
+**The reconciliation (transient, datasheet-curve-fit Coss, no scale fudge):**
 
-| ring-loop L composition | Ltot | peak | ring |
-|---|---|---|---|
-| **4 nH board copper + ~1 nH drain + ~4 nH source CSI** | **9.2 nH** | 77.9 V | **60 MHz** ✓ |
-| 4 nH board + ~6.5 nH leads | 10.7 nH | 77.9 V | 55 MHz (low edge) |
-| 8.2 nH `out_cinnet` + ~5 nH leads | 13.2 nH | 77.9 V | 50 MHz |
-| 8.2 nH `out_cinnet` + ~6.5 nH leads | 14.7 nH | 77.8 V | 48 MHz |
+| ring-loop L composition | Ltot | ring |
+|---|---|---|
+| **4 nH board copper + ~1 nH drain + ~4 nH source CSI** | **9.2 nH** | **60 MHz** ✓ |
+| 4 nH board + ~6.5 nH leads | 10.7 nH | 55 MHz (low edge) |
+| 8.2 nH `out_cinnet` + ~5 nH leads | 13.2 nH | 50 MHz |
+| 8.2 nH `out_cinnet` + ~6.5 nH leads | 14.7 nH | 48 MHz |
+
+*(Both the scaled and the curve-fit model give this same frequency column; the peak is a
+separate damping story — see below.)*
 
 With the datasheet ~800 pF, the scope's 55–65 MHz demands a **total ring-loop L ≈ 7.5–10.5 nH**,
 which decomposes physically as **~4 nH board copper + ~1 nH drain tab + ~4 nH source CSI ≈
@@ -208,11 +222,22 @@ earlier "leads zeroed → 60 MHz" was a degenerate fit that happened to compensa
    reconciliation closes without needing the Δf test; if it lands near 8.2 nH, the Δf test
    arbitrates.
 
-**What survives regardless (the safety verdict).** The peak (72–78 V) is **flat across every
-lead treatment, both models, and every loop-L in the table above** — it lives on the lower-Q
-Cin-bank decoupling loop, not the ring, so it is *independent of the ring-L/C identity*. The
-frequency reconciliation does **not** reopen (nor was it needed for) the benign / no-avalanche
-conclusion.
+**Peak is a damping story, not a ring-C story (and the phantom-Cgd caveat).** With the
+*correct* voltage-dependent Cgd (small at the 60–74 V ring bias), the curve-fit model rings
+*undamped* to ~140 V at 9.2 nH — the old ~78 V was landing near the scope's 74 V only because
+the phantom 475 pF constant Cgd was supplying ~2.5 Ω-equivalent damping. Adding the doc's
+calibrated **Coss-branch series R** restores it: Rcoss 0 → 140 V, 1.5 Ω → 92 V,
+**2.5 Ω → 78 V** (≈ the old value, confirming the phantom Cgd was standing in for real
+Coss-branch loss), 4 Ω → 70 V — all at ~56–60 MHz. So the peak is set by **Coss-branch HF
+damping + the Cin-bank decoupling loop**, not by the ring L/C. One residual tension (unchanged
+from before): matching the scope's *~4-cycle decay* wants light damping (~0.6 Ω → higher peak),
+while matching the *74 V peak* wants ~2.5–3 Ω — a single series-R can't do both, consistent
+with the peak actually living on the lower-Q Cin loop.
+
+**What survives regardless (the safety verdict).** The benign / no-avalanche conclusion is
+**independent of the ring-L/C identity** — the peak lives on the lower-Q Cin-bank decoupling
+loop, and no lead/Coss/damping treatment in this study pushes the real board into avalanche.
+The frequency reconciliation does **not** reopen (nor was it needed for) that conclusion.
 
 ## What was falsified along the way (don't re-litigate)
 
