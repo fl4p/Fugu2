@@ -1,0 +1,5 @@
+*.raw
+*.log
+*.net
+*.op.raw
+lt-spice-out/

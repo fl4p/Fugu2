@@ -1,0 +1,29 @@
+* Fugu2 HF input (Cin) bypass network — extracted for the commutation hot loop.
+*
+* Each ceramic = its VENDOR SPICE model (package ESL/ESR + C-vs-Vbias) in series
+* with its FastHenry-extracted COPPER branch inductance. The branch L is the
+* per-cap total loop L (spice/extract/results.md) MINUS the shared switch-loop
+* copper (~4.0 nH, modeled as L5+L4 in the .asc), so nothing is double-counted.
+* The vendor model then adds each cap's own package ESL on top (FastHenry sees
+* copper only). See capmodels/MANIFEST.md for MPNs and parameters.
+*
+* Vendor subckts are .inc'd from the parent .asc (encrypted TY models are
+* LTspice-only). Ports: vi = input rail (Solar+/Vi), pgnd = power ground.
+*
+.subckt Cin_hotloop vi pgnd
+* --- C18, C17 : 220nF 0603 X7S, Taiyo Yuden MCASH168SC7224 (HMK107C7224KAHTE) ---
+L18 vi n18 0.20n
+XC18 n18 pgnd MCASH168SC7224_TCA01 Temperature=25
+L17 vi n17 0.33n
+XC17 n17 pgnd MCASH168SC7224_TCA01 Temperature=25
+* --- C9, C16 : 1uF 0805 X7S, Taiyo Yuden MMASH21GBC7105 (HMK212BC7105KGHTE) ---
+L9  vi n9  0.59n
+XC9  n9  pgnd MMASH21GBC7105_TCA01 Temperature=25
+L16 vi n16 0.80n
+XC16 n16 pgnd MMASH21GBC7105_TCA01 Temperature=25
+* --- C21, C22 : 10uF 2220 X7S, Murata GRM32EC72A106KE05 (0-bias model) ---
+L21 vi n21 1.36n
+XC21 n21 pgnd GRM32EC72A106KE05
+L22 vi n22 2.70n
+XC22 n22 pgnd GRM32EC72A106KE05
+.ends Cin_hotloop

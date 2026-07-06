@@ -1,0 +1,5 @@
+# generated FastHenry inputs/outputs
+loop*.inp
+Zc*.mat
+b.mat
+*.log

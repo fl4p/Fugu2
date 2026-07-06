@@ -1,0 +1,10 @@
+* Verify the extracted Cin hot-loop bypass network + vendor models load and net.
+* Impedance test: 1A AC into vi, measure V(vi) = |Z(f)| of the parallel bypass.
+.inc extract/capmodels/vendor/MMASH21GBC7105_TCA01_LT.cir
+.inc extract/capmodels/vendor/MCASH168SC7224_TCA01_LT.cir
+.inc extract/capmodels/vendor/c21c22_10u_2220_GRM32EC72A106KE05.mod
+.inc extract/capmodels/cin_hotloop.lib
+I1 0 vi AC 1
+XCIN vi 0 Cin_hotloop
+.ac dec 40 1k 300Meg
+.end
