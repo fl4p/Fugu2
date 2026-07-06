@@ -1,0 +1,9 @@
+* ST15100S junction-capacitance validation: CT vs reverse VR at 1 MHz, 25C
+.include ../../models/ST15100S.lib
+.param vr=1
+Vr k 0 {vr} AC 1
+D1 0 k ST15100S
+* diode reverse-biased (anode=0, cathode=k>0); C = Im(I(Vr))/(2*pi*f)
+.ac list 1meg
+.step param vr 0 10 1
+.end

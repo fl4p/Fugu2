@@ -1,0 +1,8 @@
+* ST15100S forward-characteristic validation: VF vs IF at 25C and 125C
+.include ../../models/ST15100S.lib
+Idrv 0 a 1
+D1 a 0 ST15100S
+.dc Idrv 0.5 42 0.5
+.step temp list 25 125
+.backanno
+.end

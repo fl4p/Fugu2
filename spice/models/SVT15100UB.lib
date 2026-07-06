@@ -1,0 +1,31 @@
+* PANJIT SVT15100UB -- 100V 15A Extreme-Low-VF Trench-MOS Schottky (TO-277B)
+* Datasheet SVT15100UB-REV.02 (2025-12-10). No vendor SPICE model published
+* (Panjit's library has no SVT/trench parts) -- this is a datasheet fit.
+* Built with the same method as ST15100S (see spice-fit/svt15100ub/): table
+* anchors + gridline-digitized Fig-4 (four temp curves) & Fig-2 cap, scipy fit,
+* LTspice-validated. See the datasheet-over-vendor-model note in the repo.
+*
+* Lower-VF, lower-leakage alternative to SMC ST15100S (0.61 vs 0.68 V @15A typ).
+*
+* VALIDATED in LTspice (spice-fit/svt15100ub/):
+*   VF @15A : 25C = 0.608 V (datasheet typ 0.61 / max 0.66)
+*            125C = 0.529 V (datasheet Fig-4 ~0.54; table gives only 1A/5A @125C)
+*   VF @5A/1A, 25C = 0.474/0.389 V (table 0.47/0.38)
+*   Cap CJ  : ~2019/1091/707 pF @ 1/5/10 V (datasheet Fig-2 ~2000/1250/600)
+* Fit optimised for the 1-20A operating region; the single-junction cap model
+* can't perfectly track Fig-2's flat-then-knee shape (MJ=0.90 is the compromise).
+*
+* TRS1=0 (datasheet incremental R ~14mOhm at BOTH 25C & 125C, 5->15A -> RS is
+* temp-independent), so the 25/125C curves do NOT cross at high current (gap
+* stays ~75mV) -- physical, avoiding the vendor-model failure mode where an
+* over-large RS tempco makes the hot curve explode past the cold one.
+* EG=0.65 (~Schottky barrier) reproduces the forward VF(T) shift across all four
+* datasheet curves (25/75/125/150 C) and the ~1000x reverse-leakage temp ratio
+* (80uA@25C -> 15mA@125C at 100V). TT=0: Schottky, negligible reverse recovery.
+* CAVEAT: reverse-leakage magnitude ~10x low (single-diode Schottky limit).
+*
+.MODEL SVT15100UB D (
++ LEVEL=1 IS=9.5e-7 N=1.05 RS=0.0104
++ BV=110 IBV=1e-4
++ CJO=2.6n VJ=3.08 MJ=0.90 FC=0.5
++ TT=0 EG=0.651 XTI=1.17 TRS1=0 )

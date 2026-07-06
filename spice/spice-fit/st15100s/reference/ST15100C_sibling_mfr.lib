@@ -1,0 +1,7 @@
+* SMC ST15100C -- sibling reference (N1043). Over-parameterized automated fit
+* (N=0.54, VJ=4.4, ISR/IK/NR) -- kept only as a cautionary reference, NOT a base.
+.MODEL ST15100C D (
++LEVEL=1 IS=1.726e-11 ISW=1e-18 RS=0.0307055 N=0.535781
++BV=105 IBV=5e-05 CJO=1.07099e-09 VJ=4.3808 MJ=1.39387 FC=0.5
++CJSW=1e-10 VJSW=0.8 MJSW=0.5 FCSW=0.5 AF=1 XTI=3 EG=0.56143
++TRS1=0 TRS2=0 ISR=9.53286e-11 IK=0.05 NR=0.993429 KF=0 TNOM=27 TT=0.000695263 )
