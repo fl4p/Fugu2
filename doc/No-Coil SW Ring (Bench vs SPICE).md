@@ -84,17 +84,30 @@ figure did not reproduce on the accepted deck and is retracted.) The 700 MHz-ban
 probe (≈0.5 ns rise limit) captures the real 15.8 ns edge faithfully, so this is a genuine
 model gap, not measurement smearing.
 
-### 3. Missing device HF damping (~2.5 Ω-equivalent) — belongs in the Coss branch
+### 3. The over-ring is edge-limited, not a "missing ~2.5 Ω Coss loss" (reframed)
 
-The clean model still rings under-damped (~17 cycles vs ~4). The real ring needs ~2.5 Ω of
-equivalent series damping — but **FastHenry skin-corrected copper is only ~17 mΩ**
-(nwinc=3), ~150× too small. So the damping is **not copper loss**. Ruled out by magnitude:
-radiation (small-loop R_rad at 60 MHz ≈ µΩ) and, with the coil disconnected, core loss. The
-physical home is **device output-capacitance loss** — lossy-Coss / Coss hysteresis (real
-even in planar-trench parts) plus Cgd/gate-loop reflected loss while the channel is off. It
-should be modeled as a **loss element inside the Coss branch** (series-R-in-Coss or parallel
-conductance), **not** as loop series R (which the extraction pins at 17 mΩ) — otherwise it
-double-counts. Calibrated to the measured ring decay, it closes the peak within ~5%.
+An earlier draft said the clean model rings under-damped and attributed the gap to a **~2.5 Ω
+device Coss loss** modeled in the Coss branch. The `dcdc-tools` loaded-sw-ring **damping budget**
+shows that is **not physical** — the 2.5 Ω is ~10× any real loop resistance:
+
+- Tank characteristic impedance **Z₀ = √(L/C) ≈ 3.4 Ω** (9.2 nH / 800 pF).
+- The observed **~4-cycle decay needs only ζ ≈ 0.04 → ~0.27 Ω** effective series R — *not* 2.5 Ω.
+- The physical R budget is ~10× below even that: FastHenry copper **17 mΩ** + **frequency-resolved
+  MLCC ESR ~6–12 mΩ** (the SRF-floor under-counted 2–12×; now extracted via ngspice AC from the
+  vendor cap models in `loss/lib/params.py`) ≈ **~25 mΩ**. Radiation is µΩ; core loss is N/A (coil out).
+- **Coss hysteresis is a *superjunction* effect** — small for this 80 V **trench** part (IPP024). So
+  the earlier "lossy-Coss / hysteresis" attribution is **retracted**.
+- **The modest first overshoot is the FINITE EDGE, not damping.** The 15.8 ns rise ≈ **one ring
+  period** at 60 MHz, so the edge only *weakly excites* the tank. The sim over-rings (undamped ~140 V
+  with the correct small Cgd) largely because it does **not reproduce the 15.8 ns edge** (rise-time
+  gap → `dcdc-tools` issue #1); a too-fast sim edge over-excites the ring.
+
+**So `Rcoss ~2 Ω` is a peak-calibration knob (~10× physical loop R), not a device Coss-loss term** —
+don't cite it as physics. This also resolves the earlier **peak-vs-decay tension**: the peak is
+*edge*-controlled, not damping-controlled, so forcing the peak with a series R necessarily over-damped
+the decay. With the correct edge, **light damping (~0.27 Ω) matches the decay and the peak falls out**.
+A small residual remains (0.27 Ω is still ~10× the ~25 mΩ budget), but it is an order of magnitude
+smaller mystery than the retracted 2.5 Ω, and largely moot once the edge is right.
 
 ## Refinement: the exact peak is a bracket; the real Cin bank closes it
 
@@ -232,17 +245,19 @@ earlier "leads zeroed → 60 MHz" was a degenerate fit that happened to compensa
    reconciliation closes without needing the Δf test; if it lands near 8.2 nH, the Δf test
    arbitrates.
 
-**Peak is a damping story, not a ring-C story (and the phantom-Cgd caveat).** With the
+**Peak is an EDGE story, not a ring-C or a damping story (phantom-Cgd + reframe).** With the
 *correct* voltage-dependent Cgd (small at the 60–74 V ring bias), the curve-fit model rings
 *undamped* to ~140 V at 9.2 nH — the old ~78 V was landing near the scope's 74 V only because
-the phantom 475 pF constant Cgd was supplying ~2.5 Ω-equivalent damping. Adding the doc's
-calibrated **Coss-branch series R** restores it: Rcoss 0 → 140 V, 1.5 Ω → 92 V,
-**2.5 Ω → 78 V** (≈ the old value, confirming the phantom Cgd was standing in for real
-Coss-branch loss), 4 Ω → 70 V — all at ~56–60 MHz. So the peak is set by **Coss-branch HF
-damping + the Cin-bank decoupling loop**, not by the ring L/C. One residual tension (unchanged
-from before): matching the scope's *~4-cycle decay* wants light damping (~0.6 Ω → higher peak),
-while matching the *74 V peak* wants ~2.5–3 Ω — a single series-R can't do both, consistent
-with the peak actually living on the lower-Q Cin loop.
+the phantom 475 pF constant Cgd was supplying ~2.5 Ω-equivalent damping. A `Rcoss` series R in
+the Coss branch pulls it back (Rcoss 0 → 140 V, 1.5 Ω → 92 V, **2.5 Ω → 78 V**, 4 Ω → 70 V, all
+~56–60 MHz) — **but ~2.5 Ω is a calibration knob, ~10× any physical loop R, not a real loss term**
+(see §3). The physical reason the *real* board's first overshoot is modest is the **finite 15.8 ns
+edge (≈ one ring period)**, which only weakly excites the tank; the sim over-rings mostly because
+it doesn't reproduce that edge (rise-time gap, `dcdc-tools` issue #1), not because it's missing
+2.5 Ω. This **dissolves** the earlier peak-vs-decay tension: the peak is *edge*-controlled and the
+~4-cycle decay needs only ~0.27 Ω, so there's no single-R contradiction once the edge is right —
+Rcoss was standing in for the missing edge. The peak also carries the Cin-bank decoupling
+composition sensitivity (below), independent of the ring L/C.
 
 **What survives regardless (the safety verdict).** The benign / no-avalanche conclusion is
 **independent of the ring-L/C identity** — the peak lives on the lower-Q Cin-bank decoupling
@@ -263,7 +278,9 @@ The frequency reconciliation does **not** reopen (nor was it needed for) that co
   ~800 pF Coss → ~60 MHz (see "Frequency" above); the 8.2 nH `out_cinnet` figure is the
   outlier to re-check, and the hardware Δf test is the final confirmation.
 - **Coss magnitude** — scaling it *down* raised the peak; model Coss ≈ datasheet anyway.
-- **Skin effect as the damper** — real skin-corrected copper is 17 mΩ, not ~2.5 Ω.
+- **Skin effect as the damper** — real skin-corrected copper is 17 mΩ (+ freq-resolved MLCC
+  ESR ~6–12 mΩ ≈ 25 mΩ total), nowhere near the ~2.5 Ω once assumed — and the ~4-cycle decay
+  needs only ~0.27 Ω anyway; the over-ring is edge-limited, not under-damped (see §3).
 - **Timestep** — the 105 V and 11 MHz were converged (12.8 ns → 0.1 ns), i.e. a *real*
   feature of the (wrong) deck, which is exactly why convergence ≠ correctness.
 
@@ -296,7 +313,8 @@ At 60 V no-coil the real board rings to ~74 V with a well-damped **~60 MHz local
 in normal loaded operation it rings to ~24 V with a **~18–19 MHz output-coil ring** (a different
 loop). It **does not avalanche** in either case. The sim's avalanche prediction was an
 artifact of (1) a missing input capacitor, (2) the vendor model's behavioral Miller network,
-and (3) an unmodeled device Coss-loss damping term — none of them a real board hazard.
+and (3) a too-fast simulated edge over-exciting the ring (the ~2.5 Ω "Coss-loss damping" was a
+peak-calibration knob, not physics — see §3) — none of them a real board hazard.
 
 ---
 
