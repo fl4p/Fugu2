@@ -83,26 +83,15 @@ https://docs.google.com/spreadsheets/d/1vxxJvD4m8UsKfiyYFJieKQtYqnGDK7agQkgYiSCF
 * X7S (and C0G ?) has lower DC-bias capacitance drop
     * good for snubbers, input caps
 
-## DC-bias at the 72 V operating point (verified vs vendor curves)
+**Verified 72 V effective-C** (populated parts, read off the vendor DC-bias curves at the
+72 V rail): 220 nF **0.164×**, 1 µF **0.195×**, 10 µF **0.157×**. The **10 µF derates the
+*hardest*** (a "10 µF" contributes only ~**1.57 µF** at the rail), the 1 µF the least — bigger
+case ≠ automatically better, so budget effective C accordingly.
 
-The parts table below lists the **80 V** DC-bias spec, but the Fugu2 rail is **72 V**.
-Reading each populated part's vendor DC-bias curve at 72 V (Taiyo Yuden TY-COMPAS CSV/chart,
-Murata SimSurfing CSV) gives the fraction of nominal C actually present:
-
-| populated part | nominal | **C(72 V)/C₀** | SRF @ 0 V → @ 72 V bias |
-|---|---|---|---|
-| Yuden MCASH168SC7224 (C17/C18) | 220 nF 0603 | **0.164×** (→ 36 nF) | 18.5 → ~46 MHz |
-| Yuden MMASH21GBC7105 (C9/C16/C27) | 1 µF 0805 | **0.195×** (→ 195 nF) | 7.3 → higher |
-| Murata GRM32EC72A106KE05 (C21/C22) | 10 µF 1210 | **0.157×** (→ 1.57 µF) | 1.6 → higher |
-
-- **The 10 µF derates the *hardest* (0.157×), the 1 µF the *least* (0.195×)** — bigger case ≠
-  automatically better. Budget effective C accordingly: a "10 µF" contributes only ~1.57 µF.
-- **The derate pushes the hot-loop cap's SRF up into the ~50 MHz commutation-ring band**
-  (220 nF: 18.5 → ~46 MHz). So at the ring the ceramic self-resonates — minimum impedance,
-  ESL-limited (matches the "limited by ESL" row above), which is why it's the effective HF
-  decoupler. The C-derate sets *where that minimum lands*, **not** the ring frequency (the ring
-  is loop-L × FET-C_oss). Vendor SPICE models (TY/Murata) cross-check **faithful** to these
-  curves. Mechanism + which caps carry the ring (depop candidates): `dcdc-tools/loss/docs/ring.md`.
+> Per-part ESR(f) / ESL / DC-bias curve values, the cross-check that the TY/Murata SPICE models
+> are datasheet-faithful, the SRF-into-ring-band effect, and **how the loss tool resolves caps
+> by value-bucket (not MPN)** are in the tool repo: `dcdc-tools/loss/docs/capacitors.md`
+> (mechanism: `dcdc-tools/loss/docs/ring.md`).
 
 ## Which ceramics carry the ring (BOM / depopulation)
 
