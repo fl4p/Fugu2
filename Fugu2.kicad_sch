@@ -3545,10 +3545,10 @@
 	)
 	(text "Why backflow switch here?\n- Can stop any battery current from\n  flowing into the converter (eFuse)\n- In case of a HS short, can leave\n   LS on permanentely to avoid\n   battery over-voltage\n- Can shut down output in boost operation\n- We already have a suitable gate\n    drive voltage from HO"
 		(exclude_from_sim no)
-		(at 144.78 39.37 0)
+		(at 153.67 39.37 0)
 		(effects
 			(font
-				(size 1.27 1.27)
+				(size 1 1)
 			)
 			(justify left bottom)
 		)
@@ -3579,11 +3579,12 @@
 	)
 	(text "F3: the device can work\nin boost topology\nso the HV side might be \nconnected to a battery"
 		(exclude_from_sim no)
-		(at 27.305 27.94 0)
+		(at 13.97 29.845 0)
 		(effects
 			(font
-				(size 1.27 1.27)
+				(size 1 1)
 			)
+			(justify left)
 		)
 		(uuid "a9373b58-3568-4664-901b-578de1f90cd0")
 	)
@@ -3722,12 +3723,6 @@
 		(uuid "5b9368b1-710b-4156-b17f-35b0eeb711f7")
 	)
 	(junction
-		(at 91.44 48.26)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "67c85371-a859-4256-9c1d-602758d14b06")
-	)
-	(junction
 		(at 142.24 77.47)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3752,22 +3747,16 @@
 		(uuid "85ab70e6-2829-448c-8ccf-9891ea13efc1")
 	)
 	(junction
-		(at 77.47 41.91)
+		(at 75.565 41.91)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "87feba5e-53b8-418c-b903-7488b9c5a7f4")
+		(uuid "86014d7f-91e1-40ee-b1a6-87f100708c82")
 	)
 	(junction
 		(at 242.57 29.21)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8825ba1f-cae1-46bb-b614-99227f04ee93")
-	)
-	(junction
-		(at 91.44 52.705)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "8830b5bb-8b09-4b6b-b905-ea8615d0cf3c")
 	)
 	(junction
 		(at 44.45 34.29)
@@ -3792,6 +3781,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "b0905312-015c-4ef2-8579-fe2f68f4ccb1")
+	)
+	(junction
+		(at 91.44 53.975)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b159adce-f7f9-4cf8-a5bb-afb373267a1a")
 	)
 	(junction
 		(at 133.35 163.83)
@@ -3854,7 +3849,7 @@
 		(uuid "ec1c91da-6db9-4ed2-a7b9-9967212647d1")
 	)
 	(junction
-		(at 72.39 36.83)
+		(at 67.31 36.83)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "edaf28ed-382d-4b13-af20-5993f791acaf")
@@ -3913,7 +3908,7 @@
 	)
 	(wire
 		(pts
-			(xy 72.39 36.83) (xy 72.39 41.91)
+			(xy 67.31 36.83) (xy 67.31 41.91)
 		)
 		(stroke
 			(width 0)
@@ -3953,7 +3948,7 @@
 	)
 	(wire
 		(pts
-			(xy 90.805 52.705) (xy 91.44 52.705)
+			(xy 90.805 53.975) (xy 91.44 53.975)
 		)
 		(stroke
 			(width 0)
@@ -4033,6 +4028,16 @@
 	)
 	(wire
 		(pts
+			(xy 67.31 41.91) (xy 69.85 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "197a2225-858b-4a5b-8137-a43455ca034b")
+	)
+	(wire
+		(pts
 			(xy 83.82 36.83) (xy 83.82 39.37)
 		)
 		(stroke
@@ -4073,7 +4078,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 48.26) (xy 91.44 48.26)
+			(xy 86.36 51.435) (xy 91.44 51.435)
 		)
 		(stroke
 			(width 0)
@@ -4163,6 +4168,16 @@
 	)
 	(wire
 		(pts
+			(xy 91.44 53.975) (xy 91.44 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "329b9840-cc08-4210-b53c-66ee90e2d77b")
+	)
+	(wire
+		(pts
 			(xy 232.41 29.21) (xy 237.49 29.21)
 		)
 		(stroke
@@ -4213,7 +4228,7 @@
 	)
 	(wire
 		(pts
-			(xy 77.47 46.355) (xy 96.52 46.355)
+			(xy 75.565 46.99) (xy 96.52 46.99)
 		)
 		(stroke
 			(width 0)
@@ -4323,6 +4338,16 @@
 	)
 	(wire
 		(pts
+			(xy 74.93 41.91) (xy 75.565 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "605d218e-6170-4d26-bf46-4cfe166ac40e")
+	)
+	(wire
+		(pts
 			(xy 54.61 34.29) (xy 54.61 49.53)
 		)
 		(stroke
@@ -4333,23 +4358,13 @@
 	)
 	(wire
 		(pts
-			(xy 72.39 36.83) (xy 76.2 36.83)
+			(xy 67.31 36.83) (xy 76.2 36.83)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "62d6b3bc-3004-468e-af41-b50e856ed431")
-	)
-	(wire
-		(pts
-			(xy 91.44 51.435) (xy 91.44 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "643c9e9c-e777-424e-b62b-60779078a19d")
 	)
 	(wire
 		(pts
@@ -4360,6 +4375,16 @@
 			(type default)
 		)
 		(uuid "686f2b1f-b2a1-4ae8-a35e-09644200e7b2")
+	)
+	(wire
+		(pts
+			(xy 75.565 41.91) (xy 77.47 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "694cf3ae-d5a2-40fe-a030-c6d620c9528c")
 	)
 	(wire
 		(pts
@@ -4463,16 +4488,6 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 51.435) (xy 91.44 52.705)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7b867e05-a8e6-478a-beb5-9594863d334e")
-	)
-	(wire
-		(pts
 			(xy 83.82 109.855) (xy 83.82 114.935)
 		)
 		(stroke
@@ -4513,7 +4528,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 48.26) (xy 86.36 45.72)
+			(xy 86.36 51.435) (xy 86.36 46.355)
 		)
 		(stroke
 			(width 0)
@@ -4543,7 +4558,7 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 44.45) (xy 91.44 48.26)
+			(xy 91.44 44.45) (xy 91.44 51.435)
 		)
 		(stroke
 			(width 0)
@@ -4633,7 +4648,7 @@
 	)
 	(wire
 		(pts
-			(xy 71.12 36.83) (xy 72.39 36.83)
+			(xy 66.04 36.83) (xy 67.31 36.83)
 		)
 		(stroke
 			(width 0)
@@ -4643,7 +4658,7 @@
 	)
 	(wire
 		(pts
-			(xy 77.47 41.91) (xy 77.47 46.355)
+			(xy 75.565 41.91) (xy 75.565 46.99)
 		)
 		(stroke
 			(width 0)
@@ -4723,7 +4738,7 @@
 	)
 	(wire
 		(pts
-			(xy 101.6 39.37) (xy 101.6 46.355)
+			(xy 101.6 39.37) (xy 101.6 46.99)
 		)
 		(stroke
 			(width 0)
@@ -4770,6 +4785,16 @@
 			(type default)
 		)
 		(uuid "b607390a-430d-4063-b373-1f9d2e871adb")
+	)
+	(wire
+		(pts
+			(xy 91.44 51.435) (xy 91.44 53.975)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b6646e48-6be6-41b1-a3f0-55dcabed523a")
 	)
 	(wire
 		(pts
@@ -4900,16 +4925,6 @@
 			(type default)
 		)
 		(uuid "c9706463-2f7a-4189-bc43-3c0a9ef84112")
-	)
-	(wire
-		(pts
-			(xy 91.44 52.705) (xy 91.44 57.15)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ce9d099f-2231-44bb-83c7-d1afd8ca8250")
 	)
 	(wire
 		(pts
@@ -5053,7 +5068,7 @@
 	)
 	(wire
 		(pts
-			(xy 86.36 40.64) (xy 86.36 39.37)
+			(xy 86.36 41.275) (xy 86.36 39.37)
 		)
 		(stroke
 			(width 0)
@@ -5125,7 +5140,7 @@
 	)
 	(global_label "HO"
 		(shape input)
-		(at 71.12 36.83 180)
+		(at 66.04 36.83 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5135,7 +5150,7 @@
 		)
 		(uuid "0da8faf4-b4c0-4a98-9559-4990c798ee36")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 65.4738 36.83 0)
+			(at 60.3938 36.83 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5499,7 +5514,7 @@
 	)
 	(global_label "SW"
 		(shape input)
-		(at 90.805 52.705 180)
+		(at 90.805 53.975 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5509,7 +5524,7 @@
 		)
 		(uuid "cfbec186-bfe2-424f-9cbe-f0874418c337")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 85.1589 52.705 0)
+			(at 85.1589 53.975 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5632,7 +5647,7 @@
 	(symbol
 		(lib_name "D_Small_5")
 		(lib_id "Device:D_Small")
-		(at 74.93 41.91 0)
+		(at 72.39 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5640,7 +5655,7 @@
 		(dnp no)
 		(uuid "07be105b-1303-4706-bd8f-6770cf6ebcf7")
 		(property "Reference" "D1"
-			(at 74.295 43.815 0)
+			(at 71.755 43.815 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5648,7 +5663,7 @@
 			)
 		)
 		(property "Value" "MSS1P4-M3/89A"
-			(at 67.31 45.72 0)
+			(at 66.675 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5656,7 +5671,7 @@
 			)
 		)
 		(property "Footprint" "Diode_SMD:D_MicroSMP_AK"
-			(at 74.93 41.91 90)
+			(at 72.39 41.91 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5665,7 +5680,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.vishay.com/docs/89019/mss1p4.pdf"
-			(at 74.93 41.91 90)
+			(at 72.39 41.91 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5674,7 +5689,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 74.93 41.91 0)
+			(at 72.39 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5683,7 +5698,7 @@
 			)
 		)
 		(property "MPN" "MSS1P4-M3/89A"
-			(at 74.93 41.91 0)
+			(at 72.39 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5692,7 +5707,7 @@
 			)
 		)
 		(property "Desc" "GateDischarge"
-			(at 74.93 41.91 0)
+			(at 72.39 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5701,7 +5716,7 @@
 			)
 		)
 		(property "Sim.Device" "D"
-			(at 74.93 41.91 0)
+			(at 72.39 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5710,7 +5725,7 @@
 			)
 		)
 		(property "Sim.Pins" "1=K 2=A"
-			(at 74.93 41.91 0)
+			(at 72.39 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5719,7 +5734,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 74.93 41.91 0)
+			(at 72.39 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5728,7 +5743,7 @@
 			)
 		)
 		(property "Digikey" ""
-			(at 74.93 41.91 0)
+			(at 72.39 41.91 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7075,7 +7090,7 @@
 			)
 		)
 		(property "Value" "470uF, 100V"
-			(at 44.704 55.88 0)
+			(at 43.18 67.31 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7712,7 +7727,7 @@
 			)
 		)
 		(property "Value" "470uF, 100V"
-			(at 36.83 55.88 0)
+			(at 35.56 67.945 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7905,7 +7920,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small")
-		(at 86.36 43.18 180)
+		(at 86.36 43.815 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -7913,7 +7928,7 @@
 		(dnp no)
 		(uuid "6096757c-4bcf-4a9a-b36a-517b0f18c435")
 		(property "Reference" "R9"
-			(at 88.265 45.085 0)
+			(at 88.265 44.45 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7921,7 +7936,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 86.995 43.18 0)
+			(at 84.455 43.815 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7929,7 +7944,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 86.36 43.18 0)
+			(at 86.36 43.815 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7938,7 +7953,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 86.36 43.18 0)
+			(at 86.36 43.815 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7947,7 +7962,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 86.36 43.18 0)
+			(at 86.36 43.815 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7956,7 +7971,7 @@
 			)
 		)
 		(property "MPN" "10k"
-			(at 86.36 43.18 0)
+			(at 86.36 43.815 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7965,7 +7980,7 @@
 			)
 		)
 		(property "Desc" "GateDischarge"
-			(at 86.36 43.18 0)
+			(at 86.36 43.815 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7974,7 +7989,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 86.36 43.18 0)
+			(at 86.36 43.815 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7983,7 +7998,7 @@
 			)
 		)
 		(property "Digikey" ""
-			(at 86.36 43.18 0)
+			(at 86.36 43.815 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8241,7 +8256,7 @@
 			)
 		)
 		(property "Value" "4.7, 1%"
-			(at 99.06 38.1 90)
+			(at 97.155 41.275 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8978,7 +8993,7 @@
 			)
 		)
 		(property "Value" "10uF, 100V, X7S"
-			(at 47.498 57.658 0)
+			(at 53.34 71.755 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10338,7 +10353,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small")
-		(at 99.06 46.355 270)
+		(at 99.06 46.99 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10346,7 +10361,7 @@
 		(dnp no)
 		(uuid "e53c11a5-eb5d-4336-ba14-41e6dfcb2a48")
 		(property "Reference" "R5"
-			(at 98.806 44.323 90)
+			(at 98.806 44.958 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10354,7 +10369,7 @@
 			)
 		)
 		(property "Value" "2.2, 1%"
-			(at 99.06 48.26 90)
+			(at 99.06 48.895 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10362,7 +10377,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 99.06 46.355 0)
+			(at 99.06 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10371,7 +10386,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 99.06 46.355 0)
+			(at 99.06 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10380,7 +10395,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 99.06 46.355 0)
+			(at 99.06 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10389,7 +10404,7 @@
 			)
 		)
 		(property "MPN" "2.2, 1%"
-			(at 99.06 46.355 0)
+			(at 99.06 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10398,7 +10413,7 @@
 			)
 		)
 		(property "Desc" "GateDischarge"
-			(at 99.06 46.355 0)
+			(at 99.06 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10407,7 +10422,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 99.06 46.355 0)
+			(at 99.06 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10416,7 +10431,7 @@
 			)
 		)
 		(property "Digikey" ""
-			(at 99.06 46.355 0)
+			(at 99.06 46.99 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10785,7 +10800,7 @@
 			)
 		)
 		(property "Value" "2.2, 1%"
-			(at 80.645 43.815 90)
+			(at 79.375 43.815 90)
 			(effects
 				(font
 					(size 1.27 1.27)
