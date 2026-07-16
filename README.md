@@ -287,6 +287,18 @@ fet to avoid channel break-down if needed.
   converter is cooling down at night it'll suck water into the enclosure. The ESP32 WROOM metallic case is not sealed.
   Consider placing a membrane? Sticker on its breathing hole.
 
+# Development
+
+`Schematics.pdf` is regenerated automatically on commit whenever a `.kicad_sch` file
+changes, via a tracked git hook in `.githooks/`. After a fresh clone, activate it once:
+
+```
+git config core.hooksPath .githooks
+```
+
+The hook needs `kicad-cli` on the `PATH` (or the default macOS KiCad app bundle). If
+`kicad-cli` is unavailable it is skipped and the commit proceeds unchanged.
+
 # Further Reads
 
 * [Power Conversion Eff. Opt.](doc/Power%20Conversion%20Efficiency%20Optimization.md)

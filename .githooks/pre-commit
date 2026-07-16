@@ -1,0 +1,34 @@
+#!/bin/sh
+# Auto-regenerate Schematics.pdf from the KiCad sources whenever a schematic
+# file is part of the commit. Installed via:  git config core.hooksPath .githooks
+#
+# Skips silently (does not block the commit) when no schematic is staged or when
+# kicad-cli is unavailable.
+
+# Only act if at least one .kicad_sch is staged in this commit.
+if ! git diff --cached --name-only --diff-filter=ACM | grep -q '\.kicad_sch$'; then
+    exit 0
+fi
+
+# Locate kicad-cli (PATH first, then the default macOS app bundle).
+KC="$(command -v kicad-cli 2>/dev/null || true)"
+if [ -z "$KC" ] && [ -x "/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli" ]; then
+    KC="/Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli"
+fi
+if [ -z "$KC" ]; then
+    echo "pre-commit: kicad-cli not found — leaving Schematics.pdf unchanged." >&2
+    exit 0
+fi
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT" || exit 0
+
+echo "pre-commit: regenerating Schematics.pdf from Fugu2.kicad_sch ..." >&2
+if "$KC" sch export pdf Fugu2.kicad_sch -o Schematics.pdf >/dev/null 2>&1; then
+    git add Schematics.pdf
+    echo "pre-commit: Schematics.pdf updated and staged." >&2
+else
+    echo "pre-commit: WARNING — schematic PDF export failed; committing without refresh." >&2
+fi
+
+exit 0
