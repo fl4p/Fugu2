@@ -679,7 +679,7 @@
 				)
 			)
 		)
-		(property "Value" "7.5k"
+		(property "Value" "10k"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(uuid "c70112df-98c7-4b8a-91fc-42ea49f4b344")
@@ -716,7 +716,7 @@
 				)
 			)
 		)
-		(property "MPN" "7.5k"
+		(property "MPN" "10k"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -729,7 +729,7 @@
 				)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "GateDischarge"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1239,6 +1239,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "320eaf75-262f-4c8a-a61c-b12ce5e56f70")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Desc" "PwrSupply"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a47549a3-1733-4607-b86f-5013f4c4f45b")
 			(effects
 				(font
 					(size 1 1)
@@ -5758,7 +5771,7 @@
 				)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "I2C"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -8587,7 +8600,7 @@
 				)
 			)
 		)
-		(property "Value" "7.5k"
+		(property "Value" "10k"
 			(at 0 1.65 90)
 			(layer "F.Fab")
 			(uuid "92730f18-ee75-45f0-b689-c55885e212dd")
@@ -8624,7 +8637,7 @@
 				)
 			)
 		)
-		(property "MPN" "7.5k"
+		(property "MPN" "10k"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8637,7 +8650,7 @@
 				)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "GateDischarge"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14033,6 +14046,19 @@
 				)
 			)
 		)
+		(property "Desc" "PwrSupply"
+			(at 0 0 270)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "a87d2f48-713f-4ebd-90b5-1235d5adfa07")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
 		(property ki_fp_filters "D*SOD?323*")
 		(path "/8bdaa788-2fc2-4872-9b0d-b14952df8b59/463bda48-e4bf-4a6a-be4f-4b0febfaf2cd")
 		(sheetname "/PowerSupply/")
@@ -14872,7 +14898,7 @@
 				)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "I2C"
 			(at 5.0085 130.1195 90)
 			(layer "F.Fab")
 			(hide yes)
@@ -17271,6 +17297,19 @@
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "78d51805-adc7-4955-bc4f-caaa16f66347")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Desc" "PwrSupply"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f708fb74-8676-4626-b237-f71cbe65fb96")
 			(effects
 				(font
 					(size 1 1)
@@ -25129,7 +25168,7 @@
 				)
 			)
 		)
-		(property "Value" "ESP32-S3-WROOM-1"
+		(property "Value" "ESP32-S3-WROOM-1-N4"
 			(at 0 12 90)
 			(layer "F.Fab")
 			(uuid "bc9f14b3-99ed-4bf1-b674-279ecf4a78a3")
@@ -25176,7 +25215,7 @@
 				)
 			)
 		)
-		(property "MPN" "ESP32-S3-WROOM-1U-N4R2"
+		(property "MPN" "ESP32-S3-WROOM-1-N4"
 			(at 21.255 104.193 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -25214,7 +25253,7 @@
 				)
 			)
 		)
-		(property "LCSC" "ESP32-S3-WROOM-1U-N4R2"
+		(property "LCSC" "ESP32-S3-WROOM-1-N4"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -27876,7 +27915,7 @@
 				)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "I2C"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -31116,7 +31155,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Value" "100nF, X7R, 25V"
+		(property "Value" "10nF, 100V"
 			(at 0 -1.68 90)
 			(layer "B.Fab")
 			(uuid "7fd0cb8a-855a-4b4a-a4e5-d115b7edeb36")
@@ -31165,7 +31204,7 @@
 				(justify mirror)
 			)
 		)
-		(property "MPN" "100nF, X7R, 25V"
+		(property "MPN" "10nF, 100V"
 			(at 29.883 104.465 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -32338,7 +32377,7 @@
 				(justify mirror)
 			)
 		)
-		(property "MPN" "4.7uF, 100V"
+		(property "MPN" "HMK325C7475KN-TE"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -32394,7 +32433,7 @@
 				(justify mirror)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "HMK325C7475KN-TE"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -32870,7 +32909,7 @@
 				(justify mirror)
 			)
 		)
-		(property "MPN" "1M"
+		(property "MPN" "200k"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -35368,7 +35407,7 @@
 				)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "MCU"
 			(at 13.6825 75.9615 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -35632,6 +35671,20 @@
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "d4f5552f-f813-42f0-a2e3-033526a52b41")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Desc" "PwrSupply"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "a8284691-16c0-45b9-a270-8e43a4bfb706")
 			(effects
 				(font
 					(size 1 1)
@@ -36309,7 +36362,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "NTC"
 			(at 116.84 -73.248 0)
 			(layer "B.Fab")
 			(hide yes)
@@ -39027,6 +39080,20 @@
 				(justify mirror)
 			)
 		)
+		(property "Desc" "PwrSupply"
+			(at 0 0 0)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "eecf32c7-e8b2-4b2c-bd8b-dd0df2980bda")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
 		(property ki_fp_filters "C_*")
 		(path "/8bdaa788-2fc2-4872-9b0d-b14952df8b59/4ce9484e-4cd3-47bb-b2c7-eba3c4e7567b")
 		(sheetname "/PowerSupply/")
@@ -39233,7 +39300,7 @@
 				(justify mirror)
 			)
 		)
-		(property "MPN" "GT800N10D3"
+		(property "MPN" "GT800N10D3 or SP010N90NJ"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -39247,7 +39314,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "PwrSupply"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -39938,7 +40005,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "PwrSupply"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -43535,7 +43602,7 @@
 				)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "MCU"
 			(at 15.151 87.193 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -44853,7 +44920,7 @@
 				(justify mirror)
 			)
 		)
-		(property "MPN" "BZT52C13-TP"
+		(property "MPN" "BZT52C16 or BZT52C13-TP"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -44901,6 +44968,20 @@
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "75fb7c6d-7115-4702-a0ea-35c9ebc54439")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "LCSC" "BZT52C16"
+			(at 0 0 180)
+			(unlocked yes)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "bff5c537-970e-42c0-821b-7a2f6347e58e")
 			(effects
 				(font
 					(size 1 1)
@@ -46048,7 +46129,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Desc" ""
+		(property "Desc" "bootstrap"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "B.Fab")
