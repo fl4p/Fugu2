@@ -245,6 +245,7 @@ Use [fetlib](https://github.com/fl4p/fetlib) for an extensive parametric search 
     - IPA050N10NM5S (100V 5mΩ Qsw=16nC Qoss=67nC)
     - IPP089N15NM6 (150V Qsw=11nC)
     - IPP057N15NM6 (150V Qsw=16nC)
+    - IPP050N10NF2S (100 V)
 
 ## Low Side Switch (LS, sync)
 
@@ -259,6 +260,7 @@ Use [fetlib](https://github.com/fl4p/fetlib) for an extensive parametric search 
     - IPP040N08NF2S
     - IPP022N12NM6
     - IPP019N08NF2S
+    - IPP018N10N5 (100 V) 
 
 Current through the LS Switch always flows from source to drain (4th quadrant of V-I plane),
 which makes the gate drive signal rather irrelevant. It is much easier to switch than the HS, ringing is generally
@@ -288,3 +290,6 @@ fet to avoid channel break-down if needed.
 # Further Reads
 
 * [Power Conversion Eff. Opt.](doc/Power%20Conversion%20Efficiency%20Optimization.md)
+
+
+https://www.minewing.com/
