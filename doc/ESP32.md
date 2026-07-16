@@ -75,7 +75,7 @@ Power Supply https://www.espressif.com/sites/default/files/documentation/esp32-s
 ## Unexpected Maker Nano
 
 https://lectronz.com/products/nanos3
-![img_2.png](img_2.png)
+![um-nanos3](img/um-nanos3.webp)
 
 * pricy
 * 
@@ -83,7 +83,7 @@ https://lectronz.com/products/nanos3
 ## WaveShare
 https://www.waveshare.com/esp32-s3-zero.htm
 
-![img_1.png](img_1.png)
+![waveshare-esp32-s3-zero](img/waveshare-esp32-s3-zero.webp)
 
 * has thermal issues (over-heat) without heat-sink
 * had wifi connection issues. antenna performance is lower than WROOM PCB antenna

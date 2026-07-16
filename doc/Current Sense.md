@@ -66,7 +66,7 @@ INA229
 
 # OP amp / current sense amp
 
-![img.png](img.png)
+![power-loop-test-rig](img/power-loop-test-rig.webp)
 
 the OP amp should have no Vos cross-over distortion, and a low Vos drift
 

@@ -5,7 +5,7 @@ It ensures safe shutdown in case of shorted solar terminals.
 To better understand, why it is needed, take a look at this equivalent circuit diagram of the converter, which includes
 the power mosfets body diodes and the coil only:
 
-<img alt="img_3.png" src="img_3.png" width="400"/>
+<img alt="backflow equivalent circuit" src="img/backflow-equivalent-circuit.webp" width="400"/>
 
 (HS: High-side mosfet, LS: low-side MOSFET, BF: backflow switch)
 

@@ -1,6 +1,6 @@
 # Power-loop test rig
 
-![img.png](img.png)
+![power-loop-test-rig](img/power-loop-test-rig.webp)
 
 I build this test rig to test & measure DC-DC converters.
 It runs from a 27V, 3A power supply and uses a boost converter to create a higher voltage.

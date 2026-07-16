@@ -1,13 +1,13 @@
 
 # flat
 
-![img_11.png](img_11.png)
+![flat-board-top](flat-board-top.webp)
 
-![img_9.png](img_9.png)
+![flat-pcb-bottom-solder](flat-pcb-bottom-solder.webp)
 
-![img_10.png](img_10.png)
+![flat-terminal-blocks-heatsink](flat-terminal-blocks-heatsink.webp)
 
-![img_12.png](img_12.png)
+![flat-caps-coil-closeup](flat-caps-coil-closeup.webp)
 
 * first time tried the 3.3V -> 12V boost supply for gate drive voltage
 * first build with on-board usb-c

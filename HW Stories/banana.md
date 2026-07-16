@@ -23,9 +23,9 @@ put 2sMS184075 coil:
 
 
 
-![img.png](img.png)
+![banana-heatsink-mount](banana-heatsink-mount.webp)
 
 
-![img_1.png](img_1.png)
+![banana-power-rig-overview](banana-power-rig-overview.webp)
 
-![img_2.png](img_2.png)
+![banana-board-top](banana-board-top.webp)

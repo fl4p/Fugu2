@@ -173,7 +173,7 @@ eff 97.15% (std=0.009163,last=97.14)   loss=22.71W
    in power     796.010 W  (std 0.6710)   @ 71.506V
   out power     773.237 W  (std 0.7197)   @ 27.112V
 ```
-![img_6.png](img_6.png)
+![ftall-eff-t130-1strand-dark](ftall-eff-t130-1strand-dark.webp)
 
 
 ```
@@ -186,8 +186,8 @@ eff 97.69% (std=0.000396,last=97.69)   loss=18.87W
    in power     818.586 W  (std 0.0473)   @ 71.463V
   out power     799.717 W  (std 0.0462)   @ 27.119V
 ```
-![img_7.png](img_7.png)
-![img_8.png](img_8.png)
+![ftall-eff-t130-6strand-1](ftall-eff-t130-6strand-1.webp)
+![ftall-eff-t130-6strand-2](ftall-eff-t130-6strand-2.webp)
 
 
 ```
@@ -213,13 +213,13 @@ eff 98.116% (std=0.001012,last=98.12)   loss=14.89W
 
 
 
-![img_4.png](img_4.png)
-![img_5.png](img_5.png)
+![ftall-eff-codaca-lowloss-1](ftall-eff-codaca-lowloss-1.webp)
+![ftall-eff-codaca-lowloss-2](ftall-eff-codaca-lowloss-2.webp)
 eff over time samples. applied some forced heat during warm-up
 
 
 Here's a plot over time of converter efficiency (sampling rate ~4 Hz).
-![img_3.png](img_3.png)
+![ftall-eff-over-time-fan](ftall-eff-over-time-fan.webp)
 
 The spikes are me touching the converter. Just before x=500 I put a fan next to the converter.
 This increased eff by almost 0.05%. As you can see afterwards it takes a long time to reach the steady state of
