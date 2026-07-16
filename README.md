@@ -289,8 +289,10 @@ fet to avoid channel break-down if needed.
 
 # Development
 
-`Schematics.pdf` is regenerated automatically on commit whenever a `.kicad_sch` file
-changes, via a tracked git hook in `.githooks/`. After a fresh clone, activate it once:
+`Schematics.pdf` is regenerated on commit whenever a `.kicad_sch` file is staged, via
+a tracked git hook in `.githooks/`. The refreshed PDF is left **unstaged** — stage and
+commit it yourself (`git add Schematics.pdf`) when you want it in history. After a fresh
+clone, activate the hook once:
 
 ```
 git config core.hooksPath .githooks

@@ -1,6 +1,10 @@
 #!/bin/sh
-# Auto-regenerate Schematics.pdf from the KiCad sources whenever a schematic
-# file is part of the commit. Installed via:  git config core.hooksPath .githooks
+# Regenerate Schematics.pdf from the KiCad sources whenever a schematic file is
+# part of the commit. Installed via:  git config core.hooksPath .githooks
+#
+# The refreshed PDF is left UNSTAGED on purpose — you decide when to stage and
+# commit it (`git add Schematics.pdf`). This commit will therefore not contain
+# the matching PDF unless you stage it in a follow-up commit.
 #
 # Skips silently (does not block the commit) when no schematic is staged or when
 # kicad-cli is unavailable.
@@ -25,10 +29,9 @@ cd "$ROOT" || exit 0
 
 echo "pre-commit: regenerating Schematics.pdf from Fugu2.kicad_sch ..." >&2
 if "$KC" sch export pdf Fugu2.kicad_sch -o Schematics.pdf >/dev/null 2>&1; then
-    git add Schematics.pdf
-    echo "pre-commit: Schematics.pdf updated and staged." >&2
+    echo "pre-commit: Schematics.pdf refreshed (left UNSTAGED — run 'git add Schematics.pdf' to include it)." >&2
 else
-    echo "pre-commit: WARNING — schematic PDF export failed; committing without refresh." >&2
+    echo "pre-commit: WARNING — schematic PDF export failed; PDF left unchanged." >&2
 fi
 
 exit 0
