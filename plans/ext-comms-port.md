@@ -127,11 +127,13 @@ Captured in `ExtPort.kicad_sch` (items 1–6). Net names follow the firmware con
      ≥ 0.125 W rating after derating (1206 if in doubt).
    - Firmware rule: never hold GPIO48 low across a reset or deep sleep (`gpio_hold_en`,
      `gpio_deep_sleep_hold_en`). Drive it high (TX off) before any hold, or R46 cannot disable TX.
-4. **V+ (pin 4), from 3.3 V (Q1, Q15):** 3.3 V → Schottky D22 (MSS1P4) → 1 µF (C33) + TVS (D19) → pin 4.
+4. **V+ (pin 4), from 3.3 V (Q1, Q15):** 3.3 V → Schottky D22 (MSS1P4) → 1 µF (C33) → pin 4. No TVS on
+   pin 4 (Fab, 2026-09-29): C33 absorbs an IEC 61000-4-2 8 kV discharge (150 pF × 8 kV = 1.2 µC, ~1.2 V
+   on 1 µF). **Place C33 at J5 pin 4, next to U7's VCC**, so it is both the port ESD sink and U7's bypass.
    Always on. No switch, no current limit, no current sense (Q15, Q16).
 5. *(dropped: V+ current sense, Q16)*
-6. **ESD and return path:** the TVS diodes (LESD5D5.0CT1G) sit at the connector, with a short return to
-   GND.
+6. **ESD and return path:** the TVS diodes on TX and RX (D20, D21, LESD5D5.0CT1G) sit at the connector,
+   with a short return to GND.
 7. **USB-C next to the power terminals (Q11).**
    - Move P2, with its ESD diodes (D3/D4) and CC resistors, beside the terminals, facing down.
    - Remove the USB1 pin header (Q13; done on this branch). P2 is then the only branch on D+/D−.
