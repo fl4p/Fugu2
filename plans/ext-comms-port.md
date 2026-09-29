@@ -33,14 +33,15 @@ supports that with three things:
 | Q3 | Place the connector the way Victron does: **next to the power terminals**. No connectors on the upper PCB side. The unit is wall-mounted with the power terminals facing down, so an upward-facing opening would let water in. |
 | Q4 | Target BMS/inverter models come later; hardware only for now. |
 | Q5 | Isolation: nothing special. Use the industry-standard ratings of off-the-shelf isolated CAN/RS-485 parts. |
+| Q6 | mcu-head header grows 2×7 → **2×9** and carries the five port signals; D+/D− are not added. |
 | Q7 | Adapters are a small PCB with a pigtail. |
 | Q8 | The RS-485 adapter echoes (/RE tied low). See the adapter section. |
 | Q9 | GPIO7 tied to +3.3V is a rail voltage monitor. Keep it (note below). |
+| Q10 | The redesign (Q12) supersedes syncing the July layout to the schematic. |
 | Q11 | USB-C also moves next to the power terminals. |
+| Q12 | The board gets a slight redesign with more area (additional Cin bulk caps), which makes room for both connectors on the bottom edge. The detailed placement is still open (see Open questions). |
 | Q13 | The USB1 pin header is **removed**. The J2 I2C socket stays where it is. |
-| Q6 | mcu-head header grows 2×7 → **2×9** and carries the five port signals; D+/D− are not added. |
 | Q14 | The product's USB-C is the motherboard one, in the lower board area (Q11). The head's USB-C is a development/service port; its position in the upper area is accepted. |
-| Q12 | The board gets a slight redesign with more area (additional Cin bulk caps), which makes room for both connectors on the bottom edge. |
 
 ## Current state: Fugu2 v2.3
 
@@ -60,7 +61,7 @@ Sources:
 | 3.3 V | External `psu/buck100` board: LM5163, **0.5 A**. Fed through a diode-OR of Bat+, Solar+ and Vusb. It also supplies WiFi and the AP3012 12 V gate-drive boost. |
 | USB-C P2 | At (51, 34.5), on the **top edge**. Moves to the bottom (Q11). USB1 (1×4 USB pin header, top edge) is removed. J2 (I2C socket, mid-board) stays (Q13). |
 | Bottom edge space | Courtyards: J10 x 32.2–52.6, J9 x 52.5–72.9, J5 x 74.2–77.8, all to y = 120. The board spans x 28.7–78.7, so the free strips are **3.5 mm on the left (mounting hole H4 at 30.7/105.5) and 5.8 mm on the right**. A JST-PH 4 side-entry is about 10 mm wide and a USB-C receptacle about 9 mm, so **neither fits beside the terminals as the board stands** (Q12). |
-| mcu-head | Its 2×7 header carries the 14 core signals, with one spare (J4.11). GPIO36/37 are not routed. **USB is not available on the motherboard when the head is used**: D+/D− are not on the header, and the head has its own USB-C (P1) and ESP-PROG header. The motherboard USB-C then only powers the board (Vusb → D7 → PSU diode-OR); it carries no data. |
+| mcu-head | Its 2×7 header (J4 on the motherboard, J2 on the head) has 10 signals, GND on pins 2 and 7, +3.3V on pin 5, and one spare (pin 11). GPIO36/37 are not routed. **USB is not available on the motherboard when the head is used**: D+/D− are not on the header, and the head has its own USB-C (P1) and ESP-PROG header. The motherboard USB-C then only powers the board (Vusb → D7 → PSU diode-OR); it carries no data. |
 
 ## Verified facts that constrain the design
 
@@ -156,6 +157,10 @@ mode, any echo means "adapter plugged in, stop transmitting". The limits:
 - In Modbus mode the firmware discards its own echo. Transmitting on RS-485 is half-duplex anyway, so
   echo costs nothing on the bus.
 - There is no jumper; /RE is hardwired low.
+- Echo only shows up after something has been sent, so it is the second check, not the first. At
+  19200 baud, one byte sent into the CAN adapter holds TXD low (dominant) for up to about 0.5 ms and
+  disrupts the bus. So the **V+ current check runs before /OE is first enabled** after power-up, a
+  mode change, or a V+ current change that suggests a replug. Echo then confirms after the fact.
 
 ## Qualification (bench, before freezing the host PCB)
 
@@ -187,8 +192,6 @@ mode, any echo means "adapter plugged in, stop transmitting". The limits:
 
 ## Open questions
 
-- **Q6:** closed (2×9).
-- **Q10:** closed. The redesign supersedes syncing the July layout.
 - **Q12 (layout detail):** place the port and USB-C **side by side** on the bottom edge next to the
   terminals, facing down. Fall back to stacking (front/back) only if width is still short. Side by side
   keeps assembly single-sided for these parts and avoids clashes between through-hole shell tabs.
@@ -198,5 +201,3 @@ mode, any echo means "adapter plugged in, stop transmitting". The limits:
   - Keep mounting holes clear.
   - Keep the USB D+/D− routing rules in host change 7.
   - Leave room for plugs and cable bend radius beside the power lugs.
-- **Q13:** closed; see Decisions.
-- **Q14:** closed; see Decisions.
