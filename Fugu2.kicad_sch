@@ -12654,6 +12654,52 @@
 			)
 		)
 	)
+	(sheet
+		(at 62.23 157.48)
+		(size 36.83 12.7)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 255 255 194 1)
+		)
+		(uuid "cb058d3e-80b8-7be1-708b-f93a7279feab")
+		(property "Sheetname" "ExtPort"
+			(at 62.23 156.7684 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "ExtPort.kicad_sch"
+			(at 62.23 170.7646 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2"
+					(page "6")
+				)
+			)
+		)
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")
