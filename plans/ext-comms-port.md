@@ -82,7 +82,7 @@ Sources:
 
 | Part | Constraint |
 |---|---|
-| ISO1042 | TXD→RXD loop delay ≤ 215 ns. TXD high needs ≥ 0.7×VCC1, which is 2.31 V at VCC1 = 3.3 V. Bus side up to 73.4 mA while dominant; recessive only ~1.3 mA (VCC1) + 2.8 mA (VCC2) typ. Dominant timeout ≥ 1.2 ms. |
+| ISO1042 | TXD→RXD loop delay ≤ 215 ns. TXD high needs ≥ 0.7×VCC1, which is 2.31 V at VCC1 = 3.3 V. TXD/RXD abs max **VCC1 + 0.5 V** (§5.1). Bus side up to 73.4 mA while dominant; recessive only ~1.3 mA (VCC1) + 2.8 mA (VCC2) typ. Dominant timeout ≥ 1.2 ms. |
 | THVD1426 | Auto-direction. The driver actively drives a '1' for only 0.4–1.45 µs (0.8 µs typ), then releases the bus. Its own receiver reads an idle terminated bus as high without bias; other receivers on the network may need fail-safe bias. With /RE = 0 the receiver stays on while transmitting (echo). Bus pins −7…+12 V relative to its local ground. |
 | SN74LVC1G17 | Input 5.5 V-tolerant at any VCC, Ioff (partial power-down). |
 | SN74LVC1G125 | /OE active low; TI recommends a pull-up on /OE. Output tolerates up to 6.5 V abs max only while **disabled or unpowered**; an enabled output is limited to VCC + 0.5 V. |
@@ -93,8 +93,9 @@ Sources:
 plus the two buffers is about 225 ns, so the parts leave margin. The cable, the remote nodes and the
 series resistors still need qualifying.
 
-**V+ at the connector:** 3.3 V × 0.97 − VF(0.35 typ, ~0.42 est. max) ≈ **2.78–2.85 V at 170 mA**. The
-adapters' isolated DC-DC must accept that.
+**V+ at the connector:** 3.3 V × 0.97 − VF(0.35 typ, ~0.42 est. max) ≈ **2.78–2.85 V at 170 mA**
+(~2.95 V at a nominal 3.3 V rail). The VF values are graph readings (Vishay Fig. 3); no maximum is
+specified near 0.2 A. The adapters' isolated DC-DC must accept that.
 
 ## Host board changes
 
@@ -109,12 +110,23 @@ Captured in `ExtPort.kicad_sch` (items 1–6). Net names follow the firmware con
 2. **RX path:** connector → TVS (D21) → 220 Ω (R49) → SN74LVC1G17 (U8) off 3.3 V, 47 k pull-up (R50) so
    the input idles high → GPIO37.
 3. **TX path:**
-   - GPIO36, 100 k pull-up (R47) → SN74LVC1G125 (U7) off 3.3 V → 220 Ω (R48) → TVS (D20) → connector.
+   - GPIO36, 100 k pull-up (R47) → SN74LVC1G125 (U7) → 220 Ω (R48) → TVS (D20) → connector.
+   - **U7 runs from `EXT_VP` (V+ after D22), not 3.3 V** (Fab, 2026-09-29, from review 2). TX high then
+     equals V+, which is the CAN adapter's VCC1; with U7 on 3.3 V, TXD would sit at or above the
+     ISO1042's VCC1 + 0.5 V limit. U7's inputs are 5.5 V tolerant, so the 3.3 V pull-ups and GPIO drive
+     are fine.
+   - Caveat: if a peer *drives* pin 4 at 5 V, U7 runs at 5 V, and the 3.3 V /OE pull-up and GPIO36 are
+     below its VIH (0.7×VCC). TX-off is then not guaranteed. Qualification item 3 checks whether any
+     real peer drives pin 4.
    - /OE has a 10 k pull-up (R46), so TX is high-impedance through reset and boot.
    - /OE is on **GPIO48** (`EXT_TX_OE_N`). Not GPIO38/39: Espressif drives both low in USB-OTG download
      boot mode (Hardware Design Guidelines, schematic checklist → USB), which would enable TX.
-   - 220 Ω bounds contention if a peer drives TX while it is enabled (5 V into a driven-low output:
-     ~23 mA, under the ±50 mA absolute-maximum output current, SCES223U §5.1).
+   - 220 Ω bounds contention if a peer drives TX while it is enabled: 5 V into a driven-low output is
+     ~23 mA (under the ±50 mA absolute-maximum output current, SCES223U §5.1); into a driven-high output
+     ~7.7 mA flows back into V+. A sustained 5 V short dissipates ~114 mW in R48, so R48 needs a
+     ≥ 0.125 W rating after derating (1206 if in doubt).
+   - Firmware rule: never hold GPIO48 low across a reset or deep sleep (`gpio_hold_en`,
+     `gpio_deep_sleep_hold_en`). Drive it high (TX off) before any hold, or R46 cannot disable TX.
 4. **V+ (pin 4), from 3.3 V (Q1, Q15):** 3.3 V → Schottky D22 (MSS1P4) → 1 µF (C33) + TVS (D19) → pin 4.
    Always on. No switch, no current limit, no current sense (Q15, Q16).
 5. *(dropped: V+ current sense, Q16)*
@@ -156,7 +168,7 @@ only"**. They draw far more than a Victron port's 10 mA allowance, and their iso
 | | CAN adapter | RS-485 adapter |
 |---|---|---|
 | Power | Isolated DC-DC, V+ (~2.8–3.3 V) → 5 V bus side | Isolated DC-DC → bus side |
-| Signal chain | ISO1042, VCC1 = V+ | 2-channel digital isolator, one channel each way, default output high (e.g. ISO7721, not the F variant) → THVD1426 |
+| Signal chain | ISO1042, VCC1 = V+ (matches host TX high, since U7 runs from V+) | 2-channel digital isolator, one channel each way, default output high (e.g. ISO7721, not the F variant) → THVD1426 |
 | Logic idle | TXD pull-up to V+ | Pull-up on the isolator input carrying R |
 | Echo | Inherent: CAN transceivers echo TXD on RXD | **/RE tied low**, so echo is on |
 | Termination and bias | 120 Ω split termination on a DIP switch, **off by default** | 120 Ω termination and fail-safe bias on DIP switches |
@@ -190,15 +202,20 @@ mode, an echo means "adapter plugged in, stop transmitting". The limits:
    - Measure pin-4 voltage and current at GX and USB-cable ends.
    - Check whether their TX level follows Fugu's 3.3 V.
    - Check every source/sink combination, powered and unpowered, including D22's leakage into an
-     unpowered Fugu.
+     unpowered Fugu (Vishay specifies leakage only at the rated 40 V).
+   - If any peer drives pin 4 above 3.3 V, U7's TX-off is not guaranteed (host change 3); fix before
+     freezing the PCB.
 4. **3.3 V headroom (Q1).** WiFi TX peak (355 mA) plus the adapter at maximum (~170 mA, CAN dominant)
    already exceeds the LM5163's 0.5 A before the gate-drive boost. Measure the worst case, and check the
    adapter hot-plug inrush and a short on pin 4 (Q15 accepts a brownout; confirm the converter stays
    safe through it).
 5. **Reset and boot.** Scope that TX stays high-impedance through power-up, reset, bootloader, OTA
-   reboot and USB-OTG download mode.
+   reboot, USB-OTG download mode, and deep sleep/wake and watchdog resets after TX was enabled.
 6. **Echo.** Measure the echo on both adapters.
-7. **ESD.** Run IEC 61000-4-2 contact and air discharges at the connector with the device powered.
+7. **ESD.** Run IEC 61000-4-2 contact and air discharges at the connector with the device powered and
+   unpowered, both polarities. The TVS clamps at up to 18.6 V (8/20 µs, 9.4 A), above the buffers'
+   6.5 V absolute maximum, so the 220 Ω and the ICs' own ESD structures must absorb the residual.
+   Add a secondary clamp only if this fails.
 8. **Isolation.** Confirm there is no DC path from GND to the bus side of either adapter.
 9. **Adapter supply at low V+.** Confirm both adapters start and run at 2.7 V V+.
 

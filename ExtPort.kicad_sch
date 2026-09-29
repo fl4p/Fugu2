@@ -1561,6 +1561,121 @@
 		)
 		(embedded_fonts no)
 	)
+		(symbol "power:PWR_FLAG"
+		(power global)
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+			(hide yes)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "#FLG"
+			(at 0 1.905 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 0 3.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "flag power"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_0"
+			(pin power_out line
+				(at 0 0 90)
+				(length 0)
+				(name ""
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(symbol "PWR_FLAG_0_1"
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
 	)
 	(wire
 		(pts
@@ -1633,6 +1748,65 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "80a073b4-e0e0-d8e2-3441-45f45c9ebe7f")
+	)
+	(label "EXT_VP"
+		(at 231.14 58.42 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0e6f829a-8b18-9a0a-5012-0dc1a3751a0c")
+	)
+	(junction
+		(at 242.57 58.42)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0530b839-d4ac-a67b-ea7b-8ce975928346")
+	)
+	(wire
+		(pts
+			(xy 193.04 88.9) (xy 193.04 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b608f7ae-89e6-10c2-6446-3547666b4b56")
+	)
+	(label "EXT_VP"
+		(at 193.04 86.36 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8cc0e8c3-9b8b-0687-1505-f6195db1838e")
+	)
+	(wire
+		(pts
+			(xy 170.18 83.82) (xy 170.18 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "25b3d276-0013-5626-6bf8-70969b0b813a")
+	)
+	(label "EXT_VP"
+		(at 170.18 81.28 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a818708c-f7ae-0ea8-caab-46141ccbb976")
 	)
 	(wire
 		(pts
@@ -1870,7 +2044,7 @@
 			)
 		)
 	)
-	(text "External comms port, VE.Direct pinout (plans/ext-comms-port.md)\n\nJ5 pin | signal | dir (Fugu view) | notes\n1 | GND | - | logic GND = Bat-; non-isolated\n2 | RX | in | 3.3 V logic, 5.5 V tolerant (U8), idles high (R50)\n3 | TX | out | 3.3 V push-pull via 220R, Hi-Z unless EXT_TX_OE_N low (R46 pull-up)\n4 | V+ | out | +3.3V via Schottky D22, always on; ~2.85 V at 170 mA (VF ~0.35 V typ)\n\nMCU: EXT_TX GPIO36, EXT_RX GPIO37, EXT_TX_OE_N GPIO48\n(not GPIO38/39: driven low in USB-OTG download boot mode, Espressif schematic checklist)\nWrong-adapter protection is in software only (Fab, 2026-09-28/29): no V+ switch, no V+ current sense.\nNo short protection on pin 4 (Fab, 2026-09-29): a short browns out the shared 0.5 A LM5163 rail.\nA PTC cannot help: any PTC holding 0.17 A at 60 C trips at 0.75 A, above the rail's 0.5 A.\nD22 blocks a peer that drives pin 4.\nAdapters draw far more than a Victron port's 10 mA; label them 'Fugu only'."
+	(text "External comms port, VE.Direct pinout (plans/ext-comms-port.md)\n\nJ5 pin | signal | dir (Fugu view) | notes\n1 | GND | - | logic GND = Bat-; non-isolated\n2 | RX | in | 3.3 V logic, 5.5 V tolerant (U8), idles high (R50)\n3 | TX | out | 3.3 V push-pull via 220R, Hi-Z unless EXT_TX_OE_N low (R46 pull-up)\n4 | V+ | out | EXT_VP: +3.3V via Schottky D22, always on; ~2.85 V at 170 mA on a 3.2 V rail\n  | | | (3.3 V -3 %, VF ~0.35 V typ); ~2.95 V at a nominal 3.3 V rail\n\nU7 (TX buffer) runs from EXT_VP so TX high = V+: the CAN adapter's ISO1042 has VCC1 = V+ and\nTXD <= VCC1 + 0.5 V. Caveat: a peer that drives pin 4 at 5 V lifts U7 to 5 V, where the 3.3 V /OE\npull-up is below VIH, so TX-off is not guaranteed in that case (plan qualification item 3).\n\nMCU: EXT_TX GPIO36, EXT_RX GPIO37, EXT_TX_OE_N GPIO48\n(not GPIO38/39: driven low in USB-OTG download boot mode, Espressif schematic checklist)\nWrong-adapter protection is in software only (Fab, 2026-09-28/29): no V+ switch, no V+ current sense.\nNo short protection on pin 4 (Fab, 2026-09-29): a short browns out the shared 0.5 A LM5163 rail.\nA PTC cannot help: any PTC holding 0.17 A at 60 C trips at 0.75 A, above the rail's 0.5 A.\nD22 blocks a peer that drives pin 4.\nAdapters draw far more than a Victron port's 10 mA; label them 'Fugu only'."
 		(exclude_from_sim no)
 		(at 20.32 30.48 0)
 		(effects
@@ -2652,6 +2826,83 @@
 		)
 	)
 	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 242.57 58.42 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "49346726-adf3-b9a8-22f0-282554808456")
+		(property "Reference" "#FLG101"
+			(at 242.57 62.23 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 242.57 54.61 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 242.57 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 242.57 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 242.57 58.42 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "edd1cf32-809a-dcd5-56d3-64fc1503e0de")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
+					(reference "#FLG101")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "74xGxx:74LVC1G125")
 		(at 198.12 99.06 0)
 		(unit 1)
@@ -2663,7 +2914,7 @@
 		(dnp no)
 		(uuid "8da0a947-1226-e078-82be-bd3f56925def")
 		(property "Reference" "U7"
-			(at 203.2 106.68 0)
+			(at 198.12 106.68 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2674,7 +2925,7 @@
 			)
 		)
 		(property "Value" "SN74LVC1G125DBVR"
-			(at 203.2 109.22 0)
+			(at 198.12 109.22 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2775,83 +3026,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3.3V")
-		(at 193.04 88.9 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "c3f751e0-990a-cd33-e124-bb6b0d98196a")
-		(property "Reference" "#PWR104"
-			(at 193.04 92.71 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 193.04 85.09 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 193.04 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 193.04 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 193.04 88.9 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "5fff866d-af1c-ea55-444f-de7a540ec23a")
-		)
-		(instances
-			(project "Fugu2"
-				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "#PWR104")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 193.04 109.22 0)
 		(unit 1)
@@ -2861,8 +3035,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "5d197945-59fb-2b85-570f-02cefda3be3a")
-		(property "Reference" "#PWR105"
+		(uuid "c3f751e0-990a-cd33-e124-bb6b0d98196a")
+		(property "Reference" "#PWR104"
 			(at 193.04 113.03 0)
 			(hide yes)
 			(show_name no)
@@ -2917,12 +3091,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "820da353-4d81-a892-a282-ecf96b14e47f")
+			(uuid "5fff866d-af1c-ea55-444f-de7a540ec23a")
 		)
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "#PWR105")
+					(reference "#PWR104")
 					(unit 1)
 				)
 			)
@@ -3005,7 +3179,7 @@
 				)
 			)
 		)
-		(property "Desc" "ExtPort bypass"
+		(property "Desc" "ExtPort bypass (U7)"
 			(at 170.18 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -3032,83 +3206,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:+3.3V")
-		(at 170.18 83.82 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "da02dc7f-6153-f1fe-51c9-640ab1367791")
-		(property "Reference" "#PWR106"
-			(at 170.18 87.63 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "+3.3V"
-			(at 170.18 80.01 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 170.18 83.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 170.18 83.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 170.18 83.82 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "e20ec7cf-2503-78ee-41a4-0fef2cb62df4")
-		)
-		(instances
-			(project "Fugu2"
-				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "#PWR106")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 170.18 88.9 0)
 		(unit 1)
@@ -3118,8 +3215,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "adf2229e-b3e8-a473-7bb2-b0f216b34a06")
-		(property "Reference" "#PWR107"
+		(uuid "5d197945-59fb-2b85-570f-02cefda3be3a")
+		(property "Reference" "#PWR105"
 			(at 170.18 92.71 0)
 			(hide yes)
 			(show_name no)
@@ -3174,12 +3271,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "4c0f2609-5e3f-cc6c-3684-76b260d66b81")
+			(uuid "820da353-4d81-a892-a282-ecf96b14e47f")
 		)
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "#PWR107")
+					(reference "#PWR105")
 					(unit 1)
 				)
 			)
@@ -3298,8 +3395,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "4c47baa5-1db3-dbe2-f55f-0c80cefa3016")
-		(property "Reference" "#PWR108"
+		(uuid "da02dc7f-6153-f1fe-51c9-640ab1367791")
+		(property "Reference" "#PWR106"
 			(at 198.12 82.55 0)
 			(hide yes)
 			(show_name no)
@@ -3354,12 +3451,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "9148b5ad-f1dc-935d-d342-c21f87d9a8a5")
+			(uuid "e20ec7cf-2503-78ee-41a4-0fef2cb62df4")
 		)
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "#PWR108")
+					(reference "#PWR106")
 					(unit 1)
 				)
 			)
@@ -3478,8 +3575,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "2d4d4e36-cb8f-dfbf-60bc-dc3b2a39aefc")
-		(property "Reference" "#PWR109"
+		(uuid "adf2229e-b3e8-a473-7bb2-b0f216b34a06")
+		(property "Reference" "#PWR107"
 			(at 180.34 95.25 0)
 			(hide yes)
 			(show_name no)
@@ -3534,12 +3631,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "c8aec8cd-1701-9830-d232-6202b8796a27")
+			(uuid "4c0f2609-5e3f-cc6c-3684-76b260d66b81")
 		)
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "#PWR109")
+					(reference "#PWR107")
 					(unit 1)
 				)
 			)
@@ -3772,8 +3869,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "962ff80e-cf34-5f8b-33f5-c55b8781fa5e")
-		(property "Reference" "#PWR110"
+		(uuid "4c47baa5-1db3-dbe2-f55f-0c80cefa3016")
+		(property "Reference" "#PWR108"
 			(at 223.52 110.49 0)
 			(hide yes)
 			(show_name no)
@@ -3828,12 +3925,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "69070762-896e-33b9-01a1-858d9e5a6ce5")
+			(uuid "9148b5ad-f1dc-935d-d342-c21f87d9a8a5")
 		)
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "#PWR110")
+					(reference "#PWR108")
 					(unit 1)
 				)
 			)
@@ -3963,8 +4060,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "ba0432a5-3120-2d26-659f-6797938331fc")
-		(property "Reference" "#PWR111"
+		(uuid "2d4d4e36-cb8f-dfbf-60bc-dc3b2a39aefc")
+		(property "Reference" "#PWR109"
 			(at 223.52 148.59 0)
 			(hide yes)
 			(show_name no)
@@ -4019,12 +4116,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "00f211e8-3437-5e45-85f3-d75cc7e318fb")
+			(uuid "c8aec8cd-1701-9830-d232-6202b8796a27")
 		)
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "#PWR111")
+					(reference "#PWR109")
 					(unit 1)
 				)
 			)
@@ -4370,8 +4467,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "2a047d49-5eb7-15f2-670c-ff7942cd3a29")
-		(property "Reference" "#PWR112"
+		(uuid "962ff80e-cf34-5f8b-33f5-c55b8781fa5e")
+		(property "Reference" "#PWR110"
 			(at 210.82 133.35 0)
 			(hide yes)
 			(show_name no)
@@ -4426,12 +4523,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "ab2626f6-4674-8f5a-1b6a-6cb6c0dd66e8")
+			(uuid "69070762-896e-33b9-01a1-858d9e5a6ce5")
 		)
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "#PWR112")
+					(reference "#PWR110")
 					(unit 1)
 				)
 			)
@@ -4447,8 +4544,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "bc6774e6-caf2-ca69-c5b8-efb7d19ebe71")
-		(property "Reference" "#PWR113"
+		(uuid "ba0432a5-3120-2d26-659f-6797938331fc")
+		(property "Reference" "#PWR111"
 			(at 200.66 130.81 0)
 			(hide yes)
 			(show_name no)
@@ -4503,12 +4600,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "30ae4565-bdff-71d8-a8d0-aee88e51034d")
+			(uuid "00f211e8-3437-5e45-85f3-d75cc7e318fb")
 		)
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "#PWR113")
+					(reference "#PWR111")
 					(unit 1)
 				)
 			)
@@ -4524,8 +4621,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "ab6ba32c-0b91-0bbc-73ef-a562483aff96")
-		(property "Reference" "#PWR114"
+		(uuid "2a047d49-5eb7-15f2-670c-ff7942cd3a29")
+		(property "Reference" "#PWR112"
 			(at 200.66 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -4580,12 +4677,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "2491042e-0a12-ce4a-95bb-a0c6d7a194ee")
+			(uuid "ab2626f6-4674-8f5a-1b6a-6cb6c0dd66e8")
 		)
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "#PWR114")
+					(reference "#PWR112")
 					(unit 1)
 				)
 			)
@@ -4704,8 +4801,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "a2dad9cb-e9cc-f206-8c6e-03b802252a56")
-		(property "Reference" "#PWR115"
+		(uuid "bc6774e6-caf2-ca69-c5b8-efb7d19ebe71")
+		(property "Reference" "#PWR113"
 			(at 177.8 125.73 0)
 			(hide yes)
 			(show_name no)
@@ -4760,12 +4857,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "10d6c505-1985-3163-5539-87cdf1943496")
+			(uuid "30ae4565-bdff-71d8-a8d0-aee88e51034d")
 		)
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "#PWR115")
+					(reference "#PWR113")
 					(unit 1)
 				)
 			)
@@ -4781,8 +4878,8 @@
 		(on_board yes)
 		(in_pos_files yes)
 		(dnp no)
-		(uuid "c4a8e7da-4fd7-34d9-ec28-dcf7f935e1cd")
-		(property "Reference" "#PWR116"
+		(uuid "ab6ba32c-0b91-0bbc-73ef-a562483aff96")
+		(property "Reference" "#PWR114"
 			(at 177.8 130.81 0)
 			(hide yes)
 			(show_name no)
@@ -4837,12 +4934,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "58cae91c-07da-5f30-264a-e60978a34684")
+			(uuid "2491042e-0a12-ce4a-95bb-a0c6d7a194ee")
 		)
 		(instances
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "#PWR116")
+					(reference "#PWR114")
 					(unit 1)
 				)
 			)
