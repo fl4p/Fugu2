@@ -806,24 +806,24 @@
       {
         "filename": "Fugu2.kicad_sch",
         "name": "Fugu2",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "e6692049-eaa1-423b-b1ac-05fb6d0f1fc2"
       }
     ],
-    "used_designators": "",
+    "used_designators": "Q10",
     "variants": []
   },
   "sheets": [
     [
       "e6692049-eaa1-423b-b1ac-05fb6d0f1fc2",
-      "Root"
-    ],
-    [
-      "8bdaa788-2fc2-4872-9b0d-b14952df8b59",
-      "PowerSupply"
+      "Fugu2"
     ],
     [
       "f5331cca-fbfe-4ef6-ab6a-b63b09e582ac",
       "GateDrive"
+    ],
+    [
+      "8bdaa788-2fc2-4872-9b0d-b14952df8b59",
+      "PowerSupply"
     ],
     [
       "2d287cf3-2750-462b-9179-706ea8653260",
