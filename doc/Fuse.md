@@ -20,3 +20,6 @@
 
 # Catridge
 60V, 40A: AXT 40A 60V (PF)
+
+# HV input (F3)
+See [HV Fuse.md](HV%20Fuse.md)

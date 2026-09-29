@@ -9946,7 +9946,7 @@
 				)
 			)
 		)
-		(property "Value" "40A"
+		(property "Value" "25A 58V"
 			(at 29.21 41.275 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9956,7 +9956,7 @@
 				)
 			)
 		)
-		(property "Footprint" "open-pe:Fuse_Blade_ATO_directSolderThin"
+		(property "Footprint" "open-pe:Fuse_Blade_Mini_directSolderThin"
 			(at 34.163 40.64 90)
 			(hide yes)
 			(show_name no)
@@ -9967,7 +9967,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.littelfuse.com/assetdocs/littelfuse-datasheet-997-mini58v?assetguid=f4bf5724-5a40-4a44-8f08-c52ae959a5ef"
 			(at 32.385 40.64 0)
 			(hide yes)
 			(show_name no)
@@ -9978,7 +9978,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Littelfuse 0997025.WXN, MINI 25A 58VDC 1kA (DigiKey)"
 			(at 32.385 40.64 0)
 			(hide yes)
 			(show_name no)
