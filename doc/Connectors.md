@@ -69,3 +69,30 @@ from https://www.renesas.com/en/document/mae/ek-ra2l1-v1-users-manual?r=1398391 
 3. Two Digilent Pmod™ (SPI and UART) connectors
 4. Arduino™ (Uno R3) connector
 5. MikroElektronika™ mikroBUS connector
+
+# External comms port (VE.Direct, JST-PH 4)
+
+J5 on the ExtPort sheet is a JST PH 2.0 mm, 4-pin header in VE.Direct pinout
+(1 GND, 2 RX, 3 TX, 4 V+). Design: `plans/ext-comms-port.md`.
+
+JST makes the header through-hole and SMD. DigiKey.de prices, excl. VAT, checked 2026-09-30:
+
+| Part | Mounting | 1 | 10 | 100 | 500 | 1000 | DigiKey stock |
+|---|---|---|---|---|---|---|---|
+| **S4B-PH-K-S** (on J5) | THT, side entry | €0.13 | €0.109 | €0.092 | €0.082 | €0.079 | 42,598 |
+| S4B-PH-SM4-TB | SMD, side entry | €0.56 | €0.473 | €0.401 | €0.358 | €0.341 | 56,057 |
+| B4B-PH-SM4-TB | SMD, top entry | €0.57 | €0.477 | €0.405 | €0.362 | €0.344 | 27,048 |
+
+Bürklin lists S4B-PH-SM4-TB at about €0.45 for 5 and €0.39 for 200. All three mate the
+same PHR-4 cable housing.
+
+KiCad stock footprints:
+- `Connector_JST:JST_PH_S4B-PH-K_1x04_P2.00mm_Horizontal` (on J5)
+- `Connector_JST:JST_PH_S4B-PH-SM4-TB_1x04-1MP_P2.00mm_Horizontal`
+- `Connector_JST:JST_PH_B4B-PH-SM4-TB_1x04-1MP_P2.00mm_Vertical`
+
+J5 stays through-hole:
+- The SMD part is about 4x the price, roughly +€0.28 per board at 500.
+- The SMD part is held only by its pads and two solder tabs. A cable pulled or levered
+  at the board edge loads those pads; the THT pins go through the board.
+- Going SMD only pays if J5 is the last through-hole part on the board.
