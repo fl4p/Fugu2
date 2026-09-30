@@ -18,23 +18,23 @@ signal pins:
 | Mode | What's plugged in |
 |---|---|
 | VE.Direct | Victron GX / VE.Direct-USB cable, plugged in directly |
-| Modbus RTU | Isolated RS-485 adapter (small PCB with a pigtail) |
-| CAN | Isolated CAN adapter (small PCB with a pigtail) |
+| Modbus RTU | RS-485 adapter (small PCB with a pigtail) |
+| CAN | CAN adapter (small PCB with a pigtail) |
 
-The adapters are dumb: an isolated supply, an isolator and a transceiver, with no MCU. There is no ID
+The adapters are dumb: a fault-protected transceiver and little else, with no MCU (Q17). There is no ID
 pin; Fab decided on 2026-09-28 that wrong-adapter protection is handled in software, and on 2026-09-29
 that the hardware adds nothing for it beyond:
 - A TX output-enable that hardware holds off through reset and boot.
 - Adapters that echo TX back on RX.
 
-## Decisions (Fab, 2026-09-28/29)
+## Decisions (Fab, 2026-09-28/29/30)
 
 | # | Decision |
 |---|---|
 | Q1 | V+ comes from the 3.3 V rail. |
 | Q3 | Place the connector the way Victron does: **next to the power terminals**. No connectors on the upper PCB side. The unit is wall-mounted with the power terminals facing down, so an upward-facing opening would let water in. |
 | Q4 | Target BMS/inverter models come later; hardware only for now. |
-| Q5 | Isolation: nothing special. Use the industry-standard ratings of off-the-shelf isolated CAN/RS-485 parts. |
+| Q5 | Isolation: nothing special. Use the industry-standard ratings of off-the-shelf isolated CAN/RS-485 parts. *Superseded by Q17: the adapters are non-isolated.* |
 | Q6 | mcu-head header grows 2×7 → **2×9** and carries the port signals; D+/D− are not added. **Re-confirm:** since Q15/Q16 the port needs only three signals, so 2×8 would do (see pin count below). The motherboard J4 is unchanged for now. |
 | Q7 | Adapters are a small PCB with a pigtail. |
 | Q8 | The RS-485 adapter echoes (/RE tied low). See the adapter section. |
@@ -44,8 +44,9 @@ that the hardware adds nothing for it beyond:
 | Q12 | The board gets a slight redesign with more area (additional Cin bulk caps), which makes room for both connectors on the bottom edge. The detailed placement is still open (see Open questions). |
 | Q13 | The USB1 pin header is **removed**. The J2 I2C socket stays where it is. |
 | Q14 | The product's USB-C is the motherboard one, in the lower board area (Q11). The head's USB-C is a development/service port; its position in the upper area is accepted. |
-| Q15 | **No V+ load switch.** V+ is always on, fed from 3.3 V through a Schottky that blocks a peer back-feeding pin 4. **No short protection on pin 4**: a short browns out the 3.3 V rail. (A PTC was considered and rejected: any PTC that holds 0.17 A at 60 °C trips at 0.75 A, above the rail's 0.5 A, so it never trips.) |
+| Q15 | **No V+ load switch.** V+ is always on, **directly from the 3.3 V rail** (the back-feed Schottky D22 was removed on 2026-09-30: every ±60 V-class transceiver needs ≥ 3.0 V, and D22 left 2.7–2.95 V). **No short protection and no back-feed block on pin 4**: a short browns out the 3.3 V rail, and a peer driving pin 4 drives the rail. (A PTC was considered and rejected: any PTC that holds 0.17 A at 60 °C trips at 0.75 A, above the rail's 0.5 A, so it never trips.) |
 | Q16 | **No V+ current sense.** Wrong-adapter handling is purely in software. |
+| Q17 | **Adapters are non-isolated**, with ±70 V-class fault-protected transceivers (2026-09-30). The other device's ground normally sits at the same battery negative as Fugu. **Hard requirement: survive a GND fault on the 60 V battery** (16s LFP, 58.4 V max), where either ground floats to battery voltage relative to the other. |
 
 ## Current state: Fugu2 v2.3 (before this branch)
 
@@ -62,7 +63,7 @@ Sources:
 | Free GPIOs | Unconnected: 3, 5, 6, 9, 15–18, 38, 39, 45, 48. Unrouted `SPI*` labels: 10–13. |
 | MCU module | ESP32-S3-WROOM-1-**N4** (motherboard U2) and -1U-N4 (head): quad flash, no PSRAM, so GPIO35–37 are free. Keep that variant; an octal-PSRAM module takes GPIO33–37. |
 | GPIO7 | Tied directly to +3.3V (ADC1_CH6) as a rail monitor. The S3 ADC tops out below 3.3 V even at 12 dB attenuation, so the reading sits at full scale and only moves when the rail sags below the top of the range. It detects a sag, not the rail value. **Also:** the S3 datasheet (v2.2, Table 2-2) gives GPIO7 a ~60 µs *low-level output* glitch at power-up, which fights the rail through the pad. A divider or series resistor fixes both. |
-| Ground | Logic GND is the battery-terminal negative (J9.2) and is bonded to the USB-C shell. Shunt R26 (0.5 mΩ) sits low-side between BuckGND (solar −, J10.1) and GND. A non-isolated link to anything referenced to a BMS's B− bridges its low-side FET, so the CAN adapter must be isolated. A GX on the same P− bus is fine over a plain VE.Direct cable. |
+| Ground | Logic GND is the battery-terminal negative (J9.2) and is bonded to the USB-C shell. Shunt R26 (0.5 mΩ) sits low-side between BuckGND (solar −, J10.1) and GND. A non-isolated link to anything referenced to a BMS's B− (behind a low-side FET) would bridge that FET; per Q17 the far end normally shares Fugu's battery negative. A GX on the same P− bus is fine over a plain VE.Direct cable. |
 | 3.3 V | External `psu/buck100` board: LM5163, **0.5 A**. Fed through a diode-OR of Bat+, Solar+ and Vusb. It also supplies WiFi (module TX peak 355 mA, WROOM datasheet Table 6-4) and the AP3012 12 V gate-drive boost. |
 | USB-C P2 | At (51, 34.5), on the **top edge**. Moves to the bottom (Q11). USB1 (1×4 USB pin header, top edge) is removed. J2 (I2C socket, mid-board) stays (Q13). |
 | Bottom edge space | Courtyards: J10 x 32.2–52.6, J9 x 52.5–72.9 (both to y ≈ 120.0), J5 x 74.2–77.8 (to y ≈ 119.0). The board spans x 28.7–78.7, so the free strips are **3.5 mm on the left (mounting hole H4 at 30.7/105.5) and 5.8 mm on the right**. A JST-PH 4 side-entry is 9.9 mm wide and the current P2 courtyard is 10.7 mm, so **neither fits beside the terminals as the board stands** (Q12). |
@@ -82,20 +83,15 @@ Sources:
 
 | Part | Constraint |
 |---|---|
-| ISO1042 | TXD→RXD loop delay ≤ 215 ns. TXD high needs ≥ 0.7×VCC1, which is 2.31 V at VCC1 = 3.3 V. TXD/RXD abs max **VCC1 + 0.5 V** (§5.1). Bus side up to 73.4 mA while dominant; recessive only ~1.3 mA (VCC1) + 2.8 mA (VCC2) typ. Dominant timeout ≥ 1.2 ms. |
-| THVD1426 | Auto-direction. The driver actively drives a '1' for only 0.4–1.45 µs (0.8 µs typ), then releases the bus. Its own receiver reads an idle terminated bus as high without bias; other receivers on the network may need fail-safe bias. With /RE = 0 the receiver stays on while transmitting (echo). Bus pins −7…+12 V relative to its local ground. |
 | SN74LVC1G17 | Input 5.5 V-tolerant at any VCC, Ioff (partial power-down). |
 | SN74LVC1G125 | /OE active low; TI recommends a pull-up on /OE. Output tolerates up to 6.5 V abs max only while **disabled or unpowered**; an enabled output is limited to VCC + 0.5 V. |
 | LESD5D5.0CT1G (LRC) | Bidirectional TVS, VRWM 5 V, 15 pF typ, IEC 61000-4-2 ±8 kV contact. |
-| MSS1P4-M3/89A (Vishay) | Schottky, VF ≈ 0.35 V typ at 0.17 A (Fig. 3); no max specified near 0.2 A. |
 
-**CAN timing:** a bit is 2 µs at 500 kbit/s; with an 80 % sample point the sample is at 1.6 µs. ISO1042
-plus the two buffers is about 225 ns, so the parts leave margin. The cable, the remote nodes and the
-series resistors still need qualifying.
+**CAN timing:** a bit is 2 µs at 500 kbit/s; with an 80 % sample point the sample is at 1.6 µs. The
+candidate transceivers' loop delays are 140–215 ns (table below), plus about 10 ns for the two buffers,
+so the parts leave margin. The cable, the remote nodes and the series resistors still need qualifying.
 
-**V+ at the connector:** 3.3 V × 0.97 − VF(0.35 typ, ~0.42 est. max) ≈ **2.78–2.85 V at 170 mA**
-(~2.95 V at a nominal 3.3 V rail). The VF values are graph readings (Vishay Fig. 3); no maximum is
-specified near 0.2 A. The adapters' isolated DC-DC must accept that.
+**V+ at the connector:** the 3.3 V rail itself, ~3.2–3.4 V (3.3 V ± 3 %), minus trace drop.
 
 ## Host board changes
 
@@ -111,23 +107,19 @@ Captured in `ExtPort.kicad_sch` (items 1–6). Net names follow the firmware con
    the input idles high → GPIO37.
 3. **TX path:**
    - GPIO36, 100 k pull-up (R47) → SN74LVC1G125 (U7) → 220 Ω (R48) → TVS (D20) → connector.
-   - **U7 runs from `EXT_VP` (V+ after D22), not 3.3 V** (Fab, 2026-09-29, from review 2). TX high then
-     equals V+, which is the CAN adapter's VCC1; with U7 on 3.3 V, TXD would sit at or above the
-     ISO1042's VCC1 + 0.5 V limit. U7's inputs are 5.5 V tolerant, so the 3.3 V pull-ups and GPIO drive
-     are fine.
-   - Caveat: if a peer *drives* pin 4 at 5 V, U7 runs at 5 V, and the 3.3 V /OE pull-up and GPIO36 are
-     below its VIH (0.7×VCC). TX-off is then not guaranteed. Qualification item 3 checks whether any
-     real peer drives pin 4.
+   - U7 runs from +3.3V, the same rail as V+, so TX high equals the adapter transceiver's supply.
+     (From 2026-09-29 to -30 U7 ran from V+ after D22, for the ISO1042's VCC1 + 0.5 V limit; with D22
+     and the ISO1042 gone, that no longer applies.)
    - /OE has a 10 k pull-up (R46), so TX is high-impedance through reset and boot.
    - /OE is on **GPIO48** (`EXT_TX_OE_N`). Not GPIO38/39: Espressif drives both low in USB-OTG download
      boot mode (Hardware Design Guidelines, schematic checklist → USB), which would enable TX.
    - 220 Ω bounds contention if a peer drives TX while it is enabled: 5 V into a driven-low output is
      ~23 mA (under the ±50 mA absolute-maximum output current, SCES223U §5.1); into a driven-high output
-     ~7.7 mA flows back into V+. A sustained 5 V short dissipates ~114 mW in R48, so R48 needs a
+     ~7.7 mA flows back into the 3.3 V rail. A sustained 5 V short dissipates ~114 mW in R48, so R48 needs a
      ≥ 0.125 W rating after derating (1206 if in doubt).
    - Firmware rule: never hold GPIO48 low across a reset or deep sleep (`gpio_hold_en`,
      `gpio_deep_sleep_hold_en`). Drive it high (TX off) before any hold, or R46 cannot disable TX.
-4. **V+ (pin 4), from 3.3 V (Q1, Q15):** 3.3 V → Schottky D22 (MSS1P4) → 1 µF (C33) → pin 4. No TVS on
+4. **V+ (pin 4), from 3.3 V (Q1, Q15):** +3.3V → 1 µF (C33) → pin 4, no series part. No TVS on
    pin 4 (Fab, 2026-09-29): C33 absorbs an IEC 61000-4-2 8 kV discharge (150 pF × 8 kV = 1.2 µC, ~1.2 V
    on 1 µF). **Place C33 at J5 pin 4, next to U7's VCC**, so it is both the port ESD sink and U7's bypass.
    Always on. No switch, no current limit, no current sense (Q15, Q16).
@@ -164,29 +156,47 @@ done (Q14).
 ## Adapter boards (small PCB with a pigtail, Q7)
 
 Both adapters have a JST-PH 4 pigtail on the Fugu side (VE.Direct pinout) and are labelled **"Fugu
-only"**. They draw far more than a Victron port's 10 mA allowance, and their isolated DC-DC must run from
-**~2.8 V** (V+ after D22, see above).
+only"**. They draw more than a Victron port's 10 mA allowance. They are **non-isolated** (Q17), so the
+transceiver itself must survive the 60 V ground fault.
+
+Source for everything in this section: survey of 2026-09-30, `~/research/fugu2-comms-transceivers/`
+(`NOTES.md` has page citations; `pdf/` has the datasheets). DigiKey DE prices at qty 1.
+
+**Why ±70 V, not ±60 V:** in a ground fault the far end's ground can sit at 58.4 V and its bus signal adds
+a few volts, so a bus pin can reach ~63 V against our ground (estimate). A ±60 V part has no margin and a
+±65 V part about 1.5 V.
 
 | | CAN adapter | RS-485 adapter |
 |---|---|---|
-| Power | Isolated DC-DC, V+ (~2.8–3.3 V) → 5 V bus side | Isolated DC-DC → bus side |
-| Signal chain | ISO1042, VCC1 = V+ (matches host TX high, since U7 runs from V+) | 2-channel digital isolator, one channel each way, default output high (e.g. ISO7721, not the F variant) → THVD1426 |
-| Logic idle | TXD pull-up to V+ | Pull-up on the isolator input carrying R |
+| Transceiver | **TCAN1042H** (±70 V abs max, €1.89), 4.5–5.5 V, so it needs a 3.3 → 5 V boost (e.g. TPS61023, ~€1). Its TXD threshold is 2.0 V, so 3.3 V TX works. Alternatives that run directly from 3.0–3.6 V: MAX33053E/54E (±65 V, €7.88) or LTC2875 (±60 V, €5.60). | **THVD2410** (±70 V abs max, 3.0–5.5 V, €3.55), directly from V+ |
+| Direction | n/a | None of the ±60 V-class parts has auto-direction, so **DE is driven from TX**: D tied low, DE = inverted TX, bias holds the bus idle (recessive-style), /RE tied low for echo. The DE timing and bias values still need working out. |
+| V+ current, worst (typ) | TCAN1042H + boost: ≤ 174 mA dominant (98); ≤ 5.4 mA recessive. MAX33053E direct: ≤ 50 mA dominant. | ≤ 67 mA driving 54 Ω; ≤ 3.5 mA idle, plus ~2.3 mA for the bias |
+| Logic idle | TXD pull-up to V+ | TX idle high → DE low |
 | Echo | Inherent: CAN transceivers echo TXD on RXD | **/RE tied low**, so echo is on |
 | Termination and bias | 120 Ω split termination on a DIP switch, **off by default** | 120 Ω termination and fail-safe bias on DIP switches |
-| Bus reference | GND2 to the remote bus ground | **GND2 terminal to the remote bus ground** (THVD1426 bus pins must stay within −7…+12 V of it) |
+| Ground reference | Comms GND to the far end through a **fault-rated limiter** | same |
+| V+ clamp | Some transceivers push fault current back into VCC (LTC2862A: up to 80 mA). The 3.3 V rail is not a guaranteed sink, so fit a clamp (e.g. 5.6 V, 1 W Zener, as LTC suggests) or pick a part that doesn't back-feed. | same |
 | Bus connector | Screw terminal. RJ45 is deferred until target models are chosen (Q4). | Screw terminal. RJ45 deferred. |
-| ESD | Bus-side TVS | Bus-side TVS |
-| Isolation rating | Standard part ratings | Standard part ratings |
+| ESD | Rely on the transceiver's own IEC 61000-4-2 rating. An external TVS would have to stand off the 58.4 V fault, and a TVS with that stand-off clamps well above the 70 V the transceiver tolerates, so it cannot protect it. Check each candidate's IEC rating (not yet in the survey). | same |
+
+**Comms ground wire.** It is a reference, not a return: both buses are differential, so it carries only
+µA–mA in normal operation. In a ground fault it becomes the return path for the whole board, so it must be
+current-limited. TI's 100 Ω (SLLA272D §11, SLLA070D §4.5.2) is a ground-loop measure, not a fault limiter:
+at 58.4 V it would carry 0.58 A and dissipate 34 W. Something like 10 kΩ (5.8 mA, 0.34 W) or a PTC would
+survive the fault continuously (estimate, not bench-tested). AN-960 (Rev. 0, pp. 7–8) gives no value and
+recommends galvanic isolation whenever node grounds can't be guaranteed within common mode.
+
+**Isolated fallback** (if the far end sits behind a low-side BMS switch, Q4): LTM2889-3 (CAN, ≥ 3.0 V,
+≤ 225 mA, €26.70) or ISOW1412 (RS-485, ≥ 3.0 V, ≤ 158 mA driving, €8). ISOW1044 and ADM3055E need 5 V.
 
 **RS-485 echo (Q8), yes.** A Victron device never echoes, while both adapters then do. So in VE.Direct
 mode, an echo means "adapter plugged in, stop transmitting". The limits:
 - Echo alone cannot tell the CAN adapter from the RS-485 adapter.
 - Echo only shows up after something has been sent. At 19200 baud, one byte sent into the CAN adapter
-  holds TXD low (dominant) for up to ~0.47 ms and disrupts the bus; the ISO1042's ≥ 1.2 ms dominant
-  timeout does not stop that. With no V+ sensing (Q16), what happens before the first byte is a
+  holds TXD low (dominant) for up to ~0.47 ms and disrupts the bus; a transceiver's dominant timeout
+  (typically ≥ 1 ms) does not stop that. With no V+ sensing (Q16), what happens before the first byte is a
   firmware matter.
-- Echo is evidence, not proof: the ISO1042's RXD reports the bus, which another node can hold
+- Echo is evidence, not proof: a CAN transceiver's RXD reports the bus, which another node can hold
   dominant, and a Victron HEX response can byte-match its request. Firmware should correlate echo with
   timing.
 - In Modbus mode the firmware discards its own echo. Transmitting on RS-485 is half-duplex anyway, so
@@ -197,18 +207,17 @@ mode, an echo means "adapter plugged in, stop transmitting". The limits:
 
 1. **Prototypes.** Build the adapter prototypes and a host-side prototype of the protected port, wired to
    J5 on a v2.3 bench board (not fry/flat).
-2. **CAN timing and signal integrity** on the real path (buffers, 220 Ω, TVS, cable, isolator, bus), at
+2. **CAN timing and signal integrity** on the real path (buffers, 220 Ω, TVS, cable, transceiver, bus), at
    500 kbit/s with an independent CAN monitor.
 3. **Pin 4 on real Victron gear:**
    - Check whether the VE.Direct cable is straight or crossed on 2↔3.
    - Measure pin-4 voltage and current at GX and USB-cable ends.
    - Check whether their TX level follows Fugu's 3.3 V.
-   - Check every source/sink combination, powered and unpowered, including D22's leakage into an
-     unpowered Fugu (Vishay specifies leakage only at the rated 40 V).
-   - If any peer drives pin 4 above 3.3 V, U7's TX-off is not guaranteed (host change 3); fix before
-     freezing the PCB.
-4. **3.3 V headroom (Q1).** WiFi TX peak (355 mA) plus the adapter at maximum (~170 mA, CAN dominant)
-   already exceeds the LM5163's 0.5 A before the gate-drive boost. Measure the worst case, and check the
+   - Check every source/sink combination, powered and unpowered. With D22 gone, **a peer that drives
+     pin 4 drives Fugu's 3.3 V rail**; if any real peer does, fix before freezing the PCB.
+4. **3.3 V headroom (Q1).** WiFi TX peak (355 mA) plus the adapter at maximum (up to ~174 mA with the
+   TCAN1042H + boost, ~50–67 mA with a 3.3 V part) approaches or exceeds the LM5163's 0.5 A before the
+   gate-drive boost. Measure the worst case, and check the
    adapter hot-plug inrush and a short on pin 4 (Q15 accepts a brownout; confirm the converter stays
    safe through it).
 5. **Reset and boot.** Scope that TX stays high-impedance through power-up, reset, bootloader, OTA
@@ -218,8 +227,11 @@ mode, an echo means "adapter plugged in, stop transmitting". The limits:
    unpowered, both polarities. The TVS clamps at up to 18.6 V (8/20 µs, 9.4 A), above the buffers'
    6.5 V absolute maximum, so the 220 Ω and the ICs' own ESD structures must absorb the residual.
    Add a secondary clamp only if this fails.
-8. **Isolation.** Confirm there is no DC path from GND to the bus side of either adapter.
-9. **Adapter supply at low V+.** Confirm both adapters start and run at 2.7 V V+.
+8. **60 V ground fault (Q17).** With each adapter connected and communicating, open Fugu's battery-negative
+   connection, and separately the far end's, on a 58.4 V battery, in both polarities and powered and
+   unpowered. Confirm the transceivers, the comms-GND limiter and the V+ clamp survive, and that nothing
+   carries the board's return current.
+9. **Adapter supply.** Confirm both adapters start and run at the low end of the 3.3 V rail (3.2 V).
 
 ## Order of work
 

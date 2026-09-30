@@ -834,172 +834,6 @@
 		)
 		(embedded_fonts no)
 	)
-		(symbol "Device:D_Schottky"
-		(pin_numbers
-			(hide yes)
-		)
-		(pin_names
-			(offset 1.016)
-			(hide yes)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "D"
-			(at 0 2.54 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "D_Schottky"
-			(at 0 -2.54 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Schottky diode"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "diode Schottky"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "D_Schottky_0_1"
-			(polyline
-				(pts
-					(xy -1.905 0.635) (xy -1.905 1.27) (xy -1.27 1.27) (xy -1.27 -1.27) (xy -0.635 -1.27) (xy -0.635 -0.635)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
-				)
-				(stroke
-					(width 0.254)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-			(polyline
-				(pts
-					(xy 1.27 0) (xy -1.27 0)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-		)
-		(symbol "D_Schottky_1_1"
-			(pin passive line
-				(at -3.81 0 0)
-				(length 2.54)
-				(name "K"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-			(pin passive line
-				(at 3.81 0 180)
-				(length 2.54)
-				(name "A"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "2"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
 		(symbol "Device:D_TVS"
 		(pin_numbers
 			(hide yes)
@@ -1561,121 +1395,6 @@
 		)
 		(embedded_fonts no)
 	)
-		(symbol "power:PWR_FLAG"
-		(power global)
-		(pin_numbers
-			(hide yes)
-		)
-		(pin_names
-			(offset 0)
-			(hide yes)
-		)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(duplicate_pin_numbers_are_jumpers no)
-		(property "Reference" "#FLG"
-			(at 0 1.905 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 0 3.81 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "ki_keywords" "flag power"
-			(at 0 0 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(hide yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(symbol "PWR_FLAG_0_0"
-			(pin power_out line
-				(at 0 0 90)
-				(length 0)
-				(name ""
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-				(number "1"
-					(effects
-						(font
-							(size 1.27 1.27)
-						)
-					)
-				)
-			)
-		)
-		(symbol "PWR_FLAG_0_1"
-			(polyline
-				(pts
-					(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
-				)
-				(stroke
-					(width 0)
-					(type default)
-				)
-				(fill
-					(type none)
-				)
-			)
-		)
-		(embedded_fonts no)
-	)
 	)
 	(wire
 		(pts
@@ -1743,23 +1462,6 @@
 		(color 0 0 0 0)
 		(uuid "828ab67a-40ba-3cd4-94ad-05c4cbbb47b9")
 	)
-	(label "EXT_VP"
-		(at 231.14 58.42 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "0e6f829a-8b18-9a0a-5012-0dc1a3751a0c")
-	)
-	(junction
-		(at 242.57 58.42)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0530b839-d4ac-a67b-ea7b-8ce975928346")
-	)
 	(wire
 		(pts
 			(xy 193.04 88.9) (xy 193.04 86.36)
@@ -1769,17 +1471,6 @@
 			(type default)
 		)
 		(uuid "b608f7ae-89e6-10c2-6446-3547666b4b56")
-	)
-	(label "EXT_VP"
-		(at 193.04 86.36 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "8cc0e8c3-9b8b-0687-1505-f6195db1838e")
 	)
 	(wire
 		(pts
@@ -2017,7 +1708,7 @@
 			)
 		)
 	)
-	(text "External comms port, VE.Direct pinout (plans/ext-comms-port.md)\n\nJ5 pin | signal | dir (Fugu view) | notes\n1 | GND | - | logic GND = Bat-; non-isolated\n2 | RX | in | 3.3 V logic, 5.5 V tolerant (U8), idles high (R50)\n3 | TX | out | 3.3 V push-pull via 220R, Hi-Z unless EXT_TX_OE_N low (R46 pull-up)\n4 | V+ | out | EXT_VP: +3.3V via Schottky D22, always on; ~2.85 V at 170 mA on a 3.2 V rail\n  | | | (3.3 V -3 %, VF ~0.35 V typ); ~2.95 V at a nominal 3.3 V rail\n\nU7 (TX buffer) runs from EXT_VP so TX high = V+: the CAN adapter's ISO1042 has VCC1 = V+ and\nTXD <= VCC1 + 0.5 V. Caveat: a peer that drives pin 4 at 5 V lifts U7 to 5 V, where the 3.3 V /OE\npull-up is below VIH, so TX-off is not guaranteed in that case (plan qualification item 3).\n\nMCU: EXT_TX GPIO36, EXT_RX GPIO37, EXT_TX_OE_N GPIO48\n(not GPIO38/39: driven low in USB-OTG download boot mode, Espressif schematic checklist)\nWrong-adapter protection is in software only (Fab, 2026-09-28/29): no V+ switch, no V+ current sense.\nNo short protection on pin 4 (Fab, 2026-09-29): a short browns out the shared 0.5 A LM5163 rail.\nA PTC cannot help: any PTC holding 0.17 A at 60 C trips at 0.75 A, above the rail's 0.5 A.\nD22 blocks a peer that drives pin 4.\nAdapters draw far more than a Victron port's 10 mA; label them 'Fugu only'."
+	(text "External comms port, VE.Direct pinout (plans/ext-comms-port.md)\n\nJ5 pin | signal | dir (Fugu view) | notes\n1 | GND | - | logic GND = Bat-; non-isolated\n2 | RX | in | 3.3 V logic, 5.5 V tolerant (U8), idles high (R50)\n3 | TX | out | 3.3 V push-pull via 220R, Hi-Z unless EXT_TX_OE_N low (R46 pull-up)\n4 | V+ | out | +3.3V rail direct, always on (Fab, 2026-09-30). C33 at pin 4 = ESD sink + U7 bypass\n\nMCU: EXT_TX GPIO36, EXT_RX GPIO37, EXT_TX_OE_N GPIO48\n(not GPIO38/39: driven low in USB-OTG download boot mode, Espressif schematic checklist)\nWrong-adapter protection is in software only (Fab, 2026-09-28/29): no V+ switch, no V+ current sense.\nNo short protection and no back-feed block on pin 4 (Fab, 2026-09-29/30): a short browns out the\nshared 0.5 A LM5163 rail; a peer driving pin 4 drives the 3.3 V rail.\nAdapters: non-isolated, bus pins rated +/-70 V class (60 V battery GND fault); label them 'Fugu only'."
 		(exclude_from_sim no)
 		(at 20.32 30.48 0)
 		(effects
@@ -2314,120 +2005,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:D_Schottky")
-		(at 198.12 58.42 180)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "59dd4e91-7959-8be6-caa3-798740e7a5f0")
-		(property "Reference" "D22"
-			(at 194.31 53.34 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Value" "MSS1P4-M3/89A"
-			(at 194.31 55.88 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_MicroSMP_LargeCathode"
-			(at 198.12 58.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.vishay.com/docs/89019/mss1p4.pdf"
-			(at 198.12 58.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 198.12 58.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "MPN" "MSS1P4-M3/89A"
-			(at 198.12 58.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Desc" "ExtPort V+ back-feed block"
-			(at 198.12 58.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Manufacturer" "Vishay"
-			(at 198.12 58.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "26257c8f-fe78-53ff-963a-68871a811c5e")
-		)
-		(pin "2"
-			(uuid "0c99dcf7-ddc8-8f9e-541b-3426229891a9")
-		)
-		(instances
-			(project "Fugu2"
-				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "D22")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:C_Small")
 		(at 218.44 63.5 0)
 		(unit 1)
@@ -2602,83 +2179,6 @@
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
 					(reference "#PWR102")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:PWR_FLAG")
-		(at 242.57 58.42 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "49346726-adf3-b9a8-22f0-282554808456")
-		(property "Reference" "#FLG101"
-			(at 242.57 62.23 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 242.57 54.61 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 242.57 58.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 242.57 58.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 242.57 58.42 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "edd1cf32-809a-dcd5-56d3-64fc1503e0de")
-		)
-		(instances
-			(project "Fugu2"
-				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
-					(reference "#FLG101")
 					(unit 1)
 				)
 			)
@@ -4542,6 +4042,93 @@
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
 					(reference "#PWR112")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 194.31 58.42) (xy 201.93 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ffa71dd7-ae19-8a93-ec4f-a224082980d0")
+	)
+	(symbol
+		(lib_id "power:+3.3V")
+		(at 193.04 86.36 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3673bc85-af84-da23-5e21-dbb295c5396c")
+		(property "Reference" "#PWR113"
+			(at 193.04 90.17 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "+3.3V"
+			(at 193.04 82.55 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 193.04 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 193.04 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 193.04 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "3b2519c0-f962-06b1-594b-877b031ca2a1")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/cb058d3e-80b8-7be1-708b-f93a7279feab"
+					(reference "#PWR113")
 					(unit 1)
 				)
 			)
