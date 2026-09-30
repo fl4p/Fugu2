@@ -168,19 +168,24 @@ a few volts, so a bus pin can reach ~63 V against our ground (estimate). A ±60 
 
 | | CAN adapter | RS-485 adapter |
 |---|---|---|
-| Transceiver | **TCAN1042HV** (±70 V abs max; VCC 4.5–5.5 V, so it needs a 3.3 → 5 V boost, e.g. TPS61023 ~€1). Its **VIO pin runs from 3.0–5.5 V**: tie VIO to V+ (3.3 V) so RXD is a 3.3 V signal (RXD ≤ VIO + 0.3 V) and stays inside D21's 5 V stand-off. IEC 61000-4-2 on CANH/CANL: ±8 kV contact powered, ±15 kV unpowered (SOIC). IIO 90 µA typ / 300 µA max. (SLLSES7D §7.1 p6, §7.3, §7.4 p8, p9.) HV price and stock not checked. The plain **TCAN1042H** (€1.89) has no VIO: its RXD swings to VCC (up to 5.5 V), above D21's 5 V stand-off; U8 tolerates it but D21 would leak. Alternatives that run directly from 3.0–3.6 V: MAX33053E/54E (±65 V, €7.88) or LTC2875 (±60 V, €5.60). | **THVD2410** (±70 V abs max, 3.0–5.5 V, €3.55), directly from V+ |
-| Direction | n/a | None of the ±60 V-class parts has auto-direction, so **DE is driven from TX**: D tied low, DE = inverted TX, bias holds the bus idle (recessive-style), /RE tied low for echo. The DE timing and bias values still need working out. |
-| V+ current, worst (typ) | TCAN1042H + boost: ≤ 174 mA dominant (98); ≤ 5.4 mA recessive. MAX33053E direct: ≤ 50 mA dominant. | ≤ 67 mA driving 54 Ω; ≤ 3.5 mA idle, plus ~2.3 mA for the bias |
-| Logic idle | TXD pull-up to V+ | TX idle high → DE low |
+| Transceiver | **TCAN1042HV** (±70 V abs max; VCC 4.5–5.5 V, so it needs a 3.3 → 5 V boost, e.g. TPS61023 ~€1). Its **VIO pin runs from 3.0–5.5 V**: tie VIO to V+ (3.3 V) so RXD is a 3.3 V signal (RXD ≤ VIO + 0.3 V) and stays inside D21's 5 V stand-off. IEC 61000-4-2 on CANH/CANL: ±8 kV contact powered, ±15 kV unpowered (SOIC). IIO 90 µA typ / 300 µA max. (SLLSES7D §7.1 p6, §7.3, §7.4 p8, p9.) Sourcing (2026-09-30): DigiKey DE lists TCAN1042HVDR **Active**, €2.22 at 1, ~€1.23 at 500, normally stocking. TI.com shows "CUSTOM" / "Not available" on every TCAN1042H variant, including the stocked plain one, and "a newer version is available" (TCAN1044A-Q1, only ±58 V, so not a substitute). Watch for an NRND notice. The plain **TCAN1042H** (€1.89) has no VIO: its RXD swings to VCC (up to 5.5 V), above D21's 5 V stand-off; U8 tolerates it but D21 would leak. Alternatives that run directly from 3.0–3.6 V: MAX33053E/54E (±65 V, €7.88) or LTC2875 (±60 V, €5.60). | **THVD2410** (±70 V abs max, 3.0–5.5 V, €3.55), directly from V+. IEC 61000-4-2 ±12 kV contact and air-gap on the bus pins (SLLSF20B p4), so no external TVS. |
+| Direction | n/a | None of the ±60 V-class parts has auto-direction, so **DE is driven from TX**. Adapter TX input with a 10 kΩ pull-up to V+ (host TX is Hi-Z at reset, so DE stays off) → SN74LVC1G04 inverter → DE. D tied to GND, /RE tied to GND (receiver always on, echo). A '0' bit drives the bus low; a '1' bit releases it and the bias pulls it to idle-high. **Bias is required:** the THVD2410 receiver only enters fail-safe 7–18 µs after the bus goes idle (§6.8 p7), so without bias a '1' echoes late. Timing with /RE low: driver enable ≤ 270 ns, disable ≤ 95 ns (§6.8 p7); bus release through the bias ~0.3 µs on 100 m of cable (τ ≈ 56 Ω × ~5 nF, estimate). Edge distortion ≲ 1 µs: 2 % of a bit at 19200 baud, ~11 % at 115200. |
+| V+ current, worst (typ) | TCAN1042H(V) + boost: ≤ 174 mA dominant (98); ≤ 5.4 mA recessive. MAX33053E direct: ≤ 50 mA dominant. | ≤ 67 mA driving 54 Ω; ≤ 3.5 mA idle, plus 3.9 mA for the bias |
+| Logic idle | TXD pull-up to V+ | TX pull-up to V+ → DE low (not driving) |
 | Echo | Inherent: CAN transceivers echo TXD on RXD | **/RE tied low**, so echo is on |
-| Termination and bias | 120 Ω split termination on a DIP switch, **off by default** | 120 Ω termination and fail-safe bias on DIP switches |
-| Ground reference | Comms GND to the far end through a **fault-rated limiter** | same |
+| Termination and bias | 120 Ω split termination on a DIP switch, **off by default** | 120 Ω termination and **bias on DIP switches; this adapter normally provides the bias** (it is the only node that releases the bus for '1'). Bias 390 Ω A→V+ and 390 Ω B→GND: with both ends terminated (60 Ω) the idle differential is 229–243 mV at V+ 3.2–3.4 V, above the ±200 mV RS-485 threshold; 3.9 mA continuous from V+. If the far end also biases, switch ours off. |
+| Ground reference | **Proposed: no comms GND wire** (see below) | same |
 | V+ clamp | Some transceivers push fault current back into VCC (LTC2862A: up to 80 mA). The 3.3 V rail is not a guaranteed sink, so fit a clamp (e.g. 5.6 V, 1 W Zener, as LTC suggests) or pick a part that doesn't back-feed. | same |
 | Bus connector | Screw terminal. RJ45 is deferred until target models are chosen (Q4). | Screw terminal. RJ45 deferred. |
 | ESD | Rely on the transceiver's own IEC 61000-4-2 rating. An external TVS would have to stand off the 58.4 V fault, and a TVS with that stand-off clamps well above the 70 V the transceiver tolerates, so it cannot protect it. Check each candidate's IEC rating (not yet in the survey). | same |
 
-**Comms ground wire.** It is a reference, not a return: both buses are differential, so it carries only
-µA–mA in normal operation. In a ground fault it becomes the return path for the whole board, so it must be
+**Comms ground wire. Proposal (2026-09-30, Fab to confirm): don't run one.** With non-isolated adapters
+and the far end on the same battery negative, the two grounds are already joined through the power
+wiring; their normal offset is load current × cable resistance, mV to a few hundred mV, far inside the
+±25–30 V common-mode range of the chosen transceivers. A comms GND wire would add nothing in normal
+operation and only create a fault path. Keep an optional DNP footprint (e.g. 47 kΩ 1206: 58.4 V gives
+73 mW) for a far end on a different negative. Background: the wire is a reference, not a return: both
+buses are differential, so it carries only µA–mA in normal operation. In a ground fault it becomes the return path for the whole board, so it must be
 current-limited. TI's 100 Ω (SLLA272D §11, SLLA070D §4.5.2) is a ground-loop measure, not a fault limiter:
 at 58.4 V it would carry 0.58 A and dissipate 34 W. Something like 10 kΩ (5.8 mA, 0.34 W) or a PTC would
 survive the fault continuously (estimate, not bench-tested). AN-960 (Rev. 0, pp. 7–8) gives no value and
@@ -256,3 +261,5 @@ mode, an echo means "adapter plugged in, stop transmitting". The limits:
   fight the rail? Keeps the monitor function.
 - **Q6:** re-confirm the head header size now that only three signals cross it.
 - **USB (host change 7):** add series-resistor footprints and VBUS detection?
+- **Comms GND wire (adapters):** confirm "no wire, optional DNP 47 kΩ".
+- **CAN transceiver:** TCAN1042HV + 5 V boost (€2.22 + ~€1, ≤ 174 mA) or MAX33053E direct from 3.3 V (€7.88, ≤ 50 mA, ±65 V: only ~1.5 V margin on the ~63 V fault estimate)?
