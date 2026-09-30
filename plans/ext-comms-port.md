@@ -168,7 +168,7 @@ a few volts, so a bus pin can reach ~63 V against our ground (estimate). A ±60 
 
 | | CAN adapter | RS-485 adapter |
 |---|---|---|
-| Transceiver | **TCAN1042H** (±70 V abs max, €1.89), 4.5–5.5 V, so it needs a 3.3 → 5 V boost (e.g. TPS61023, ~€1). Its TXD threshold is 2.0 V, so 3.3 V TX works. Alternatives that run directly from 3.0–3.6 V: MAX33053E/54E (±65 V, €7.88) or LTC2875 (±60 V, €5.60). | **THVD2410** (±70 V abs max, 3.0–5.5 V, €3.55), directly from V+ |
+| Transceiver | **TCAN1042HV** (±70 V abs max; VCC 4.5–5.5 V, so it needs a 3.3 → 5 V boost, e.g. TPS61023 ~€1). Its **VIO pin runs from 3.0–5.5 V**: tie VIO to V+ (3.3 V) so RXD is a 3.3 V signal (RXD ≤ VIO + 0.3 V) and stays inside D21's 5 V stand-off. IEC 61000-4-2 on CANH/CANL: ±8 kV contact powered, ±15 kV unpowered (SOIC). IIO 90 µA typ / 300 µA max. (SLLSES7D §7.1 p6, §7.3, §7.4 p8, p9.) HV price and stock not checked. The plain **TCAN1042H** (€1.89) has no VIO: its RXD swings to VCC (up to 5.5 V), above D21's 5 V stand-off; U8 tolerates it but D21 would leak. Alternatives that run directly from 3.0–3.6 V: MAX33053E/54E (±65 V, €7.88) or LTC2875 (±60 V, €5.60). | **THVD2410** (±70 V abs max, 3.0–5.5 V, €3.55), directly from V+ |
 | Direction | n/a | None of the ±60 V-class parts has auto-direction, so **DE is driven from TX**: D tied low, DE = inverted TX, bias holds the bus idle (recessive-style), /RE tied low for echo. The DE timing and bias values still need working out. |
 | V+ current, worst (typ) | TCAN1042H + boost: ≤ 174 mA dominant (98); ≤ 5.4 mA recessive. MAX33053E direct: ≤ 50 mA dominant. | ≤ 67 mA driving 54 Ω; ≤ 3.5 mA idle, plus ~2.3 mA for the bias |
 | Logic idle | TXD pull-up to V+ | TX idle high → DE low |
