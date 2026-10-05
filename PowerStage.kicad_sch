@@ -3925,6 +3925,12 @@
 		(uuid "d85fc1a7-a902-40d4-867f-1497dfdef6fb")
 	)
 	(junction
+		(at 48.895 77.47)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0021f9de-5e7b-4966-b8e5-47c5d91d8063")
+	)
+	(junction
 		(at 135.255 51.435)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4111,6 +4117,12 @@
 		(uuid "c34f4763-4b28-4abf-9a96-9edb6c9563b4")
 	)
 	(junction
+		(at 48.895 34.29)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c8af1814-1e32-4242-8e51-639152e1e2e6")
+	)
+	(junction
 		(at 70.485 114.935)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4219,6 +4231,16 @@
 			(type default)
 		)
 		(uuid "05ba0ca6-db87-4414-9075-04d1c02bbf70")
+	)
+	(wire
+		(pts
+			(xy 48.895 34.29) (xy 48.895 38.735)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0855a9d8-c508-4545-981c-a54fb3b4f7e4")
 	)
 	(wire
 		(pts
@@ -4379,6 +4401,16 @@
 			(type default)
 		)
 		(uuid "1bd14d3e-ef9d-4e68-8230-647729b44e92")
+	)
+	(wire
+		(pts
+			(xy 48.895 34.29) (xy 54.61 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1cd8393d-f4fb-4595-abf1-4814d9eb1fca")
 	)
 	(wire
 		(pts
@@ -4552,7 +4584,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 34.29) (xy 54.61 34.29)
+			(xy 44.45 34.29) (xy 48.895 34.29)
 		)
 		(stroke
 			(width 0)
@@ -4962,6 +4994,16 @@
 	)
 	(wire
 		(pts
+			(xy 48.895 46.355) (xy 48.895 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b60549e-8d7e-485b-8c56-1e9b58e15523")
+	)
+	(wire
+		(pts
 			(xy 75.565 41.91) (xy 75.565 46.99)
 		)
 		(stroke
@@ -4972,7 +5014,7 @@
 	)
 	(wire
 		(pts
-			(xy 44.45 77.47) (xy 54.61 77.47)
+			(xy 44.45 77.47) (xy 48.895 77.47)
 		)
 		(stroke
 			(width 0)
@@ -5169,6 +5211,16 @@
 			(type default)
 		)
 		(uuid "bed6c8f1-e13d-426f-b72d-158ff8e972fc")
+	)
+	(wire
+		(pts
+			(xy 48.895 77.47) (xy 54.61 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf6fe94a-a030-4629-affe-8e5acac2492d")
 	)
 	(wire
 		(pts
@@ -7938,7 +7990,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470uF, 100V"
+		(property "Value" "1000uF, 100V"
 			(at 43.18 67.31 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7960,7 +8012,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chemi-con.co.jp/products/relatedfiles/capacitor/catalog/KZNLL-e.PDF"
 			(at 44.45 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -7971,7 +8023,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Chemi-Con EKZN101ELL102MM40S (hand-assembled, MPN=DNP for fab BOM)"
 			(at 44.45 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -8004,7 +8056,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" "Chemi-Con"
 			(at 44.45 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -8015,7 +8067,7 @@
 				)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "565-4153-ND"
 			(at 44.45 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -8695,7 +8747,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470uF, 100V"
+		(property "Value" "1000uF, 100V"
 			(at 35.56 67.945 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8706,7 +8758,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_THT:CP_Radial_D16.0mm_P7.50mm"
+		(property "Footprint" "Capacitor_THT:CP_Radial_D18.0mm_P7.50mm"
 			(at 37.7952 57.15 0)
 			(hide yes)
 			(show_name no)
@@ -8717,7 +8769,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chemi-con.co.jp/products/relatedfiles/capacitor/catalog/KZNLL-e.PDF"
 			(at 36.83 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -8728,7 +8780,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Chemi-Con EKZN101ELL102MM40S (hand-assembled, MPN=DNP for fab BOM)"
 			(at 36.83 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -8761,7 +8813,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" "Chemi-Con"
 			(at 36.83 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -8772,7 +8824,7 @@
 				)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "565-4153-ND"
 			(at 36.83 53.34 0)
 			(hide yes)
 			(show_name no)
@@ -8820,7 +8872,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470uF, 100V"
+		(property "Value" "1000uF, 100V"
 			(at 130.175 64.135 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8842,7 +8894,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.chemi-con.co.jp/products/relatedfiles/capacitor/catalog/KZNLL-e.PDF"
 			(at 130.175 61.595 0)
 			(hide yes)
 			(show_name no)
@@ -8853,7 +8905,7 @@
 				)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Chemi-Con EKZN101ELL102MM40S (hand-assembled, MPN=DNP for fab BOM)"
 			(at 130.175 61.595 0)
 			(hide yes)
 			(show_name no)
@@ -8875,7 +8927,7 @@
 				)
 			)
 		)
-		(property "Desc" "Cin"
+		(property "Desc" "Cout"
 			(at 130.175 61.595 0)
 			(hide yes)
 			(show_name no)
@@ -8886,7 +8938,7 @@
 				)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "Manufacturer" "Chemi-Con"
 			(at 130.175 61.595 0)
 			(hide yes)
 			(show_name no)
@@ -8897,7 +8949,7 @@
 				)
 			)
 		)
-		(property "Digikey" ""
+		(property "Digikey" "565-4153-ND"
 			(at 130.175 61.595 0)
 			(hide yes)
 			(show_name no)
@@ -9811,6 +9863,131 @@
 			(project "Fugu2"
 				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/13b9cc5d-522a-5e4c-97c3-f9530ebe4903"
 					(reference "R12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C_Polarized")
+		(at 48.895 42.545 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "899f384b-5a8e-418a-8012-decea5c0315b")
+		(property "Reference" "C34"
+			(at 48.895 40.005 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1000uF, 100V"
+			(at 47.625 56.515 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_THT:CP_Radial_D18.0mm_P7.50mm"
+			(at 49.8602 46.355 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.chemi-con.co.jp/products/relatedfiles/capacitor/catalog/KZNLL-e.PDF"
+			(at 48.895 42.545 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Chemi-Con EKZN101ELL102MM40S (hand-assembled, MPN=DNP for fab BOM)"
+			(at 48.895 42.545 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "DNP"
+			(at 48.895 42.545 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Desc" "Cin"
+			(at 48.895 42.545 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Chemi-Con"
+			(at 48.895 42.545 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Digikey" "565-4153-ND"
+			(at 48.895 42.545 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ff6cf2f9-16fd-4d07-9f69-f5aa9afcc304")
+		)
+		(pin "2"
+			(uuid "e73f309a-8039-47d8-9ba5-8491c33701a7")
+		)
+		(instances
+			(project "Fugu2"
+				(path "/e6692049-eaa1-423b-b1ac-05fb6d0f1fc2/13b9cc5d-522a-5e4c-97c3-f9530ebe4903"
+					(reference "C34")
 					(unit 1)
 				)
 			)

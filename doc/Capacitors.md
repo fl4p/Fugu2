@@ -22,7 +22,10 @@ ceramics high-Z (~194 mΩ), so >90 % of the ripple flows through the electrolyti
 $$ I_{cin,rms} = I_O\sqrt{D(1-D)} \approx 14.3\,\text{A} $$
 $$ P_{ripple} \approx I_{cin,rms}^2 \cdot ESR_{elec} \approx 14.3^2 \cdot 16.5\,\text{m}\Omega \approx 3.4\,\text{W} $$
 
-This is essentially the *whole* Cin loss.
+This is essentially the *whole* Cin loss. The 16.5 mΩ is the **old two-cap bank**
+(C11 + C12, 2 × 33 mΩ ZLH-class). With the 3 × KZN 1000 µF bank chosen below
+(17 mΩ max each, ≈ 5.7 mΩ) it drops to ≈ 14.3² · 5.7 mΩ ≈ **1.2 W** at 30 A
+(≈ 1.4–1.5 W at 33 A). See [Input bulk decision](#input-bulk-decision-2026-10-04).
 
 **Temperature does *not* help here.** Aluminium-electrolytic ESR is strongly
 temperature-dependent only on the **cold** side (below 20 °C, where the electrolyte
@@ -267,19 +270,86 @@ break; where DigiKey did not expose that break in public indexed data, the neare
 visible break is shown.
 
 | mfr, series | cap | v | D | L | ripple @100 kHz | imp @20°C/100 kHz | price basis | px/Z | MPN / supplier |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
-| Rubycon ZLH | 470 µF | 100 | 16 | 31.5 | 2.40 A | **33 mΩ** | ~$1.17 @200, $233.22/200 | ~$0.035/mΩ | [100ZLH470MEFCGC16X31.5](https://www.digikey.com/en/products/detail/rubycon/100ZLH470MEFCGC16X31-5/3568260) |
-| Rubycon ZLJ | 470 µF | 100 | 16 | 31.5 | 2.64 A | **32 mΩ** | ~$1.37 @200, $273.03/200 | ~$0.043/mΩ | [100ZLJ470M16X31.5](https://www.digikey.com/en/products/detail/rubycon/100ZLJ470M16X31-5/3133973) |
-| Chemi-Con KZN | 680 µF | 100 | 16 | 40 | higher than KZE | **<30 mΩ class** | ~$2.11 @50 | >~$0.070/mΩ | [EKZN101ELL681ML40S](https://www.digikey.com/en/products/detail/chemi-con/EKZN101ELL681ML40S/4843960) |
-| Chemi-Con KZE | 470 µF | 100 | 16 | 31.5 | 1.85 A | **32 mΩ** | ~$2.27 @50, 200 not exposed | ~$0.071/mΩ @50 | [EKZE101ELL471MLN3S](https://www.digikey.com/en/products/detail/chemi-con/EKZE101ELL471MLN3S/4001432) |
-| Rubycon ZLJ | 680 µF | 100 | 16 | 40 | 3.15 A | **20 mΩ** | ~$1.73 @200, $345.83/200 | ~$0.086/mΩ | [100ZLJ680M16X40](https://www.digikey.com/en/products/detail/rubycon/100ZLJ680M16X40/3133975) |
-| Rubycon ZLJ | 680 µF | 100 | 18 | 35.5 | 3.15 A | **20 mΩ** | ~$2.48 @200, $496.32/200 | ~$0.124/mΩ | [100ZLJ680M18X35.5](https://www.digikey.com/en/products/detail/rubycon/100ZLJ680M18X35-5/3564783) |
-| Chemi-Con KYB | 470 µF | 100 | 16 | 31.5 | 2.40 A | **22 mΩ** | ~$3.51 @1, limited stock | ~$0.160/mΩ | [EKYB101ELL471MLN3S](https://www.digikey.com/en/products/detail/chemi-con/EKYB101ELL471MLN3S/4843834) |
-| Chemi-Con KZE | 680 µF | 100 | 16 | 40 | 2.20 A | **27 mΩ** | DigiKey page, 200 not exposed | - | [EKZE101ELL681ML40S](https://www.digikey.com/en/products/detail/chemi-con/EKZE101ELL681ML40S/4001435) |
-| Chemi-Con KZE | 680 µF | 100 | 18 | 35.5 | 2.20 A | **27 mΩ** | DigiKey page, 200 not exposed | - | [EKZE101ELL681MMP1S](https://www.digikey.com/en/products/detail/chemi-con/EKZE101ELL681MMP1S/756261) |
-| Chemi-Con KZE | 560 µF | 100 | 16 | 35.5 | 2.00 A | **29 mΩ** | DigiKey page, 200 not exposed | - | [EKZE101ELL561MLP1S](https://www.digikey.com/en/products/detail/chemi-con/EKZE101ELL561MLP1S/756260) |
-| Rubycon ZLJ | 820 µF | 100 | 16 | 40 | 3.71 A | **18 mΩ** | check stock/height | - | 100ZLJ820M16X40 |
-| Rubycon ZLJ | 820 µF | 100 | 18 | 35.5 | 3.71 A | **18 mΩ** | check stock/height | - | 100ZLJ820M18X35.5 |
+|---|---:|---:|---:|---:|----------------:|------------------:|---:|---:|---|
+| Rubycon ZLH | 470 µF | 100 | 16 | 31.5 |          2.40 A |         **33 mΩ** | ~$1.17 @200, $233.22/200 | ~$0.035/mΩ | [100ZLH470MEFCGC16X31.5](https://www.digikey.com/en/products/detail/rubycon/100ZLH470MEFCGC16X31-5/3568260) |
+| Rubycon ZLJ | 470 µF | 100 | 16 | 31.5 |          2.64 A |         **32 mΩ** | ~$1.37 @200, $273.03/200 | ~$0.043/mΩ | [100ZLJ470M16X31.5](https://www.digikey.com/en/products/detail/rubycon/100ZLJ470M16X31-5/3133973) |
+| Chemi-Con KZN | 680 µF | 100 | 16 | 40 | higher than KZE |  **<30 mΩ class** | ~$2.11 @50 | >~$0.070/mΩ | [EKZN101ELL681ML40S](https://www.digikey.com/en/products/detail/chemi-con/EKZN101ELL681ML40S/4843960) |
+| Chemi-Con KZE | 470 µF | 100 | 16 | 31.5 |          1.85 A |         **32 mΩ** | ~$2.27 @50, 200 not exposed | ~$0.071/mΩ @50 | [EKZE101ELL471MLN3S](https://www.digikey.com/en/products/detail/chemi-con/EKZE101ELL471MLN3S/4001432) |
+| Rubycon ZLJ | 680 µF | 100 | 16 | 40 |          3.51 A |         **27 mΩ** | ~$1.73 @200, $345.83/200 | ~$0.064/mΩ | [100ZLJ680M16X40](https://www.digikey.com/en/products/detail/rubycon/100ZLJ680M16X40/3133975) |
+| Rubycon ZLJ | 680 µF | 100 | 18 | 35.5 |          3.51 A |         **27 mΩ** | ~$2.48 @200, $496.32/200 | ~$0.092/mΩ | [100ZLJ680M18X35.5](https://www.digikey.com/en/products/detail/rubycon/100ZLJ680M18X35-5/3564783) |
+| Chemi-Con KYB | 470 µF | 100 | 16 | 31.5 |          2.40 A |         **22 mΩ** | ~$3.51 @1, limited stock | ~$0.160/mΩ | [EKYB101ELL471MLN3S](https://www.digikey.com/en/products/detail/chemi-con/EKYB101ELL471MLN3S/4843834) |
+| Chemi-Con KZE | 680 µF | 100 | 16 | 40 |          2.20 A |         **27 mΩ** | DigiKey page, 200 not exposed | - | [EKZE101ELL681ML40S](https://www.digikey.com/en/products/detail/chemi-con/EKZE101ELL681ML40S/4001435) |
+| Chemi-Con KZE | 680 µF | 100 | 18 | 35.5 |          2.20 A |         **27 mΩ** | DigiKey page, 200 not exposed | - | [EKZE101ELL681MMP1S](https://www.digikey.com/en/products/detail/chemi-con/EKZE101ELL681MMP1S/756261) |
+| Chemi-Con KZE | 560 µF | 100 | 16 | 35.5 |          2.00 A |         **29 mΩ** | DigiKey page, 200 not exposed | - | [EKZE101ELL561MLP1S](https://www.digikey.com/en/products/detail/chemi-con/EKZE101ELL561MLP1S/756260) |
+| Rubycon ZLJ | 820 µF | 100 | 16 | 40 |          3.71 A |         **18 mΩ** | check stock/height | - | 100ZLJ820M16X40 |
+| Rubycon ZLJ | 820 µF | 100 | 18 | 35.5 |          3.71 A |         **18 mΩ** | check stock/height | - | 100ZLJ820M18X35.5 |
+| **Chemi-Con KZN** | **1000 µF** | 100 | 18 | 40 |      **4.06 A** |         **17 mΩ** | €2.94 @10 (DigiKey DE, 2026-10-04) | - | **[EKZN101ELL102MM40S](https://www.digikey.de/en/products/detail/chemi-con/EKZN101ELL102MM40S/4843963)** (DK 565-4153-ND) — **chosen for C11/C12/C34 (Cin) and C10 (Cout)** |
+| Rubycon ZLJ | 1000 µF | 100 | 18 | 40 |          4.06 A |         **17 mΩ** | not priced | - | ZLJ 100 V 1000 µF 18×40 (datasheet p.4; MPN not looked up) — same headline values as KZN |
+
+ZLJ 680 µF note (Rubycon ZLJ datasheet p.4, 100 V table): 16×40 **and** 18×35.5 are
+3.51 A / 27 mΩ; the 3.15 A / 20 mΩ variants are 16×35.5 and 18×31.5.
+
+## Input bulk decision (2026-10-04)
+
+**Topology correction.** Only caps on `Solar+` are Cin. C10 sits on `BflowS` (inductor
+output, ahead of the backflow FETs Q5–Q7) and is **Cout** (sees ≈ ΔI_L/√12 ≈ 2.7 A rms; see C10 note below).
+The old board therefore had **two** input electrolytics (C11 16 mm, C12 18 mm), each
+carrying ≈ **8 A rms** at 33 A (≈ 3.5× a ZLH 470 µF rating, ≈ 2 W each).
+
+**Stress.** At 72→27 V, 33 A, D = 0.375, ΔI_L ≈ 9.3 App:
+I_cin,rms = √(33²·D(1−D) + D·ΔI_L²/12) ≈ **16.1 A**. The inductor term is 0.5 % — a
+bigger L is not a Cin lever (see table above).
+
+**Choice: 3 × Chemi-Con EKZN101ELL102MM40S on Solar+ (C11, C12, C34).**
+- 4.06 A @100 kHz/105 °C (×0.95–1.0 at 39 kHz, KZN frequency multipliers), 17 mΩ max,
+  10 000 h @105 °C, 18×40 mm (41.5 mm seated), 7.5 mm pitch.
+- ≈ 5.35 A per cap → **≈ 1.35× the 105 °C rating**; bank loss ≈ 1.4–1.5 W.
+- No 105 °C series datasheet checked (Rubycon ZLJ/ZLH, Chemi-Con KZN/KYB/KYC, Nichicon
+  UHW, AISHI HL) gives a lower-ambient ripple multiplier. Chemi-Con's general guidance
+  ([FAQ "Lifetime", §3](https://www.chemi-con.co.jp/en/faq/detail.php?id=alLifetime))
+  does: allowed ripple self-heating ΔT is **15 K at ≤85 °C** ambient vs **5 K at 105 °C**,
+  but "each product family has a different ΔT limit, consult us". Rule of thumb
+  ΔT ≈ 5 K·(I/I_R)² gives ≈ 9 K for 3 × KZN (inside 15 K) vs ≈ 21 K for 2 × KZN (outside).
+  **Not yet qualified:** at 33 A the bank needs 16.06 A against ≈ 11.6–12.2 A of published
+  105 °C rating (3 × 4.06 A × 0.95–1.0). The decision relies on lower-ambient headroom —
+  **open:** confirm the KZN ΔT limit with Chemi-Con.
+- Rubycon's life model (al-technical-note_en.pdf p.24) is not valid above 20 K ripple
+  self-heating ("contact us"). By the same rule of thumb the old two-cap ZLH bank is
+  *estimated* beyond that (not measured).
+
+**Comparison point.** Outback FM40 (40 A, 50 kHz,
+[open.pe teardown](https://open.pe/2023/05/04/teardown-outback-mppt-tracer4214-flexmax/)):
+4 × AISHI HL 470 µF/160 V, ≈ 3.7 A each at 50 kHz (1.67–1.73 A @120 Hz × 2.05–2.25) →
+≈ 1.35× rating at 40 A, D ≈ 0.5. AISHI states life halves per **5 °C** of self-heating.
+
+**Rejected.**
+- Nichicon UBY2A821MHL (820 µF 18×35.5, 23 mΩ, 5.22 A @125 °C): 3 × 5.22 = 15.7 A < 16.1 A,
+  higher loss and price than KZN, and Nichicon says UBY life is not computed by the
+  usual model. UBY2A951MHL (950 µF 18×40, 21 mΩ, 5.66 A) has only ≈ 0.4 % margin (3 × 5.66 × 0.95 at 39 kHz = 16.13 A vs 16.06 A).
+- TDK B41793A9108Q001 (1000 µF 21×49 soldering star, 11.2 A @105 °C/10 kHz, 44 mΩ):
+  ≈ 5.6 W with 2 caps, new footprint.
+- Snap-ins (22–35 mm): diameter; most are 85 °C / 50–150 mΩ (Nichicon LGY is a
+  100 V / 105 °C / 5000 h exception, still too large).
+- 100 V hybrid polymer: none suitable as radial bulk (Panasonic ZC/ZK stop below 100 V).
+
+**Layout (open).** C11–C12 centres are 17.51 mm apart: fine for 16 + 18 mm, but two
+18 mm cans overlap by ≈ 0.5 mm → move parts, ≥ 19 mm centre spacing. Connect all three
+symmetrically to the hot loop (a branch with 10 % lower resistance takes ≈ 7 % more
+current). Verify: case ΔT of the hottest Cin at 33 A in the closed enclosure ≲ 10 K. Case rise is a
+proxy — the core runs hotter than the case, so this does not by itself prove core-rise
+compliance; use it to check the estimate, and Chemi-Con's case-to-core guidance for the limit.
+
+**C10 (Cout) → also EKZN101ELL102MM40S.** All triangular ripple through C10 is
+9.3/√12 ≈ 2.7 A rms; the previous ZLH 470 µF/100 V class part is only 2.40 A (16×31.5) or
+2.27 A (18×25) at 100 kHz/105 °C (ZLH p.3). KZN 1000 µF gives ≈ 3.9 A at 39 kHz — within
+rating at 105 °C. Same 18 mm footprint; one part type for all four bulk caps. Side effect:
+~2× the charge drawn from the battery when the backflow FETs (Q5–Q7) close.
+
+**Schematic convention.** C10/C11/C12/C34 keep `MPN=DNP` (hand-assembled; PCBWay marks
+`DNP` rows "do not mount"). The real part is in `Description`
+("Chemi-Con EKZN101ELL102MM40S …"), plus `Manufacturer` and `Digikey` (565-4153-ND).
+
+Review: independent Codex review 2026-10-04 (`~/codex-reviews/fugu2-cin-caps/work/review.md`).
 
 Older / unresolved references:
 
@@ -290,3 +360,15 @@ Older / unresolved references:
 | BERYL RC | 470 µF | 100 | 16 | 26 | 1.98 A | 60 mΩ | - | LCSC C365811 |
 | Samyoung NXA | 470 µF | 100 | 16 | 31.5 | 1.85 A | 32 mΩ | - | [pdf](https://www.samyoung.co.kr/download/new/NXA.pdf) |
 | Nichicon UHE | 680 µF | 100 | 18 | 35.5 | 1.89 A | 40 mΩ | ~$1.00 @100 LCSC | UHE2A681MHD / LCSC C340710 |
+
+
+
+# measured ESR
+
+charging the cap to 13V, then discharge over 0.1Ω resistor
+measuring cap voltage and resistor voltage
+
+KZE 100V 560u
+dV = 1.37
+dI = 74A
+ESR = 1.37V/(7.4V/0.1Ω) = 18.5mΩ (datasheet 27mΩ)
