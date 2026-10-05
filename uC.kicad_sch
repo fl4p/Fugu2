@@ -4362,7 +4362,7 @@
 	)
 	(text "monitor 3.3V"
 		(exclude_from_sim no)
-		(at 189.23 102.87 0)
+		(at 203.835 102.87 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4521,24 +4521,12 @@
 		(uuid "266f6033-faca-4d48-a713-424df92d74ba")
 	)
 	(no_connect
-		(at 180.34 100.33)
-		(uuid "4a41fe72-b3a8-4573-848b-032dc9ac2170")
-	)
-	(no_connect
 		(at 88.9 85.09)
 		(uuid "700fd329-27de-4986-848c-bdc691490838")
 	)
 	(no_connect
-		(at 180.34 97.79)
-		(uuid "7397c2cc-05b1-382c-dbab-491a5c275fe4")
-	)
-	(no_connect
 		(at 180.34 130.81)
 		(uuid "78bff10c-04cb-a6e1-71cf-2e489d3c82d7")
-	)
-	(no_connect
-		(at 36.83 35.56)
-		(uuid "b5dc621b-c0eb-40dd-9ae3-195308495918")
 	)
 	(no_connect
 		(at 180.34 107.95)
@@ -4945,6 +4933,16 @@
 			(type default)
 		)
 		(uuid "5da27ad4-0610-4834-b855-ba7245764145")
+	)
+	(wire
+		(pts
+			(xy 33.02 35.56) (xy 36.83 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "610e1684-1455-5e41-9e23-c8c63d8ba363")
 	)
 	(wire
 		(pts
@@ -5714,6 +5712,30 @@
 			)
 		)
 	)
+	(global_label "ADC_I"
+		(shape input)
+		(at 33.02 35.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2809fe76-ed42-5765-988c-978ea5abd565")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 33.02 35.56 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+	)
 	(global_label "SPICS"
 		(shape input)
 		(at 181.61 110.49 0)
@@ -6170,6 +6192,30 @@
 			)
 		)
 	)
+	(global_label "ADC_I"
+		(shape input)
+		(at 180.34 97.79 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6e7fccee-0e86-5bb4-b93e-01ff54e25ec4")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 180.34 97.79 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
 	(global_label "LED"
 		(shape input)
 		(at 27.94 69.215 180)
@@ -6543,6 +6589,30 @@
 		(uuid "9c1b5f76-cd66-4873-8d2b-70f336365c62")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 154.085 184.15 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "ADC_Vbat"
+		(shape input)
+		(at 180.34 100.33 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "9e426068-7bf0-5f62-9501-284f4d93d1d2")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 180.34 100.33 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -7165,7 +7235,7 @@
 		(body_style 1)
 		(exclude_from_sim no)
 		(in_bom no)
-		(on_board yes)
+		(on_board no)
 		(in_pos_files yes)
 		(dnp yes)
 		(fields_autoplaced yes)
@@ -8051,7 +8121,7 @@
 			)
 		)
 		(property "Value" "+3.3V"
-			(at 182.245 101.6 90)
+			(at 188.595 102.87 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
