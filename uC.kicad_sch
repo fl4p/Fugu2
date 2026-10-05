@@ -4529,6 +4529,14 @@
 		(uuid "700fd329-27de-4986-848c-bdc691490838")
 	)
 	(no_connect
+		(at 180.34 97.79)
+		(uuid "7397c2cc-05b1-382c-dbab-491a5c275fe4")
+	)
+	(no_connect
+		(at 180.34 130.81)
+		(uuid "78bff10c-04cb-a6e1-71cf-2e489d3c82d7")
+	)
+	(no_connect
 		(at 36.83 35.56)
 		(uuid "b5dc621b-c0eb-40dd-9ae3-195308495918")
 	)
@@ -4857,6 +4865,16 @@
 			(type default)
 		)
 		(uuid "38e99114-a77f-40f2-9dc7-2cdaa0ad117d")
+	)
+	(wire
+		(pts
+			(xy 180.34 140.97) (xy 181.61 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3f2f1518-5236-ca03-5552-22566b760caa")
 	)
 	(wire
 		(pts
@@ -6285,6 +6303,30 @@
 		(uuid "8588ef8d-209f-49aa-9aff-766a361be531")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 187.861 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+	)
+	(global_label "EXT_TX_OE_N"
+		(shape output)
+		(at 181.61 140.97 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "8c008fae-f7d6-5a02-1b91-fa6f2384cdff")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 181.61 140.97 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11802,48 +11844,6 @@
 					(reference "J1")
 					(unit 1)
 				)
-			)
-		)
-	)
-	(no_connect
-		(at 180.34 97.79)
-		(uuid "7397c2cc-05b1-382c-dbab-491a5c275fe4")
-	)
-	(no_connect
-		(at 180.34 130.81)
-		(uuid "78bff10c-04cb-a6e1-71cf-2e489d3c82d7")
-	)
-	(wire
-		(pts
-			(xy 180.34 140.97) (xy 181.61 140.97)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3f2f1518-5236-ca03-5552-22566b760caa")
-	)
-	(global_label "EXT_TX_OE_N"
-		(shape output)
-		(at 181.61 140.97 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "8c008fae-f7d6-5a02-1b91-fa6f2384cdff")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 181.61 140.97 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
 			)
 		)
 	)

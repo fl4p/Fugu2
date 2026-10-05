@@ -832,6 +832,14 @@
     [
       "d823af85-5d33-4f5e-bd70-5bd51b184406",
       "Sensors"
+    ],
+    [
+      "cb058d3e-80b8-7be1-708b-f93a7279feab",
+      "ExtPort"
+    ],
+    [
+      "13b9cc5d-522a-5e4c-97c3-f9530ebe4903",
+      "PowerStage"
     ]
   ],
   "text_variables": {},
