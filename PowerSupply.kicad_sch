@@ -3485,14 +3485,14 @@
 		)
 		(uuid "37805e59-9041-4b9b-9e0a-48dac176e509")
 	)
-	(text "open-pe/buck80-XL7005A"
+	(text "open-pe/buck100-LM5163"
 		(exclude_from_sim no)
 		(at 207.01 50.165 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(href "https://github.com/open-pe/buck80-XL7005A")
+			(href "https://github.com/open-pe/buck100-LM5163")
 		)
 		(uuid "404e764f-1e4a-488e-a35b-9eb5ae6f4e6e")
 	)
@@ -7802,7 +7802,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://github.com/open-pe/buck80-XL7005A"
+		(property "Datasheet" "https://github.com/open-pe/buck100-LM5163"
 			(at 188.595 64.77 0)
 			(hide yes)
 			(show_name no)
@@ -7931,7 +7931,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://github.com/open-pe/buck80-XL7005A"
+		(property "Datasheet" "https://github.com/open-pe/buck100-LM5163"
 			(at 188.595 52.07 0)
 			(hide yes)
 			(show_name no)
