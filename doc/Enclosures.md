@@ -3,7 +3,9 @@
 Research compiled 2026-09-01; revised after an independent adversarial review (see
 [Review history](#review-history)).
 
-Scope: a housing for the Fugu2 board (**50.0 × 88.0 mm**, Edge.Cuts bbox from `Fugu2.kicad_pcb`)
+Scope: a housing for the Fugu2 board (**58.5 × 88.0 mm**, Edge.Cuts bbox from `Fugu2.kicad_pcb` since
+`971ab77`, 2026-10-05; it was 50.0 × 88.0 mm when this note and the §7 shroud were made. The current
+outline is not closed at the top-left corner, so treat the new width as provisional)
 dissipating **~20 W** (`README.md`), currently screwed to an **AK-EL83-160** heatsink
 (160 × 83 × 25 mm, `Thermal tests.md`).
 
@@ -113,12 +115,16 @@ Victron's SmartSolar MPPT 100/30 & 100/50 datasheet declares exactly `EN/IEC 621
 ### What 62109-1 asks of the enclosure
 
 Clause structure reproduced from IECEE TRF `IEC62109_1B` as it appears in three published CB/TÜV
-test reports. **The standard itself is paywalled and was not obtained** — see §6.
+test reports. 9.1.3.1 and 9.1.3.2 come from the publicly visible parts of **TCVN 12231-1:2018**, which
+declares itself *"hoàn toàn tương đương"* (fully equivalent) to IEC 62109-1:2010. The rest of that
+text is behind a login, and the IEC original is paywalled.
 
 | Clause | Requirement |
 |---|---|
 | 9.1.1 | Two alternatives. **Method 1** = fire enclosure. **Method 2** = material/component selection so ignition cannot propagate, no enclosure needed. |
 | 9.1.2.1 | Components in **primary circuits** require a fire enclosure unless Method 2 is fully applied. |
+| 9.1.3.1 | VTM-0/1/2 count as V-0/1/2. **Where HB or HBF is required, a material passing the IEC 60695-2-11 glow-wire test at 550 °C is accepted instead.** Parts that cannot be protected from overheating under fault must sit on V-1 material, ≥ 13 mm through air from anything below V-1 or behind a V-1 barrier. |
+| 9.1.3.2 | **Fire-enclosure material: 5VB** (IEC 60695-11-20) at the thinnest significant wall, **or** pass the 5VB test as the finished enclosure. Either way: no drips or particles that ignite the cotton, no flaming > 1 min after the 5th flame application, no hole > 25 mm. Table 20 also lists a hot-wire test (IEC 60695-2-20) where the wall is < 13 mm through air from a part that can ignite. |
 | 9.1.3.3 | Materials *outside* the fire enclosure: **class HB** minimum. |
 | 9.1.3.4 | Materials *inside*: reports record "V-2 or better, or mounted on PCB rated V-0". |
 | 9.1.4.3 | The **bottom** of a fire enclosure must stop flaming/molten material escaping beneath internal parts — this is what kills naive vent slots in the base. |
@@ -142,26 +148,28 @@ Two unrelated test families exist:
 | Result | A **class**: HB → V-2 → V-1 → V-0 → 5VB → 5VA | A **temperature**: GWFI, GWIT, GWEPT |
 | Home turf | Product standards like 62109-1 | IEC 60335-1 household appliances |
 
-**What is solid:** the two produce different results and **cannot be converted into one another**.
-A glow-wire figure does not establish a required UL/IEC flame class. Every flammability requirement
-visible in the three obtained CB reports is expressed as a UL 94 / IEC 60707 class, and those
-reports contain zero occurrences of `glow wire`, `60695` or `needle flame`.
+**What is solid:** the two produce different results and **cannot be converted into one another**
+in general. A glow-wire figure establishes a flame class only where the standard says so. 62109-1
+says so in exactly one place, at the bottom of the ladder: 9.1.3.1 accepts a 550 °C glow-wire pass
+where **HB** is required. Nothing in the visible text lets glow wire stand in for V-x or 5VB. An
+earlier revision said 62109-1 uses UL 94 classes and no glow wire. That was wrong at the HB level.
 
 **What the source climb settled (2026-10-10):**
 
-- **62109-1 does cite glow wire.** IEC 60695-2-11 (glow-wire test of end products) is in the
-  normative references. This is confirmed in Annex ZA of SIST EN 62109-1:2011, from iTeh's free
-  sample. The sample stops before the clause text, so it does not show *which* clause invokes it.
-  The TRF rows in the obtained reports never mention it. **Where it applies, and whether it touches
-  the enclosure, is still `unverified`.** Do not rely on "62109-1 never uses glow wire".
-- **The `Glow-wire test (type test)` row the review found is from IEC 62477-1, not 62109-1.** The
-  isuna report's wording is "made under the conditions specified in 4.4.7.8.2 according to
-  IEC 60695-2-10" and "Table A.1 of IEC 60695-2-11". That is 62477-1 cl. 5.2.5.3 / 4.4.7.8.2, read in
-  the identical Japanese adoption JIS C 62477-1:2017. The same text appears in published 62477-1 and
-  62040-1 reports. In 62477-1, glow wire (850 °C, or ≥ 550 °C per GWEPT, or the hot-wire
-  alternative) applies to **insulating material touching live parts**. It does not apply to the
-  enclosure. The enclosure rule (4.6.3.2) is **5VA at the minimum wall thickness, or metal, glass
-  or ceramic**, accepted without test.
+- **62109-1 does cite glow wire, in 9.1.3.1.** IEC 60695-2-11 is a normative reference (Annex ZA,
+  SIST EN 62109-1:2011, iTeh free sample). The clause that uses it is 9.1.3.1, the HB substitution
+  above, read in TCVN 12231-1:2018.
+- **The `Glow-wire test (type test)` row the first review found is from IEC 62477-1, not 62109-1.**
+  The isuna report's wording is "made under the conditions specified in 4.4.7.8.2 according to
+  IEC 60695-2-10" and "Table A.1 of IEC 60695-2-11". That matches 62477-1 cl. 5.2.5.3 / 4.4.7.8.2,
+  as read in JIS C 62477-1:2017 and in a public English 62477-1 test report. JIS C 62477-1 is a
+  **MOD** adoption (IEC 62477-1:2012 + Amd 1:2016), not identical, so compare clause by clause. Only
+  matching text links the row to 62477-1; the isuna PDF itself was never read. In 62477-1, glow wire
+  (850 °C, or ≥ 550 °C per GWEPT, or the hot-wire alternative) applies to **insulating material
+  touching live parts above DVC A_s**. That includes an enclosure part that does that job. For the
+  fire enclosure, 4.6.3.2 accepts **5VA at the minimum thickness without test**, or the finished
+  enclosure passing 5.2.5.5. Metal, ceramic and specified glass (heat-resistant, tempered, wired or
+  laminated) are accepted without test.
 - **Access record for the isuna report:** blocked at every rung. The rungs were curl, headless
   browser, headed scratch Chrome, and your own Chrome. The PEA WAF also blocks the site's home page
   from this connection, so this is an IP-level block, and it was not bypassed. The quotes above come
@@ -172,9 +180,10 @@ Spelsberg, Fibox, Hensel) lead with glow-wire numbers like "GWFI 960 °C" becaus
 is 60335-1 appliances. Ask additionally for the **UL 94 class at the actual wall thickness**; do not
 accept a glow-wire figure as a substitute for a required flame class.
 
-For the fire-enclosure material class itself, one real datapoint: a certified small outdoor PV
-optimiser records *"Flammability class 5VA plastic material used for fire enclosure"* — 5VA is a
-considerably harder bar than V-0. IEC 62477-1 cl. 4.6.3.2 sets the same bar (above).
+**For the fire-enclosure material itself, 62109-1 asks for 5VB** (9.1.3.2, table above), which is
+already well above V-0. One certified small outdoor PV optimiser goes further and records
+*"Flammability class 5VA plastic material used for fire enclosure"*. 62477-1 uses 5VA as its
+no-test route.
 
 > **What aluminium does and does not buy.** Metal removes the *enclosure material's* flammability
 > and UV questions and swaps the 7 J impact test for a deflection test it passes easily. It does
@@ -236,14 +245,19 @@ for anything mechanically attached to it.
 | Bambu PC FR | "Tested to meet the UL 94-2023 V-0 standard" | store page; no UL file or Blue Card number shown | self-declared |
 | 3DXTech FireWire FR PC/ABS | "made using a premium UL94 V-0 rated PC-ABS" | rating attributed to the **feedstock resin** | read the wording |
 | Formlabs Flame Retardant Resin | UL 94 V-0 | holds an actual **Blue Card** | properly certified (SLA, not FDM) |
+| Prusament PETG V0 | UL 94 V-0 @ 0.75 / 3.0 mm | **Blue Card** E527425, Prusa printers only | certified filament, V-0 not 5VB |
 
 Polymaker's TDS also warns the flame retardant *"significantly reduces the toughness of the raw PC
 material"* — relevant to 13.7.3's 7 J impact test.
 
 **Verdict:** printing the cover in ASA is reasonable for a personal build — keep it off hot
 surfaces, use real wall thickness, accept it is uncertified. For a defensible fire story the honest
-routes are a Blue Card material (today: resin, not filament) or not making the fire enclosure out
-of plastic.
+routes are a 5VB-capable material (see 9.1.3.2) or not making the fire enclosure out of plastic. A
+Blue Card filament now exists, but only at V-0: **Prusament PETG V0**, UL file **E527425**,
+"furnished as filaments", process "Material Extrusion". It is V-0 at 0.75 and 3.0 mm, with RTI
+75 °C, and only for the listed Prusa printers (MK3S+, MK4/MK4S, XL, Core One) at fixed parameters
+(0.4 mm nozzle, 0.2 mm layers). Its limits: V-0 is below the 5VB that 9.1.3.2 asks of a fire
+enclosure, the P1P is not a listed printer, and PETG starts to sag at 80 °C (table above).
 
 ---
 
@@ -257,7 +271,8 @@ is shown, read from live vendor pages. VAT basis differs by vendor. Ranking info
 > on both the product page and the distributor listing). Fin presence is a geometry fact, not a
 > performance figure. Any 20 W claim needs vendor data or a controlled test.
 
-Board is **88 × 50 mm**. For slide-in extrusions the 88 mm side runs along the enclosure **length**.
+Board is **88 × 58.5 mm** (was 88 × 50; see header). For slide-in extrusions the 88 mm side runs
+along the enclosure **length**. All planar fits below hold for both widths.
 
 | Candidate | External (mm) | Board capacity | Fins | Price |
 |---|---|---|---|---|
@@ -275,7 +290,7 @@ Board is **88 × 50 mm**. For slide-in extrusions the 88 mm side runs along the 
 
 - **Hammond 1455KHD1601 *does* fit.** An earlier revision of this document rejected it by comparing
   the board's 88 mm side to the enclosure's 86.02 mm *external width*. That is the wrong axis:
-  Hammond publishes **max PCB 159 × 74 mm** for the KHD, so an 88 × 50 mm board fits with 88 mm
+  Hammond publishes **max PCB 159 × 74 mm** for the KHD, so an 88 × 58.5 mm board fits with 88 mm
   along the length. The NHD's published limit is **159 × 97 mm**. Both are planar fits; vertical
   clearance is still open (§6). The KHD is additionally listed **IP54**; Mouser's listing gives
   IP54 for the NHD as well. Mouser prices were read on eu.mouser.com on 2026-10-10 (NHD: 28 in
@@ -290,6 +305,20 @@ Board is **88 × 50 mm**. For slide-in extrusions the 88 mm side runs along the 
   its fit is *unverified* rather than "too narrow". **ABPH** is the finned profile — both Bopla
   catalogue pages titled *"mit Kühlkörper"* list only ABPH parts.
 - **Fischer AKG** guides expect a 100 mm eurocard; mount the board on pillars instead.
+
+### Hammond publishes thermal data
+
+The 1455NHD/KHD pages link vendor thermal data, so these two are not unqualified like the rest:
+
+- A worked calculation for the **1455NHD at 160 mm: R_sa = 1.58 °C/W**. It uses a flat-plate
+  correlation at an assumed 0.25 m/s air speed (Hammond's "natural convection air speed") with an
+  isothermal box. At 20 W that is ~32 K rise, before the correction below.
+- R_th vs length charts for the **NHD and the KHD**. These are "determined under practical operating
+  conditions", for vertical mounting and natural convection; **horizontal mounting adds 15 %**.
+  Values have not been digitised here.
+
+Both describe heat spread evenly into the box, not 20 W from one board on standoffs, so the §0 test
+still decides.
 
 ### Estimated temperature rise, Fischer AKG 105 30 160 ME
 
@@ -310,13 +339,18 @@ aluminium) → 50 K. Radiation carries roughly a third of the load, so the anodi
 air-to-wall coupling adds more rise unless the FETs bolt directly to the wall.
 
 **Calibration against your own data:** AK-EL83-160 lying on wood, 760 W at ~98 % → ~15 W loss,
-51 °C at 24–25 °C ambient = ΔT 26.5 K, **Rth ≈ 1.75 K/W measured**. The unfinned AKG estimate is
+51 °C at 24–25 °C ambient = ΔT 26.5 K, so **Rth ≈ 1.75 K/W (estimated)**. Only the temperature and the
+throughput were measured. The ~15 W loss comes from an assumed ~98 % efficiency, not a simultaneous
+measurement, and all converter loss (coil included) is assumed to leave through the heatsink. The unfinned AKG estimate is
 2.25 K/W at best — *worse than the heatsink you already own*. Model check: the same correlation
 applied to the AK-EL83-160's bare base plate with no fin area gives 40.7 K vs 26.5 K measured with
-fins, i.e. the fins are worth ~14 K, which is the right order.
+fins, i.e. the fins are worth ~14 K. That is the right order, but it is a model compared with an
+estimate, not a validation.
 
 **Price summary:** cheapest aluminium box is the Fischer AKG at ~25–30 € (unfinned). Hammond 1455NHD
-at ~41 € is the least hassle to buy in Germany. IP 65 *with* fins roughly doubles it (~69 €). The
+at ~41 € net is cheapest at elpro, but **elpro sells to businesses only** (its terms exclude
+consumer contracts) and quotes net prices. Mouser EU also quotes ex-VAT (its sales terms: "Prices are
+exclusive of taxes … value-added …") and sells to private buyers, at ~48 € for one. IP 65 *with* fins roughly doubles it (~69 €). The
 outdoor-sealed diecast route is ~38 € plus the heatsink already owned. A scavenged VX 22 is likely
 cheapest of all, but no market price was obtained.
 
@@ -370,19 +404,17 @@ solid, offset floor under anything that can drip.
    Deliberately not estimated.
 2. **Indoor/sheltered or genuinely outdoors?** Sheltered → Victron's IP43 territory. Outdoors → UV
    resistance for polymers, sealing, pressure compensation, and less thermal headroom.
-3. **Thermal qualification of any chosen enclosure at 20 W** — no candidate has vendor Rth data.
+3. **Thermal qualification of any chosen enclosure at 20 W.** Only Hammond publishes thermal data
+   (§4), and it assumes heat spread evenly into the box.
    Needs the §0 equal-operating-point test.
 4. **VX 22 capacity** — 12 W mains rating vs ~20 W dissipation (§1). Needs measurement.
 5. **PCB laminate flammability class** — `Fugu2.kicad_pcb` records only `"FR4"` (§2).
-6. **Where 62109-1 invokes glow wire.** IEC 60695-2-11 is a confirmed normative reference, but
-   the clause that uses it is in the paywalled text only (§2).
-7. **Declared gap:** IEC 62109-1:2010 cl. **9.1.3.2**, the material-class table for the fire
-   enclosure itself, is not reproduced in any obtained TRF. The TRF row carries only the preamble
-   (*"If an enclosure material is not classified as specified below, a test may be performed on the
-   final enclosure…"*). The standard is paywalled. The identical Vietnamese adoption
-   (TCVN 12231-1:2018) is login-gated. The isuna report is IP-blocked at every rung and turned out to
-   be 62477-1 text anyway (§2). Automated access is exhausted and no boundary was circumvented.
-   Items 6 and 7 both need the standard: buy it, or ask a notified body.
+6. ~~Where 62109-1 invokes glow wire~~. **Resolved 2026-10-10:** 9.1.3.1, as a 550 °C substitute
+   where HB is required (§2).
+7. ~~Fire-enclosure material class (9.1.3.2)~~. **Resolved 2026-10-10:** 5VB, or a 5VB test on the
+   finished enclosure (§2), from the public portion of TCVN 12231-1:2018. The requirements for
+   parts that fill openings in the fire enclosure are cut off behind the login; buy the standard if
+   a plastic housing with a window or connector cut-outs goes ahead.
 
 ---
 
@@ -397,7 +429,9 @@ the board by 7.08 mm and escapes through a slot in the bottom 6.5 mm of the left
 wall stays 2.5 mm off the board edge and the toroid keeps the widest strip of bare heatsink; the
 ESP32 antenna overhangs by 5.69 mm and gets ≥3.3 mm of air in a bulged wall; the board sits ~2 mm
 from the heatsink edge on that side, so the right and top walls hang alongside the heatsink and
-bolt into its side faces instead of standing on it. Vents are above z = 12 only, for cl. 9.1.4.3.
+bolt into its side faces instead of standing on it. Vents are above z = 12 only, aiming at cl. 9.1.4.3. That is a provisional design choice, not a
+compliance rule. 9.1.4.2 counts side openings inside a 5° projection as bottom openings, and 9.1.4.1
+applies everything in every intended mounting orientation.
 
 **Open question #1 (board stack height) is still open** and now blocks a print rather than a
 judgement: the model refuses to render until `standoff`, `stack_h`, `hs_gap_right`, `hs_gap_top`
@@ -422,6 +456,9 @@ machine; `3dmodel/README.md` carries that and the alternatives.
 Unresolved on the bench: the toroid measures ~50 mm across in the build photos and the shroud
 leaves a 44.8 mm strip beside it, so the coil has to move or overhang the heatsink edge.
 
+**The shroud was dimensioned for the 50 mm board.** The outline is now 58.5 mm wide (header), so
+re-check `3dmodel/` against the current Edge.Cuts before printing.
+
 Unchanged by any of this: the insulation system of §5. A printed shroud neither creates nor
 discharges it.
 
@@ -445,6 +482,13 @@ discharges it.
 - **2026-10-10, source climb closed.** The review's glow-wire row was traced to IEC 62477-1
   (JIS C 62477-1:2017). IEC 60695-2-11 was confirmed as a 62109-1 normative reference (Annex ZA).
   The Hammond KHD/NHD prices were read on Mouser EU through Fab's Chrome. Details in §2 and §4.
+- **2026-10-10, second independent review** (codex via the `codex-review` skill: network, scratch
+  Chrome and Fab's Chrome). Nine findings, all checked against primary sources and accepted. The
+  biggest: 62109-1 9.1.3.2 asks for **5VB** and 9.1.3.1 accepts **550 °C glow wire for HB**, both
+  read in TCVN 12231-1:2018. The board outline grew to 58.5 mm wide. Hammond publishes thermal data.
+  A Blue Card *filament* exists (Prusament PETG V0). JIS C 62477-1 is MOD, not IDT. The 1.75 K/W
+  figure is an estimate. The z = 12 vent rule is provisional. elpro is business-only. Findings
+  archived in `design/codex-review-enclosures-2026-10-10.md`.
 - Found independently while answering a follow-up, not by the review: the Fischer `K` suffix
   (§4) and the absence of any published Fischer Rth.
 
@@ -454,9 +498,16 @@ discharges it.
 - IEC 62109-1 clause text as reproduced in TRF `IEC62109_1B` in three published CB/TÜV reports
   (TÜV SÜD 70.409.19.175.01-00; Intertek 220201177SHA-001; report 6159006.50).
 - SIST EN 62109-1:2011 free sample (iTeh), Annex ZA normative references.
-- JIS C 62477-1:2017 (IDT IEC 62477-1:2012), kikakurui.com: cl. 4.4.7.8.2, 4.6.3.2, 5.2.5.3–5.2.5.5.
+- JIS C 62477-1:2017 (**MOD** IEC 62477-1:2012 + Amd 1:2016), kikakurui.com: cl. 4.4.7.8.2, 4.6.3.2, 5.2.5.3–5.2.5.5.
 - Victron SmartSolar MPPT 100/30 & 100/50 datasheet — enclosure and standards blocks.
-- UL Solutions, Blue Card / plastics-for-AM certification FAQ.
+- UL Solutions, Blue Card / plastics-for-AM certification FAQ; UL Product iQ file E527425
+  (Prusament PETG V0).
+- TCVN 12231-1:2018 (≡ IEC 62109-1:2010), thuvienphapluat.vn, public portion: 9.1.3.1, 9.1.3.2,
+  Table 20, normative references.
+- Hammond 1455NHD thermal files: `thermal-transfer-coefficient.pdf`, `technical-introduction.pdf`,
+  `1455nhd-`/`1455khd-r-value-vs-enclosure-length.pdf` (hammfg.com/files/products/1455nhd/).
+- elpro standard business terms §§1, 3; Mouser EU sales terms (via search index; the page itself
+  served a DataDome CAPTCHA).
 - Polymaker PolyMax PC-FR TDS V3 and product wiki page.
 - CNC Kitchen PLA/PETG/ASA comparison (measured, oven ramp under load).
 - Vendor catalogues: Takachi, Hammond (incl. per-part max PCB size), Fischer Elektronik, Bopla.
