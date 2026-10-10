@@ -206,6 +206,20 @@ fboost regulated its own reading to each setpoint, and its telemetry is float16 
 reports 10 mV steps, about 3300 readings per window. The fit on the old firmware's data
 predicted fboost 0.973991 / +0.680 V and fmetal 0.967109 / +1.182 V.
 
+Full-range check with these values (2026-10-10, run `2026-10-10T14-55-18Z`): 2 V rungs from
+16.5 to 77 V, up then down, 30 s each, medians against `BLE_ESP32_INA228_2`
+(`esp32-adc/data/check.csv`):
+
+| Board | 16.5–73.4 V (rms / max, n=58) | mean | 73.4–77 V (rms / max, n=5) | up − down (sd) |
+|---|---|---|---|---|
+| fboost | **40 / 85 mV** | −16 mV | 102 / 157 mV | 12 mV |
+| fmetal | **41 / 90 mV** | −5 mV | 118 / 135 mV | 11 mV |
+
+Inside the fitted range the boards land at the ~40 mV rms the offline fit predicted. The error
+pattern repeats between the up and down passes to about 12 mV, so most of the 40 mV is the
+repeatable residual, not noise. Above 73.4 V the correction fades out and the two boards drift
+apart in opposite directions (fboost −95 mV, fmetal +135 mV at 76.5 V).
+
 ## Limits and open questions
 
 - Only two chips, both measured the same way: each board has its own 200k/7.5k divider into ch3.
@@ -215,7 +229,8 @@ predicted fboost 0.973991 / +0.680 V and fmetal 0.967109 / +1.182 V.
 - Attenuation: everything here is at 12 dB, the attenuation these dividers need. IDF's curve and
   the factory points differ at the other attenuations, and the correction is not applied there.
 - Range: 16.5–73.4 V at the node, 570–2658 mV as read by IDF. Below and
-  above that range, the correction fades out; nothing there was measured.
+  above that range, the correction fades out. Below was not measured; above, the check run
+  reached 77 V with errors up to 157 mV (see "Calibrate a board").
 - Other channels: the correction applies to NTC and to current channels on ADC1 as well.
   For NTC that is a 0.06–0.4 K shift (estimate, unmeasured). For current channels it is untested.
 - The ~35 mV floor (degree-5 residual) repeated between runs over 16.5–43.5 V. If it is an
