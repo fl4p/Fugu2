@@ -263,3 +263,43 @@ mode, an echo means "adapter plugged in, stop transmitting". The limits:
 - **USB (host change 7):** add series-resistor footprints and VBUS detection?
 - **Comms GND wire (adapters):** confirm "no wire, optional DNP 47 kΩ".
 - **CAN transceiver:** TCAN1042HV + 5 V boost (€2.22 + ~€1, ≤ 174 mA) or MAX33053E direct from 3.3 V (€7.88, ≤ 50 mA, ±65 V: only ~1.5 V margin on the ~63 V fault estimate)?
+- **Relax the Q17 60 V requirement to save cost?** Parked 2026-10-09, see below.
+
+### Parked: cost of dropping the 60 V ground-fault requirement (2026-10-09)
+
+Prices: DigiKey DE API, EUR excl. VAT, cut tape, queried 2026-10-09, qty 1 / qty 100.
+
+The requirement exists only for 48 V (16s) batteries: 58.4 V full charge plus a few volts of bus signal
+gives ~63 V on a bus pin (estimate, Q17). On 12 V / 24 V systems a ±58 V part has ample margin.
+
+**CAN adapter**
+
+| Option | Bus rating | Parts | Price |
+|---|---|---|---|
+| Current plan | ±70 V | TCAN1042HVDR €2.14 / €1.30 + TPS61023DRLR 5 V boost €1.21 / €0.70 + inductor and caps | ≈ €3.35 / €2.00 + L/C |
+| Relaxed | ±58 V | **TCAN3413DR** €1.86 / €1.12 (DRB package €1.64 / €0.98), VCC 3.0–3.6 V direct from V+, no boost | €1.86 / €1.12 |
+
+- TCAN3413 (SLLSFS8A): ±58 V abs max on CANH/CANL, VIO 1.7–3.6 V, ICC dominant 60 mA max (RL 50 Ω),
+  versus ≤ 174 mA from V+ for TCAN1042H(V) + boost. Saves ~€1.5 at qty 1, ~€0.9 at 100, and the L/C.
+- Going below ±58 V gains nothing for CAN: plain 3.3 V parts cost more (TCAN337DR €2.26, SN65HVD230DR
+  €2.48, TCAN334DR €2.95).
+- Risk: ±58 V is just short of the ~63 V worst case. It survives a ground fault at most states of charge
+  of a 16s battery, but not near full charge.
+
+**RS-485 adapter**
+
+| Option | Bus rating | Price |
+|---|---|---|
+| Current plan: THVD2410DR + SN74LVC1G04 inverter (DE from TX) | ±70 V | €4.13 / €2.61 + inverter |
+| THVD1426DR | ±16 V | €2.24 / €1.35 |
+| SP3485EN-L/TR | standard RS-485 range (datasheet not read) | €0.83 / €0.48 |
+
+- THVD1426 has auto-direction, which removes the inverter and the DE-from-TX scheme (Direction row
+  above). Fail-safe bias is still needed; check its datasheet before choosing.
+
+**What dropping it costs:** in a 48 V ground fault the adapter transceiver dies. A failed part could
+pass fault current back through the port into the host buffers (U7) and the 3.3 V rail (inference, not
+bench-tested).
+
+**Middle option:** TCAN3413 for CAN, keep THVD2410 for RS-485. This takes most of the CAN saving and is
+exposed only near full charge on a 48 V battery.
