@@ -180,6 +180,54 @@ axs[0].set_title("Corrected with the OTHER board's curve and a two-point calibra
 axs[1].set_xlabel('node voltage [V]')
 save(fig, 'after.png')
 
+# ---------------------------------------------------------------- 7. what IDF already corrects
+# IDF 5.5 components/esp_adc/esp32s3/curve_fitting_coefficients.c, ADC1 atten3 (12 dB): the
+# second-step error polynomial in first-step mV; IDF subtracts it. adc-cal tables are read back
+# from both chips (data/adc-cal-*.txt) and must land on it.
+IDF_K = (0.6444034182694780, 0.0644334888647536, 1.297891447611e-4, 7.0769718e-8, 1.3515e-11)
+IDF_S = (-1, -1, 1, -1, 1)
+
+
+def idf_err(v):
+    return sum(s * k * v ** i for i, (s, k) in enumerate(zip(IDF_S, IDF_K)))
+
+
+def adc_cal(b):
+    rows = [l.split() for l in open(os.path.join(HERE, 'data/adc-cal-%s.txt' % b))
+            if l.startswith('ADCCAL 3 ')]
+    return np.array([(float(r[3]), float(r[5])) for r in rows])   # mv_idf, curve_mv
+
+
+v1 = np.linspace(0, 3420, 800)
+mv = v1 - idf_err(v1)                                    # IDF output
+idf_curve = -idf_err(v1)                                 # what IDF adds to the first-step line
+inr = (mv >= amin) & (mv <= amax)
+idf_nl = idf_curve - np.polyval(np.polyfit(mv[inr], idf_curve[inr], 1), mv)
+ours = dfun(p[:4], mv)
+out['idf'] = {b: np.abs(adc_cal(b)[:, 1] - np.interp(adc_cal(b)[:, 0], mv, idf_curve)).max() for b in BOARDS}
+out['idf_nl'] = [(f[inr].min(), f[inr].max()) for f in (idf_nl, ours, idf_nl + ours)]
+
+fig, axs = plt.subplots(2, 1, figsize=(9, 7.5), sharex=True)
+ax = axs[0]
+ax.plot(mv, idf_curve, '-', color='C0', lw=1.5, label="IDF's fixed curve (same for every ESP32-S3)")
+for b, mk in zip(BOARDS, ('o', 'x')):
+    t = adc_cal(b)
+    ax.plot(t[:, 0], t[:, 1], mk, color=COL[b], ms=6, mfc='none', label='read back with adc-cal from %s' % b)
+ax.plot(mv, ours, 'k-', lw=2, label='our universal correction')
+ax.axvspan(amin, amax, color='0.92', zorder=0)
+ax.set(ylabel='correction added [mV at the pin]',
+       title='12 dB: the correction IDF applies, and ours on top of it')
+ax.grid(alpha=.3); ax.legend(fontsize=8, loc='lower left')
+ax = axs[1]
+m = (mv >= amin - 150) & (mv <= amax + 150)
+ax.plot(mv[m], idf_nl[m], '-', color='C0', lw=1.5, label="IDF's curve, gain/offset removed over the measured range")
+ax.plot(mv[m], ours[m], 'k-', lw=2, label='our universal correction')
+ax.plot(mv[m], idf_nl[m] + ours[m], '--', color='C2', lw=1.5, label='total that these chips need (IDF + ours)')
+ax.axvspan(amin, amax, color='0.92', zorder=0)
+ax.set(xlabel='ADC pin voltage (IDF output) [mV]', ylabel='curvature [mV at the pin]')
+ax.grid(alpha=.3); ax.legend(fontsize=8, loc='lower left')
+save(fig, 'idf-curve.png')
+
 # ---------------------------------------------------------------- numbers for the text
 print('\nreference: n=%d INL rms %.2f mV, peak %.2f mV' % out['ref'])
 print('fboost vs HP (Aug): INL rms %.0f mV' % out['inl_aug'])
@@ -193,3 +241,6 @@ for b, (g_, o_) in zip(BOARDS, go):
     print('    %s: vout_gain=%.6f vout_offset=%+.4f V' % (b, g_, o_))
 for b, v in out['xfer'].items():
     print("%s with %s's curve: line %.0f/%.0f -> 2-point %.0f/%.0f mV (rms/max)" % ((b,) + v))
+print('adc-cal vs IDF source curve: max deviation %s' % ', '.join('%s %.2f mV' % kv for kv in out['idf'].items()))
+print('curvature over the fit range: IDF %.1f..%.1f, ours %.1f..%.1f, total %.1f..%.1f mV' % tuple(
+    v for r in out['idf_nl'] for v in r))

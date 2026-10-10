@@ -1,0 +1,77 @@
+ADCCAL efuse_ver=1
+ADCCAL adc1 atten=0 init_code=1994 cal_mv=850 cal_code=3659 gain_uv_per_code=232.30
+ADCCAL adc1 atten=1 init_code=2117 cal_mv=850 cal_code=2747 gain_uv_per_code=309.43
+ADCCAL adc1 atten=2 init_code=2139 cal_mv=850 cal_code=1928 gain_uv_per_code=440.87
+ADCCAL adc1 atten=3 init_code=2241 cal_mv=850 cal_code=1019 gain_uv_per_code=834.15
+ADCCAL table atten=0 code mv_idf mv_first_step curve_mv
+ADCCAL 0    0     0      0.0    0.0
+ADCCAL 0  256    61     59.5    1.5
+ADCCAL 0  512   120    118.9    1.1
+ADCCAL 0  768   180    178.4    1.6
+ADCCAL 0 1024   240    237.9    2.1
+ADCCAL 0 1280   300    297.3    2.7
+ADCCAL 0 1536   358    356.8    1.2
+ADCCAL 0 1792   419    416.3    2.7
+ADCCAL 0 2048   477    475.8    1.2
+ADCCAL 0 2304   537    535.2    1.8
+ADCCAL 0 2560   596    594.7    1.3
+ADCCAL 0 2816   655    654.2    0.8
+ADCCAL 0 3072   714    713.6    0.4
+ADCCAL 0 3328   773    773.1   -0.1
+ADCCAL 0 3584   832    832.6   -0.6
+ADCCAL 0 3840   891    892.0   -1.0
+ADCCAL 0 4095   949    951.3   -2.3
+ADCCAL table atten=1 code mv_idf mv_first_step curve_mv
+ADCCAL 1    0     0      0.0    0.0
+ADCCAL 1  256    81     79.2    1.8
+ADCCAL 1  512   160    158.4    1.6
+ADCCAL 1  768   240    237.6    2.4
+ADCCAL 1 1024   318    316.9    1.1
+ADCCAL 1 1280   398    396.1    1.9
+ADCCAL 1 1536   477    475.3    1.7
+ADCCAL 1 1792   555    554.5    0.5
+ADCCAL 1 2048   634    633.7    0.3
+ADCCAL 1 2304   712    712.9   -0.9
+ADCCAL 1 2560   791    792.1   -1.1
+ADCCAL 1 2816   870    871.4   -1.4
+ADCCAL 1 3072   947    950.6   -3.6
+ADCCAL 1 3328  1026   1029.8   -3.8
+ADCCAL 1 3584  1103   1109.0   -6.0
+ADCCAL 1 3840  1181   1188.2   -7.2
+ADCCAL 1 4095  1259   1267.1   -8.1
+ADCCAL table atten=2 code mv_idf mv_first_step curve_mv
+ADCCAL 2    0     0      0.0    0.0
+ADCCAL 2  256   115    112.9    2.1
+ADCCAL 2  512   229    225.7    3.3
+ADCCAL 2  768   342    338.6    3.4
+ADCCAL 2 1024   455    451.5    3.5
+ADCCAL 2 1280   568    564.3    3.7
+ADCCAL 2 1536   679    677.2    1.8
+ADCCAL 2 1792   790    790.0   -0.0
+ADCCAL 2 2048   901    902.9   -1.9
+ADCCAL 2 2304  1010   1015.8   -5.8
+ADCCAL 2 2560  1120   1128.6   -8.6
+ADCCAL 2 2816  1229   1241.5  -12.5
+ADCCAL 2 3072  1337   1354.4  -17.4
+ADCCAL 2 3328  1446   1467.2  -21.2
+ADCCAL 2 3584  1553   1580.1  -27.1
+ADCCAL 2 3840  1659   1692.9  -33.9
+ADCCAL 2 4095  1766   1805.4  -39.4
+ADCCAL table atten=3 code mv_idf mv_first_step curve_mv
+ADCCAL 3    0     0      0.0    0.0
+ADCCAL 3  256   221    213.5    7.5
+ADCCAL 3  512   436    427.1    8.9
+ADCCAL 3  768   644    640.6    3.4
+ADCCAL 3 1024   852    854.2   -2.2
+ADCCAL 3 1280  1056   1067.7  -11.7
+ADCCAL 3 1536  1263   1281.3  -18.3
+ADCCAL 3 1792  1469   1494.8  -25.8
+ADCCAL 3 2048  1677   1708.3  -31.3
+ADCCAL 3 2304  1883   1921.9  -38.9
+ADCCAL 3 2560  2089   2135.4  -46.4
+ADCCAL 3 2816  2290   2349.0  -59.0
+ADCCAL 3 3072  2484   2562.5  -78.5
+ADCCAL 3 3328  2665   2776.1 -111.1
+ADCCAL 3 3584  2833   2989.6 -156.6
+ADCCAL 3 3840  2981   3203.1 -222.1
+ADCCAL 3 4095  3102   3415.8 -313.8

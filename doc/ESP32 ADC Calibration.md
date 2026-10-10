@@ -46,9 +46,10 @@ the rest of this article treats the INA228 as the true value.
 
 With IDF's calibration and the nominal divider, both boards read 2.6–3.5 % high in gain, with an
 offset of −0.7 to −1.3 V. Uncalibrated, they are off by −0.5 to +1.2 V across the range. That
-part is ordinary gain/offset: resistor tolerance, the ADC's 500 kΩ input load and the chip's eFuse
-calibration. A per-board linear calibration removes it, and `sensor.conf` could already express
-that through the divider values.
+part is ordinary gain/offset. It comes from the board, not the chip: both chips carry the same
+factory gain point (see [What IDF's calibration does](#what-idfs-calibration-does)), which leaves
+resistor tolerance and the ADC's 500 kΩ input load. A per-board linear calibration removes it, and
+`sensor.conf` could already express that through the divider values.
 
 ## Residual S-curve
 
@@ -105,6 +106,33 @@ gets only a gain and offset from two rungs, at 25 V and 65 V, as a production ca
 
 fboost's worst points sit at its lowest rungs, where fmetal's curve has the fewest supporting
 points. Fitting the curve on both boards, which is what the firmware ships, removes most of that.
+
+## What IDF's calibration does
+
+ESP-IDF's curve-fitting scheme (`esp_adc/adc_cali_curve_fitting.c`) converts a raw code in two
+steps:
+
+1. A straight line through zero, from one factory point burnt into eFuse per attenuation: the raw
+   code the chip read at 850 mV. This sets the chip's gain. The offset is not in this step; the
+   ADC driver loads a separate eFuse offset code into the hardware.
+2. A fixed degree-4 curve in millivolts, subtracted from the result. Its coefficients are in IDF's
+   source (`esp32s3/curve_fitting_coefficients.c`) and are the same for every ESP32-S3.
+
+The firmware's `adc-cal` console command reads both from a running chip: the eFuse values per
+attenuation, and IDF's conversion every 256 codes split into the step-1 line and the step-2 curve
+(data in `esp32-adc/data/adc-cal-*.txt`). At 12 dB the two chips match exactly: both read code 1019
+at 850 mV (834.15 µV per code), and only the hardware offset code differs (2241 vs 2232). At the
+other attenuations the factory points differ by 1–2 codes. The step-2 curve read back from both
+chips matches the one computed from IDF's source to within 2 mV, IDF's integer arithmetic.
+
+![IDF's curve and ours](img/esp32-adc-idf-curve.webp)
+
+Over 0–3100 mV IDF's curve adds +9 to −314 mV (top). Most of that is gain and offset: with those
+removed over the measured range (bottom), IDF bends the transfer by −28 to +9 mV. Our correction
+adds −8 to +5 mV, mostly against IDF's bend: up where IDF bends down below 1300 mV, down where it
+bulges near 2000 mV. The total these two chips need is −24 to +5 mV. In other words, IDF's
+family-average curve over-corrects these chips in the middle of the range, and the universal
+correction takes part of it back.
 
 ## Integer truncation in the old firmware path
 
@@ -163,6 +191,8 @@ point and re-measure on the new firmware before trusting them.
   With the same channel and the same divider values on both, the data cannot yet tell an ADC
   property apart from a source-impedance effect, or from two chips that happen to match. A third
   board, ideally on another channel or with different divider values, would settle it.
+- Attenuation: everything here is at 12 dB, the attenuation these dividers need. IDF's curve and
+  the factory points differ at the other attenuations, and the correction is not applied there.
 - Range: 16.5–74.5 V, that is, 570–2658 mV at the pin, with a single rung above 73 V. Below and
   above that range, the correction fades out; nothing there was measured.
 - Other channels: the correction applies to NTC and to current channels on ADC1 as well.
