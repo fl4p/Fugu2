@@ -35,6 +35,7 @@ check the [ESP32-S3 datasheet](https://www.espressif.com/sites/default/files/doc
 * Some pins have start up glitches (GPIO1-17 low, GPIO18-20 high!). don't use this for pwm signals
     * GPIO >= 21 for outputs
 * ADC1 channels are useful (ADC2 conflicts with WiFi)
+    * ADC1 accuracy and its calibration: [ESP32 ADC Calibration](ESP32%20ADC%20Calibration.md)
 * SPI native pins?
 
 Rust Dev Board Kicad https://github.com/esp-rs/esp-rust-board/tree/master/hardware/esp-rust-board
