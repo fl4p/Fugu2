@@ -130,7 +130,7 @@ On 14.6: `Fugu2.kicad_pcb` records the laminate only as `"FR4"`, with **no UL fl
 FR-4 is V-0, but that is an assumption about your specific laminate, not a documented fact. Get the
 flammability class from the fabricator or laminate datasheet before claiming this clause is met.
 
-### UL 94 classes vs glow wire — partially unresolved
+### UL 94 classes vs glow wire
 
 Two unrelated test families exist:
 
@@ -147,13 +147,25 @@ A glow-wire figure does not establish a required UL/IEC flame class. Every flamm
 visible in the three obtained CB reports is expressed as a UL 94 / IEC 60707 class, and those
 reports contain zero occurrences of `glow wire`, `60695` or `needle flame`.
 
-**What is `unverified`:** whether 62109-1 *also* contains a glow-wire route or requirement. An
-independent review surfaced (a) a 62109-1&2 test report that appears to carry a
-`Glow-wire test (type test)` row, and (b) standards-catalogue listings placing **IEC 60695-2-11**
-among 62109-1's normative references. I could not confirm either: that report's host returns
-`Unauthorized Request Blocked` at HTTP 200 and redirects to a WAF page in a headless browser
-(highest rung tried: 4; headed Chrome and the real-Chrome rung **not yet tried — climb open**), and
-the standard is paywalled. **Do not rely on "62109-1 never uses glow wire."**
+**What the source climb settled (2026-10-10):**
+
+- **62109-1 does cite glow wire.** IEC 60695-2-11 (glow-wire test of end products) is in the
+  normative references. This is confirmed in Annex ZA of SIST EN 62109-1:2011, from iTeh's free
+  sample. The sample stops before the clause text, so it does not show *which* clause invokes it.
+  The TRF rows in the obtained reports never mention it. **Where it applies, and whether it touches
+  the enclosure, is still `unverified`.** Do not rely on "62109-1 never uses glow wire".
+- **The `Glow-wire test (type test)` row the review found is from IEC 62477-1, not 62109-1.** The
+  isuna report's wording is "made under the conditions specified in 4.4.7.8.2 according to
+  IEC 60695-2-10" and "Table A.1 of IEC 60695-2-11". That is 62477-1 cl. 5.2.5.3 / 4.4.7.8.2, read in
+  the identical Japanese adoption JIS C 62477-1:2017. The same text appears in published 62477-1 and
+  62040-1 reports. In 62477-1, glow wire (850 °C, or ≥ 550 °C per GWEPT, or the hot-wire
+  alternative) applies to **insulating material touching live parts**. It does not apply to the
+  enclosure. The enclosure rule (4.6.3.2) is **5VA at the minimum wall thickness, or metal, glass
+  or ceramic**, accepted without test.
+- **Access record for the isuna report:** blocked at every rung. The rungs were curl, headless
+  browser, headed scratch Chrome, and your own Chrome. The PEA WAF also blocks the site's home page
+  from this connection, so this is an IP-level block, and it was not bypassed. The quotes above come
+  from the search index (rung 6).
 
 **Practical consequence when shopping, which is unaffected:** German/EU enclosure catalogues (Bopla,
 Spelsberg, Fibox, Hensel) lead with glow-wire numbers like "GWFI 960 °C" because their volume market
@@ -162,7 +174,7 @@ accept a glow-wire figure as a substitute for a required flame class.
 
 For the fire-enclosure material class itself, one real datapoint: a certified small outdoor PV
 optimiser records *"Flammability class 5VA plastic material used for fire enclosure"* — 5VA is a
-considerably harder bar than V-0.
+considerably harder bar than V-0. IEC 62477-1 cl. 4.6.3.2 sets the same bar (above).
 
 > **What aluminium does and does not buy.** Metal removes the *enclosure material's* flammability
 > and UV questions and swaps the 7 J impact test for a deflection test it passes easily. It does
@@ -251,8 +263,8 @@ Board is **88 × 50 mm**. For slide-in extrusions the 88 mm side runs along the 
 |---|---|---|---|---|
 | **Takachi AWA12-7-12SS** | 115.7 × 67 × 125.6 | internal 96.7 × 46 × 120.6 | both long sides | see note ▼ |
 | **Takachi AWA15-8-16SS** | 152 × 77 × 160.6 | internal 133 × 56 × 155.6 | both long sides | — |
-| **Hammond 1455NHD1601** | 160 × 111 × 60.76 | max PCB **159 × 97** | top face | **40,69 €** (elpro) |
-| **Hammond 1455KHD1601** | 160 × 86.02 × 51.02 | max PCB **159 × 74**, IP54 | top face | — |
+| **Hammond 1455NHD1601** | 160 × 111 × 60.76 | max PCB **159 × 97** | top face | **40,69 €** (elpro) · Mouser EU 48,33 @1 · 41,79 @5 · 39,35 @10 |
+| **Hammond 1455KHD1601** | 160 × 86.02 × 51.02 | max PCB **159 × 74**, IP54 | top face | Mouser EU **45,80 €** @1 · 42,35 @5 · 41,14 @10 |
 | **Fischer AKG 105 30 160 ME** | 105 × 30 × 160 | 100 mm eurocard guides | **none** (see ▼) | **29,81 €** @1 · 26,20 @5 · 24,35 @10 (Bürklin, ex-VAT) |
 | **Fischer AKG 105 34/38/42 K** | 105 wide, H 34–42 | as above | **yes** — `K` = *mit Kühlrippen* | not priced |
 | **Bopla Alubos ABPH** | ABPH 600–1680, L 100/150/200 | — | integrated, IP 65 | **68,69 €** ABPH 800-0200 (elpro) |
@@ -265,7 +277,9 @@ Board is **88 × 50 mm**. For slide-in extrusions the 88 mm side runs along the 
   the board's 88 mm side to the enclosure's 86.02 mm *external width*. That is the wrong axis:
   Hammond publishes **max PCB 159 × 74 mm** for the KHD, so an 88 × 50 mm board fits with 88 mm
   along the length. The NHD's published limit is **159 × 97 mm**. Both are planar fits; vertical
-  clearance is still open (§6). The KHD is additionally listed **IP54**.
+  clearance is still open (§6). The KHD is additionally listed **IP54**; Mouser's listing gives
+  IP54 for the NHD as well. Mouser prices were read on eu.mouser.com on 2026-10-10 (NHD: 28 in
+  stock; KHD: factory stock). The page does not say whether VAT is included.
 - **`AKG 105 30 160 ME` is the unfinned variant.** In Fischer's numbering the `K` suffix means
   *mit Kühlrippen* — their `AKG 105 42 K` page reads *"Gehäuse **mit Kühlrippen** und ohne
   Befestigungslasche"*. The 29,81 € part carries no `K`. Order a `K` variant if you want fins.
@@ -360,12 +374,15 @@ solid, offset floor under anything that can drip.
    Needs the §0 equal-operating-point test.
 4. **VX 22 capacity** — 12 W mains rating vs ~20 W dissipation (§1). Needs measurement.
 5. **PCB laminate flammability class** — `Fugu2.kicad_pcb` records only `"FR4"` (§2).
-6. **Glow-wire route in 62109-1** — `unverified`, WAF climb open at rung 4 (§2).
+6. **Where 62109-1 invokes glow wire.** IEC 60695-2-11 is a confirmed normative reference, but
+   the clause that uses it is in the paywalled text only (§2).
 7. **Declared gap:** IEC 62109-1:2010 cl. **9.1.3.2**, the material-class table for the fire
-   enclosure itself, is not reproduced in any obtained TRF. The standard is paywalled; the identical
-   Vietnamese adoption (TCVN 12231-1:2018) is login-gated; a third report that may expand it is
-   behind a WAF (climb open at rung 4). No boundary was circumvented. If an exact class is needed before committing to a
-   plastic housing, buy the standard or ask a notified body.
+   enclosure itself, is not reproduced in any obtained TRF. The TRF row carries only the preamble
+   (*"If an enclosure material is not classified as specified below, a test may be performed on the
+   final enclosure…"*). The standard is paywalled. The identical Vietnamese adoption
+   (TCVN 12231-1:2018) is login-gated. The isuna report is IP-blocked at every rung and turned out to
+   be 62477-1 text anyway (§2). Automated access is exhausted and no boundary was circumvented.
+   Items 6 and 7 both need the standard: buy it, or ask a notified body.
 
 ---
 
@@ -420,11 +437,14 @@ discharges it.
   GPSR counterfactual (§2), the FR-4 V-0 assumption (§2), the "aluminium solves everything" claim
   (§2), sag-test framing (§3), **the Hammond KHD/NHD fit error (§4)**, missing thermal qualification
   (§4), the Takachi price attribution (§4), and the insulation-system discussion (§5). Downgraded
-  rather than fixed: the glow-wire claim (§2) — the review's evidence was search-snippet level and
-  the primary is behind a WAF (climb open at rung 4), so the claim is now marked `unverified` in both directions. Upheld
+  rather than fixed: the glow-wire claim (§2), because the review's evidence was search-snippet
+  level. Upheld
   under challenge: LVD scope via the input rating, the shared-condition-block arithmetic
   (38 %, 10 °C), UL 94 ↔ glow-wire non-convertibility, `20/12 = 1.67`, the Takachi AWA12-7-12SS
   plan fit, the transcription of the filament temperatures, and the price-summary arithmetic.
+- **2026-10-10, source climb closed.** The review's glow-wire row was traced to IEC 62477-1
+  (JIS C 62477-1:2017). IEC 60695-2-11 was confirmed as a 62109-1 normative reference (Annex ZA).
+  The Hammond KHD/NHD prices were read on Mouser EU through Fab's Chrome. Details in §2 and §4.
 - Found independently while answering a follow-up, not by the review: the Fischer `K` suffix
   (§4) and the absence of any published Fischer Rth.
 
@@ -433,11 +453,13 @@ discharges it.
 - Directive 2014/35/EU (LVD), CELEX:32014L0035 — Art. 1, Annex I.
 - IEC 62109-1 clause text as reproduced in TRF `IEC62109_1B` in three published CB/TÜV reports
   (TÜV SÜD 70.409.19.175.01-00; Intertek 220201177SHA-001; report 6159006.50).
+- SIST EN 62109-1:2011 free sample (iTeh), Annex ZA normative references.
+- JIS C 62477-1:2017 (IDT IEC 62477-1:2012), kikakurui.com: cl. 4.4.7.8.2, 4.6.3.2, 5.2.5.3–5.2.5.5.
 - Victron SmartSolar MPPT 100/30 & 100/50 datasheet — enclosure and standards blocks.
 - UL Solutions, Blue Card / plastics-for-AM certification FAQ.
 - Polymaker PolyMax PC-FR TDS V3 and product wiki page.
 - CNC Kitchen PLA/PETG/ASA comparison (measured, oven ramp under load).
 - Vendor catalogues: Takachi, Hammond (incl. per-part max PCB size), Fischer Elektronik, Bopla.
-- Distributor pages read live for pricing: elpro, Bürklin, Farnell DE, RS DE, Misumi US.
+- Distributor pages read live for pricing: elpro, Bürklin, Farnell DE, RS DE, Misumi US, Mouser EU.
 - Simons, R., "Simplified Formula for Estimating Natural Convection Heat Transfer Coefficient on a
   Flat Plate", *Electronics Cooling*, Aug 2001 — via `Thermal.md`; used for the §4 estimate.
