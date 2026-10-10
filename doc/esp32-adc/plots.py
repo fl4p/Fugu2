@@ -61,11 +61,15 @@ e = line_resid(hh.HP.values, hh.U2.values)
 out['ref'] = (len(hh), rms(e) * 1e3, abs(e).max() * 1e3)
 fig, ax = plt.subplots(figsize=(9, 3.6))
 ax.plot(hh.HP, e * 1e3, '.', color='C2', ms=4)
-ax.set(xlabel='HP3458A [V]', ylabel='INA228_2 INL vs HP3458A [mV]',
-       title='The reference: INA228_2 against the HP3458A, %d rungs (Aug 2026)' % len(hh))
+ax.axhline(0, color='k', lw=.6)
+ax.set(xlabel='HP3458A [V]', ylabel='INA228_2 minus its best line vs HP3458A [mV]',
+       title='The reference is linear: INA228_2 against the HP3458A, %d rungs (Aug 2026)' % len(hh))
 ax.set_ylim(-250, 250); ax.grid(alpha=.3)
-ax.text(.01, .93, 'rms %.2f mV, peak %.2f mV -- on the scale of the plots that follow, flat'
+ax.text(.01, .93, 'best-fit gain and offset removed; rms %.2f mV, peak %.2f mV, flat on the scale of the plots that follow'
         % out['ref'][1:], transform=ax.transAxes, fontsize=9)
+ins = ax.inset_axes([.62, .08, .36, .32])
+ins.plot(hh.HP, e * 1e3, '.', color='C2', ms=2); ins.set_ylim(-2, 2); ins.axhline(0, color='k', lw=.5)
+ins.set_title('zoom ±2 mV', fontsize=8); ins.tick_params(labelsize=7); ins.grid(alpha=.3)
 save(fig, 'reference.png')
 
 # ---------------------------------------------------------------- 2. raw error, both boards
@@ -75,9 +79,14 @@ ax.plot(ga.HP, (ga.fboost - ga.HP) * 1e3, '.', color='0.65', ms=4, label='fboost
 for b in BOARDS:
     g = board(b)
     ax.plot(g.U, (g[b] - g.U) * 1e3, '.', color=COL[b], ms=4, label='%s vs INA228_2 (Oct, dense)' % b)
+for b in BOARDS:
+    g = board(b); co_ = np.polyfit(g.U, g[b] - g.U, 1); xs_ = np.array([g.U.min(), g.U.max()])
+    ax.plot(xs_, np.polyval(co_, xs_) * 1e3, '-', color=COL[b], lw=1,
+            label='%s line: %+.2f %% gain, %+.2f V offset' % (b, co_[0] * 100, co_[1]))
+ax.axhline(0, color='k', lw=.6)
 ax.set(xlabel='node voltage [V]', ylabel='reading - reference [mV]',
-       title='Raw error of the ESP32-S3 ADC1 voltage reading (IDF curve-fitting calibration)')
-ax.grid(alpha=.3); ax.legend(fontsize=8)
+       title='Voltage error after IDF calibration, before board calibration')
+ax.grid(alpha=.3); ax.legend(fontsize=8, loc='upper left')
 save(fig, 'raw-error.png')
 
 # ---------------------------------------------------------------- 3. INL: the shared S-curve
@@ -90,9 +99,10 @@ for b in BOARDS:
     e = line_resid(g.U.values, g[b].values)
     out['inl_' + b] = (rms(e) * 1e3, abs(e).max() * 1e3, len(g))
     ax.plot(g.U, e * 1e3, '.', color=COL[b], ms=4, label='%s (Oct), rms %.0f mV' % (b, rms(e) * 1e3))
-ax.set(xlabel='node voltage [V]', ylabel='INL vs own best line [mV]',
-       title='Same S-curve on both boards, and on fboost two months apart')
-ax.grid(alpha=.3); ax.legend(fontsize=8)
+ax.axhline(0, color='k', lw=.6); ax.set_ylim(-250, 250)
+ax.set(xlabel='node voltage [V]', ylabel='error minus each series\' own best line [mV]',
+       title='Similar S-curve on two boards, and on fboost in August and October')
+ax.grid(alpha=.3); ax.legend(fontsize=8, loc='lower center', ncol=3, bbox_to_anchor=(.5, -.32))
 save(fig, 'inl.png')
 
 # ---------------------------------------------------------------- 4. repeatability across runs
@@ -102,9 +112,13 @@ co = np.polyfit(g.U[run1[g.index]], g.fboost[run1[g.index]], 1)
 for i, (run, gg) in enumerate(g.groupby('run')):
     ax.plot(gg.U, (gg.fboost - np.polyval(co, gg.U)) * 1e3, 'o' if i == 0 else 'x', ms=4,
             label='run %s (%d rungs)' % (run[5:16].replace('T', ' '), len(gg)))
-ax.set(xlabel='node voltage [V]', ylabel='fboost INL vs run-1 line [mV]',
-       title='fboost: four runs over 3 h fall on the same curve')
-ax.grid(alpha=.3); ax.legend(fontsize=8)
+top = g[~run1[g.index]].U.max()
+ax.axvspan(top, g.U.max() + .5, color='0.93', zorder=0)
+ax.text(top + .5, ax.get_ylim()[1] * .9, 'run 1 only', fontsize=8, color='0.4')
+ax.axhline(0, color='k', lw=.6)
+ax.set(xlabel='node voltage [V]', ylabel='fboost error minus run-1 line [mV]',
+       title='fboost: later runs repeat run 1 where they overlap (16.5-%.1f V)' % top)
+ax.grid(alpha=.3); ax.legend(fontsize=8, loc='lower center', ncol=4, bbox_to_anchor=(.5, -.32))
 save(fig, 'repeat.png')
 a = g[run1[g.index]].set_index('count').fboost - np.polyval(co, g[run1[g.index]].set_index('count').U)
 r5 = g[g.run == '2026-10-10T00-29-42Z'].set_index('count')
@@ -148,12 +162,15 @@ for i, b in enumerate(BOARDS):
     a, u = data[i]
     g_, o_ = p[4 + 2 * i:6 + 2 * i]
     ax.plot(a, (u - o_) / g_ - a, '.', color=COL[b], ms=4, label='%s, after its own gain/offset' % b)
-xs = np.linspace(amin - 300, amax + 300, 400)
-ax.plot(xs, dfun(p[:4], xs), 'k-', lw=2, label='universal correction d(mV), tapered to 0 outside the fit range')
-ax.axvspan(amin, amax, color='0.9', zorder=0)
-ax.set(xlabel='ADC pin voltage [mV]', ylabel='correction [mV at the pin]',
-       title='The universal correction: Legendre P2..P5, no gain or offset of its own')
-ax.grid(alpha=.3); ax.legend(fontsize=8)
+xs = np.linspace(amin, amax, 400)
+ax.plot(xs, dfun(p[:4], xs), 'k-', lw=2, label='universal correction d (fitted range)')
+for lo_, hi_ in ((amin - 300, amin), (amax, amax + 300)):
+    xt = np.linspace(lo_, hi_, 60); ax.plot(xt, dfun(p[:4], xt), 'k--', lw=1.2)
+ax.plot([], [], 'k--', lw=1.2, label='taper to 0 (not measured)')
+ax.axvspan(amin, amax, color='0.92', zorder=0); ax.axhline(0, color='k', lw=.6)
+ax.set(xlabel='IDF-reported pin voltage a [mV]', ylabel='correction [mV at the pin]',
+       title='The universal correction: Legendre P2..P5, no gain/offset term over the fit range')
+ax.grid(alpha=.3); ax.legend(fontsize=8, loc='lower center', ncol=2, bbox_to_anchor=(.5, -.35))
 save(fig, 'correction.png')
 
 # ---------------------------------------------------------------- 6. after correction, cross-board
@@ -171,12 +188,18 @@ for hold, ax in zip((0, 1), axs):
     e_line = line_resid(a, u) * K / 1e3 * -1
     out['xfer'][BOARDS[hold]] = (BOARDS[other], rms(e_line) * 1e3, abs(e_line).max() * 1e3,
                                  rms(e_cal) * 1e3, abs(e_cal).max() * 1e3)
-    ax.plot(U, e_line * 1e3, '.', color='0.65', ms=4,
-            label='gain + offset only: rms %.0f mV' % (rms(e_line) * 1e3))
-    ax.plot(U, e_cal * 1e3, '.', color=COL[BOARDS[hold]], ms=4,
-            label="%s's curve + 2-point cal at 25/65 V: rms %.0f mV" % (BOARDS[other], rms(e_cal) * 1e3))
-    ax.set_ylabel('%s error [mV]' % BOARDS[hold]); ax.grid(alpha=.3); ax.legend(fontsize=8)
-axs[0].set_title("Corrected with the OTHER board's curve and a two-point calibration")
+    ax.plot(U, e_line * 1e3, '.', color='0.78', ms=3,
+            label='gain + offset only: rms %.0f, peak %.0f mV' % (rms(e_line) * 1e3, abs(e_line).max() * 1e3))
+    ax.plot(U, e_cal * 1e3, '.', color=COL[BOARDS[hold]], ms=5,
+            label="%s's curve + 2-point cal: rms %.0f, peak %.0f mV" % (
+                BOARDS[other], rms(e_cal) * 1e3, abs(e_cal).max() * 1e3))
+    for v in (25, 65): ax.axvline(v, color='0.5', lw=.8, ls=':')
+    k = np.abs(e_cal).argmax()
+    ax.annotate('%.0f mV at %.1f V' % (e_cal[k] * 1e3, U[k]), (U[k], e_cal[k] * 1e3), fontsize=8,
+                xytext=(-80, -25 if e_cal[k] < 0 else 15), textcoords='offset points', arrowprops=dict(arrowstyle='-', lw=.6))
+    ax.axhline(0, color='k', lw=.6); ax.set_ylim(-250, 250)
+    ax.set_ylabel('%s error [mV]' % BOARDS[hold]); ax.grid(alpha=.3); ax.legend(fontsize=8, loc='upper left')
+axs[0].set_title("Corrected with the OTHER board's curve and a two-point calibration (dotted: 25/65 V)")
 axs[1].set_xlabel('node voltage [V]')
 save(fig, 'after.png')
 
@@ -195,7 +218,7 @@ def idf_err(v):
 def adc_cal(b):
     rows = [l.split() for l in open(os.path.join(HERE, 'data/adc-cal-%s.txt' % b))
             if l.startswith('ADCCAL 3 ')]
-    return np.array([(float(r[3]), float(r[5])) for r in rows])   # mv_idf, curve_mv
+    return np.array([(float(r[3]), float(r[4]), float(r[5])) for r in rows])   # mv_idf, first_step, curve
 
 
 v1 = np.linspace(0, 3420, 800)
@@ -204,27 +227,30 @@ idf_curve = -idf_err(v1)                                 # what IDF adds to the 
 inr = (mv >= amin) & (mv <= amax)
 idf_nl = idf_curve - np.polyval(np.polyfit(mv[inr], idf_curve[inr], 1), mv)
 ours = dfun(p[:4], mv)
-out['idf'] = {b: np.abs(adc_cal(b)[:, 1] - np.interp(adc_cal(b)[:, 0], mv, idf_curve)).max() for b in BOARDS}
+# compare at the first-step value IDF evaluates its polynomial at (the residue is IDF's integer math)
+out['idf'] = {b: np.abs(adc_cal(b)[:, 2] + idf_err(adc_cal(b)[:, 1])).max() for b in BOARDS}
 out['idf_nl'] = [(f[inr].min(), f[inr].max()) for f in (idf_nl, ours, idf_nl + ours)]
 
-fig, axs = plt.subplots(2, 1, figsize=(9, 7.5), sharex=True)
+fig, axs = plt.subplots(2, 1, figsize=(9, 8))
 ax = axs[0]
 ax.plot(mv, idf_curve, '-', color='C0', lw=1.5, label="IDF's fixed curve (same for every ESP32-S3)")
 for b, mk in zip(BOARDS, ('o', 'x')):
     t = adc_cal(b)
-    ax.plot(t[:, 0], t[:, 1], mk, color=COL[b], ms=6, mfc='none', label='read back with adc-cal from %s' % b)
+    ax.plot(t[:, 0], t[:, 2], mk, color=COL[b], ms=6, mfc='none', label='read back with adc-cal from %s' % b)
 ax.plot(mv, ours, 'k-', lw=2, label='our universal correction')
-ax.axvspan(amin, amax, color='0.92', zorder=0)
-ax.set(ylabel='correction added [mV at the pin]',
+ax.axvspan(amin, amax, color='0.92', zorder=0, label='range our correction was fitted on')
+ax.axhline(0, color='k', lw=.6)
+ax.set(xlabel='IDF output [mV at the pin]', ylabel='correction added [mV at the pin]',
        title='12 dB: the correction IDF applies, and ours on top of it')
 ax.grid(alpha=.3); ax.legend(fontsize=8, loc='lower left')
 ax = axs[1]
-m = (mv >= amin - 150) & (mv <= amax + 150)
-ax.plot(mv[m], idf_nl[m], '-', color='C0', lw=1.5, label="IDF's curve, gain/offset removed over the measured range")
+m = inr
+ax.plot(mv[m], idf_nl[m], '-', color='C0', lw=1.5, label="IDF's curve minus its best line over this range")
 ax.plot(mv[m], ours[m], 'k-', lw=2, label='our universal correction')
-ax.plot(mv[m], idf_nl[m] + ours[m], '--', color='C2', lw=1.5, label='total that these chips need (IDF + ours)')
-ax.axvspan(amin, amax, color='0.92', zorder=0)
-ax.set(xlabel='ADC pin voltage (IDF output) [mV]', ylabel='curvature [mV at the pin]')
+ax.plot(mv[m], idf_nl[m] + ours[m], '--', color='C2', lw=1.5, label='IDF + ours (gain/offset terms excluded)')
+ax.axhline(0, color='k', lw=.6); ax.set_ylim(-32, 12); ax.set_xlim(amin, amax)
+ax.set(xlabel='IDF output [mV at the pin], fitted range only', ylabel='curvature [mV at the pin]',
+       title='Zoom on the fitted range, straight-line part removed')
 ax.grid(alpha=.3); ax.legend(fontsize=8, loc='lower left')
 save(fig, 'idf-curve.png')
 
