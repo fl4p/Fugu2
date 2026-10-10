@@ -187,12 +187,17 @@ together with that board's gain and offset.
 To calibrate a board:
 
 1. Set `esp32adc1_inl=1` and run the new firmware.
-2. Hold the node at two voltages, about 25 V and 65 V, against a trusted reference. Two rungs
-   of a plan like `ina228-u-4ref-dense` are enough.
-3. Fit `gain` and `offset` from the two points and write `hv_v_gain` / `hv_v_offset` (or the
-   `lv_v_` keys if the ADC1 channel is on the LV side).
+2. Sweep the node in 2 V rungs over 16.5–73.4 V against a trusted reference (one up pass,
+   ~29 rungs, about 20 min).
+3. Fit `gain` and `offset` to all rungs, minimizing the worst rung error, and write `hv_v_gain` /
+   `hv_v_offset` (or the `lv_v_` keys if the ADC1 channel is on the LV side). pwr-metering's
+   `esp32-adc-gaincal.py` does the fit.
 
-Measured on the new firmware with the correction on (2026-10-10): 60 s holds at 25 V and 65 V via
+Two points are the minimum, but each one can land on a peak of the residual, and the result
+moves by tens of mV with the choice. Ten rungs are not enough either: fitting ten of the check
+run's rungs gave worst errors from 80 to 98 mV over all of them, depending on which ten.
+
+The first calibration used two points. Measured on the new firmware with the correction on (2026-10-10): 60 s holds at 25 V and 65 V via
 the converter's own voltage regulation, medians against `BLE_ESP32_INA228_2`; a 45 V hold as the
 check point; written to both boards and verified after a restart at 35 V and 55 V.
 
@@ -220,6 +225,20 @@ pattern repeats between the up and down passes to about 12 mV, so most of the 40
 repeatable residual, not noise. Above 73.4 V the correction fades out and the two boards drift
 apart in opposite directions (fboost −95 mV, fmetal +135 mV at 76.5 V).
 
+fboost was then recalibrated from that run's 58 rungs with the minimax fit: `hv_v_gain`
+0.973867, `hv_v_offset` +0.6917 V. A second run with the same ladder six hours later (run
+`2026-10-10T20-50-53Z`, also in `check.csv`) scores both key sets. fmetal's MCU had died by
+then, so this is fboost only:
+
+| fboost, run 2, 16.5–73.4 V | rms | max |
+|---|---|---|
+| two-point keys (0.973903 / +0.6714 V) | 47 mV | 108 mV |
+| minimax keys (0.973867 / +0.6917 V) | **37 mV** | **90 mV** |
+
+The fit on run 1 predicted 67 mV max. The residual pattern repeated (correlation 0.94 between
+the runs), but fboost's gain moved by −250 ppm between them, −22 mV at 72 V, and that drift
+lands on the worst rung at 72.5 V.
+
 ## Limits and open questions
 
 - Only two chips, both measured the same way: each board has its own 200k/7.5k divider into ch3.
@@ -236,6 +255,17 @@ apart in opposite directions (fboost −95 mV, fmetal +135 mV at 76.5 V).
 - The ~35 mV floor (degree-5 residual) repeated between runs over 16.5–43.5 V. If it is an
   operating-point effect, removing it would take a correction indexed by operating point instead
   of voltage; that is untested.
+- That floor is mostly fine structure specific to each chip, so no shared correction can remove
+  it. A finer table (10–40 mV steps at the pin) fitted on the 0.5 V dense runs, scored on the
+  later check run, brought a board to about 24 mV rms and 47–50 mV max when built from that
+  board's own data. Built from the other board alone, it left the error at 34–42 mV rms and
+  63–88 mV max, no better than no table. Removing the floor would take a per-board table and a
+  dense sweep per board.
+- Gain drift: fboost's gain moved −250 ppm between two runs six hours apart on the same day
+  (−22 mV at 72 V, with the small offset shift). That drift is the same size as what a better
+  gain/offset fit gains, so a worst-case error much below ~90 mV is not reachable by calibration
+  alone. The cause is not known. The rig was in other use for about an hour before the second
+  run, so temperature (divider TCR, ADC reference) is a candidate; none of it was measured.
 - fboost's float16 telemetry quantizes at 31 mV between 32 and 64 V. With medians over
   30–60 readings per rung this adds a bias of at most half a step: small next to the floor, but
   not zero.
