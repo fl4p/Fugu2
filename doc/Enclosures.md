@@ -1,8 +1,7 @@
 # Enclosures
 
 Research compiled 2026-09-01; revised after an independent adversarial review (see
-[Review history](#review-history)). Interactive version with product thumbnails and the full
-source access log: <https://claude.ai/code/artifact/3c4034ef-3341-4ffa-90db-1a4f90d8812d>
+[Review history](#review-history)).
 
 Scope: a housing for the Fugu2 board (**50.0 × 88.0 mm**, Edge.Cuts bbox from `Fugu2.kicad_pcb`)
 dissipating **~20 W** (`README.md`), currently screwed to an **AK-EL83-160** heatsink
@@ -152,8 +151,9 @@ reports contain zero occurrences of `glow wire`, `60695` or `needle flame`.
 independent review surfaced (a) a 62109-1&2 test report that appears to carry a
 `Glow-wire test (type test)` row, and (b) standards-catalogue listings placing **IEC 60695-2-11**
 among 62109-1's normative references. I could not confirm either: that report's host returns
-`Unauthorized Request Blocked` at HTTP 200 and redirects to a WAF page in a real browser, and the
-standard is paywalled. **Do not rely on "62109-1 never uses glow wire."**
+`Unauthorized Request Blocked` at HTTP 200 and redirects to a WAF page in a headless browser
+(highest rung tried: 4; headed Chrome and the real-Chrome rung **not yet tried — climb open**), and
+the standard is paywalled. **Do not rely on "62109-1 never uses glow wire."**
 
 **Practical consequence when shopping, which is unaffected:** German/EU enclosure catalogues (Bopla,
 Spelsberg, Fibox, Hensel) lead with glow-wire numbers like "GWFI 960 °C" because their volume market
@@ -360,11 +360,11 @@ solid, offset floor under anything that can drip.
    Needs the §0 equal-operating-point test.
 4. **VX 22 capacity** — 12 W mains rating vs ~20 W dissipation (§1). Needs measurement.
 5. **PCB laminate flammability class** — `Fugu2.kicad_pcb` records only `"FR4"` (§2).
-6. **Glow-wire route in 62109-1** — `unverified`, primary blocked (§2).
+6. **Glow-wire route in 62109-1** — `unverified`, WAF climb open at rung 4 (§2).
 7. **Declared gap:** IEC 62109-1:2010 cl. **9.1.3.2**, the material-class table for the fire
    enclosure itself, is not reproduced in any obtained TRF. The standard is paywalled; the identical
    Vietnamese adoption (TCVN 12231-1:2018) is login-gated; a third report that may expand it is
-   WAF-blocked. No boundary was circumvented. If an exact class is needed before committing to a
+   behind a WAF (climb open at rung 4). No boundary was circumvented. If an exact class is needed before committing to a
    plastic housing, buy the standard or ask a notified body.
 
 ---
@@ -412,7 +412,7 @@ discharges it.
 
 ## Review history
 
-- **2026-09-01, initial compilation.** Sources and access log in the artifact linked at the top.
+- **2026-09-01, initial compilation.** Sources listed below.
 - **2026-09-01, independent adversarial review** by an external model (`codex exec`), given the
   repo and nine numbered attack targets. Twelve findings returned; each was re-verified against
   primary sources before being applied. Accepted and fixed: the output rating (§ header), the
@@ -421,7 +421,7 @@ discharges it.
   (§2), sag-test framing (§3), **the Hammond KHD/NHD fit error (§4)**, missing thermal qualification
   (§4), the Takachi price attribution (§4), and the insulation-system discussion (§5). Downgraded
   rather than fixed: the glow-wire claim (§2) — the review's evidence was search-snippet level and
-  the primary is WAF-blocked, so the claim is now marked `unverified` in both directions. Upheld
+  the primary is behind a WAF (climb open at rung 4), so the claim is now marked `unverified` in both directions. Upheld
   under challenge: LVD scope via the input rating, the shared-condition-block arithmetic
   (38 %, 10 °C), UL 94 ↔ glow-wire non-convertibility, `20/12 = 1.67`, the Takachi AWA12-7-12SS
   plan fit, the transcription of the filament temperatures, and the price-summary arithmetic.
@@ -429,9 +429,6 @@ discharges it.
   (§4) and the absence of any published Fischer Rth.
 
 ## Sources
-
-Full access log with evidence state, retrieval route and validation per source:
-<https://claude.ai/code/artifact/3c4034ef-3341-4ffa-90db-1a4f90d8812d>
 
 - Directive 2014/35/EU (LVD), CELEX:32014L0035 — Art. 1, Annex I.
 - IEC 62109-1 clause text as reproduced in TRF `IEC62109_1B` in three published CB/TÜV reports
