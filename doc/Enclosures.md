@@ -173,7 +173,7 @@ earlier revision said 62109-1 uses UL 94 classes and no glow wire. That was wron
 - **Access record for the isuna report:** blocked at every rung. The rungs were curl, headless
   browser, headed scratch Chrome, and your own Chrome. The PEA WAF also blocks the site's home page
   from this connection, so this is an IP-level block, and it was not bypassed. The quotes above come
-  from the search index (rung 6).
+  from the search index (rung 6). **Waived by Fab on 2026-10-10**, so the report itself stays unread.
 
 **Practical consequence when shopping, which is unaffected:** German/EU enclosure catalogues (Bopla,
 Spelsberg, Fibox, Hensel) lead with glow-wire numbers like "GWFI 960 °C" because their volume market
