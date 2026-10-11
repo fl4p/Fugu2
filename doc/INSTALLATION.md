@@ -1,20 +1,44 @@
 # Fugu2 installation
 
-> **DRAFT, 2026-10-11. Not yet a product document.** The EMC study agreed the content, but the
-> items marked **OPEN** are undecided. A test lab reads port types from the documentation that
-> accompanies the product, so the port declarations below count only once the OPEN items are
-> decided and this text ships with the product. Background:
-> `pv/ee/dcdc-tools/emc/DECLARATIONS-fugu2.md` (the declarations Fab accepted on 2026-09-07) and
-> `STANDARD-BASIS.md` §8.0a (no conducted DC-port test, decided 2026-10-11).
+> **DRAFT, revised 2026-10-11 after two independent reviews. Not yet a product document.** The
+> items marked **OPEN** are undecided, and several are safety questions. A test lab reads port
+> types from the documentation that accompanies the product, so the port declarations below count
+> only once the OPEN items are decided and this text ships with the product. Background, in the
+> private `pv/ee/dcdc-tools` repository: `emc/DECLARATIONS-fugu2.md` (the declarations Fab
+> accepted on 2026-09-07) and `emc/STANDARD-BASIS.md` §8.0a (no conducted DC-port test, decided
+> 2026-10-11, with an accepted residual risk on the battery port).
 
 ## Intended use
 
 Fugu2 is a solar charge controller for stand-alone (off-grid) battery systems. It charges a
-battery from a photovoltaic (PV) array.
+battery from a photovoltaic (PV) array. Power flows from the PV input to the battery output.
 
+- It is for fixed installation, wall-mounted with the power terminals facing down.
 - It is intended for residential, commercial and light-industrial environments.
-- It must not be connected to the public mains, directly or through any converter.
-- It is not a grid-tie inverter and not part of a grid-connected system.
+- It is not a grid-connected power converter: it does not feed or draw power from an AC mains
+  network itself. It may be part of a system whose battery is also charged by other equipment,
+  such as an inverter-charger.
+- Boost operation with the terminals swapped (described in `README.md`) is not an intended use
+  of the shipped product. OPEN: reconcile the README.
+
+## Ratings
+
+| Quantity | Value | Source |
+|---|---|---|
+| PV input voltage | 12–80 V | `README.md` |
+| PV open-circuit voltage, maximum at the lowest ambient temperature | OPEN | must not exceed what F3 can interrupt (see the fuse note below) |
+| PV short-circuit current, maximum | OPEN | must stay below F3's 25 A with derating |
+| Battery voltage | 12–60 V (LiFePO4 4S–16S) | `README.md` |
+| Output current, maximum | 32 A | `README.md` |
+| Terminal wire range and tightening torque, J9 and J10 | OPEN | Würth 691256610002 datasheet |
+| Operating temperature range | OPEN | |
+
+**Fuse note (OPEN, safety).** F3 on the PV input is a 25 A, **58 V** blade fuse (Littelfuse
+0997 series, 1 kA interrupting rating at 58 V DC). The PV input is specified up to 80 V. F3 was
+sized for boost mode (`doc/HV Fuse.md`), where the battery is the source. On the PV side, a fault
+with an array whose open-circuit voltage exceeds 58 V asks F3 to interrupt more than its rated
+voltage. F3 is not a PV-rated (gPV) overcurrent device. Decide the maximum array Voc and Isc, and
+fit a fuse rated for them, before this document allows any PV voltage above 58 V.
 
 ## Ports and cabling
 
@@ -22,19 +46,39 @@ Connect each port only as listed, and keep each cable within its maximum length:
 
 | Port | Connector | On-board fuse | Connect to | Do not connect to | Max. cable length |
 |---|---|---|---|---|---|
-| PV input | J10, 2-pole terminal block | F3, 25 A (Solar+) | one PV array (a string, or strings in parallel) on its own cable | any other source; a DC distribution bus | **29 m** |
-| Battery | J9, 2-pole terminal block | F1, 40 A (BT+) | **the battery terminals, or the battery's own fuse or disconnect, with a dedicated cable that serves only Fugu2** | a DC distribution busbar; loads; an inverter input; another charger's output | **2 m** |
-| External comms | J5, JST-PH 4-pin, VE.Direct pinout | none | a VE.Direct cable, or the Fugu RS-485 or CAN adapter | anything else (the port has no hardware protection against a wrong adapter) | **< 3 m** (OPEN, see below) |
-| USB | on the MCU head | none | a computer, for configuration and firmware updates | n/a | **< 3 m** (OPEN, see below) |
+| PV input | J10, 2-pole terminal block (T_HV+, BuckGND) | F3, 25 A, 58 V, in T_HV+ | one PV array (a string, or strings in parallel within the Isc limit) on its own cable | any other source; a DC distribution bus; earth (see Grounding) | **29 m** |
+| Battery | J9, 2-pole terminal block (BT+, GND) | F1, 40 A, in BT+ (voltage rating OPEN) | the battery's system side, **through a fuse at the battery end**, with a dedicated cable that serves only Fugu2: positive after the battery fuse and the BMS disconnect; negative after the BMS disconnect and any battery shunt | a DC distribution busbar; loads; an inverter input; another charger's output; the raw cell terminals of a battery whose BMS or shunt is separate | **2 m** |
+| External comms | J5, JST-PH 4-pin, VE.Direct pinout | none | a VE.Direct cable (OPEN: the Fugu RS-485 and CAN adapters are not built yet) | any other device: pin 4 (+3.3 V) has no short-circuit or back-feed protection | **< 3 m** (OPEN, see below) |
+| USB | P2, USB-C on the main board | none | a computer, for configuration and firmware updates. P2 is also a power input (Vusb) | a USB charger used as a supply during operation (OPEN) | **< 3 m** (OPEN, see below) |
 
-The battery port is intended solely for connection to a battery or other local DC power source.
+The battery port is intended solely for connection to a battery or other local DC power source,
+through the dedicated connection described in the table.
+
+### Grounding
+
+PV negative (BuckGND) and battery negative (GND) are separate terminals. Inside Fugu2 they are
+joined only through the current-sense shunt R26 (0.5 mΩ), and Fugu2 is not isolated.
+
+- Never connect PV negative to battery negative, or to earth, outside Fugu2. Any external link
+  bypasses the current measurement used for regulation and protection.
+- Earth the system at one point only, at the battery negative.
+- Do not earth either PV conductor.
+- J5 and P2 are referenced to battery negative and are not isolated. A computer or device whose
+  ground is earthed elsewhere creates a second earth connection. OPEN: decide whether to require
+  an isolated USB link or an unearthed laptop.
+- Heatsink and enclosure potential: OPEN (see Assembly requirements).
 
 ### Wiring rules
 
-- Run the positive and negative conductors of each power port together, twisted or bundled
-  tightly, over the whole cable length.
-- Fuse the battery cable at the battery end. F1 protects Fugu2, but it sits at the far end of
-  the cable from the battery, so it can't protect the cable itself. Rating: OPEN.
+- Run the positive and negative conductors of each power port together, bundled tightly over the
+  whole cable length, and twisted where practical.
+- Connect the battery before the PV array, and disconnect the PV array before the battery.
+  OPEN: confirm that this order suits Fugu2's input circuit.
+- Fuse the battery cable at the battery end with a fuse rated for the battery's DC voltage and
+  prospective short-circuit current (for example Class T or MEGA), sized to the cable. F1
+  protects Fugu2, but it sits at the far end of the cable from the battery, so it can't protect
+  the cable itself.
+- Check polarity before connecting. A reversed battery is cleared only by F1.
 - Connect loads and inverters to the battery or its distribution system, never to Fugu2's
   battery terminals.
 
@@ -45,47 +89,66 @@ statement above, the standard it serves, and what it changes:
 
 | Statement | Standard it serves | Effect |
 |---|---|---|
-| Off-grid; never connected to the public mains | EN 55011:2016+A1 §6.2.1.1 and §8.2.2.2.1 | Only grid-connected power converters have DC-port limits, so Fugu2 has none under the harmonised edition (`STANDARD-BASIS.md` §8.0). |
-| Residential, commercial, light industrial | EN 61000-6-3:2007+A1:2011 | Selects the class B generic emission standard, as Victron's SmartSolar DoCs do. |
-| Battery: dedicated cable to the battery, serving only Fugu2 | IEC 61000-6-3 §3.8 NOTE | The NOTE keeps a battery link out of the "DC power network" definition only *"if such a link comprises only power supply for a single piece of equipment"*. A cable that lands on a busbar shared with an inverter doesn't meet that condition. |
-| Battery: 2 m | EN 301 489-1 V2.2.3 §8.3.1 (> 3 m); EN 61000-6-3 Table 3 note (> 30 m); CISPR 11 ed 6.2+ (`L < 3 m`) | Removes the "local battery" branch of every route. |
-| Battery: "intended solely for connection to a battery or other local DC power source" | CISPR 11 §8.2.2.2.1 battery exemption | Gives a second route if a later CISPR 11 edition is cited. |
-| PV: one array on its own cable | IEC 61000-6-3 §3.8 | A dedicated PV string is not a site supply network. |
-| PV: 29 m | CISPR 11 ed 6.2+ cable-length table; EVVO lab practice applies the 30 m note to PV ports too | Limits the conducted band to ≥ 2.07 MHz if a later edition applies. The value sits below 30 m on purpose, because the inequality is strict. |
+| Not a grid-connected power converter | EN 55011:2016+A1 §6.2.1.1 and §8.2.2.2.1 (read from Fab's DRM copy; quoted in `STANDARD-BASIS.md` §8.0) | Only grid-connected power converters have DC-port limits, so Fugu2 has none under the harmonised edition. |
+| Fixed installation | EN 301 489-1 V2.2.3 §8.3.1 ("radio equipment and ancillary equipment for fixed use") | Places the DC-port clause's applicability question on the cable and network conditions below. |
+| Residential, commercial, light industrial | EN 61000-6-3:2007+A1:2011 | Selects the class B generic emission standard, as Victron's SmartSolar DoCs do. Immunity is a separate choice: Victron's 2025 DoC pairs this with EN 61000-6-2:2019 (industrial immunity). OPEN: choose the immunity standard. |
+| Battery: dedicated cable that serves only Fugu2 | IEC 61000-6-3:2006 §3.8 NOTE (§3.1.8 in the 2011 edition, same text) | **Supports, but does not settle,** the reading that the battery link is not a "DC power network". The NOTE excludes a battery link *"if such a link comprises only power supply for a single piece of equipment"*. The battery still feeds the inverter and loads, so a lab may classify the battery bus as a DC power network and test the port at any cable length. That is the accepted residual risk of `STANDARD-BASIS.md` §8.0a; OPEN 1 lists the hardware alternative. |
+| Battery: 2 m | EN 301 489-1 V2.2.3 §8.3.1 (> 3 m); EN 61000-6-3 Table 3 note (cable exceeding 30 m); CISPR 11 Table 6 (`L < 3 m`) | Removes the "local battery" length branch of each route. It does not affect the DC-power-network branch. |
+| Battery: "intended solely for connection to a battery or other local DC power source" | CISPR 11 §8.2.2.2.1 battery exemption | Gives a second route if a later CISPR 11 edition is cited. It must stay true in every document, including the README (see Intended use). |
+| PV: one array on its own cable | IEC 61000-6-3 §3.8 | A dedicated PV string is plausibly not a site supply network. This is an interpretation; no clause names PV strings. |
+| PV: 29 m | CISPR 11 Table 6 (`3 m ≤ L < 30 m`); EVVO report BL-SZ19B0347-401 skips DC-port emissions for cables shorter than 30 m | Limits the conducted band to ≥ 2.07 MHz (60/29) if CISPR 11 ed 6.2 or later applies. Exactly 30 m would restore the full band. |
 | PV: 29 m (immunity side effect) | EN 301 489-1 §9.4, §9.5 | The PV port **is** tested for fast transients and RF common-mode immunity, because its cable may exceed 3 m. The battery port at 2 m is not. |
-| Comms and USB < 3 m | EN 301 489-1 V2.2.3 §9.4 (fast transients) and §9.5 (RF common mode): *"performed on signal ports, wired network ports, control ports, and DC power ports … if the cables may be longer than 3 m"* | The lab skips these immunity tests on ports declared < 3 m and records which ports it skipped. CAN and RS-485 to a local BMS are signal ports, not "wired network ports" (§3.1: CATV, PSTN, LAN …), so §8.7's conducted emission test does not apply to them. |
-| Twisted power pairs | none (design choice) | Reduces the loop area that radiates. Radiated emissions still apply on every route, and that's where the margin is tightest. |
+| Comms and USB < 3 m | EN 301 489-1 V2.2.3 §9.4 (fast transients) and §9.5 (RF common mode): *"performed on signal ports, wired network ports, control ports, and DC power ports … if the cables may be longer than 3 m"* | The lab skips these immunity tests on ports declared < 3 m and records which ports it skipped. ESD (§9.3) still applies to the exposed connectors. |
+| J5 classification | EN 301 489-1 V2.2.3 §3.1 ("wired network port" interconnects widely dispersed systems) | A short link to a local BMS is a signal port. A CAN or RS-485 bus that interconnects dispersed systems may be a wired network port, which brings §8.7's conducted emission test with no 3 m exemption. The classification depends on the declared topology, not on the protocol. |
+| Bundled power pairs | none (design choice) | Reduces the loop area that radiates. Radiated emissions still apply on every route, and that's where the margin is tightest. |
 
 ## OPEN: decisions needed before this ships
 
-1. **Can installers really give the battery a dedicated cable?** It is a real installation
-   constraint, because most off-grid systems land everything on one busbar. If the constraint is
-   not acceptable, delete the battery row's "dedicated cable" wording and design the battery port
-   to meet EN 61000-6-3 Table 3. In simulation, a Chemi-Con EKZN101ELL102MM40S as C10 passes by
-   about 2.4 dB, and the fitted Rubycon ZLH fails by about 4.3 dB
-   (`emc/RESULTS-batport-20261010.md`).
-2. **External comms cable length.** CAN and RS-485 are bus cables and often run longer than 3 m.
-   Allowing a longer cable adds the §9.4 and §9.5 immunity tests on J5. It adds no emission test,
-   because these are signal ports, not wired network ports. Decide the maximum length per adapter,
-   or state that the adapter's pigtail and bus are a separate product.
-3. **USB.** Is the USB port on the MCU head reachable when the unit is installed? If it is for
-   factory or service use only, say so; the port may then not need a cable-length declaration.
-4. **Battery-end fuse rating** and recommended cable cross-sections for J9 and J10. One option
-   to weigh: rate the battery-end fuse above F1's 40 A, so that F1 opens first on a fault inside
-   Fugu2, and within the cable's current rating.
-5. **Where this text lives.** A lab reads it only if it ships with the product: as a printed
-   sheet, in the manual, or on the product page linked from the DoC.
+1. **Battery port: wording or hardware.** The dedicated-cable wording narrows the argument but
+   doesn't remove the risk that a lab treats the battery bus as a DC power network (see the
+   design table). Installers with a Lynx-type distributor or a shunt-based system also need a
+   landing point that the table permits. The robust alternative is hardware: design the battery
+   port to meet EN 61000-6-3 Table 3. In simulation, a Chemi-Con EKZN101ELL102MM40S as C10 passes
+   by about 2.4 dB and the fitted Rubycon ZLH fails by about 4.3 dB
+   (`emc/RESULTS-batport-20261010.md`; the KZN figure uses an ESL borrowed from same-size
+   sibling models).
+2. **PV fuse and PV limits.** Maximum array Voc and Isc, a fuse rated for them, and
+   string-fusing guidance for three or more parallel strings.
+3. **F1 voltage rating.** F1 is specified only as 40 A. Standard ATO fuses are rated 32 V,
+   below a 16S LiFePO4 battery. Specify a part rated for the maximum battery voltage.
+4. **Battery-end fuse coordination.** A larger rating alone doesn't make F1 open first. If
+   selectivity is wanted, verify it from both fuses' characteristics and the prospective fault
+   current.
+5. **External comms.** Which adapters ship, the topology and cable length each supports, and whether a remote device must share Fugu2's
+   battery negative.
+6. **USB.** Whether P2 stays installer-accessible, the earthing condition for the host, and
+   whether the MCU head's USB-C ships at all (`plans/ext-comms-port.md` Q14 calls it a
+   development and service port).
+7. **Immunity standard.** EN 61000-6-1 or EN 61000-6-2.
+8. **Remaining ratings and safety content.** The empty rows of the ratings table,
+   disconnection instructions, and the other installation content that IEC/EN 62109-1 §5.3
+   requires.
+9. **Lab test specification.** A separate controlled document for the lab: operating modes
+   (for example 72 V in, 27 V out, 32 A, BLE active), ancillary equipment, functional monitoring
+   and thermal limits (EN 301 489-1 Annex C).
+10. **Delivery.** IEC 62109-1 §5.3.1.2 generally requires the safety instructions on paper with
+    the product. A product-page link alone does not meet that.
 
 ## Assembly requirements (for `doc/Assembly.md`)
 
-These two items are build rules, not installer instructions. They are recorded here until
+These items are build rules, not installer instructions. They are recorded here until
 `doc/Assembly.md` carries them.
 
-The H1 mounting screw is the only path from the heatsink to BuckGND. It must be a metal M3
-screw, with no insulating washer. A nylon screw or shoulder washer moves the conducted
-common-mode result from the bonded column to the floating one (`emc/DECLARATIONS-fugu2.md`,
-Declaration C).
+**Heatsink path: OPEN, do not act on it yet.** The heatsink reaches BuckGND only through the H1
+mounting screw. On the PCB at HEAD, H1 lands on `Net-(C14-Pad2)`, and C14 (1 µF, 100 V, X7S) in
+parallel with R17 (200 kΩ) connects that net to BuckGND. The EMC study's "as built" board has a
+0 Ω bridge at C14 instead. Its conducted results (`emc/RESULTS-av-rescore-20260930.md`):
+as built, −6.62 dB vs the AV limit, common-mode limited at 16.38 MHz; with a nylon screw (no
+path), −7.36 dB. A nylon screw is therefore not worse for conducted emissions. The study's
+build constraints say no heatsink rule should be acted on until the screw path is extracted or
+measured. Record which C14 fitting ships, and whether the heatsink contact face is bare metal.
 
-The off-board coil connects to J3 (SW) and J6 (L_out) with solder wires. If the coil sits outside
-the enclosure, those leads become a port carrying the switch node. Keep the coil inside the
-enclosure, with the leads as short as practical.
+**Off-board coil.** The coil connects to J3 (switch node, net `SW`) and J6 (coil output, net
+`BflowS`) with solder wires. If the coil sat outside the enclosure, those leads would be a port
+carrying the switch node. Keep the coil inside the enclosure, with the leads as short as
+practical.
