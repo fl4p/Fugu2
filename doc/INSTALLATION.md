@@ -45,12 +45,12 @@ Connect each port only as listed, and keep each cable within its maximum length:
 | Port | Connector | On-board fuse | Connect to | Do not connect to | Max. cable length |
 |---|---|---|---|---|---|
 | PV input | J10, 2-pole terminal block (T_HV+, BuckGND) | F3, 25 A, 58 V, in T_HV+: for boost operation only, not a PV protection device | one PV array (a string, or strings in parallel within the Isc rating) on its own cable | any other source; a DC distribution bus; earth (see Grounding) | **29 m** |
-| Battery | J9, 2-pole terminal block (BT+, GND) | F1, 40 A, in BT+ (voltage rating OPEN) | the battery's system side, **through a fuse at the battery end**, with a dedicated cable that serves only Fugu2: positive after the battery fuse and the BMS disconnect; negative after the BMS disconnect and any battery shunt | a DC distribution busbar; loads; an inverter input; another charger's output; the raw cell terminals of a battery whose BMS or shunt is separate | **2 m** |
+| Battery | J9, 2-pole terminal block (BT+, GND) | F1, 40 A, in BT+ (voltage rating OPEN) | the battery's system side, **through a fuse at the battery end**: positive after the battery fuse and the BMS disconnect; negative after the BMS disconnect and any battery shunt. A fused output of a DC distributor is fine | the raw cell terminals of a battery whose BMS or shunt is separate; a load or inverter wired to Fugu2's terminals; another charger's output | **2 m** |
 | External comms | J5, JST-PH 4-pin, VE.Direct pinout | none | a VE.Direct cable (OPEN: the Fugu RS-485 and CAN adapters are not built yet) | any other device: pin 4 (+3.3 V) has no short-circuit or back-feed protection | **< 3 m** (OPEN, see below) |
 | USB | P2, USB-C on the main board | none | a computer, for configuration and firmware updates. P2 is also a power input (Vusb) | a USB charger used as a supply during operation (OPEN) | **< 3 m** (OPEN, see below) |
 
 The battery port is intended solely for connection to a battery or other local DC power source,
-through the dedicated connection described in the table.
+as described in the table.
 
 ### Grounding
 
@@ -90,7 +90,7 @@ statement above, the standard it serves, and what it changes:
 | Not a grid-connected power converter | EN 55011:2016+A1 §6.2.1.1 and §8.2.2.2.1 (read from Fab's DRM copy; quoted in `STANDARD-BASIS.md` §8.0) | Only grid-connected power converters have DC-port limits, so Fugu2 has none under the harmonised edition. |
 | Fixed installation | EN 301 489-1 V2.2.3 §8.3.1 ("radio equipment and ancillary equipment for fixed use") | Places the DC-port clause's applicability question on the cable and network conditions below. |
 | Residential, commercial, light industrial | EN 61000-6-3:2007+A1:2011 | Selects the class B generic emission standard, as Victron's SmartSolar DoCs do. Immunity is a separate choice. **Decided (Fab, 2026-10-11): EN 61000-6-2:2019 (industrial immunity)**, the pairing in Victron's 2025 DoC. |
-| Battery: dedicated cable that serves only Fugu2 | IEC 61000-6-3:2006 §3.8 NOTE (§3.1.8 in the 2011 edition, same text) | **Supports, but does not settle,** the reading that the battery link is not a "DC power network". The NOTE excludes a battery link *"if such a link comprises only power supply for a single piece of equipment"*. The battery still feeds the inverter and loads, so a lab may classify the battery bus as a DC power network and test the port at any cable length. That is the accepted residual risk of `STANDARD-BASIS.md` §8.0a; OPEN 1 lists the hardware alternative. |
+| Battery port designed to pass, not argued out of the test | EN 61000-6-3 Table 3 (DC power port, class B); IEC 61000-6-3:2006 §3.8 NOTE (§3.1.8 in the 2011 edition) | **Decided 2026-10-11 (Fab): C10 is the Chemi-Con EKZN101ELL102MM40S**, the part the PCB already specifies. In simulation it passes the Table 3 AV limit by about 2.4 dB at the rated operating point (`emc/RESULTS-batport-20261010.md`; ESL borrowed from same-size KZN models). A lab may still classify the battery bus as a DC power network, because the battery also feeds the inverter and loads (the NOTE excludes a battery link only *"if such a link comprises only power supply for a single piece of equipment"*). If it does, the port is tested and is designed to pass, so the manual needs no dedicated-cable rule. |
 | Battery: 2 m | EN 301 489-1 V2.2.3 §8.3.1 (> 3 m); EN 61000-6-3 Table 3 note (cable exceeding 30 m); CISPR 11 Table 6 (`L < 3 m`) | Removes the "local battery" length branch of each route. It does not affect the DC-power-network branch. |
 | Battery: "intended solely for connection to a battery or other local DC power source" | CISPR 11 §8.2.2.2.1 battery exemption | Gives a second route if a later CISPR 11 edition is cited. It must stay true in every document, including the README (see Intended use). |
 | PV: one array on its own cable | IEC 61000-6-3 §3.8 | A dedicated PV string is plausibly not a site supply network. This is an interpretation; no clause names PV strings. |
@@ -102,14 +102,10 @@ statement above, the standard it serves, and what it changes:
 
 ## OPEN: decisions needed before this ships
 
-1. **Battery port: wording or hardware.** The dedicated-cable wording narrows the argument but
-   doesn't remove the risk that a lab treats the battery bus as a DC power network (see the
-   design table). Installers with a Lynx-type distributor or a shunt-based system also need a
-   landing point that the table permits. The robust alternative is hardware: design the battery
-   port to meet EN 61000-6-3 Table 3. In simulation, a Chemi-Con EKZN101ELL102MM40S as C10 passes
-   by about 2.4 dB and the fitted Rubycon ZLH fails by about 4.3 dB
-   (`emc/RESULTS-batport-20261010.md`; the KZN figure uses an ESL borrowed from same-size
-   sibling models).
+1. **Battery port: decided 2026-10-11, hardware.** C10 is the Chemi-Con EKZN101ELL102MM40S
+   (simulated −2.4 dB against Table 3 AV; the bench board's Rubycon ZLH fails by about 4.3 dB).
+   Still open: confirm that the 40 mm can fits the enclosure, and measure the margin on the bench
+   once the part is fitted. The simulated margin uses an ESL borrowed from same-size KZN models.
 2. **PV limits.** Maximum array Voc (at the lowest ambient temperature) and Isc. No PV fuse is
    required (decided 2026-10-11).
 3. **F1 voltage rating.** F1 is specified only as 40 A. Standard ATO fuses are rated 32 V,
