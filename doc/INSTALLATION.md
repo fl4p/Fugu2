@@ -91,7 +91,7 @@ statement above, the standard it serves, and what it changes:
 |---|---|---|
 | Not a grid-connected power converter | EN 55011:2016+A1 §6.2.1.1 and §8.2.2.2.1 (read from Fab's DRM copy; quoted in `STANDARD-BASIS.md` §8.0) | Only grid-connected power converters have DC-port limits, so Fugu2 has none under the harmonised edition. |
 | Fixed installation | EN 301 489-1 V2.2.3 §8.3.1 ("radio equipment and ancillary equipment for fixed use") | Places the DC-port clause's applicability question on the cable and network conditions below. |
-| Residential, commercial, light industrial | EN 61000-6-3:2007+A1:2011 | Selects the class B generic emission standard, as Victron's SmartSolar DoCs do. Immunity is a separate choice: Victron's 2025 DoC pairs this with EN 61000-6-2:2019 (industrial immunity). OPEN: choose the immunity standard. |
+| Residential, commercial, light industrial | EN 61000-6-3:2007+A1:2011 | Selects the class B generic emission standard, as Victron's SmartSolar DoCs do. Immunity is a separate choice. **Decided (Fab, 2026-10-11): EN 61000-6-2:2019 (industrial immunity)**, the pairing in Victron's 2025 DoC. |
 | Battery: dedicated cable that serves only Fugu2 | IEC 61000-6-3:2006 §3.8 NOTE (§3.1.8 in the 2011 edition, same text) | **Supports, but does not settle,** the reading that the battery link is not a "DC power network". The NOTE excludes a battery link *"if such a link comprises only power supply for a single piece of equipment"*. The battery still feeds the inverter and loads, so a lab may classify the battery bus as a DC power network and test the port at any cable length. That is the accepted residual risk of `STANDARD-BASIS.md` §8.0a; OPEN 1 lists the hardware alternative. |
 | Battery: 2 m | EN 301 489-1 V2.2.3 §8.3.1 (> 3 m); EN 61000-6-3 Table 3 note (cable exceeding 30 m); CISPR 11 Table 6 (`L < 3 m`) | Removes the "local battery" length branch of each route. It does not affect the DC-power-network branch. |
 | Battery: "intended solely for connection to a battery or other local DC power source" | CISPR 11 §8.2.2.2.1 battery exemption | Gives a second route if a later CISPR 11 edition is cited. It must stay true in every document, including the README (see Intended use). |
@@ -124,7 +124,8 @@ statement above, the standard it serves, and what it changes:
 6. **USB.** Whether P2 stays installer-accessible, the earthing condition for the host, and
    whether the MCU head's USB-C ships at all (`plans/ext-comms-port.md` Q14 calls it a
    development and service port).
-7. **Immunity standard.** EN 61000-6-1 or EN 61000-6-2.
+7. **Immunity standard.** Decided 2026-10-11: EN 61000-6-2:2019. Its industrial test levels are
+   not yet checked against Fugu2's design.
 8. **Remaining ratings and safety content.** The empty rows of the ratings table,
    disconnection instructions, and the other installation content that IEC/EN 62109-1 §5.3
    requires.
