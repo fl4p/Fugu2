@@ -31,8 +31,11 @@ Heat sink: 100x100x18mm aluminium
 
 ## 2026-10-11: Q3 screw short, ESP32 dead
 
-- The Q3 (HS) mounting screw touched copper on the front side. Bench PSU, 1.1 A current limit.
-- Result: ESP32 dead. Gate driver U1 is not yet checked.
+- About 20:16, while seating an HS-tab TMP117, the Q3 (HS) mounting screw touched copper on
+  the front side. Vin was about 70 V from a bench PSU with a 1.1 A current limit.
+- Result: ESP32 dead, and D1-A is shorted to GND (D1/R5/R7 are not fitted). With Vin on,
+  housekeeping draws about 2 W into the fault. Gate driver U1 is not yet checked.
+- Board: Fugu2 pcbway-order-2024-10.
 - Cause: the screw is at Solar+ through the metal tab. On the front side, the screw head
   covers U1's input-side pads, measured from the hole centre:
   - U1.4 GNDI: 2.60 mm
@@ -43,9 +46,10 @@ Heat sink: 100x100x18mm aluminium
 
   An M3 head has about a 2.75 mm radius and a washer about 3.5 mm, so it reaches all of these.
   Which pad was actually hit has not been confirmed. Look for a mask scratch or burn mark.
-- 1.1 A is far beyond what any pin clamp can take, and DZ1 (SM2T3V3A) cannot clamp a DC source.
-- To check or replace: U2 ESP32, U1 (replace even if it still switches), DZ1 (likely failed
-  short), R1, C2, and the rest of the +3.3V rail (U5 AP3012, U6 AS333, U7, U8, D2 WS2812B).
+- 1.1 A is far beyond what any pin clamp can take. DZ1 (SM2T3V3A, 3.3 V TVS) is not fitted on
+  flu, so nothing clamped the 3.3 V rail.
+- Before Vin goes back on: replace the ESP32, fit DZ1 and inspect the 3.3 V rail.
+- To check or replace: U2 ESP32, U1 (replace even if it still switches), the D1-A short, R1, C2, and the rest of the +3.3V rail (U5 AP3012, U6 AS333, U7, U8, D2 WS2812B).
 - Mitigation: insulate the Q1 and Q3 screws with a shoulder washer under the head. Next layout:
   move U1 out from under the screw head and keep copper at least about 4 mm from the hole
   centre on both layers.
