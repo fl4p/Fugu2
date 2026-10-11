@@ -26,19 +26,17 @@ battery from a photovoltaic (PV) array. Power flows from the PV input to the bat
 | Quantity | Value | Source |
 |---|---|---|
 | PV input voltage | 12–80 V | `README.md` |
-| PV open-circuit voltage, maximum at the lowest ambient temperature | OPEN | must not exceed what F3 can interrupt (see the fuse note below) |
-| PV short-circuit current, maximum | OPEN | must stay below F3's 25 A with derating |
+| PV open-circuit voltage, maximum at the lowest ambient temperature | OPEN | |
+| PV short-circuit current, maximum | OPEN | Victron specifies this rating for SmartSolar |
 | Battery voltage | 12–60 V (LiFePO4 4S–16S) | `README.md` |
 | Output current, maximum | 32 A | `README.md` |
 | Terminal wire range and tightening torque, J9 and J10 | OPEN | Würth 691256610002 datasheet |
 | Operating temperature range | OPEN | |
 
-**Fuse note (OPEN, safety).** F3 on the PV input is a 25 A, **58 V** blade fuse (Littelfuse
-0997 series, 1 kA interrupting rating at 58 V DC). The PV input is specified up to 80 V. F3 was
-sized for boost mode (`doc/HV Fuse.md`), where the battery is the source. On the PV side, a fault
-with an array whose open-circuit voltage exceeds 58 V asks F3 to interrupt more than its rated
-voltage. F3 is not a PV-rated (gPV) overcurrent device. Decide the maximum array Voc and Isc, and
-fit a fuse rated for them, before this document allows any PV voltage above 58 V.
+**PV fuse.** The PV input needs no fuse for PV operation (Fab, 2026-10-11): a PV array is a
+current-limited source, and Victron's SmartSolar has no PV fuse either. F3 (25 A, 58 V) exists
+only for boost operation, where the battery sits at the PV terminals (`doc/HV Fuse.md`). Boost is
+not an intended use of the shipped product (see Intended use).
 
 ## Ports and cabling
 
@@ -46,7 +44,7 @@ Connect each port only as listed, and keep each cable within its maximum length:
 
 | Port | Connector | On-board fuse | Connect to | Do not connect to | Max. cable length |
 |---|---|---|---|---|---|
-| PV input | J10, 2-pole terminal block (T_HV+, BuckGND) | F3, 25 A, 58 V, in T_HV+ | one PV array (a string, or strings in parallel within the Isc limit) on its own cable | any other source; a DC distribution bus; earth (see Grounding) | **29 m** |
+| PV input | J10, 2-pole terminal block (T_HV+, BuckGND) | F3, 25 A, 58 V, in T_HV+: for boost operation only, not a PV protection device | one PV array (a string, or strings in parallel within the Isc rating) on its own cable | any other source; a DC distribution bus; earth (see Grounding) | **29 m** |
 | Battery | J9, 2-pole terminal block (BT+, GND) | F1, 40 A, in BT+ (voltage rating OPEN) | the battery's system side, **through a fuse at the battery end**, with a dedicated cable that serves only Fugu2: positive after the battery fuse and the BMS disconnect; negative after the BMS disconnect and any battery shunt | a DC distribution busbar; loads; an inverter input; another charger's output; the raw cell terminals of a battery whose BMS or shunt is separate | **2 m** |
 | External comms | J5, JST-PH 4-pin, VE.Direct pinout | none | a VE.Direct cable (OPEN: the Fugu RS-485 and CAN adapters are not built yet) | any other device: pin 4 (+3.3 V) has no short-circuit or back-feed protection | **< 3 m** (OPEN, see below) |
 | USB | P2, USB-C on the main board | none | a computer, for configuration and firmware updates. P2 is also a power input (Vusb) | a USB charger used as a supply during operation (OPEN) | **< 3 m** (OPEN, see below) |
@@ -112,8 +110,8 @@ statement above, the standard it serves, and what it changes:
    by about 2.4 dB and the fitted Rubycon ZLH fails by about 4.3 dB
    (`emc/RESULTS-batport-20261010.md`; the KZN figure uses an ESL borrowed from same-size
    sibling models).
-2. **PV fuse and PV limits.** Maximum array Voc and Isc, a fuse rated for them, and
-   string-fusing guidance for three or more parallel strings.
+2. **PV limits.** Maximum array Voc (at the lowest ambient temperature) and Isc. No PV fuse is
+   required (decided 2026-10-11).
 3. **F1 voltage rating.** F1 is specified only as 40 A. Standard ATO fuses are rated 32 V,
    below a 16S LiFePO4 battery. Specify a part rated for the maximum battery voltage.
 4. **Battery-end fuse coordination.** A larger rating alone doesn't make F1 open first. If
