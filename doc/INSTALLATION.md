@@ -106,7 +106,9 @@ statement above, the standard it serves, and what it changes:
    (simulated −2.4 dB against Table 3 AV; the bench board's Rubycon ZLH fails by about 4.3 dB).
    The 40 mm can fits the enclosure (Fab, 2026-10-12). Still open: measure the margin on the bench
    once the part is fitted (`emc/BENCH-j9-batport-c10.md` in `dcdc-tools`). The simulated margin
-   uses an ESL borrowed from same-size KZN models.
+   uses an ESL borrowed from same-size KZN models. It also assumes a 50 µH coil; a powder-core coil whose
+   inductance falls well below that at 32 A raises the battery-port line and can erase the margin.
+   Decide which coil ships.
 2. **PV limits.** Maximum array Voc (at the lowest ambient temperature) and Isc. No PV fuse is
    required (decided 2026-10-11).
 3. **F1 voltage rating.** F1 is specified only as 40 A. Standard ATO fuses are rated 32 V,
