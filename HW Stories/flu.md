@@ -34,7 +34,11 @@ Heat sink: 100x100x18mm aluminium
 - About 20:16, while seating an HS-tab TMP117, the Q3 (HS) mounting screw touched copper on
   the front side. Vin was about 70 V from a bench PSU with a 1.1 A current limit.
 - Result: ESP32 dead, and D1-A is shorted to GND (D1/R5/R7 are not fitted). With Vin on,
-  housekeeping draws about 2 W into the fault. Gate driver U1 is not yet checked.
+  housekeeping draws about 2 W into the fault. Gate driver U1 was dead too.
+- 2026-10-12, USB only: the S3 at MAC 18:8b:0e:fb:40:78 enumerates, and esptool connects. The
+  module reports 2 MB embedded PSRAM (the schematic lists WROOM-1-N4). Flash ID is 0x5e/0x4016
+  (4 MB), but it reads all 0xFF at 0x0, 0x8000 and 0x10000. The ROM loops on
+  `invalid header: 0xffffffff` with TG0WDT resets.
 - Board: Fugu2 pcbway-order-2024-10.
 - Cause: the screw is at Solar+ through the metal tab. On the front side, the screw head
   covers U1's input-side pads, measured from the hole centre:
