@@ -219,7 +219,17 @@ withdrawn. What can be said:
 
 This is the **best-established quantity in the document**, and it is a cost.
 *(Strictly it should use `R·D_ch·(I_out² + ΔI_pp²/12)`; the draft assumes negligible ripple.
-Excluding the two 185 ns diode intervals from LV channel conduction removes ~9 mW cold.)*
+Excluding the two dead-time diode intervals from LV channel conduction removes ~9 mW cold
+at 185 ns, ~14 mW at the as-built 297 ns.)*
+
+> **Dead time: 297 ns, not 185 ns — corrected 2026-10-12.** Earlier revisions took
+> R1 = 20 kΩ from the schematic, giving `8.6×20+13` = 185 ns. The board carries
+> **R1 = 33 kΩ → 297 ns**, per the as-built attestation in
+> `~/dev/pv/ee/dcdc-tools/loss/examples/ftall.yaml` (`tdead: 297e-9`, Fab 2026-08-11); the
+> schematic is stale. Nothing in this document's conclusions turns on it — the affected
+> term is a ~5–14 mW correction to LV conduction — but the figure itself was wrong.
+> See `doc/PV Input Bank (and a retracted J10 spec).md` §2 on why schematic fields are
+> not a source for as-built facts.
 
 ### Unresolved
 
@@ -240,7 +250,7 @@ Excluding the two 185 ns diode intervals from LV channel conduction removes ~9 m
 - **Baseline dead-time V_sd:** 0.75 V was an assumption. The HV 25 °C curve gives ≈0.81 V
   at 32 A → **≈376 mW**, about 30 mW above rev. 1's 346 mW. Hot operation changes it again.
 - Two dead-time intervals per cycle **is** correct for positive-current CCM, though actual
-  diode-conduction durations need measuring rather than assuming the full 185 ns.
+  diode-conduction durations need measuring rather than assuming the full dead time.
 
 > **Bottom line: the efficiency penalty is real and roughly 0.4–0.65 W from series
 > conduction alone, but the complete "−0.3 to −0.5 W" figure is withdrawn and the sign of
@@ -468,7 +478,7 @@ Matched loaded / double-pulse measurements, per the canonical procedure at
 
 1. **LS branch current** — the primary signal.
 2. **Both gate voltages**, to establish actual channel non-overlap and the real
-   diode-conduction interval (not the programmed 185 ns).
+   diode-conduction interval (not the programmed dead time).
 3. **Commutation slope** `di/dt`, measured rather than assumed from `Vin/L_loop`.
 4. **SW node voltage**, ≥500 MHz probe, ground spring, no ground lead.
 

@@ -323,24 +323,40 @@ the point of step 4.
 >   about whether it counts as a filter on the device is therefore **much cheaper
 >   than it looked**: nominally it buys almost nothing, and it is insurance against
 >   a hypothesis this model rejects.
-> ### ⚠ A SNUBBER IS ALREADY FITTED — added 2026-10-12, from the PCB netlist
+> ### ✅ NO SNUBBER IS FITTED — the lever rows below are genuine additions
 >
-> `SW ─ R11 (7.5 Ω) ─ C8 (2.2 nF) ─ BuckGND`. Verified in `Fugu2.kicad_pcb`; C8 was
-> previously mistaken for an input-bank capacitor. See
-> `doc/PV Input Bank (and a retracted J10 spec).md` §2.
+> *Earlier on 2026-10-12 this block claimed the opposite. **Retracted the same day**, by
+> Fab: "I think we never used snubbers." He is right, and it is written down.*
 >
-> **So every "+ LS RC snubber" row below is a RE-TUNE, not an addition.** If the deck's
-> "the board that exists" baseline does not already contain R11/C8, the lever is being
-> **double-counted** and the baseline is wrong. Someone with the deck needs to check this.
+> `R11` (7.5 Ω) and `C8` (2.2 nF) exist as a snubber **footprint** across SW —
+> `SW ─ R11 ─ C8 ─ BuckGND` in `Fugu2.kicad_pcb` — and they are **not populated**.
+> `~/dev/pv/ee/dcdc-tools/loss/examples/ftall.yaml` (the as-built deck for this board)
+> declares `board_as_built.snubber.fitted: false`, attested by Fab **2026-08-11**, and its
+> header lists this exact trap: *"R11 + C8 RC snubber — .sch dnp=no, i.e. fitted; board:
+> NOT populated."*
 >
-> The fitted values sit outside both candidates: 7.5 Ω is **2.2×** the matched
-> Z₀ = 3.37 Ω and **5×** the 1.5 Ω this model prefers, while 2.2 nF is **less than half**
-> the modelled 4.7 nF — over-damped and under-capacitanced. C8's dielectric is also
-> unconfirmed (schematic says *"maybe C0G?"*); if it is X7S its value at 72 V bias is well
-> below 2.2 nF.
+> **The PCB netlist proves topology, not population.** It is authoritative for nets, pads
+> and footprints — that is how the pin-vs-tab drain question was settled — and silent on
+> what is actually on the board. The schematic's `dnp` flag is not authoritative either:
+> it reads *fitted* here and is wrong. Only the as-built attestation answers this.
 >
-> Note also that the `Rs = Z₀` recommendation relayed to channel `emc` on 2026-10-11 was
-> made without knowing R11 existed.
+> So **every "+ LS RC snubber" row below is a real addition and the lever is not
+> double-counted.** The baseline is correct as it stands.
+>
+> Two things worth keeping from the false alarm:
+>
+> - **The measurement cannot tell the two boards apart.** A fitted 7.5 Ω / 2.2 nF snubber
+>   presents a 7.78 Ω equivalent shunt and predicts ring **Q ≈ 3.9** against a measured
+>   **3.94** — so the bench data is nearly degenerate between snubbed and unsnubbed, and
+>   agreement with it is *not* evidence of either. `ftall.yaml` records that this is what
+>   made the wrong version persuasive the first time it was made.
+> - **If a snubber is ever fitted, C8's part is C0G**, not the X7S its `Value` text says:
+>   `C0805C222K2GEC7800`, 200 V, confirmed in `doc/reviews/2026-09-30-schematic/PowerStage.md:18`.
+>   The schematic's *"maybe C0G?"* is resolved. No dc-bias derating applies.
+>
+> The `Rs = Z₀` recommendation relayed to channel `emc` on 2026-10-11 is wrong for a
+> different reason, below: `Rs = 1.5 Ω` beats it by 3–6 dB, and since `P_snub = Cs·Vin²·fsw`
+> is independent of `Rs`, the under-damping costs nothing.
 >
 > - **The snubber is the lever that works, and `Rs = 1.5 Ω` beats `Rs = Z₀`.**
 >   Rs = Z₀ = 3.4 Ω / 4.7 nF gives −6.9/−11.7/−5.2/−2.7 dB and leaves the worst

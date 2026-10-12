@@ -48,29 +48,58 @@ and a description reading "hand-assembled"; they **are** fitted.
 
 ---
 
-## 2. ⚠ There is already an RC snubber on this board
+## 2. The snubber footprint across SW is NOT populated
 
 ```
-SW ── R11 (7.5 Ω) ── C8 (2.2 nF) ── BuckGND
+SW ── R11 (7.5 Ω) ── C8 (2.2 nF) ── BuckGND      ← footprint only, not fitted
 ```
 
-Verified from the PCB netlist. This matters well beyond this file:
+> **⚠ Retraction, 2026-10-12.** This section first claimed *"there is already an RC snubber
+> on this board"*, read off the PCB netlist plus the schematic `dnp` flag. **Both are the
+> wrong source for that question.** Fab: *"I think we never used snubbers."*
 
-- `doc/EMI Precompliance.md` ranks "**+ LS RC snubber** 1.5 Ω / 4.7 nF" as the lever that
-  takes the worst radiated band to a pass. **That is a re-tune of an existing snubber, not
-  an addition.** Whether the deck's "the board that exists" baseline already contains
-  R11/C8 needs checking — if it does not, the lever is being double-counted.
-- The fitted 7.5 Ω is **2.2× above** the matched Z₀ = 3.37 Ω and **5× above** the 1.5 Ω the
-  radiated model prefers, and 2.2 nF is **less than half** the modelled 4.7 nF. So the
-  board is snubbed, but over-damped and under-capacitanced relative to both candidates.
-- An earlier session (this one) recommended `Rs = Z₀ = 3.37 Ω` on channel `emc` without
-  knowing a 7.5 Ω resistor was already fitted. That advice was given blind.
-- C8's schematic description reads *"maybe C0G?"* — the dielectric is **unconfirmed**. If
-  it is X7S rather than C0G, its capacitance at 72 V bias is well below 2.2 nF, and the
-  snubber is weaker still.
+**The authority is the as-built attestation**, `~/dev/pv/ee/dcdc-tools/loss/examples/ftall.yaml`:
 
-**Action: relay this to whoever picks up the radiated deck.** Both decks currently have no
-live owner.
+```yaml
+board_as_built:
+  attested: 2026-08-11        # Fab, from the board. The schematic is stale.
+  snubber:
+    fitted: false
+    other_snubbers: none fitted (no gate snubbers, no diode snubbers)
+```
+
+Its header lists three places the schematic is stale, and this is one of them:
+
+| | schematic says | board is |
+|---|---|---|
+| HS / LS parts | IPA050N10NM5S / IPP022N12NM6 | IPP050N10NF2S ×2 / IPP039N10N5 ×2 |
+| R1 (UCC dead time) | 20 kΩ → 185 ns | **33 kΩ → 297 ns** |
+| R11 + C8 snubber | `dnp=no`, i.e. fitted | **NOT populated** |
+
+**What each source is good for:**
+
+- the **PCB netlist** is authoritative for *topology* — nets, pads, footprints — and says
+  nothing about population. R11/C8 are wired as a snubber; that is all it establishes.
+- the schematic **`dnp` flag** is not authoritative for population either. Here it reads
+  *fitted* and is wrong. Nor is the `MPN` field (§1: C11/C12/C34 read `MPN = DNP` and
+  **are** fitted). The two fields disagree in opposite directions on the same board.
+- only the **as-built YAML / `HW Stories`** answer "is it on the board?"
+
+**Consequences:**
+
+- `doc/EMI Precompliance.md`'s "+ LS RC snubber" rows are **genuine additions, not
+  re-tunes.** The lever is not double-counted and the baseline stands.
+- **The bench data cannot distinguish the two cases.** A fitted 7.5 Ω / 2.2 nF snubber is a
+  7.78 Ω equivalent shunt predicting ring **Q ≈ 3.9** against a measured **3.94**.
+  `ftall.yaml` records that this near-degeneracy is exactly what made the wrong version
+  persuasive the first time — matching the measurement is not evidence here.
+- **C8's dielectric question is resolved** should a snubber ever be fitted:
+  `C0805C222K2GEC7800` is 200 V **C0G**, per
+  `doc/reviews/2026-09-30-schematic/PowerStage.md:18`. The `Value` text saying X7S and the
+  description saying *"maybe C0G?"* are both stale. No dc-bias derating applies.
+- The only Fugu build where a snubber part appears is the old **Fugu Metal**
+  (`HW Stories/Fugu Metal/README.md:41`) — a different power stage (IR2184, TK6R8A08QM),
+  not this board.
 
 ---
 
@@ -141,9 +170,12 @@ the hardware to run it is not on the bench.
 
 ## 5. Open
 
-- Whether the radiated deck's baseline includes R11/C8 (§2). **Decides whether its snubber
-  lever is real or double-counted.**
-- C8's dielectric — `maybe C0G?` is not a part number (§2).
+- ~~Whether the radiated deck's baseline includes R11/C8.~~ **CLOSED 2026-10-12** (§2): no
+  snubber is fitted, so the deck's unsnubbed baseline is right and the lever is real.
+- ~~C8's dielectric.~~ **CLOSED** (§2): `C0805C222K2GEC7800`, 200 V C0G.
+- **Stale schematic fields are a standing hazard, not a closed item** (§2): `dnp` and `MPN`
+  disagree in opposite directions on this board. Any claim about what is fitted needs the
+  as-built YAML or `HW Stories`, never the `.kicad_sch`.
 - Whether the powered plan's read-out can be affected by F3's impedance.
 - The powered measurement itself: `dcdc-tools/emc/BENCH-j10-dm-voltage.md`. Note it sweeps
   30–70 MHz, while the worst radiated band is **90–110 MHz**, which neither plan covers.
