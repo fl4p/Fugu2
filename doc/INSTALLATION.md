@@ -111,8 +111,10 @@ statement above, the standard it serves, and what it changes:
    the ripple: the KZN alone then fails by about 3 dB and runs about 33 % over its ripple rating.
    Simulated with that coil (2026-10-12, `emc/RESULTS-batport-20261010.md` §1d): one KZN fails by
    2.98 dB; **two KZN in parallel pass by 3.18 dB** (about 2.5 dB at the rated point), each at
-   about two-thirds of its ripple rating. Output MLCCs do not help this line. Open: a second
-   C10 position on the PCB, or a coil that holds its inductance (e.g. two stacked cores).
+   about two-thirds of its ripple rating. Output MLCCs do not help this line. Alternatively one
+   KZN with the coil wound on two stacked KS184-125A cores passes: 17 / 16 / 15 turns give
+   −3.38 / −2.94 / −2.46 dB (about −2.7 / −2.2 / −1.8 dB at the rated point). Open: choose a
+   second C10 position or the stacked-core coil.
 2. **PV limits.** Maximum array Voc (at the lowest ambient temperature) and Isc. No PV fuse is
    required (decided 2026-10-11).
 3. **F1 voltage rating.** F1 is specified only as 40 A. Standard ATO fuses are rated 32 V,
