@@ -109,8 +109,10 @@ statement above, the standard it serves, and what it changes:
    uses an ESL borrowed from same-size KZN models. It also assumes a 50 µH coil. The shipped coil (KDM
    KS184-125A, 17 turns) is about 25.6 µH at 32 A by its datasheet bias law, which roughly doubles
    the ripple: the KZN alone then fails by about 3 dB and runs about 33 % over its ripple rating.
-   **Reopened:** the battery port needs a coil that holds its inductance, more output capacitance,
-   or both.
+   Simulated with that coil (2026-10-12, `emc/RESULTS-batport-20261010.md` §1d): one KZN fails by
+   2.98 dB; **two KZN in parallel pass by 3.18 dB** (about 2.5 dB at the rated point), each at
+   about two-thirds of its ripple rating. Output MLCCs do not help this line. Open: a second
+   C10 position on the PCB, or a coil that holds its inductance (e.g. two stacked cores).
 2. **PV limits.** Maximum array Voc (at the lowest ambient temperature) and Isc. No PV fuse is
    required (decided 2026-10-11).
 3. **F1 voltage rating.** F1 is specified only as 40 A. Standard ATO fuses are rated 32 V,
