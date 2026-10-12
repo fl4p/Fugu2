@@ -104,8 +104,9 @@ statement above, the standard it serves, and what it changes:
 
 1. **Battery port: decided 2026-10-11, hardware.** C10 is the Chemi-Con EKZN101ELL102MM40S
    (simulated −2.4 dB against Table 3 AV; the bench board's Rubycon ZLH fails by about 4.3 dB).
-   Still open: confirm that the 40 mm can fits the enclosure, and measure the margin on the bench
-   once the part is fitted. The simulated margin uses an ESL borrowed from same-size KZN models.
+   The 40 mm can fits the enclosure (Fab, 2026-10-12). Still open: measure the margin on the bench
+   once the part is fitted (`emc/BENCH-j9-batport-c10.md` in `dcdc-tools`). The simulated margin
+   uses an ESL borrowed from same-size KZN models.
 2. **PV limits.** Maximum array Voc (at the lowest ambient temperature) and Isc. No PV fuse is
    required (decided 2026-10-11).
 3. **F1 voltage rating.** F1 is specified only as 40 A. Standard ATO fuses are rated 32 V,
