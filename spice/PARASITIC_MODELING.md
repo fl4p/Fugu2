@@ -36,6 +36,26 @@ snubber (board C8) is for **EMI + margin, not survival**.
 
 ## 1. Layout reconnaissance (the first surprise)
 
+> **RETRACTED 2026-10-10 — this section's central claim is false.** The
+> half-bridge is **TO-220**, not SMD, and always has been. Verified against both
+> the working copy and `HEAD` of `Fugu2.kicad_pcb`:
+>
+> | Ref | Footprint | Role |
+> |---|---|---|
+> | Q1, Q3 | `TO-220-3_Horizontal_BottomHeatsink_SmallHole` | HS pair |
+> | Q2 | `TO-220-3_Horizontal_BottomHeatsink_NoHole` | LS |
+> | D9 | same, **DNP** | LS Schottky, unpopulated |
+> | Q5, Q6, Q7 | `Infineon_PG-TDSON-8_FL` | **backflow blocking**, `TPH1R306PL` |
+>
+> The three PG-TDSON-8 parts are the backflow switches, not the half-bridge. The
+> README was right and this section was wrong — the inverse of the "Finding"
+> below. **Consequence:** the ~4 nH source common-source inductance of a TO-220 is
+> genuinely in the commutation loop, so the 9.2 nH decomposition in
+> doc/"No-Coil SW Ring (Bench vs SPICE).md" (~4 nH copper + ~1 nH drain tab +
+> ~4 nH source CSI) stands, and going SMD remains an *available* lever rather than
+> one already taken. The D9/D16-DNP line and the ceramics-placement line below are
+> unaffected and still correct.
+
 The README says "TO-220 switches," but the actual v2.3 layout (`pcbnew` on
 `Fugu2.kicad_pcb`) uses **SMD Infineon PG-TDSON-8** footprints on B.Cu:
 - HS = **Q1 ‖ Q3** (Solar+ → SW), LS = **Q2** (SW → BuckGND), all bottom-layer.

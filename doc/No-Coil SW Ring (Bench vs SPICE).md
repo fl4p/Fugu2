@@ -39,6 +39,23 @@ Key cross-checks from having two operating points:
 Devices: LS `IPP024N08NF2S`, HS `2× IPP055N08NF2S` (StrongIRFET 80 V), Rg = 15 Ω, no gate
 discharge diode.
 
+**Which physical board (reconstructed 2026-10-10, not recorded at measurement time).** The
+board was not written down and is not remembered. Every board in `HW Stories/` carries a
+distinct FET set, and this one matches exactly one: **`fetlib.md` "testboard1"** — *"HS: 2p
+IPP055 / LS: IPP024 (no external diode)"*. The absent LS diode corroborates the D9-DNP body-diode
+freewheel used throughout this study, so the identification rests on two independent
+details rather than one. Unconfirmed from the board side: **Rg = 15 Ω** does not appear in
+`fetlib.md`, and "testboard1" may have been a FET-swap vehicle rather than a numbered
+build — though the Cin-bank composition work in §4 needs a populated Cin bank, so it was
+not a bare jig. Treat the ±14 V Cin-composition spread as specific to this one assembly.
+
+The near-miss boards, for the record: `fheat2` has the same HS pair but an `IPP022N12NM6`
+LS at Rg = 4.7 Ω; `fwhite` has `IPP055` + `IPP024` as the *HS* pair after a swap. Neither
+fits. And the `IPP050N10NF2S` / `IPP039N10N5` set annotated *"THE PART ACTUALLY FITTED,
+confirmed by Fab 2026-08-11"* in `pwr-mosfet-lib/dslib/coss_curves.py` is **`ftall`**
+(`ftall.md:6-7`) — a different board. That retires the long-standing FET-identity conflict
+instead of deciding it: both annotations were accurate about the hardware in front of them.
+
 ## What the sim first said, and why it was wrong
 
 The first LTspice model (Infineon `_L0` vendor models, no-coil deck) predicted a **105 V
