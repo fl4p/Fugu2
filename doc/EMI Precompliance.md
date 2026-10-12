@@ -323,6 +323,25 @@ the point of step 4.
 >   about whether it counts as a filter on the device is therefore **much cheaper
 >   than it looked**: nominally it buys almost nothing, and it is insurance against
 >   a hypothesis this model rejects.
+> ### ⚠ A SNUBBER IS ALREADY FITTED — added 2026-10-12, from the PCB netlist
+>
+> `SW ─ R11 (7.5 Ω) ─ C8 (2.2 nF) ─ BuckGND`. Verified in `Fugu2.kicad_pcb`; C8 was
+> previously mistaken for an input-bank capacitor. See
+> `doc/PV Input Bank (and a retracted J10 spec).md` §2.
+>
+> **So every "+ LS RC snubber" row below is a RE-TUNE, not an addition.** If the deck's
+> "the board that exists" baseline does not already contain R11/C8, the lever is being
+> **double-counted** and the baseline is wrong. Someone with the deck needs to check this.
+>
+> The fitted values sit outside both candidates: 7.5 Ω is **2.2×** the matched
+> Z₀ = 3.37 Ω and **5×** the 1.5 Ω this model prefers, while 2.2 nF is **less than half**
+> the modelled 4.7 nF — over-damped and under-capacitanced. C8's dielectric is also
+> unconfirmed (schematic says *"maybe C0G?"*); if it is X7S its value at 72 V bias is well
+> below 2.2 nF.
+>
+> Note also that the `Rs = Z₀` recommendation relayed to channel `emc` on 2026-10-11 was
+> made without knowing R11 existed.
+>
 > - **The snubber is the lever that works, and `Rs = 1.5 Ω` beats `Rs = Z₀`.**
 >   Rs = Z₀ = 3.4 Ω / 4.7 nF gives −6.9/−11.7/−5.2/−2.7 dB and leaves the worst
 >   band still **+1.1 dB over**; Rs = 1.5 Ω / 4.7 nF gives −10.4/−17.2/−10.1/−6.9
