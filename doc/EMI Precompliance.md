@@ -95,15 +95,32 @@ length of cable … 2 m"*, and the **PV port at 29 m**. The interpretation is
 as a settled length rule would be wrong in both directions: a longer cable does
 not break it, and a short one does not secure it.
 
-**The declarations are drafted but not adopted.** `DECLARATIONS-fugu2.md` calls
-them *"accepted, correct, and homeless"*, but a home now exists in draft —
-`emc/INSTALLATION-INSTRUCTIONS-fugu2.md` (commit `36abe9c`), which carries both
-sentences verbatim along with the BC-1..3 build constraints and the radio
-conditions. Its own status line is *"draft text, not a product document yet."*
-So the open item is **adopt and ship it**, not "no document exists" — an earlier
-version of this paragraph said the latter, which was already out of date when
-written. It still matters: a declaration that reaches no installer is not a
-declaration, and the conducted relief leans on these two sentences.
+**The declarations are adopted and in the product repo — checked 2026-10-12.**
+`DECLARATIONS-fugu2.md` once called them *"accepted, correct, and homeless"*.
+They are not homeless: **`Fugu2 doc/INSTALLATION.md`** (commit `2b7a7e8`, 154
+lines) carries both sentences in the Ports-and-cabling table — **PV 29 m,
+battery 2 m** — with the connector, fuse, connect-to and do-not-connect-to
+columns, the bundling instruction, and the rationale table citing EN 55011
+§6.2.1.1 and EN 301 489-1 §8.3.1. No `PLACEHOLDER` remains in it.
+
+This paragraph has now been wrong twice in opposite directions: first *"no
+document exists"*, then *"drafted but not adopted"*, pointing at the `dcdc-tools`
+draft (`emc/INSTALLATION-INSTRUCTIONS-fugu2.md`, `36abe9c`) while the adopted
+product version already sat in this repo's own `doc/` directory.
+
+**What actually blocks shipping it** is the file's own *"OPEN: decisions needed
+before this ships"* list — eight items, of which only two touch EMC:
+
+| # | item | EMC? |
+|---|---|---|
+| 1 | **Battery port C10 — decided 2026-10-11, reopened 2026-10-12 by the coil.** The shipped KDM KS184-125A is ~25.6 µH at 32 A against the 50 µH the sim assumed, roughly doubling ripple; the KZN then fails Table 3 AV by ~3 dB and runs ~33 % over its ripple rating | **yes, live** |
+| 7 | Immunity **EN 61000-6-2:2019** decided; its industrial levels not yet checked against the design | **yes** |
+| 3 | **F1 is specified only as 40 A.** Standard ATO fuses are rated **32 V**, below a 16S LiFePO4 pack | no — **safety** |
+| 2, 4, 5, 6, 8 | PV Voc/Isc limits, fuse selectivity, comms adapters, USB, remaining 62109-1 §5.3 content | no |
+
+Item 3 deserves naming even though it is outside this document's scope: a 32 V
+fuse in a ~58 V DC circuit is not a paperwork gap — a DC arc at 58 V may not
+self-extinguish in a fuse body rated for 32 V.
 
 **Correction to a claim this section made about the 29 m.** It said the PV figure
 sits 1 m under the 30 m gate and so leaves a one-metre fallback margin. That
@@ -301,15 +318,15 @@ the point of step 4.
 >   Rs = Z₀ = 3.4 Ω / 4.7 nF gives −6.9/−11.7/−5.2/−2.7 dB and leaves the worst
 >   band still **+1.1 dB over**; Rs = 1.5 Ω / 4.7 nF gives −10.4/−17.2/−10.1/−6.9
 >   and takes the worst band to **−3.1 dB, a pass.** Both survive the 11 nH case.
->   **Flagged back to the channel:** since `P_snub = Cs·Vin²·fsw` is independent of
->   Rs, the 3–6 dB that under-damping gives up is not being paid for in
->   dissipation — so "Rs = Z₀ because impedance matching" may be the right answer
->   to the *ringing* question and the wrong one to the *emissions* question.
->   **Parked 2026-10-12, not resolved: `ee-1b` left the channel without answering,
->   so the radiated-indep deck now has no live owner — the same state as the
->   rad300 deck (transcript `3f2ec530`).** Whoever picks it up should treat the
->   Rs = Z₀ choice in §5 as justified for ringing and **unexamined for
->   emissions**, with the model's own table pointing the other way.
+>   **Resolved 2026-10-12 — §0 caveat 4.** The two values answer different
+>   questions: Z₀ minimises the *ring*; Rs < Z₀ is simply a harder broadband
+>   shunt above the branch corner, 20·log₁₀(3.368/1.5) = **7.0 dB** harder, which
+>   brackets the observed 3–6 dB. Average dissipation really is Rs-independent
+>   (**0.95 W** at 4.7 nF / 72 V), but **peak current is not**: **53.3 A against
+>   23.8 A** at an 80 V step, and the model does not represent that pulse as a
+>   radiating loop. **Z₀ stays the design value; 1.5 Ω is a bench experiment.**
+>   (`ee-1b` left the channel without answering, so this was settled here rather
+>   than by the model's owner.)
 > - The heatsink strap is −14.6 dB at 90–110 MHz **nominal only** — it disappears
 >   entirely under the 11 nH case (−0.9 dB).
 >
@@ -339,17 +356,58 @@ Three caveats, all from the source:
    compose monotonically (−16.1 then +9.4 at 30–50 MHz), so **do not read them
    as a stack** without checking the source file.
 4. **The snubber row uses Rs = 1.5 Ω**, against the impedance-matched
-   Z₀ = √(9.2 nH / 811 pF) = **3.37 Ω** (§5). At 2.25× below matched it is
-   under-damped, so that row probably *understates* what a correctly sized
-   snubber achieves. **Where 1.5 Ω came from is unknown** — an earlier version
-   of this note guessed it was the same √(L/(C_tank+Cs)) error §5 corrects, but
-   that formula gives **1.29 Ω**, not 1.5, and would round to E24 1.3 rather
-   than 1.5. The guess was wrong; the under-damping stands. **Owner identified
-   2026-10-11:** the rad300 deck belongs to session `host-7701`
-   (`0774c03e`), not to `LISN-70ec` or `ee-1b`; it is not on channel `emc`, so
-   the point is relayed rather than answered. `ee-1b` has separately passed the
-   Rs = Z₀ rule to the independent radiated model, whose snubber lever is being
-   re-run at 3.37 Ω.
+   Z₀ = √(9.2 nH / 811 pF) = **3.368 Ω** (§5). **Where 1.5 Ω came from is
+   unknown** — an earlier version of this note guessed it was the same
+   √(L/(C_tank+Cs)) error §5 corrects, but that formula gives **1.29 Ω**, not
+   1.5, and would round to E24 1.3 rather than 1.5. The guess was wrong.
+
+   ### Resolved 2026-10-12: Rs = Z₀ and Rs = 1.5 Ω answer different questions
+
+   The independent radiated model finds **Rs = 1.5 Ω beats Rs = Z₀ by 3–6 dB**
+   (−10.4/−17.2/−10.1/−6.9 against −6.9/−11.7/−5.2/−2.7 dB) and takes the worst
+   band to **−3.1 dB, a pass**, where Z₀ leaves **+1.1 dB over**. That is not a
+   contradiction of the Z₀ rule. It is a different objective:
+
+   - **Rs = Z₀ minimises the *ring*.** It is the matched-damping choice for the
+     9.2 nH / 811 pF resonance, and that is what §5 adopted it for.
+   - **Rs < Z₀ attenuates more *broadband*.** Above the branch corner
+     1/(2π·Rs·Cs) the snubber presents essentially **Rs** shunting the node —
+     with Cs = 4.7 nF that corner is **10.1 MHz at Z₀ and 22.6 MHz at 1.5 Ω**, so
+     across the whole 30–110 MHz scored band both are resistive and the smaller
+     resistor is simply the harder shunt. 20·log₁₀(3.368/1.5) = **7.0 dB** of
+     extra shunting, which brackets the 3–6 dB the model reports.
+
+   **It is not free, and the free-lunch argument I put on the channel was
+   incomplete.** `P_snub = Cs·Vin²·fsw` *is* independent of Rs — **0.95 W at
+   4.7 nF / 72 V, 1.17 W at 80 V** — because the capacitor's energy is dissipated
+   whatever the resistor. But **peak current is not**: at an 80 V step the snubber
+   draws **ΔV/Rs = 23.8 A at Z₀ against 53.3 A at 1.5 Ω**. That current flows in a
+   real loop and is added to the FET's turn-on current. So the trade is:
+
+   | | Rs = Z₀ = 3.37 Ω | Rs = 1.5 Ω |
+   |---|---:|---:|
+   | ring damping | matched | over-damped |
+   | HF shunt above corner | 3.37 Ω | **1.5 Ω** (7.0 dB harder) |
+   | branch corner, Cs = 4.7 nF | 10.1 MHz | 22.6 MHz |
+   | average dissipation @72 V | 0.95 W | 0.95 W |
+   | **peak current, 80 V step** | 23.8 A | **53.3 A** |
+   | τ = Rs·Cs | 15.8 ns | 7.0 ns |
+
+   **The caveat that decides it is not in the model.** A lumped radiated model
+   represents the snubber as a damping element; it does not represent the
+   snubber's own 53 A pulse as a radiating loop, nor the added turn-on loss. So
+   the reported 3–6 dB is an **upper bound** on what Rs = 1.5 Ω delivers in
+   copper, and the margin it buys is real only if the snubber sits **inside the
+   commutation loop with negligible added area**.
+
+   **Recommendation:** keep **Rs = Z₀ = 3.37 Ω** as the design value — it is the
+   defensible one and it is what §5 and the re-run both use. Treat **1.5 Ω as a
+   bench experiment**, not a design change: fit it only if the measured 30–110 MHz
+   level needs the extra few dB, and when fitting it check the resistor's pulse
+   rating against 53 A, the FET turn-on loss, and the snubber's physical loop
+   area. **Open:** the 2.25×-under-matched row in the rad300 table still has no
+   stated provenance, and that deck's owner (session `host-7701`, `0774c03e`) is
+   not on channel `emc`.
 
 **Use for step 4:** the limit-equivalent CM current is ~8 µA at 30 MHz and
 ~4 µA at 60 MHz (§6) — that is **0 dB of margin**, not the target. The two models
@@ -454,7 +512,7 @@ Two independent arguments set the same floor:
 | PEM CWTMini50HF | 50 MHz | Still short of the ring |
 | any clip-around Rogowski | ~50 MHz ceiling | Ruled out as a family |
 | **TekBox TBWA2/20 dB** preamp (owned) | 2 MHz – ≥2 GHz, 20.2 dB @100 MHz, 20.0 @500 MHz, 19.8 @1 GHz | **Not the constraint.** Flat across the whole band |
-| **R&S MXO44** | **1.5 GHz** (MXO4-B2415, relayed — see below) | **Not a constraint.** Covers 30 MHz – 1 GHz entire |
+| **R&S MXO44** | **1.5 GHz** (MXO4-B2415, **instrument-read** — see below) | **Not a constraint.** Covers 30 MHz – 1 GHz entire |
 
 Probe bandwidths are from `~/dev/pv/ee/dcdc-tools/docs/hf-current-measurement.md`
 §3.1 and the preamp from §4 of the same document; that file is the canonical
@@ -462,14 +520,40 @@ source for current-sensor selection and this table must not drift from it. Note
 its §4 already retired the clip-around Rogowski family at the same ~50 MHz
 ceiling for the charge work — a different measurement, the same disqualification.
 
-**Scope bandwidth: 1.5 GHz — relayed 2026-10-11, not instrument-read.** On the MXO 4 the bandwidth is
+**Scope bandwidth: 1.5 GHz — INSTRUMENT-READ 2026-10-12.** On the MXO 4 the bandwidth is
 a licence option (**MXO4-B243 / -B245 / -B2410 / -B2415**) that the base order number
 `1335.5050K04` in `bench/probe-setups/*.json` does not reveal, and it was
-recorded nowhere in either repo. The answer is the **MXO4-B2415 option, 1.5 GHz**.
+recorded nowhere in either repo. It is now read off the instrument, and the
+relayed answer was right:
 
-> **Provenance:** relayed on channel `emc` by `ee-1b` as Fab's answer of
-> 2026-10-11. It was **not** read off the instrument in this session, so if a
-> purchase turns on it, confirm with `*OPT?` or the self-test screen first.
+```
+*IDN?  Rohde&Schwarz,MXO44,1335.5050k04/201239,2.10.2.0
+*OPT?  B6,B2415,K36,K510,K520,K530
+```
+
+> **B2415 confirmed — 1.5 GHz.** The relay (`ee-1b` on channel `emc`,
+> 2026-10-11) is corroborated, and this no longer rests on a second-hand answer.
+
+> ### B6 EXISTS — the signal-generator blocker is closed
+>
+> **`B6` is the built-in function/arbitrary generator**, open as a question since
+> **2026-08-23**. Consequences, in order of value:
+>
+> - **§7B's ratiometric Z_T self-calibration is now possible.** It needs a source
+>   driving the matched line; the scope can be its own. No external generator and
+>   no **TBCP2-CAL fixture (≈€548)** — §9C's "skip it" now rests on a capability
+>   that is confirmed rather than assumed.
+> - **`K36` is also present** — the MXO4 frequency-response-analysis option, which
+>   `scope-backends/scope_backends/fra.py` is already written against. With B6 as
+>   the stimulus this is a built-in gain/phase sweep.
+> - **That may replace the VNA in the J10 bench plan.** `BENCH-j10-dm-voltage.md`
+>   lists "find the input-bank anti-resonance with a VNA (NanoVNA-class)" as the
+>   unpowered alternative. K36 + B6 is an FRA on the instrument already on the
+>   bench — worth trying before reaching for another box. Caveat: FRA sweeps are
+>   usually specified over a far lower span than 30–70 MHz, so **check K36's upper
+>   frequency** before relying on it.
+>
+> `K510/K520/K530` are serial-decode options, not relevant here.
 
 Consequences: the 230 MHz limit step is comfortably reachable, the whole
 30 MHz – 1 GHz radiated range is in reach, and the scope **no longer gates** the
@@ -611,31 +695,61 @@ labelled and never compare across them.
 `pwr-mosfet-lib`, datasheet-anchored and Qoss-validated) and the chord-over-
 actual-swing effective capacitance the No-Coil study calls for.
 
-> ⚠️ **Every frequency and Z₀ in this document inherits an unresolved
-> capacitance model.** `ring_analysis.py:173–197` documents two open defects in
-> `c_eff_pf`, and this document quoted its outputs for a day without saying so.
+> ✅ **RESOLVED 2026-10-12. The capacitance model was open; it is now closed,
+> and the answer is that it barely matters.** This block previously warned that
+> every frequency and Z₀ in the document inherited an unresolved model. That
+> warning was correct to raise and **overstated the magnitude by about 2.6×**.
 >
-> 1. **Which effective capacitance is correct is OPEN** — charge chord vs plain
->    small-signal Coss vs the exact anharmonic period integral. A reviewer's
->    independent integration put the chord **4–9 % low** and small-signal within
->    1 %; the attempt to reproduce that used a **broken integrator** (it returned
->    282 pF against an exact 800 pF), so nothing is settled either way.
-> 2. **Callers pass the chord over `[Vin, Vpk]` only** — the upper excursion. The
->    ring swings *below* Vin too, into steeply higher Coss, and that half is
->    ignored. The script's own note: *"both issues bias `bias`'s per-point L in a
->    bias-dependent way, so they do NOT cancel in the fit."*
+> **What was wrong.** `c_eff_pf` offered a charge chord, with two defects: the
+> integrator used to check it was broken — it returned **282 pF where the exact
+> answer for a constant 800 pF capacitor is 800 pF** — so neither the chord nor
+> the small-signal model had ever been validated against anything; and two call
+> sites disagreed about the excursion (`dfreq` passed the upper half `[Vin, Vpk]`,
+> `bias`/`solve`/`snub` passed a symmetric swing).
 >
-> **Magnitude, measured:** the §0 Vin→f_ring table reproduces exactly under the
-> upper-only chord. Switching to plain small-signal `Coss(Vin)` gives
-> **42.1 / 52.4 / 57.6 / 59.2 / 60.1 / 61.1 MHz**, moving the 28 V point by
-> **3.7 MHz (8 %)** and making the in-service span 57.6–61.1. It also explains
-> why §0 says 54.2 MHz at 40 V where §4's table says 55.2 — §0 assumes a 1.2×
-> peak that was never stated.
+> **The fix.** `c_eff_exact_pf` implements the **exact anharmonic period
+> integral**. For a lossless L with nonlinear C(v) released at the upper turning
+> point, energy conservation gives
 >
-> Affected, directly: the §0 Vin→f_ring table and tank C, Z₀ = 3.37 Ω (§0, §5),
-> the `bias` table (§4), the snubber table (§5), and discriminator 3 (§8). A
-> correct anharmonic period integral would settle it; until then treat these as
-> ±8 % model outputs, not measurements.
+> `T = 2·√(L/2) · ∫ C(v) dv / √(E − U(v))`, with `U(v) = ∫ (v′−V_eq) C(v′) dv′`
+>
+> and `C_eff` from `T = 2π√(L·C_eff)` — in which **L cancels**, so the result is a
+> pure property of `C(v)` and the swing. The integrand is inverse-square-root
+> singular at *both* turning points; writing `E − U = (v_max−v)(v−v_min)·h(v)` and
+> using **Gauss–Chebyshev** quadrature absorbs both exactly and evaluates only at
+> interior nodes. The lower turning point is **solved for**, not assumed, so the
+> steeper Coss below the plateau is included — defect 2 closed as well.
+>
+> **Validated on the case the old code failed:** `ring_analysis.py selftest`
+> returns **800.00 pF (0.000 %)** for a constant 800 pF capacitor at ±5, ±10 and
+> ±30 V swing.
+>
+> **Magnitude, re-measured across all three models** (`--cmodel exact|chord|small-signal`):
+>
+> | quantity | exact | chord | small-signal |
+> |---|---:|---:|---:|
+> | `bias` best single L | **9.18 nH** | 9.16 nH | 9.16 nH |
+> | `bias` spread | 13.6 % | 13.3 % | 14.5 % |
+> | `predict` f_ring, LS tank @72 V | 59.9 MHz | 59.9 MHz | 60.0 MHz |
+> | `predict` Z₀ | 3.47 Ω | 3.46 Ω | 3.47 Ω |
+>
+> **L moves by 0.2 % and Z₀ by 0.3 % across the whole model choice.** The
+> 9.2 nH anchor still lands at 1.00×. Vin→f_ring is worst at low bias and still
+> small: the spread is **1.25 MHz (3.0 %) at 28 V**, falling to 0.05 MHz (0.1 %)
+> at 72 V — and at 28 V the exact answer is **42.0 MHz, which agrees with
+> small-signal, not with the chord (40.7)**.
+>
+> **Correction to the previous version of this block:** it claimed the switch to
+> small-signal moved the 28 V point by **3.7 MHz (8 %)**. That does not
+> reproduce; the real figure is **1.25 MHz (3.0 %)**, and the earlier number was
+> produced while the broken integrator was still in the path. The in-service span
+> stays **55–65 MHz**.
+>
+> **So:** the §0 Vin→f_ring table, Z₀ = 3.37 Ω, the `bias` table, the snubber
+> table and discriminator 3 are **robust to this choice** and no longer carry a
+> ±8 % model caveat. The remaining uncertainty in them is the datasheet Coss
+> curves themselves and the swing assumption, not the effective-capacitance
+> definition.
 
 ```sh
 python3 spice/ring_analysis.py bias      # fit ONE L to the measured f(Vin) series
@@ -907,7 +1021,7 @@ from the problem entirely.
 equipment"* for the 39 kHz version of this same ratiometric method, and has been
 since **2026-08-23**. Its stated first action still stands: power the MXO and
 check for the **-B6** arbitrary-generator option. A single `*OPT?` answers that
-*and* confirms the MXO4-B2415 bandwidth (§2), which currently rests on a relay.
+*and* confirms the MXO4-B2415 bandwidth (§2) — **done 2026-10-12, see §2**.
 
 If -B6 is absent, an **Si5351 breakout (~€8)** driven over I²C from the `rpi.local`
 that already hosts the bench closes it: a programmable square-wave clock to
@@ -1092,7 +1206,7 @@ the base model:
 |---|---|---|
 | base MXO 4 | — | ≥ 200 MHz |
 | -B245 | 500 MHz | ≥ 500 MHz |
-| **-B2415** (believed this unit — §2, relayed) | **≥ 1.5 GHz** | **≥ 700 MHz** |
+| **-B2415** (**confirmed by `*OPT?` 2026-10-12**) | **≥ 1.5 GHz** | **≥ 700 MHz** |
 
 Max input, **quoted in full** — the derating clause is the whole story:
 

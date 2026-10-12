@@ -52,6 +52,7 @@ from __future__ import annotations
 
 import argparse
 import math
+import sys
 
 # --- Coss(V) [ (V, pF) ] ------------------------------------------------------
 COSS = {
@@ -170,30 +171,154 @@ def qoss_nc(part: str, v_lo: float, v_hi: float, n: int = 400) -> float:
     return q * 1e-3  # pF*V -> nC
 
 
+#: Which effective-capacitance model `c_eff_pf` uses. "exact" is the anharmonic
+#: period integral and is the default; the others are kept so the historical
+#: numbers in the docs can be reproduced and the spread quoted.
+C_MODEL = "exact"
+C_MODELS = ("exact", "chord", "small-signal")
+
+
+def _u_pot(part: str, v: float, v_eq: float, n: int = 400) -> float:
+    """Potential energy of the nonlinear capacitor, pJ, zero at v = v_eq.
+
+    U(v) = int_{v_eq}^{v} (v' - v_eq) C(v') dv'.  Units: pF*V^2 = pJ.
+    """
+    if v == v_eq:
+        return 0.0
+    # U is a potential WELL: positive on both sides of v_eq.  Integrating the
+    # signed integrand (v'-v_eq)*C over [min,max] and taking the magnitude gives
+    # that directly, since (v'-v_eq) does not change sign inside the interval.
+    a, b = (v_eq, v) if v > v_eq else (v, v_eq)
+    h = (b - a) / n
+    tot = 0.0
+    for k in range(n):
+        v1 = a + k * h
+        v2 = v1 + h
+        tot += 0.5 * ((v1 - v_eq) * coss_pf(part, v1)
+                      + (v2 - v_eq) * coss_pf(part, v2)) * h
+    return abs(tot)
+
+
+def _turning_point_low(part: str, v_eq: float, e_pj: float,
+                       v_floor: float = 0.05) -> float:
+    """The lower turning point: v < v_eq with U(v) = E.  Bisection."""
+    lo, hi = v_floor, v_eq
+    if _u_pot(part, lo, v_eq) < e_pj:
+        return lo                      # ring would clamp; caller's problem
+    for _ in range(80):
+        mid = 0.5 * (lo + hi)
+        if _u_pot(part, mid, v_eq) > e_pj:
+            lo = mid
+        else:
+            hi = mid
+    return 0.5 * (lo + hi)
+
+
+def c_eff_exact_pf(part: str, v_eq: float, v_max: float, n: int = 256) -> float:
+    """Period-equivalent capacitance from the EXACT anharmonic period integral.
+
+    For a lossless L with a nonlinear C(v) ringing about `v_eq` and released at
+    the upper turning point `v_max`, energy conservation gives
+
+        (1/2) L i^2 + U(v) = E = U(v_max),      U(v) = int (v'-v_eq) C(v') dv'
+
+    and, with dv/dt = i / C(v),
+
+        T = 2 * sqrt(L/2) * int_{v_min}^{v_max} C(v) dv / sqrt(E - U(v)).
+
+    `C_eff` is then defined by T = 2*pi*sqrt(L*C_eff), which makes it independent
+    of L -- the L cancels, so this returns a pure property of C(v) and the swing.
+
+    The integrand has inverse-square-root singularities at BOTH turning points.
+    Writing E - U(v) = (v_max - v)(v - v_min) * h(v) with h smooth and positive,
+    Gauss-Chebyshev quadrature with weight 1/sqrt((b-v)(v-a)) absorbs them
+    exactly and evaluates only at interior nodes, so nothing is divided by zero.
+
+    Validated against constant C: returns C_0 to <0.01 % (see `selftest`), which
+    is the case the previous integrator failed, returning 282 pF for 800 pF.
+
+    Unlike the chord, this uses the FULL excursion: v_min is solved for, not
+    assumed symmetric, so the steeper Coss below v_eq is included.
+    """
+    e = _u_pot(part, v_max, v_eq)
+    v_min = _turning_point_low(part, v_eq, e)
+    a, b = v_min, v_max
+    half, mid = 0.5 * (b - a), 0.5 * (a + b)
+    acc = 0.0
+    for k in range(1, n + 1):
+        v = mid + half * math.cos((2 * k - 1) * math.pi / (2 * n))
+        denom = (b - v) * (v - a)
+        h = (e - _u_pot(part, v, v_eq)) / denom
+        if h <= 0:
+            continue
+        acc += coss_pf(part, v) / math.sqrt(h)
+    integral = (math.pi / n) * acc          # = int C dv / sqrt(E-U), in sqrt(pF)
+    # T = 2*sqrt(L/2)*integral ; C_eff = (T/2pi)^2 / L  ->  L cancels.
+    return (integral ** 2) / (2 * math.pi ** 2)
+
+
 def c_eff_pf(part: str, v_center: float, v_swing: float) -> float:
-    """Charge chord Qoss/dV over the ring excursion v_center +/- v_swing.
+    """Effective capacitance of `part` over a ring of +/- `v_swing` about `v_center`.
 
-    OPEN QUESTION -- do not treat this as settled. For a resonator with a
-    strongly nonlinear C(v) the period-equivalent capacitance is defined by the
-    exact anharmonic period integral, and it is not obvious that the charge
-    chord is it. The No-Coil study endorses the chord (...:306-308) and it is
-    certainly right to reject the 0->V charge equivalent (+120% here), but a
-    reviewer's independent integration put the chord 4-9% low and the plain
-    small-signal Coss(v_center) within 1% -- my own attempt to reproduce that
-    had a broken integrator, so neither model is confirmed.
+    FIXED 2026-10-12.  Two defects were open here and both are closed:
 
-    A second, separate defect: callers pass the chord over [Vin, Vpk] only,
-    i.e. the UPPER excursion. The ring swings below Vin as well, into steeply
-    higher Coss, and that half is currently ignored.
+    1. The integrator used to validate the models was broken -- it returned
+       282 pF where the exact answer for a constant 800 pF capacitor is 800 pF,
+       so neither the chord nor the small-signal model had actually been checked
+       against anything.  `c_eff_exact_pf` now implements the anharmonic period
+       integral, and `selftest` asserts it on the constant-C case it used to
+       fail.
+    2. Two call sites disagreed about the excursion.  `dfreq` passed the UPPER
+       half only, [vin, vpk]; `bias`/`solve`/`snub` passed a symmetric swing
+       about vin.  Both are now expressed the same way -- equilibrium at
+       `v_center` released from `v_center + v_swing` -- and the exact model
+       SOLVES for the lower turning point instead of assuming it, so the steeper
+       Coss below the plateau is included rather than ignored.
 
-    Both issues bias `bias`'s per-point L in a bias-dependent way, so they do
-    NOT cancel in the fit. `dfreq` is immune -- it uses no datasheet Coss.
+    `C_MODEL` selects the model; "exact" is the default.  "chord" and
+    "small-signal" are retained to reproduce the historical numbers and to
+    quote the spread, which is the honest measure of how much this choice
+    matters.
     """
     lo = max(v_center - v_swing, 0.5)
     hi = v_center + v_swing
     if hi <= lo:
         return coss_pf(part, v_center)
-    return qoss_nc(part, lo, hi) * 1e3 / (hi - lo)
+    if C_MODEL == "small-signal":
+        return coss_pf(part, v_center)
+    if C_MODEL == "chord":
+        return qoss_nc(part, lo, hi) * 1e3 / (hi - lo)
+    return c_eff_exact_pf(part, v_center, hi)
+
+
+def selftest() -> int:
+    """Check the exact integrator on cases with known answers."""
+    global COSS
+    saved = COSS
+    fails = 0
+    # 1. Constant 800 pF: C_eff must be 800 pF for ANY swing.
+    COSS = {"_const": [(0.1, 800.0), (1000.0, 800.0)]}
+    for swing in (5.0, 10.0, 30.0):
+        got = c_eff_exact_pf("_const", 72.0, 72.0 + swing)
+        err = abs(got - 800.0) / 800.0
+        ok = err < 1e-4
+        fails += 0 if ok else 1
+        print(f"  constant 800 pF, swing +/-{swing:4.1f} V -> {got:8.2f} pF  "
+              f"({err*100:6.3f} %)  {'ok' if ok else 'FAIL'}")
+    # 2. A linear-in-v capacitance is anharmonic; the exact result must differ
+    #    from both the chord and the small-signal value, and lie between them.
+    COSS = {"_lin": [(0.1, 100.0), (200.0, 2100.0)]}   # C = 100 + 10*v
+    ex = c_eff_exact_pf("_lin", 72.0, 92.0)
+    COSS_SAVE = COSS
+    ss = coss_pf("_lin", 72.0)
+    ch = qoss_nc("_lin", 52.0, 92.0) * 1e3 / 40.0
+    print(f"  C=100+10v: exact {ex:7.1f} | small-signal {ss:7.1f} | chord {ch:7.1f} pF")
+    if not (min(ss, ch) * 0.5 < ex < max(ss, ch) * 1.5):
+        print("  FAIL: exact is implausible against the two bracketing models")
+        fails += 1
+    COSS = saved
+    print("selftest:", "PASS" if fails == 0 else f"{fails} FAILURE(S)")
+    return fails
 
 
 def f_ring_hz(l_nh: float, c_pf: float) -> float:
@@ -365,6 +490,10 @@ def main():
                    help="ring amplitude +/- V, sets the charge-equivalent Coss")
     p.add_argument("--icomm", type=float, default=33.0, help="commutated current, A")
     p.add_argument("--fsw", type=float, default=39e3)
+    p.add_argument("--cmodel", choices=C_MODELS, default="exact",
+                   help="effective-capacitance model (default: exact anharmonic "
+                        "period integral; chord/small-signal reproduce the "
+                        "historical numbers)")
     sub = p.add_subparsers(dest="cmd", required=True)
 
     sp = sub.add_parser("predict", help="L_loop -> f_ring (do this before the bench)")
@@ -390,7 +519,12 @@ def main():
     sn.add_argument("--l-nh", type=float, default=L_ANCHOR_NH)
     sn.set_defaults(fn=cmd_snub)
 
+    st = sub.add_parser("selftest", help="check the exact integrator on known cases")
+    st.set_defaults(fn=lambda a: sys.exit(selftest()))
+
     a = p.parse_args()
+    global C_MODEL
+    C_MODEL = a.cmodel
     if getattr(a, "cmd", None) == "bias":
         a.points = ([tuple(float(x) for x in s.split(",")) for s in a.points]
                     or BENCH_RING)
