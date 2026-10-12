@@ -1,33 +1,41 @@
-# Bench spec — J10 source inductance: is it 1.73 nH or 11 nH?
+# Bench spec — J10 source inductance, **unpowered**: is it 1.73 nH or 11 nH?
 
-Written 2026-10-12. Specifies the measurement named but not specified in
-`doc/EMI Precompliance.md` (update of 2026-10-12) and listed there as procedure step 6.
-**Needs no purchase.** Primary method uses the MXO44 options already installed.
+Written 2026-10-12. **Companion to `dcdc-tools/emc/BENCH-j10-dm-voltage.md`** (commit
+`97be9a2`, on dcdc-tools `main`), which is the authoritative plan for the **powered**
+path. This file covers only the **unpowered** path, which that plan lists in one sentence
+as "find the input-bank anti-resonance with a VNA (NanoVNA-class)".
+
+**Two corrections to that sentence, which are the reason this file exists:**
+
+1. **The anti-resonance is not the in-band feature** (§2). It sits at 230–712 kHz. Across
+   30–70 MHz the bank is past every resonance and purely inductive, so there is nothing to
+   back out of a resonance — you read the inductive asymptote directly.
+2. **No VNA is needed.** `*OPT?` reports **K36** (frequency *and impedance* analysis, to
+   100 MHz) with **B6** as source, both installed. 30–70 MHz is covered by the instrument
+   already on the bench.
+
+> **For the powered DM-voltage measurement, use their file, not this one.** It carries the
+> verified J10 pinout (pin 1 `BuckGND`, pin 2 `T_HV+`), the Bumblebee differential-probe
+> path, the DC-block fallback and the capture/record procedure. Its predicted values
+> supersede any quoted here.
 
 ---
 
 ## 1. The question, and what rides on it
 
-Two radiated models disagree about the equivalent series inductance of the PV input bank
-looking into **J10**:
+| source | L at J10 | J10 DM per harmonic | 3 m margin, 30–50 / 50–70 / 70–90 / 90–110 MHz |
+|---|---:|---:|---|
+| nominal — MLCC branch sets J10 | **1.73 nH** | 56.7–58.1 dBµV | −1.7 / +1.0 / +0.0 / +3.8 dB |
+| alternative — 11 nH effective transfer | **11 nH** | 80–86 dBµV | **+21.7 / +22.6 / +15.3 / +8.8 dB** |
 
-| source | L at J10 | radiated verdict |
-|---|---:|---|
-| `radiated-indep` (nominal, two-branch bank) | **1.73 nH** | −1.7 / +1.0 / +0.0 / +3.8 dB — straddling the limit |
-| implied by `rad300`'s PV DM voltage | **11 nH** | **+21.7 / +22.6 / +15.3 / +8.8 dB** — badly over |
-
-That is the **single widest uncertainty in the whole radiated estimate**, and it changes
-the answer from "fix it with a snubber" to "this is a serious problem". It also decides
-three downstream levers:
-
-- the PV terminal cap is worth **−1.0 dB** (nominal) or **−9.5 dB** (11 nH);
-- the heatsink strap is worth **−14.6 dB** (nominal) or **−0.9 dB** (11 nH);
-- whether the snubber alone reaches a pass.
+The **single widest uncertainty in the radiated estimate**: it changes the answer from
+"fix it with a snubber" to "this is a design problem". It also decides whether the PV
+terminal cap is worth −9.5 dB or ≤1 dB, and whether the heatsink strap is a lever at all
+(nominal case only).
 
 The `radiated-indep` model states MLCCs carry **94 %** of the loop current and that it
-**cannot reach 11 nH** over the declared component grid. So this measurement is expected
-to confirm the nominal case — but it has never been made, and the 11 nH row is retained
-precisely because the other deck's PV DM voltage implies it.
+**cannot reach 11 nH** over the declared grid — so this is expected to confirm the nominal
+case. The 11 nH row is retained only because the other deck's PV DM voltage implies it.
 
 ### The board's actual bank (from `PowerStage.kicad_sch`, populated parts only)
 
@@ -40,9 +48,10 @@ precisely because the other deck's PV DM voltage implies it.
 | | C8 `C0805C222K2GEC7800` 2.2 nF | — |
 | | **MLCC nominal total** | **≈24.4 µF** |
 
-The 1000 µF parts carry `MPN = DNP` in the schematic but their KiCad `dnp` flag is **not**
-set and the description reads "hand-assembled" — they are **fitted**, just not
-machine-placed. Do not read that field as unpopulated.
+⚠ The 1000 µF parts carry `MPN = DNP` in the schematic but their KiCad `dnp` flag is
+**not** set and the description reads "hand-assembled" — they **are** fitted, just not
+machine-placed. Reading that field literally models the board without its entire
+electrolytic branch.
 
 ---
 
@@ -141,27 +150,17 @@ The middle row exists deliberately: an unevaluable measurement must not read as 
 
 ---
 
-## 4. Method B (confirmation) — powered DM spectrum
+## 4. The powered confirmation — use the other plan
 
-This is step 6's original intent and it tests the models' *own* published predictions
-rather than a derived inductance.
+Do not duplicate it here. `dcdc-tools/emc/BENCH-j10-dm-voltage.md` is the authoritative
+powered-path plan: J10 DM voltage, 30–70 MHz, Bumblebee differential probe (CMRR >40 dB
+measured; **check its bandwidth reaches 70 MHz** before relying on it), with a DC-block +
+20 dB attenuator fallback, and its own read-out table (≈55–62 dBµV nominal, ≈78–88 dBµV
+for 11 nH, anything else = neither model).
 
-- **Predicted J10 differential voltage at 30 MHz:** `radiated-indep` **60–62 dBµV**
-  (≈1.1 mV) vs `rad300` **~86 dBµV** (≈20 mV). **A 25 dB separation** — no fixture
-  calibration can blur that.
-- Board **at the real operating point**, 72 V in / 27 V out / 32 A.
-- Use the **DC-blocked 50 Ω path** from `EMI Precompliance.md` §2 and **mind the 72 V
-  common-mode offset at the connector** — the block is there to protect the input, not
-  as a nicety.
-- Span 30–70 MHz, max-hold, and record the resolution bandwidth and detector used.
-
-> This is a **model input, not a compliance measurement.** §0 of the EMI doc explains why
-> the DC port currently carries no conducted limit; nothing here gates compliance.
-
-Method A is safer, needs no live board, and should be done first. Method B confirms it
-against the number the models actually argue about.
-
----
+Method A here is safer, needs no live board and no probe-bandwidth check, so **do it
+first**; their powered measurement then confirms it against the quantity the models
+actually argue about.
 
 ## 5. What it settles
 
@@ -187,5 +186,7 @@ against the number the models actually argue about.
   It does not affect the 30–70 MHz discriminator, which is MLCC-branch dominated.
 - MLCC SRFs above assume ~1.2–2 nH of combined part and mounting inductance; they are
   order-of-magnitude anchors for "where does inductive behaviour start", not measurements.
+- Results belong in `radiated-indep/RESULTS-radiated-indep.md` §10 item 1, per the companion
+  plan's record section.
 - Both radiated decks currently have **no live owner** (`EMI Precompliance.md`,
   2026-10-12), so whoever runs this should expect to interpret it themselves.
