@@ -35,3 +35,7 @@ parts.kicad_pro
 spice/extract/loop.inp
 
 *.rpt
+
+.idea/webServers.xml
+.playwright-mcp/
+.vibe-drops/
