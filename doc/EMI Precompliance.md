@@ -95,7 +95,8 @@ length of cable … 2 m"*, and the **PV port at 29 m**. The interpretation is
 as a settled length rule would be wrong in both directions: a longer cable does
 not break it, and a short one does not secure it.
 
-**The declarations are adopted and in the product repo — checked 2026-10-12.**
+**The declarations are written and in this repo, but the document is still a
+draft — corrected again 2026-10-12.**
 `DECLARATIONS-fugu2.md` once called them *"accepted, correct, and homeless"*.
 They are not homeless: **`Fugu2 doc/INSTALLATION.md`** (commit `2b7a7e8`, 154
 lines) carries both sentences in the Ports-and-cabling table — **PV 29 m,
@@ -103,20 +104,28 @@ battery 2 m** — with the connector, fuse, connect-to and do-not-connect-to
 columns, the bundling instruction, and the rationale table citing EN 55011
 §6.2.1.1 and EN 301 489-1 §8.3.1. No `PLACEHOLDER` remains in it.
 
-This paragraph has now been wrong twice in opposite directions: first *"no
-document exists"*, then *"drafted but not adopted"*, pointing at the `dcdc-tools`
-draft (`emc/INSTALLATION-INSTRUCTIONS-fugu2.md`, `36abe9c`) while the adopted
-product version already sat in this repo's own `doc/` directory.
+`doc/INSTALLATION.md`'s own header is explicit: ***"DRAFT, revised 2026-10-11
+after two independent reviews. Not yet a product document … the port declarations
+below count only once the OPEN items are decided and this text ships with the
+product."*** So "adopted" was wrong.
+
+This paragraph has now been wrong **three times**: *"no document exists"*, then
+*"drafted but not adopted"* pointing at the wrong repo's draft, then *"adopted"*.
+The accurate statement is the narrow one: **the two sentences exist, in this
+repo, in a draft that has not shipped.**
 
 **What actually blocks shipping it** is the file's own *"OPEN: decisions needed
-before this ships"* list — eight items, of which only two touch EMC:
+before this ships"* list:
+
+Ten OPEN items, not the eight an earlier version of this table counted:
 
 | # | item | EMC? |
 |---|---|---|
 | 1 | **Battery port C10 — decided 2026-10-11, reopened 2026-10-12 by the coil.** The shipped KDM KS184-125A is ~25.6 µH at 32 A against the 50 µH the sim assumed, roughly doubling ripple; the KZN then fails Table 3 AV by ~3 dB and runs ~33 % over its ripple rating | **yes, live** |
 | 7 | Immunity **EN 61000-6-2:2019** decided; its industrial levels not yet checked against the design | **yes** |
 | 3 | **F1 is specified only as 40 A.** Standard ATO fuses are rated **32 V**, below a 16S LiFePO4 pack | no — **safety** |
-| 2, 4, 5, 6, 8 | PV Voc/Isc limits, fuse selectivity, comms adapters, USB, remaining 62109-1 §5.3 content | no |
+| 9 | **Lab test specification** — operating modes (72 V in, 27 V out, 32 A, BLE active), ancillary equipment, functional monitoring, thermal limits (EN 301 489-1 Annex C) | **yes** |
+| 2, 4, 5, 6, 8, 10 | PV Voc/Isc limits, fuse selectivity, comms adapters, USB, remaining 62109-1 §5.3 content, paper-delivery requirement | no |
 
 Item 3 deserves naming even though it is outside this document's scope: a 32 V
 fuse in a ~58 V DC circuit is not a paperwork gap — a DC arc at 58 V may not
@@ -370,12 +379,25 @@ Three caveats, all from the source:
 
    - **Rs = Z₀ minimises the *ring*.** It is the matched-damping choice for the
      9.2 nH / 811 pF resonance, and that is what §5 adopted it for.
-   - **Rs < Z₀ attenuates more *broadband*.** Above the branch corner
-     1/(2π·Rs·Cs) the snubber presents essentially **Rs** shunting the node —
-     with Cs = 4.7 nF that corner is **10.1 MHz at Z₀ and 22.6 MHz at 1.5 Ω**, so
-     across the whole 30–110 MHz scored band both are resistive and the smaller
-     resistor is simply the harder shunt. 20·log₁₀(3.368/1.5) = **7.0 dB** of
-     extra shunting, which brackets the 3–6 dB the model reports.
+   - **Rs < Z₀ attenuates more *broadband*, but not by 7 dB.** ⚠️ **Corrected
+     2026-10-12.** An earlier version argued that above the branch corner
+     1/(2π·Rs·Cs) the snubber presents essentially Rs, giving
+     20·log₁₀(3.368/1.5) = 7.0 dB everywhere in band. **That test is the wrong
+     one:** it shows the *branch* is resistive, not that the *node* is
+     Rs-dominated. The node is `jωL ‖ 1/jωC ‖ (Rs + 1/jωCs)`, and the loop
+     inductance competes:
+
+     | f | \|Z\| @3.368 Ω | \|Z\| @1.5 Ω | ratio | ωL |
+     |---|---:|---:|---:|---:|
+     | 30 MHz | 2.337 Ω | 2.283 Ω | **0.21 dB** | 1.73 Ω |
+     | 50 MHz | 3.480 | 1.736 | 6.04 dB | 2.89 Ω |
+     | 70 MHz | 3.049 | 1.479 | 6.29 dB | 4.05 Ω |
+     | 110 MHz | 1.918 | 1.200 | 4.08 dB | 6.36 Ω |
+
+     At 30 MHz ωL = 1.73 Ω is *below* both resistors, so the two choices are
+     **0.21 dB apart** — 7.0 dB is an unreachable asymptote. The real in-band
+     range, **0.2–6.3 dB**, *is* the model's reported 3–6 dB directly, which is a
+     stronger explanation than the one it replaces.
 
    **It is not free, and the free-lunch argument I put on the channel was
    incomplete.** `P_snub = Cs·Vin²·fsw` *is* independent of Rs — **0.95 W at
@@ -386,8 +408,8 @@ Three caveats, all from the source:
 
    | | Rs = Z₀ = 3.37 Ω | Rs = 1.5 Ω |
    |---|---:|---:|
-   | ring damping | matched | over-damped |
-   | HF shunt above corner | 3.37 Ω | **1.5 Ω** (7.0 dB harder) |
+   | ring damping, ζ | 0.536 | **0.442** (less damped) |
+   | node \|Z\| advantage, 30→110 MHz | — | **0.2–6.3 dB** harder |
    | branch corner, Cs = 4.7 nF | 10.1 MHz | 22.6 MHz |
    | average dissipation @72 V | 0.95 W | 0.95 W |
    | **peak current, 80 V step** | 23.8 A | **53.3 A** |
@@ -539,19 +561,24 @@ relayed answer was right:
 > **`B6` is the built-in function/arbitrary generator**, open as a question since
 > **2026-08-23**. Consequences, in order of value:
 >
-> - **§7B's ratiometric Z_T self-calibration is now possible.** It needs a source
->   driving the matched line; the scope can be its own. No external generator and
->   no **TBCP2-CAL fixture (≈€548)** — §9C's "skip it" now rests on a capability
->   that is confirmed rather than assumed.
+> - **§7B's ratiometric Z_T self-calibration is now possible — but only to
+>   100 MHz.** B6 is specified *"Arbitrary waveform generator, **100 MHz**, 2
+>   analog channels"* (R&S MXO 4 datasheet). Step 4 measures **30–230 MHz** and
+>   §9E quotes Z_T to 200 MHz, so **B6 self-calibrates under half the scored
+>   band** — less reach than the ~200 MHz credited to the Si5351 fallback below.
+>   An earlier version of this block closed the blocker without checking B6's
+>   bandwidth. It is closed for *existence*, not for *coverage*: above 100 MHz
+>   the clamp's factory Z_T table is still the only calibration.
 > - **`K36` is also present** — the MXO4 frequency-response-analysis option, which
 >   `scope-backends/scope_backends/fra.py` is already written against. With B6 as
 >   the stimulus this is a built-in gain/phase sweep.
-> - **That may replace the VNA in the J10 bench plan.** `BENCH-j10-dm-voltage.md`
+> - **It replaces the VNA in the J10 bench plan.** `BENCH-j10-dm-voltage.md`
 >   lists "find the input-bank anti-resonance with a VNA (NanoVNA-class)" as the
->   unpowered alternative. K36 + B6 is an FRA on the instrument already on the
->   bench — worth trying before reaching for another box. Caveat: FRA sweeps are
->   usually specified over a far lower span than 30–70 MHz, so **check K36's upper
->   frequency** before relying on it.
+>   unpowered alternative. The datasheet says K36 *"uses the oscilloscope's
+>   built-in arbitrary waveform generator to create stimulus signals in the range
+>   from **10 mHz to 100 MHz**"* — which **covers the 30–70 MHz anti-resonance
+>   sweep**. No second instrument needed. (K36 also *requires* B6, which is why
+>   both appear.)
 >
 > `K510/K520/K530` are serial-decode options, not relevant here.
 
@@ -724,32 +751,49 @@ actual-swing effective capacitance the No-Coil study calls for.
 > returns **800.00 pF (0.000 %)** for a constant 800 pF capacitor at ±5, ±10 and
 > ±30 V swing.
 >
-> **Magnitude, re-measured across all three models** (`--cmodel exact|chord|small-signal`):
+> ### ⚠️ Second correction, same day: the first fix did not close defect 2
 >
-> | quantity | exact | chord | small-signal |
+> The version of this block written earlier today claimed the exact model
+> "solves for the lower turning point, so defect 2 is closed", and reported
+> **L = 9.18 nH, 1.00× the anchor, 0.2 % spread across models**. An adversarial
+> review found that `cmd_bias` was passing `v_center = ½(Vin+Vpk)` — the
+> *midpoint* — so the potential well was centred on the midpoint and the solved
+> lower turning point was pushed straight back to ≈Vin (20.1 / 40.4 / 60.2 V for
+> the three bench points). The excursion was still the upper half. Defect 2 was
+> **not** closed, and the 0.2 % spread measured only chord-vs-small-signal-vs-exact
+> *over the same wrong interval*.
+>
+> **Fixed:** both call sites now pass the physical equilibrium, the **Vin
+> plateau**, released at Vpk. The turning points become **16.4 / 28.3 / 46.8 V**.
+>
+> | | best single L | vs 9.2 nH anchor | spread |
 > |---|---:|---:|---:|
-> | `bias` best single L | **9.18 nH** | 9.16 nH | 9.16 nH |
-> | `bias` spread | 13.6 % | 13.3 % | 14.5 % |
-> | `predict` f_ring, LS tank @72 V | 59.9 MHz | 59.9 MHz | 60.0 MHz |
-> | `predict` Z₀ | 3.47 Ω | 3.46 Ω | 3.47 Ω |
+> | midpoint v_eq (as shipped this morning) | 9.18 nH | 1.00× | 13.6 % |
+> | **v_eq = Vin (physical, now)** | **8.41 nH** | **0.91×** | 17.1 % |
 >
-> **L moves by 0.2 % and Z₀ by 0.3 % across the whole model choice.** The
-> 9.2 nH anchor still lands at 1.00×. Vin→f_ring is worst at low bias and still
-> small: the spread is **1.25 MHz (3.0 %) at 28 V**, falling to 0.05 MHz (0.1 %)
-> at 72 V — and at 28 V the exact answer is **42.0 MHz, which agrees with
-> small-signal, not with the chord (40.7)**.
+> **The 1.00× headline was an artefact of the wrong equilibrium.** It is withdrawn.
 >
-> **Correction to the previous version of this block:** it claimed the switch to
-> small-signal moved the 28 V point by **3.7 MHz (8 %)**. That does not
-> reproduce; the real figure is **1.25 MHz (3.0 %)**, and the earlier number was
-> produced while the broken integrator was still in the path. The in-service span
-> stays **55–65 MHz**.
+> **But the lossless assumption cuts the other way, and brackets the answer.** The
+> period integral conserves energy, so it gives the *deepest possible* undershoot.
+> The bench ring has **Q ≈ 3**, so the real first undershoot is shallower, the real
+> excursion samples less of the steep low-voltage Coss, and the true effective C is
+> **between** the two rows above. So:
 >
-> **So:** the §0 Vin→f_ring table, Z₀ = 3.37 Ω, the `bias` table, the snubber
-> table and discriminator 3 are **robust to this choice** and no longer carry a
-> ±8 % model caveat. The remaining uncertainty in them is the datasheet Coss
-> curves themselves and the swing assumption, not the effective-capacitance
-> definition.
+> **L is bracketed at 8.4–9.2 nH** — the lossless limit at the bottom, the
+> heavily-damped limit at the top — and the 9.2 nH anchor sits at the **top** of
+> that bracket, not at its centre. An 8 % question, not a 0.2 % one.
+>
+> **What IS robust** is the interpolation choice. At this board's actual
+> excursions the three models agree closely: at ±28 % swing on a steep
+> k = −0.87 curve they fall within **2.2 %**, and they only separate at large
+> relative swings (**94 %** apart at ±100 %). `selftest` now uses the ±100 % case,
+> because the ±28 % one could not have failed.
+>
+> **So:** the choice of *interpolation model* no longer threatens the §0
+> Vin→f_ring table, Z₀, the snubber table or discriminator 3. The choice of
+> *equilibrium and damping* does, at the 8 % level on L, and that is now stated
+> rather than hidden. The ±8 % caveat is not withdrawn after all — it is
+> re-attributed to the right cause.
 
 ```sh
 python3 spice/ring_analysis.py bias      # fit ONE L to the measured f(Vin) series
@@ -1367,27 +1411,50 @@ Both manuals were read today — PMK `M-UFCS-CHOKE` Rev 01A (Jan 2026) and Tekbo
 | contents | choke + 1 m and 0.5 m SMA coax + SMA(F)→BNC(M) | choke only |
 | size / mass | 12.65×11.6×6.3 cm, 560 g incl. cables | 70×60×140 mm, 350 g |
 
-> ⚠️ **The "4.5 GHz" headline is the 3 dB figure, and it is for the choke alone.**
-> The number that governs amplitude fidelity is the **1 dB bandwidth of the
-> assembly you actually use: 750 MHz.** The included coax, not the choke,
-> dominates it. Tekbox's **<0.6 dB at 1 GHz** is therefore *flatter* than the PMK
-> assembly — the opposite of what the headline bandwidths suggest, and the
-> opposite of what §9B said in its first version.
+> ⚠️ **Flatness: corrected 2026-10-12. The earlier comparison was
+> base-mismatched, and the correction runs against the Tekbox.** This block used
+> to argue that PMK's "4.5 GHz" is a 3 dB figure for the choke alone while the
+> **assembly's 1 dB bandwidth is 750 MHz**, and that Tekbox's **<0.6 dB at 1 GHz**
+> is therefore *flatter*. The first half is right; the conclusion is not. PMK's
+> 750 MHz is explicitly **with cables** (*"the specifications are only valid when
+> used with the recommended cables included in the scope of delivery"*), while
+> Tekbox's <0.6 dB is **choke only** — the row above says so, and the Tekbox route
+> needs €33.80 of jumpers on top. Like for like:
+>
+> | basis | PMK | Tekbox |
+> |---|---|---|
+> | choke alone, 1 dB | **4.5 GHz** | ~1 GHz |
+> | assembly, 1 dB | **750 MHz** | ~0.6 + 0.73 = **1.33 dB at 1 GHz**, so <1 GHz |
+>
+> (RG223/U is 48.5 dB/100 m at 1 GHz — 1.5 m of jumper adds ~0.73 dB.) **On
+> either basis PMK is flatter or comparable, not worse.** The ">1 GHz" the table
+> gives for Tekbox also extrapolates past the end of its characterised range.
+>
+> This does not change the decision — it **strengthens** it. The PMK kit was
+> chosen for its 20 dB better return loss; it turns out not to be giving up
+> flatness to get it, which is what the earlier version claimed.
 
 **Neither choke is the bandwidth limit — the shunt is.** `UFCS-R001` is
 **>600 MHz**, so t_r,sys ≈ 0.35/600 MHz ≈ **580 ps**. Measuring a 1 ns edge,
 √(1² + 0.58²) = **1.16 ns, a 16 % over-read from the shunt alone**, before either
-choke contributes. Picking `UFCS-R005` (>900 MHz) or `-R011` (>1 GHz) changes the
-answer more than the choke choice does.
+choke contributes. Picking `UFCS-R005` (**>800 MHz**) or `-R011` (>1 GHz) changes the
+answer more than the choke choice does. (PMK's column header is **"Bandwidth
+(+3 dB)"** — a peaking figure — so `t_r = 0.35/BW` on it is a single-pole formula
+applied to a response that is not single-pole: treat 580 ps as an estimate, not a
+vendor rise time.)
 
 **The one real discriminator is return loss, and it is a time-domain problem.**
 PMK <−40 dB is a **~1 %** reflection; Tekbox >20 dB is **~10 %**. That matters
 here because a shunt is a *low-impedance* source: ~1 mΩ looking back into a 50 Ω
 line is effectively a short, so energy reflected at the choke runs back to the
 shunt, inverts, and returns as an echo at **twice the one-way delay** — ~21 ns for
-the PMK assembly, comparably ~19 ns for the Tekbox plus two 75 cm RG223 jumpers.
-**A 10 % echo 19–21 ns after the edge lands inside the 15–18 ns period of the
-55–65 MHz ring this document is trying to measure.** At 1 % it is negligible.
+the PMK assembly, and **15.2 ns** for the Tekbox plus two 75 cm RG223 jumpers
+(7.58 ns one way at VF 0.66). **A 10 % echo arriving 15–21 ns after the edge is
+comparable to the 15–18 ns period of the 55–65 MHz ring and lands inside its
+decay window** — i.e. it is indistinguishable from the ring you are measuring.
+⚠️ An earlier version said "inside the 15–18 ns period", which is arithmetically
+false for 19–21 ns, and put the Tekbox round trip at ~19 ns, which needs ~1.9 m
+of cable rather than 1.5 m. At 1 % reflection it is negligible either way.
 PMK's figure is specified only to 200 MHz; Tekbox's to 1 GHz. Neither is
 characterised everywhere.
 
@@ -1396,8 +1463,8 @@ that ns-scale current edges are in scope, not just this board's 15.8 ns switchin
 edge. Once that is the deliverable the Tekbox part's **10 % reflection** is the
 binding defect: with a ~1 mΩ shunt as the source the far end is effectively a
 short, so a mismatch at the choke returns as an inverted echo at twice the
-one-way delay — **~19–21 ns, inside the 15–18 ns period of the 55–65 MHz ring**,
-and inside the window where a Qrr feature lives. PMK's **<−40 dB (~1 %)** makes
+one-way delay — **15.2 ns for the Tekbox route, 21.2 ns for PMK's**, comparable
+to the 15–18 ns ring period and inside the window where a Qrr feature lives. PMK's **<−40 dB (~1 %)** makes
 that artifact disappear, and PMK is the only one of the two that specifies a
 time-domain quantity at all (**delay 10.6 ns** for the assembly, 3.1 ns for the
 choke alone).
@@ -1535,11 +1602,26 @@ relief is an *interpretation* (§0, `STANDARD-BASIS.md` §8.0a), not a limit.
 If it is ever challenged, 150 kHz – 30 MHz comes back, and there the 30M1000 is
 useless: ~**−15 dBΩ at 150 kHz** puts 8 µA at ~1.4 µV, under the scope floor. The
 −750 is ~15 dB better there and still marginal. **Neither part covers that case** —
-the one that does is the **TBCP2-30K400** (3 dBΩ flat **30 kHz–400 MHz**,
-characterised from 10 Hz, 25 A DC, €679), at the cost of ~19 dB less Z_T than the
-30M1000, i.e. ~11 µV for 8 µA instead of 117 µV. That is still ~20 dB over the
-floor. **Not a recommendation — a named fallback** if the conducted question
-reopens, so the decision is on the record rather than rediscovered later.
+the closest is the **TBCP2-30K400** (3 dBΩ flat **30 kHz–400 MHz**,
+characterised from 10 Hz, €679), at the cost of ~19 dB less Z_T than the
+30M1000, i.e. ~11 µV for 8 µA instead of 117 µV — still ~20 dB over the floor.
+
+> ⚠️ **Current rating corrected 2026-10-12, and the two vendor sources conflict.**
+> An earlier version of this paragraph said **25 A DC**, taken from the Tekbox
+> *website*. `TBCP2_30K400_Manual.pdf` §2 says **"Max. RMS current, DC – 400 Hz:
+> 5 A"** and **"Max. primary current (RF): 3 A"**; §5 adds *"DC and AC supply
+> currents up to 5 A have only minor effects … a supply current of 10 A causes a
+> 2 dB reduction of the trans-impedance below 100 kHz."* The website says 25 A DC
+> and 2 A RF — it disagrees with the manual on **both**. Trust the manual.
+>
+> **This is the same defect §9D records as reviewer finding F18**, committed
+> again in the same document: a current rating asserted for a 33 A converter from
+> the weaker source. The 30K400 is a **5 A** part. It remains usable on a bundled
+> pair, where net DC ≈ 0, but it is emphatically not a 25 A probe, and that
+> weakens it as a fallback rather than disqualifying it.
+
+**Not a recommendation — a named fallback** if the conducted question reopens, so
+the decision is on the record rather than rediscovered later.
 
 **Both manuals carry a warning that touches §9C.** §6/§7, identical in both:
 in differential-mode or single-conductor use, *"EUTs with high inrush currents may

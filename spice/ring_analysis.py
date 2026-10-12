@@ -204,7 +204,15 @@ def _turning_point_low(part: str, v_eq: float, e_pj: float,
     """The lower turning point: v < v_eq with U(v) = E.  Bisection."""
     lo, hi = v_floor, v_eq
     if _u_pot(part, lo, v_eq) < e_pj:
-        return lo                      # ring would clamp; caller's problem
+        # The ring would swing below v_floor: there is no lower turning point in
+        # the modelled range, so the period integral is not evaluable. Returning
+        # v_floor here used to produce a plausible-looking number with up to
+        # -43 % error and no warning (constant 800 pF, +/-80 V swing -> 586 pF).
+        raise ValueError(
+            f"ring about {v_eq:.1f} V with energy {e_pj:.3g} pJ has no lower "
+            f"turning point above {v_floor} V: the swing carries the node below "
+            f"the modelled Coss range, so C_eff is not evaluable. Reduce the "
+            f"swing or extend the Coss table.")
     for _ in range(80):
         mid = 0.5 * (lo + hi)
         if _u_pot(part, mid, v_eq) > e_pj:
@@ -296,6 +304,15 @@ def selftest() -> int:
     global COSS
     saved = COSS
     fails = 0
+    try:
+        return _selftest_body(saved)
+    finally:
+        COSS = saved
+
+
+def _selftest_body(saved) -> int:
+    global COSS
+    fails = 0
     # 1. Constant 800 pF: C_eff must be 800 pF for ANY swing.
     COSS = {"_const": [(0.1, 800.0), (1000.0, 800.0)]}
     for swing in (5.0, 10.0, 30.0):
@@ -305,16 +322,36 @@ def selftest() -> int:
         fails += 0 if ok else 1
         print(f"  constant 800 pF, swing +/-{swing:4.1f} V -> {got:8.2f} pF  "
               f"({err*100:6.3f} %)  {'ok' if ok else 'FAIL'}")
-    # 2. A linear-in-v capacitance is anharmonic; the exact result must differ
-    #    from both the chord and the small-signal value, and lie between them.
-    COSS = {"_lin": [(0.1, 100.0), (200.0, 2100.0)]}   # C = 100 + 10*v
-    ex = c_eff_exact_pf("_lin", 72.0, 92.0)
-    COSS_SAVE = COSS
-    ss = coss_pf("_lin", 72.0)
-    ch = qoss_nc("_lin", 52.0, 92.0) * 1e3 / 40.0
-    print(f"  C=100+10v: exact {ex:7.1f} | small-signal {ss:7.1f} | chord {ch:7.1f} pF")
-    if not (min(ss, ch) * 0.5 < ex < max(ss, ch) * 1.5):
-        print("  FAIL: exact is implausible against the two bracketing models")
+    # 2. A STRONGLY nonlinear C(v) must move the exact result away from both
+    #    bracketing models.  coss_pf interpolates LOG-LOG, so two knots define a
+    #    power law C = C0*(v/v0)^k, not a straight line -- an earlier version of
+    #    this test annotated these knots "C = 100 + 10*v", which is wrong: they
+    #    give k = 0.40, nearly flat over the window, which is exactly why all
+    #    three models agreed to 0.5 % and the test proved nothing.
+    #    It also has to be a LARGE RELATIVE swing: over +/-28 % (the 72->92 V
+    #    case this test first used) even a k = -0.87 curve puts all three models
+    #    within 2.2 %, which is a real result about this board -- see the doc --
+    #    but useless as a discriminating test.  40 -> 80 V is +/-100 %.
+    COSS = {"_soft": [(1.0, 4000.0), (200.0, 40.0)]}      # k = -0.868, steep
+    ex = c_eff_exact_pf("_soft", 40.0, 80.0)
+    ss = coss_pf("_soft", 40.0)
+    ch = qoss_nc("_soft", 0.5, 80.0) * 1e3 / 79.5
+    print(f"  steep C(v), k=-0.87, +/-100 %: exact {ex:7.1f} | small-signal "
+          f"{ss:7.1f} | chord {ch:7.1f} pF")
+    if abs(ex - ss) / ss < 0.02 and abs(ex - ch) / ch < 0.02:
+        print("  FAIL: exact agrees with BOTH models to 2 % on a steep curve -- "
+              "this test cannot distinguish them, so it is not a test")
+        fails += 1
+    # 3. Known-bad calibration: the swing that used to return a silently wrong
+    #    number must now raise.
+    COSS = {"_const": [(0.1, 800.0), (1000.0, 800.0)]}
+    try:
+        c_eff_exact_pf("_const", 72.0, 152.0)      # +/-80 V about 72 V
+    except ValueError:
+        print("  unevaluable swing (+/-80 V about 72 V) raises  ok")
+    else:
+        print("  FAIL: swing past the lower turning point returned a number "
+              "instead of raising (it used to return 586 pF for 800 pF)")
         fails += 1
     COSS = saved
     print("selftest:", "PASS" if fails == 0 else f"{fails} FAILURE(S)")
@@ -374,7 +411,7 @@ def cmd_bias(a):
     print(f"  {'Vin':>5} {'V_pk':>6} {'chord C':>9} {'f_meas':>9} {'L implied':>11}")
     ls = []
     for vin, f, vpk in a.points:
-        c = c_eff_pf(part, 0.5 * (vin + vpk), 0.5 * (vpk - vin)) * n
+        c = c_eff_pf(part, vin, vpk - vin) * n   # equilibrium is the Vin plateau
         l = l_from_f_nh(f, c)
         ls.append(l)
         print(f"  {vin:5.0f} {vpk:6.0f} {c:6.0f} pF {f/1e6:6.1f} MHz {l:8.2f} nH")
@@ -383,7 +420,7 @@ def cmd_bias(a):
     print(f"\n  best single L = {l_fit:.2f} nH   (spread {spread*100:.1f}%)\n")
     print(f"  {'Vin':>5} {'f_meas':>9} {'f @ L_fit':>11} {'err':>7}")
     for (vin, f, vpk), _ in zip(a.points, ls):
-        c = c_eff_pf(part, 0.5 * (vin + vpk), 0.5 * (vpk - vin)) * n
+        c = c_eff_pf(part, vin, vpk - vin) * n   # equilibrium is the Vin plateau
         fp = f_ring_hz(l_fit, c)
         print(f"  {vin:5.0f} {f/1e6:6.1f} MHz {fp/1e6:8.1f} MHz {100*(fp-f)/f:+6.1f}%")
     print(f"\n  vs anchor {L_ANCHOR_NH} nH (4 copper + 1 drain + 4 source CSI): "
